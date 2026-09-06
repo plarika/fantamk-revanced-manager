@@ -130,3 +130,7 @@ node_modules/
 local.properties
 
 .cxx
+
+# Android signing material (never commit private signing keys)
+*.jks
+*.keystore

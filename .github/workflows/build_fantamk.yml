@@ -14,6 +14,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      EXPECTED_SIGNER_SHA256: 4fadc1c822b78ee91c36332aca453a0774d3b9ecc7382660940d0ce116fd1d01
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -27,24 +29,65 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
 
-      - name: Build debug APK
+      - name: Restore Nexora signing keystore
+        shell: bash
         env:
+          NEXORA_KEYSTORE_B64: ${{ secrets.NEXORA_KEYSTORE_B64 }}
+        run: |
+          set -euo pipefail
+          test -n "$NEXORA_KEYSTORE_B64" || { echo "Missing NEXORA_KEYSTORE_B64"; exit 1; }
+          printf '%s' "$NEXORA_KEYSTORE_B64" | base64 --decode > app/keystore.jks
+          chmod 600 app/keystore.jks
+
+      - name: Build signed release APK
+        shell: bash
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEYSTORE_ENTRY_ALIAS: ${{ secrets.KEYSTORE_ENTRY_ALIAS }}
+          KEYSTORE_ENTRY_PASSWORD: ${{ secrets.KEYSTORE_ENTRY_PASSWORD }}
           ORG_GRADLE_PROJECT_githubPackagesUsername: ${{ github.actor }}
           ORG_GRADLE_PROJECT_githubPackagesPassword: ${{ github.token }}
-          ORG_GRADLE_PROJECT_version: 0.2.0-dev.2
-        run: ./gradlew :app:assembleDebug --no-daemon
+          ORG_GRADLE_PROJECT_version: 0.2.0-dev.3
+        run: |
+          set -euo pipefail
+          test -n "$KEYSTORE_PASSWORD" || { echo "Missing KEYSTORE_PASSWORD"; exit 1; }
+          test -n "$KEYSTORE_ENTRY_ALIAS" || { echo "Missing KEYSTORE_ENTRY_ALIAS"; exit 1; }
+          test -n "$KEYSTORE_ENTRY_PASSWORD" || { echo "Missing KEYSTORE_ENTRY_PASSWORD"; exit 1; }
+          ./gradlew :app:assembleRelease --no-daemon
 
       - name: Verify no embedded GitHub token
         shell: bash
         run: |
+          set -euo pipefail
           if grep -R -n -E 'github_pat_|ghp_[A-Za-z0-9]+' app/src/main app/build.gradle.kts; then
             echo 'Potential GitHub token found in source'
             exit 1
           fi
 
-      - name: Upload debug APK
+      - name: Verify signing identity and checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          APK="$(find app/build/outputs/apk/release -type f -name '*.apk' -print -quit)"
+          test -n "$APK" || { echo 'Release APK not found'; exit 1; }
+          APKSIGNER="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          test -x "$APKSIGNER" || { echo 'apksigner not found'; exit 1; }
+          "$APKSIGNER" verify --verbose --print-certs "$APK" | tee signing-report.txt
+          ACTUAL_SIGNER="$($APKSIGNER verify --print-certs "$APK" | sed -n 's/^Signer #1 certificate SHA-256 digest: //p' | tr 'A-F' 'a-f' | head -n 1)"
+          test "$ACTUAL_SIGNER" = "$EXPECTED_SIGNER_SHA256" || { echo "Unexpected signing certificate: $ACTUAL_SIGNER"; exit 1; }
+          sha256sum "$APK" | tee "$APK.sha256"
+          echo "SIGNING_IDENTITY=PASS"
+
+      - name: Remove signing keystore
+        if: always()
+        shell: bash
+        run: rm -f app/keystore.jks
+
+      - name: Upload signed APK
         uses: actions/upload-artifact@v7
         with:
-          name: nexora-manager-0.2.0-dev.2.apk
-          path: app/build/outputs/apk/debug/*.apk
+          name: nexora-manager-0.2.0-dev.3
+          path: |
+            app/build/outputs/apk/release/*.apk
+            app/build/outputs/apk/release/*.apk.sha256
           archive: false

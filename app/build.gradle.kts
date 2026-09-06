@@ -16,7 +16,7 @@ plugins {
     signing
 }
 
-val outputApkFileName = "${rootProject.name}-$version.apk"
+val outputApkFileName = "nexora-manager-$version.apk"
 
 dependencies {
     // AndroidX Core
