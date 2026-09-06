@@ -132,7 +132,13 @@ class PatchBundleRepository(
         releasedAt = props.releasedAt
     )
 
-    override fun realNameOf(loaded: PatchBundle) = loaded.manifestAttributes?.name
+    override fun realNameOf(loaded: PatchBundle): String? {
+        val manifestName = loaded.manifestAttributes?.name
+        return when (manifestName) {
+            "FantaMK ReVanced Patches", "FantaMK Patches" -> FantaMKGitHubSource.DISPLAY_NAME
+            else -> manifestName
+        }
+    }
     override suspend fun loadDataFromSources(sources: MutableMap<Int, Source<PatchBundle>>) = loadMetadata(sources).toPersistentMap()
 
     val sources = store.state.map { it.sources.values.toList() }
