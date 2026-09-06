@@ -155,15 +155,26 @@ class PatchBundleRepository(
     val patchCountsFlow = bundleInfoFlow.map { it.mapValues { (_, info) -> info.patches.size } }
 
     suspend fun ensureFantaMKSource() {
-        val existing = sources.first()
+        var source = sources.first()
             .filterIsInstance<RemoteSource<PatchBundle>>()
             .firstOrNull { it.endpoint == FantaMKGitHubSource.ENDPOINT }
 
-        if (existing == null) {
+        if (source == null) {
             createRemote(FantaMKGitHubSource.ENDPOINT, autoUpdate = true)
-        } else if (!existing.autoUpdate) {
-            existing.setAutoUpdate(true)
+            reload()
+            source = sources.first()
+                .filterIsInstance<RemoteSource<PatchBundle>>()
+                .firstOrNull { it.endpoint == FantaMKGitHubSource.ENDPOINT }
+                ?: error("FantaMK source was not created")
+        } else if (!source.autoUpdate) {
+            source.setAutoUpdate(true)
+            reload()
+            source = sources.first()
+                .filterIsInstance<RemoteSource<PatchBundle>>()
+                .first { it.endpoint == FantaMKGitHubSource.ENDPOINT }
         }
+
+        update(source, force = true)
     }
 
     val suggestedVersions = bundleInfoFlow.map {
