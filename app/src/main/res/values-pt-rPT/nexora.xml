@@ -3,5 +3,5 @@
     <string name="nexora_nav_apps">Apps</string>
     <string name="nexora_nav_library">Biblioteca</string>
     <string name="nexora_workspace_title">Centro Nexora</string>
-    <string name="nexora_workspace_summary">%1$d apps dispon?veis ? %2$d modificadas</string>
+    <string name="nexora_workspace_summary">%1$d apps dispon&#x00ED;veis &#x2022; %2$d modificadas</string>
 </resources>

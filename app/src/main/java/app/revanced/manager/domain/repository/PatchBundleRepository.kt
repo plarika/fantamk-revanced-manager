@@ -161,23 +161,36 @@ class PatchBundleRepository(
     val patchCountsFlow = bundleInfoFlow.map { it.mapValues { (_, info) -> info.patches.size } }
 
     suspend fun ensureFantaMKSource() {
-        var source = sources.first()
+        var matchingSources = sources.first()
             .filterIsInstance<RemoteSource<PatchBundle>>()
-            .firstOrNull { it.endpoint == FantaMKGitHubSource.ENDPOINT }
+            .filter { it.endpoint == FantaMKGitHubSource.ENDPOINT }
+            .sortedBy { it.uid }
 
-        if (source == null) {
+        var source: RemoteSource<PatchBundle> = matchingSources.firstOrNull() ?: run {
             createRemote(FantaMKGitHubSource.ENDPOINT, autoUpdate = true)
             reload()
+            matchingSources = sources.first()
+                .filterIsInstance<RemoteSource<PatchBundle>>()
+                .filter { it.endpoint == FantaMKGitHubSource.ENDPOINT }
+                .sortedBy { it.uid }
+            matchingSources.firstOrNull()
+                ?: error("Nexora patch source was not created")
+        }
+
+        val duplicates = matchingSources.filter { it.uid != source.uid }
+        if (duplicates.isNotEmpty()) {
+            Log.w(tag, "Removing ${duplicates.size} duplicate Nexora patch source(s)")
+            duplicates.forEach { remove(it) }
             source = sources.first()
                 .filterIsInstance<RemoteSource<PatchBundle>>()
-                .firstOrNull { it.endpoint == FantaMKGitHubSource.ENDPOINT }
-                ?: error("FantaMK source was not created")
-        } else if (!source.autoUpdate) {
+                .first { it.uid == source.uid }
+        }
+
+        if (!source.autoUpdate) {
             source.setAutoUpdate(true)
-            reload()
             source = sources.first()
                 .filterIsInstance<RemoteSource<PatchBundle>>()
-                .first { it.endpoint == FantaMKGitHubSource.ENDPOINT }
+                .first { it.uid == source.uid }
         }
 
         update(source, force = true)
