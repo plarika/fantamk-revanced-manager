@@ -60,6 +60,7 @@ import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.settings.ExpressiveListIcon
 import app.revanced.manager.ui.component.settings.SettingsListItem
 import app.revanced.manager.ui.model.navigation.Settings
+import app.revanced.manager.ui.screen.settings.FantaMKSourceSettingsSection
 import com.google.accompanist.drawablepainter.rememberDrawablePainter
 import org.koin.compose.koinInject
 
@@ -232,6 +233,8 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                     )
                 }
                 
+                FantaMKSourceSettingsSection()
+
                 ListSection {
                     generalSections.forEach { (name, description, icon, destination) ->
                         SettingsListItem(

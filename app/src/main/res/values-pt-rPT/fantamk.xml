@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fantamk_private_patches">Patches privados FantaMK</string>
+    <string name="fantamk_private_source">Fonte privada de patches</string>
+    <string name="fantamk_private_source_connected">Ligada. Atualiza automaticamente quando o Manager arranca.</string>
+    <string name="fantamk_private_source_disconnected">Liga este Manager ao repositório privado de patches FantaMK.</string>
+    <string name="fantamk_update_now">Atualizar agora</string>
+    <string name="fantamk_update_now_description">Verificar e descarregar os patches FantaMK LKG mais recentes.</string>
+    <string name="fantamk_disconnect">Desligar fonte privada</string>
+    <string name="fantamk_disconnect_description">Remove a credencial guardada e a fonte FantaMK.</string>
+    <string name="fantamk_status">Estado</string>
+    <string name="fantamk_connect_title">Ligar patches privados FantaMK</string>
+    <string name="fantamk_token_label">Token GitHub fine-grained</string>
+    <string name="fantamk_save_connect">Guardar e ligar</string>
+    <string name="fantamk_cancel">Cancelar</string>
+</resources>

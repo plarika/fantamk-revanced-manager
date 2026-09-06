@@ -10,7 +10,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import app.revanced.manager.R
 import app.revanced.manager.ui.component.ListSection
 import app.revanced.manager.ui.component.settings.SettingsListItem
 import app.revanced.manager.ui.viewmodel.FantaMKSettingsViewModel
@@ -23,38 +25,37 @@ fun FantaMKSourceSettingsSection(
     var showTokenDialog by rememberSaveable { mutableStateOf(false) }
     var token by rememberSaveable { mutableStateOf("") }
 
-    ListSection(title = "FantaMK private patches") {
+    ListSection(title = stringResource(R.string.fantamk_private_patches)) {
         SettingsListItem(
-            headlineContent = "Private patches source",
+            headlineContent = stringResource(R.string.fantamk_private_source),
             supportingContent = if (viewModel.isConfigured) {
-                "Connected. Updates automatically when Manager starts."
+                stringResource(R.string.fantamk_private_source_connected)
             } else {
-                "Connect this Manager to the private FantaMK patch repository."
+                stringResource(R.string.fantamk_private_source_disconnected)
             },
             onClick = { showTokenDialog = true }
         )
 
         if (viewModel.isConfigured) {
             SettingsListItem(
-                headlineContent = "Update now",
-                supportingContent = "Check and download the latest FantaMK LKG patches.",
+                headlineContent = stringResource(R.string.fantamk_update_now),
+                supportingContent = stringResource(R.string.fantamk_update_now_description),
                 onClick = viewModel::refresh
             )
             SettingsListItem(
-                headlineContent = "Disconnect private source",
-                supportingContent = "Remove the stored credential and FantaMK source.",
+                headlineContent = stringResource(R.string.fantamk_disconnect),
+                supportingContent = stringResource(R.string.fantamk_disconnect_description),
                 onClick = viewModel::disconnect
             )
         }
 
         viewModel.status?.let {
             SettingsListItem(
-                headlineContent = "Status",
+                headlineContent = stringResource(R.string.fantamk_status),
                 supportingContent = it,
                 onClick = {}
             )
         }
-
         if (viewModel.isBusy) {
             CircularProgressIndicator()
         }
@@ -66,12 +67,12 @@ fun FantaMKSourceSettingsSection(
                 token = ""
                 showTokenDialog = false
             },
-            title = { Text("Connect FantaMK private patches") },
+            title = { Text(stringResource(R.string.fantamk_connect_title)) },
             text = {
                 OutlinedTextField(
                     value = token,
                     onValueChange = { token = it },
-                    label = { Text("GitHub fine-grained token") },
+                    label = { Text(stringResource(R.string.fantamk_token_label)) },
                     singleLine = true,
                     visualTransformation = PasswordVisualTransformation()
                 )
@@ -86,7 +87,7 @@ fun FantaMKSourceSettingsSection(
                         viewModel.saveToken(submitted)
                     }
                 ) {
-                    Text("Save and connect")
+                    Text(stringResource(R.string.fantamk_save_connect))
                 }
             },
             dismissButton = {
@@ -94,7 +95,7 @@ fun FantaMKSourceSettingsSection(
                     token = ""
                     showTokenDialog = false
                 }) {
-                    Text("Cancel")
+                    Text(stringResource(R.string.fantamk_cancel))
                 }
             }
         )

@@ -193,7 +193,6 @@ fun GeneralSettingsScreen(
                 )
             }
 
-            FantaMKSourceSettingsSection()
         }
     }
 }
