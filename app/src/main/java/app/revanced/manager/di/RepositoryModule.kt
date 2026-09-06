@@ -2,7 +2,6 @@ package app.revanced.manager.di
 
 import app.revanced.manager.data.platform.Filesystem
 import app.revanced.manager.data.platform.NetworkInfo
-import app.revanced.manager.domain.manager.FantaMKCredentialStore
 import app.revanced.manager.domain.repository.*
 import app.revanced.manager.domain.worker.WorkerRepository
 import app.revanced.manager.network.api.ReVancedAPI
@@ -12,7 +11,6 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     singleOf(::ReVancedAPI)
-    singleOf(::FantaMKCredentialStore)
     singleOf(::ManagerUpdateRepository)
     singleOf(::AnnouncementRepository)
     singleOf(::Filesystem) {

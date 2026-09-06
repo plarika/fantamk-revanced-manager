@@ -154,6 +154,18 @@ class PatchBundleRepository(
 
     val patchCountsFlow = bundleInfoFlow.map { it.mapValues { (_, info) -> info.patches.size } }
 
+    suspend fun ensureFantaMKSource() {
+        val existing = sources.first()
+            .filterIsInstance<RemoteSource<PatchBundle>>()
+            .firstOrNull { it.endpoint == FantaMKGitHubSource.ENDPOINT }
+
+        if (existing == null) {
+            createRemote(FantaMKGitHubSource.ENDPOINT, autoUpdate = true)
+        } else if (!existing.autoUpdate) {
+            existing.setAutoUpdate(true)
+        }
+    }
+
     val suggestedVersions = bundleInfoFlow.map {
         val allPatches =
             it.values.flatMap { bundle -> bundle.patches.map(PatchInfo::toPatcherPatch) }.toSet()

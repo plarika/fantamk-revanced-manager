@@ -70,6 +70,7 @@ class ManagerApplication : Application() {
         Shell.setDefaultBuilder(shellBuilder)
 
         Ackpine.enableLogcatLogger()
+        clearLegacyFantaMKCredential()
 
         scope.launch {
             prefs.preload()
@@ -78,11 +79,14 @@ class ManagerApplication : Application() {
             downloaderRepository.reload()
         }
         scope.launch(Dispatchers.Default) {
-            arrayOf(patchBundleRepository, downloaderRepository).forEach {
-                with(it) {
-                    reload()
-                    updateCheck(force = false)
-                }
+            with(patchBundleRepository) {
+                reload()
+                ensureFantaMKSource()
+                updateCheck(force = false)
+            }
+            with(downloaderRepository) {
+                reload()
+                updateCheck(force = false)
             }
         }
         scope.launch(Dispatchers.Default) {
@@ -110,6 +114,17 @@ class ManagerApplication : Application() {
             override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
             override fun onActivityDestroyed(activity: Activity) {}
         })
+    }
+
+    private fun clearLegacyFantaMKCredential() {
+        getSharedPreferences("fantamk_private_source", android.content.Context.MODE_PRIVATE)
+            .edit()
+            .clear()
+            .apply()
+        runCatching {
+            java.security.KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
+                .deleteEntry("fantamk_github_private_source")
+        }
     }
 
     private fun onFreshProcessStart() {
