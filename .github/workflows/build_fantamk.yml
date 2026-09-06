@@ -87,7 +87,5 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: nexora-manager-0.2.0-dev.3
-          path: |
-            app/build/outputs/apk/release/*.apk
-            app/build/outputs/apk/release/*.apk.sha256
+          path: app/build/outputs/apk/release/*.apk
           archive: false
