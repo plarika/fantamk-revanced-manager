@@ -79,14 +79,23 @@ class ManagerApplication : Application() {
             downloaderRepository.reload()
         }
         scope.launch(Dispatchers.Default) {
-            with(patchBundleRepository) {
-                reload()
-                ensureFantaMKSource()
-                updateCheck(force = false)
+            runCatching {
+                with(patchBundleRepository) {
+                    reload()
+                    ensureFantaMKSource()
+                    updateCheck(force = false)
+                }
+            }.onFailure {
+                Log.e(tag, "FantaMK patch bootstrap failed; continuing without it", it)
             }
-            with(downloaderRepository) {
-                reload()
-                updateCheck(force = false)
+
+            runCatching {
+                with(downloaderRepository) {
+                    reload()
+                    updateCheck(force = false)
+                }
+            }.onFailure {
+                Log.e(tag, "Downloader bootstrap failed; continuing", it)
             }
         }
         scope.launch(Dispatchers.Default) {
