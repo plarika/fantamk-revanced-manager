@@ -192,6 +192,8 @@ fun GeneralSettingsScreen(
                     description = R.string.allow_metered_networks_description
                 )
             }
+
+            FantaMKSourceSettingsSection()
         }
     }
 }

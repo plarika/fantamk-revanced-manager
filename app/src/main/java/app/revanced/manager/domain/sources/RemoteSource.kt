@@ -7,12 +7,17 @@ import app.revanced.manager.network.service.HttpService
 import app.revanced.manager.network.utils.APIResponse
 import app.revanced.manager.network.utils.getOrThrow
 import app.revanced.manager.patcher.patch.PatchBundle
+import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.url
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.File
+import java.nio.file.AtomicMoveNotSupportedException
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
+import java.security.MessageDigest
 import kotlinx.datetime.LocalDateTime
 
 typealias RemotePatchBundle = RemoteSource<PatchBundle>
@@ -46,11 +51,42 @@ sealed class RemoteSource<T>(
     override fun copy(error: Throwable?, name: String): RemoteSource<T> =
         copy(error, name, this.autoUpdate, this.versionHash, this.releasedAt)
 
+    protected open fun HttpRequestBuilder.configureDownload(info: ReVancedAsset) {
+        url(info.downloadUrl)
+    }
+
     private suspend fun download(info: ReVancedAsset) = withContext(Dispatchers.IO) {
-        outputStream().use {
-            http.streamTo(it) {
-                url(info.downloadUrl)
+        val temporary = File(file.parentFile, "${file.name}.download")
+        try {
+            temporary.outputStream().use {
+                http.streamTo(it) { configureDownload(info) }
             }
+
+            info.sha256?.let { expected ->
+                check(temporary.sha256().equals(expected, ignoreCase = true)) {
+                    "Downloaded patch bundle failed SHA-256 verification"
+                }
+            }
+
+            file.setWritable(true, true)
+            try {
+                try {
+                    Files.move(
+                        temporary.toPath(), file.toPath(),
+                        StandardCopyOption.REPLACE_EXISTING,
+                        StandardCopyOption.ATOMIC_MOVE
+                    )
+                } catch (_: AtomicMoveNotSupportedException) {
+                    Files.move(
+                        temporary.toPath(), file.toPath(),
+                        StandardCopyOption.REPLACE_EXISTING
+                    )
+                }
+            } finally {
+                file.setReadOnly()
+            }
+        } finally {
+            temporary.delete()
         }
 
         UpdateResult(info.version, info.createdAt)
@@ -108,6 +144,21 @@ class JsonSource<T>(
     )
 }
 
+
+private fun File.sha256(): String {
+    val digest = MessageDigest.getInstance("SHA-256")
+    inputStream().buffered().use { input ->
+        val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+        while (true) {
+            val count = input.read(buffer)
+            if (count < 0) break
+            digest.update(buffer, 0, count)
+        }
+    }
+    return digest.digest().joinToString("") { byte ->
+        "%02x".format(byte.toInt() and 0xff)
+    }
+}
 class APISource<T>(
     name: String,
     uid: Int,

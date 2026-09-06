@@ -11,6 +11,7 @@ val viewModelModule = module {
     viewModelOf(::SelectedAppInfoViewModel)
     viewModelOf(::PatchesSelectorViewModel)
     viewModelOf(::GeneralSettingsViewModel)
+    viewModelOf(::FantaMKSettingsViewModel)
     viewModelOf(::AdvancedSettingsViewModel)
     viewModelOf(::PatcherViewModel)
     viewModelOf(::UpdateViewModel)

@@ -202,14 +202,14 @@ fun AboutSettingsScreen(
                     .padding(top = 16.dp)
                     .clickable { developerTaps += 1 },
                 painter = icon,
-                contentDescription = stringResource(R.string.app_name)
+                contentDescription = stringResource(R.string.fantamk_app_name)
             )
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(4.dp)
             ) {
                 Text(
-                    stringResource(R.string.app_name),
+                    stringResource(R.string.fantamk_app_name),
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier.semantics {
                         // Icon already has this information for the purpose of being clickable.

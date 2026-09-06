@@ -14,6 +14,7 @@ data class ReVancedAsset (
     val signatureDownloadUrl: String? = null,
     val description: String,
     val version: String,
+    val sha256: String? = null,
 )
 
 @Serializable

@@ -190,13 +190,13 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                     modifier = Modifier.clip(MaterialTheme.shapes.large),
                     headlineContent = stringResource(
                         R.string.about_app_name,
-                        stringResource(R.string.app_name)
+                        stringResource(R.string.fantamk_app_name)
                     ),
                     supportingContent = BuildConfig.VERSION_NAME,
                     leadingContent = {
                         Image(
                             painter = appIcon,
-                            contentDescription = stringResource(R.string.app_name),
+                            contentDescription = stringResource(R.string.fantamk_app_name),
                             modifier = Modifier.size(42.dp)
                         )
                     },

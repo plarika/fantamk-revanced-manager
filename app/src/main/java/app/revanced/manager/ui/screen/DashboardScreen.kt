@@ -340,7 +340,7 @@ fun DashboardScreen(
                                     contentDescription = null,
                                     modifier = Modifier.size(32.dp)
                                 )
-                                Text(stringResource(R.string.app_name))
+                                Text(stringResource(R.string.fantamk_app_name))
                             }
                         },
                         actions = {

@@ -11,6 +11,7 @@ import app.revanced.manager.data.room.sources.SourceProperties
 import app.revanced.manager.data.room.sources.Source as SourceInfo
 import app.revanced.manager.domain.sources.APIPatchBundle
 import app.revanced.manager.domain.sources.JsonPatchBundle
+import app.revanced.manager.domain.sources.FantaMKGitHubSource
 import app.revanced.manager.domain.sources.LocalPatchBundle
 import app.revanced.manager.domain.sources.PatchBundleSource
 import app.revanced.manager.domain.manager.SourceManager
@@ -81,17 +82,33 @@ class PatchBundleRepository(
                 PatchBundleLoader
             ) { getPatchesUpdate() }
 
-            is SourceInfo.Remote -> JsonPatchBundle(
-                actualName,
-                uid,
-                versionHash,
-                releasedAt,
-                null,
-                file,
-                source.url.toString(),
-                autoUpdate,
-                PatchBundleLoader
-            )
+            is SourceInfo.Remote -> {
+                val endpoint = source.url.toString()
+                if (endpoint == FantaMKGitHubSource.ENDPOINT) {
+                    FantaMKGitHubSource(
+                        actualName,
+                        uid,
+                        versionHash,
+                        releasedAt,
+                        null,
+                        file,
+                        autoUpdate,
+                        PatchBundleLoader
+                    )
+                } else {
+                    JsonPatchBundle(
+                        actualName,
+                        uid,
+                        versionHash,
+                        releasedAt,
+                        null,
+                        file,
+                        endpoint,
+                        autoUpdate,
+                        PatchBundleLoader
+                    )
+                }
+            }
         }
     }
 

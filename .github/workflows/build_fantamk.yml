@@ -1,0 +1,49 @@
+name: Build FantaMK Manager
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "fantamk/**"
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Build debug APK
+        env:
+          ORG_GRADLE_PROJECT_githubPackagesUsername: ${{ github.actor }}
+          ORG_GRADLE_PROJECT_githubPackagesPassword: ${{ github.token }}
+          ORG_GRADLE_PROJECT_version: 0.1.0-dev.1
+        run: ./gradlew :app:assembleDebug --no-daemon
+
+      - name: Verify no embedded GitHub token
+        shell: bash
+        run: |
+          if grep -R -n -E 'github_pat_|ghp_[A-Za-z0-9]+' app/src/main app/build.gradle.kts; then
+            echo 'Potential GitHub token found in source'
+            exit 1
+          fi
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: fantamk-revanced-manager-debug
+          path: app/build/outputs/apk/debug/*.apk
+          archive: false
