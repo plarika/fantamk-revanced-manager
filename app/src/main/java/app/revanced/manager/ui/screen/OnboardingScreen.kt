@@ -390,7 +390,7 @@ private fun OnboardingHeader() {
                     modifier = Modifier.size(40.dp)
                 )
                 Text(
-                    text = stringResource(R.string.fantamk_app_name),
+                    text = stringResource(R.string.nexora_app_name),
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurface

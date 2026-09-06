@@ -340,7 +340,17 @@ fun DashboardScreen(
                                     contentDescription = null,
                                     modifier = Modifier.size(32.dp)
                                 )
-                                Text(stringResource(R.string.fantamk_app_name))
+                                Column {
+                                    Text(
+                                        text = stringResource(R.string.nexora_app_name),
+                                        style = MaterialTheme.typography.titleMedium
+                                    )
+                                    Text(
+                                        text = stringResource(R.string.nexora_tagline),
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
                             }
                         },
                         actions = {

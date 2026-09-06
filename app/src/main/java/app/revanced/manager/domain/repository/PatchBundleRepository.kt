@@ -61,15 +61,14 @@ class PatchBundleRepository(
 
     override fun loadEntity(entity: PatchBundleEntity): PatchBundleSource = with(entity) {
         val file = directoryOf(uid).resolve("patches.jar")
-        val actualName = entity.name.ifEmpty {
-            val isFantaMK = (source as? SourceInfo.Remote)
-                ?.url
-                ?.toString() == FantaMKGitHubSource.ENDPOINT
-            when {
-                isFantaMK -> FantaMKGitHubSource.DISPLAY_NAME
-                uid == 0 -> app.getString(R.string.patches_name_default)
-                else -> app.getString(R.string.source_name_fallback)
-            }
+        val isNexora = (source as? SourceInfo.Remote)
+            ?.url
+            ?.toString() == FantaMKGitHubSource.ENDPOINT
+        val actualName = when {
+            isNexora -> FantaMKGitHubSource.DISPLAY_NAME
+            entity.name.isNotEmpty() -> entity.name
+            uid == 0 -> app.getString(R.string.patches_name_default)
+            else -> app.getString(R.string.source_name_fallback)
         }
 
         val releasedAt = entity.releasedAt?.let {

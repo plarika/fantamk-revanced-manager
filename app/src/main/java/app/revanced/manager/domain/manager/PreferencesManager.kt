@@ -9,7 +9,7 @@ import app.revanced.manager.util.isDebuggable
 class PreferencesManager(
     context: Context
 ) : BasePreferencesManager(context, "settings") {
-    val dynamicColor = booleanPreference("dynamic_color", true)
+    val dynamicColor = booleanPreference("dynamic_color", false)
     val pureBlackTheme = booleanPreference("pure_black_theme", false)
     val theme = enumPreference("theme", Theme.SYSTEM)
 

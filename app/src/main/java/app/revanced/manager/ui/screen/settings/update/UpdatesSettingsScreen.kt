@@ -189,7 +189,7 @@ fun UpdatesSettingsScreen(
                         ) {
                             Image(
                                 painter = appIcon,
-                                contentDescription = stringResource(R.string.fantamk_app_name),
+                                contentDescription = stringResource(R.string.nexora_app_name),
                                 modifier = Modifier
                                     .size(42.dp)
                                     .padding(start = 4.dp)
@@ -199,7 +199,7 @@ fun UpdatesSettingsScreen(
                                 verticalArrangement = Arrangement.spacedBy(4.dp)
                             ) {
                                 Text(
-                                    text = stringResource(R.string.fantamk_app_name),
+                                    text = stringResource(R.string.nexora_app_name),
                                     style = MaterialTheme.typography.bodyLarge,
                                     color = MaterialTheme.colorScheme.onSurface
                                 )
