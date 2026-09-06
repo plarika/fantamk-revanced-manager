@@ -17,6 +17,7 @@ import app.revanced.manager.domain.sources.PatchBundleSource
 import app.revanced.manager.domain.manager.SourceManager
 import app.revanced.manager.domain.sources.Loader
 import app.revanced.manager.domain.sources.RemotePatchBundle
+import app.revanced.manager.domain.sources.RemoteSource
 import app.revanced.manager.domain.sources.Source
 import app.revanced.manager.patcher.patch.PatchInfo
 import app.revanced.manager.patcher.patch.PatchBundle
