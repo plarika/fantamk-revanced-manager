@@ -5,20 +5,26 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.outlined.Source
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.platform.LocalContext
@@ -58,16 +64,45 @@ fun SourceSectionHeader(
     )
 
     Column {
-        ListItem(
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 6.dp),
+            shape = MaterialTheme.shapes.large,
+            color = MaterialTheme.colorScheme.surfaceContainer,
+            tonalElevation = 3.dp
+        ) {
+            ListItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable(onClick = onClick),
             leadingContent = {
-                HapticTriStateCheckbox(
-                    state = toggleableState,
-                    onClick = onSelectionClick,
-                    enabled = !readOnly
-                )
+                if (readOnly) {
+                    Surface(
+                        shape = MaterialTheme.shapes.medium,
+                        color = MaterialTheme.colorScheme.primaryContainer
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .padding(8.dp)
+                                .size(26.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                imageVector = Icons.Outlined.Source,
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp),
+                                tint = MaterialTheme.colorScheme.onPrimaryContainer
+                            )
+                        }
+                    }
+                } else {
+                    HapticTriStateCheckbox(
+                        state = toggleableState,
+                        onClick = onSelectionClick,
+                        enabled = true
+                    )
+                }
             },
             headlineContent = {
                 Text(text = bundle.name)
@@ -133,9 +168,9 @@ fun SourceSectionHeader(
                 }
             },
             colors = ListItemDefaults.colors(
-                containerColor = MaterialTheme.colorScheme.surface
+                containerColor = androidx.compose.ui.graphics.Color.Transparent
             )
-        )
-        HorizontalDivider()
+            )
+        }
     }
 }

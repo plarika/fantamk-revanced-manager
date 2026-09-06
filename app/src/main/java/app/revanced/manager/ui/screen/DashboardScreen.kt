@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -55,8 +56,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -83,8 +82,6 @@ import app.revanced.manager.ui.component.AvailableUpdateDialog
 import app.revanced.manager.ui.component.ConfirmDialog
 import app.revanced.manager.ui.component.NotificationCard
 import app.revanced.manager.ui.component.NotificationCardType
-import app.revanced.manager.ui.component.PillTab
-import app.revanced.manager.ui.component.PillTabBar
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.haptics.HapticExtendedFloatingActionButton
 import app.revanced.manager.ui.component.sources.ImportSourceDialog
@@ -103,8 +100,8 @@ enum class DashboardPage(
     val titleResId: Int,
     val icon: ImageVector
 ) {
-    DASHBOARD(R.string.tab_apps, Icons.Outlined.Apps),
-    BUNDLES(R.string.tab_patches, Icons.Outlined.Source),
+    DASHBOARD(R.string.nexora_nav_apps, Icons.Outlined.Apps),
+    BUNDLES(R.string.nexora_nav_library, Icons.Outlined.Source),
 }
 
 @SuppressLint("BatteryLife")
@@ -329,31 +326,42 @@ fun DashboardScreen(
 
             Scaffold(
                 topBar = {
-                    TopAppBar(
-                        title = {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
+                        shape = MaterialTheme.shapes.extraLarge,
+                        color = MaterialTheme.colorScheme.surfaceContainer,
+                        tonalElevation = 6.dp
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            Surface(
+                                shape = MaterialTheme.shapes.large,
+                                color = MaterialTheme.colorScheme.primaryContainer
                             ) {
                                 Image(
                                     painter = logoPainter,
                                     contentDescription = null,
-                                    modifier = Modifier.size(32.dp)
+                                    modifier = Modifier
+                                        .padding(6.dp)
+                                        .size(34.dp)
                                 )
-                                Column {
-                                    Text(
-                                        text = stringResource(R.string.nexora_app_name),
-                                        style = MaterialTheme.typography.titleMedium
-                                    )
-                                    Text(
-                                        text = stringResource(R.string.nexora_tagline),
-                                        style = MaterialTheme.typography.labelSmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                }
                             }
-                        },
-                        actions = {
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    text = stringResource(R.string.nexora_app_name),
+                                    style = MaterialTheme.typography.titleLarge
+                                )
+                                Text(
+                                    text = stringResource(R.string.nexora_tagline),
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
                             if (hasUpdate) {
                                 TooltipIconButton(
                                     onClick = onUpdateClick,
@@ -375,10 +383,7 @@ fun DashboardScreen(
                                         }
                                     }
                                 ) {
-                                    Icon(
-                                        Icons.Filled.Notifications,
-                                        contentDescription
-                                    )
+                                    Icon(Icons.Filled.Notifications, contentDescription)
                                 }
                             }
                             TooltipIconButton(
@@ -398,11 +403,8 @@ fun DashboardScreen(
                                     Icon(Icons.Filled.Settings, contentDescription)
                                 }
                             }
-                        },
-                        colors = TopAppBarDefaults.topAppBarColors(
-                            containerColor = Color.Transparent
-                        )
-                    )
+                        }
+                    }
                 },
                 containerColor = Color.Transparent,
                 floatingActionButton = {
@@ -429,21 +431,12 @@ fun DashboardScreen(
                 }
             ) { paddingValues ->
                 Column(Modifier.padding(paddingValues)) {
-                    PillTabBar(
-                        pagerState = pagerState,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 8.dp, vertical = 8.dp)
-                    ) {
-                        DashboardPage.entries.forEachIndexed { index, page ->
-                            PillTab(
-                                index = index,
-                                onClick = { composableScope.launch { pagerState.animateScrollToPage(index) } },
-                                text = { Text(stringResource(page.titleResId)) },
-                                icon = { Icon(page.icon, null) }
-                            )
+                    NexoraSectionSwitcher(
+                        currentPage = pagerState.currentPage,
+                        onSelect = { index ->
+                            composableScope.launch { pagerState.animateScrollToPage(index) }
                         }
-                    }
+                    )
 
                     Notifications(
                         if (bundleDownloadError != null) {
@@ -540,6 +533,60 @@ fun DashboardScreen(
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun NexoraSectionSwitcher(
+    currentPage: Int,
+    onSelect: (Int) -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 10.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
+        DashboardPage.entries.forEachIndexed { index, page ->
+            val selected = currentPage == index
+            Surface(
+                onClick = { onSelect(index) },
+                modifier = Modifier.weight(1f),
+                shape = MaterialTheme.shapes.large,
+                color = if (selected) {
+                    MaterialTheme.colorScheme.primaryContainer
+                } else {
+                    MaterialTheme.colorScheme.surfaceContainerLow
+                },
+                tonalElevation = if (selected) 4.dp else 1.dp
+            ) {
+                Row(
+                    modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    Icon(
+                        imageVector = page.icon,
+                        contentDescription = null,
+                        modifier = Modifier.size(20.dp),
+                        tint = if (selected) {
+                            MaterialTheme.colorScheme.primary
+                        } else {
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                        }
+                    )
+                    Text(
+                        text = stringResource(page.titleResId),
+                        style = MaterialTheme.typography.titleSmall,
+                        color = if (selected) {
+                            MaterialTheme.colorScheme.onPrimaryContainer
+                        } else {
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                        }
+                    )
                 }
             }
         }

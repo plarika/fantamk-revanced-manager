@@ -2,4 +2,8 @@
 <resources>
     <string name="nexora_app_name" translatable="false">Nexora Manager</string>
     <string name="nexora_tagline" translatable="false">Patch more. Go further.</string>
+    <string name="nexora_nav_apps">Apps</string>
+    <string name="nexora_nav_library">Library</string>
+    <string name="nexora_workspace_title">Nexora workspace</string>
+    <string name="nexora_workspace_summary">%1$d apps ready ? %2$d patched</string>
 </resources>

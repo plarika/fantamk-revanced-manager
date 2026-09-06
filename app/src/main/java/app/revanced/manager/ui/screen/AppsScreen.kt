@@ -10,12 +10,14 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
@@ -33,6 +35,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -43,6 +47,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
@@ -245,28 +250,101 @@ fun AppsScreen(
 
             val allPatchableApps = patchable.filter { it.packageName !in patchedPackageNames }
 
-            item(key = "PATCHABLE_STORAGE") {
-                ListItem(
-                    modifier = Modifier.clickable {
-                        try {
-                            pickApkLauncher.launch(APK_MIMETYPE)
-                        } catch (_: ActivityNotFoundException) {
-                            context.toast(R.string.no_file_picker_found)
+            item(key = "NEXORA_OVERVIEW") {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 6.dp),
+                    shape = MaterialTheme.shapes.extraLarge,
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    tonalElevation = 3.dp
+                ) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 18.dp, vertical = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        Surface(
+                            shape = MaterialTheme.shapes.large,
+                            color = MaterialTheme.colorScheme.primary
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .size(28.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.AutoAwesome,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onPrimary
+                                )
+                            }
                         }
-                    },
-                    leadingContent = {
-                        Box(Modifier.size(36.dp), Alignment.Center) {
-                            Icon(
-                                Icons.Default.Storage, null, modifier = Modifier.size(24.dp)
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = stringResource(R.string.nexora_workspace_title),
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer
+                            )
+                            Text(
+                                text = stringResource(
+                                    R.string.nexora_workspace_summary,
+                                    allPatchableApps.size,
+                                    patched.size
+                                ),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.78f)
                             )
                         }
-                    },
-                    headlineContent = { Text(stringResource(R.string.select_from_storage)) },
-                    supportingContent = {
-                        Text(stringResource(R.string.select_from_storage_description))
-                    },
-                    colors = transparentListItemColors
-                )
+                    }
+                }
+            }
+
+            item(key = "PATCHABLE_STORAGE") {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 6.dp)
+                        .clickable {
+                            try {
+                                pickApkLauncher.launch(APK_MIMETYPE)
+                            } catch (_: ActivityNotFoundException) {
+                                context.toast(R.string.no_file_picker_found)
+                            }
+                        },
+                    shape = MaterialTheme.shapes.large,
+                    color = MaterialTheme.colorScheme.surfaceContainerLow,
+                    tonalElevation = 2.dp
+                ) {
+                    ListItem(
+                        leadingContent = {
+                            Surface(
+                                shape = MaterialTheme.shapes.medium,
+                                color = MaterialTheme.colorScheme.secondaryContainer
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .padding(8.dp)
+                                        .size(28.dp),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Icon(
+                                        Icons.Default.Storage,
+                                        null,
+                                        modifier = Modifier.size(22.dp),
+                                        tint = MaterialTheme.colorScheme.onSecondaryContainer
+                                    )
+                                }
+                            }
+                        },
+                        headlineContent = { Text(stringResource(R.string.select_from_storage)) },
+                        supportingContent = {
+                            Text(stringResource(R.string.select_from_storage_description))
+                        },
+                        colors = ListItemDefaults.colors(containerColor = Color.Transparent)
+                    )
+                }
             }
 
             appItems(
@@ -376,9 +454,7 @@ private fun SectionHeader(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            modifier = Modifier
-                .size(18.dp)
-                .rotate(45f),
+            modifier = Modifier.size(18.dp),
             tint = MaterialTheme.colorScheme.primary
         )
         Text(
@@ -401,52 +477,61 @@ private fun AppItem(
     patchCount: Int? = null,
     suggestedVersion: String? = null,
 ) {
-    ListItem(
-        modifier = modifier.combinedClickable(onClick = onClick, onLongClick = onLongClick),
-        leadingContent = {
-            AppIcon(
-                packageInfo = packageInfo,
-                contentDescription = null,
-                modifier = Modifier.size(36.dp)
-            )
-        },
-        headlineContent = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                if (isPatched) {
-                    Icon(
-                        imageVector = Icons.Default.AutoAwesome,
-                        contentDescription = null,
-                        modifier = Modifier.size(16.dp),
-                        tint = MaterialTheme.colorScheme.primary
-                    )
-                }
-                AppLabel(packageInfo, defaultText = packageName)
-            }
-        },
-        supportingContent = {
-            patchCount?.let {
+    Surface(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 4.dp)
+            .combinedClickable(onClick = onClick, onLongClick = onLongClick),
+        shape = MaterialTheme.shapes.large,
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        tonalElevation = 1.dp
+    ) {
+        ListItem(
+            leadingContent = {
+                AppIcon(
+                    packageInfo = packageInfo,
+                    contentDescription = null,
+                    modifier = Modifier.size(40.dp)
+                )
+            },
+            headlineContent = {
                 Row(
-                    modifier = Modifier.padding(top = 4.dp),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
-                    if (patchCount > 0) SurfaceChip(
-                        pluralStringResource(
-                            R.plurals.patch_count,
-                            patchCount,
-                            patchCount
+                    if (isPatched) {
+                        Icon(
+                            imageVector = Icons.Default.AutoAwesome,
+                            contentDescription = null,
+                            modifier = Modifier.size(16.dp),
+                            tint = MaterialTheme.colorScheme.primary
                         )
-                    )
-                    if (suggestedVersion != null) SurfaceChip(suggestedVersion)
+                    }
+                    AppLabel(packageInfo, defaultText = packageName)
                 }
-            } ?: Text(packageName)
-        },
-        trailingContent = if (packageInfo == null) {
-            { Text(stringResource(R.string.not_installed)) }
-        } else null,
-        colors = transparentListItemColors
-    )
+            },
+            supportingContent = {
+                patchCount?.let {
+                    Row(
+                        modifier = Modifier.padding(top = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        if (patchCount > 0) SurfaceChip(
+                            pluralStringResource(
+                                R.plurals.patch_count,
+                                patchCount,
+                                patchCount
+                            )
+                        )
+                        if (suggestedVersion != null) SurfaceChip(suggestedVersion)
+                    }
+                } ?: Text(packageName)
+            },
+            trailingContent = if (packageInfo == null) {
+                { Text(stringResource(R.string.not_installed)) }
+            } else null,
+            colors = ListItemDefaults.colors(containerColor = Color.Transparent)
+        )
+    }
 }

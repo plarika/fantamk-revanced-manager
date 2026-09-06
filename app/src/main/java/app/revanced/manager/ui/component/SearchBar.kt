@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
@@ -35,7 +34,7 @@ fun SearchBar(
     content: @Composable ColumnScope.() -> Unit
 ) {
     val colors = SearchBarColors(
-        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+        containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
         dividerColor = MaterialTheme.colorScheme.outline,
         inputFieldColors = SearchBarDefaults.inputFieldColors()
     )
@@ -45,11 +44,12 @@ fun SearchBar(
     Box(modifier = Modifier.fillMaxWidth()) {
         SearchBar(
             modifier = Modifier
+                .fillMaxWidth()
                 .align(Alignment.Center)
                 .then(if (autoFocus) Modifier.focusRequester(focusRequester) else Modifier),
             inputField = {
                 SearchBarDefaults.InputField(
-                    modifier = Modifier.sizeIn(minWidth = 380.dp),
+                    modifier = Modifier.fillMaxWidth(),
                     query = query,
                     onQueryChange = onQueryChange,
                     onSearch = {
@@ -64,6 +64,9 @@ fun SearchBar(
             },
             expanded = expanded,
             onExpandedChange = onExpandedChange,
+            shape = MaterialTheme.shapes.large,
+            tonalElevation = 0.dp,
+            shadowElevation = 0.dp,
             colors = colors,
             windowInsets = windowInsets,
             content = content
