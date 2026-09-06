@@ -35,6 +35,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.nio.file.AtomicMoveNotSupportedException
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
+import java.security.MessageDigest
 import ru.solrudev.ackpine.installer.InstallFailure
 import ru.solrudev.ackpine.installer.PackageInstaller
 import ru.solrudev.ackpine.installer.createSession
@@ -83,10 +87,11 @@ class UpdateViewModel(
             pageSize = 10,
             enablePlaceholders = false
         ),
-        pagingSourceFactory = { ChangelogsRepository(api, source) }
+        pagingSourceFactory = { ChangelogsRepository(api, managerUpdateRepository, source) }
     ).flow.cachedIn(viewModelScope)
 
     private val location = fs.uiTempDir.resolve("updater.apk")
+    private val temporaryLocation = fs.uiTempDir.resolve("updater.apk.download")
     private var installerSessionId: ParcelUuid? by savedStateHandle.saveableVar()
 
     init {
@@ -115,13 +120,15 @@ class UpdateViewModel(
         }
 
         viewModelScope.launch {
-            uiSafe(app, R.string.download_manager_failed, "Failed to download ReVanced Manager") {
+            uiSafe(app, R.string.download_manager_failed, "Failed to download Nexora Manager") {
                 releaseInfo = managerUpdateRepository.getUpdateOrNull()
                     ?: throw Exception("No update available")
 
                 if (downloadOnScreenEntry) {
                     downloadUpdate()
-                } else if (location.exists()) {
+                } else if (withContext(Dispatchers.IO) {
+                        hasVerifiedDownloadedUpdate(releaseInfo!!)
+                    }) {
                     state = State.CAN_INSTALL
                 } else {
                     state = State.CAN_DOWNLOAD
@@ -141,22 +148,70 @@ class UpdateViewModel(
 
             state = State.DOWNLOADING
 
-            withContext(Dispatchers.IO) {
-                http.download(location) {
-                    url(release.downloadUrl)
-                    onDownload { bytesSentTotal, contentLength ->
-                        downloadedSize = bytesSentTotal
-                        contentLength?.let { totalSize = it }
-                    }
+            downloadVerifiedUpdate(release)
+            installUpdate()
+        }
+    }
+
+    private fun hasVerifiedDownloadedUpdate(release: ReVancedAsset): Boolean {
+        val expectedSha256 = release.sha256
+            ?.takeIf { SHA256_REGEX.matches(it) }
+        if (expectedSha256 == null || !location.exists()) {
+            location.delete()
+            return false
+        }
+
+        val matches = location.sha256().equals(expectedSha256, ignoreCase = true)
+        if (!matches) location.delete()
+        return matches
+    }
+
+    private suspend fun downloadVerifiedUpdate(release: ReVancedAsset) = withContext(Dispatchers.IO) {
+        val expectedSha256 = release.sha256
+            ?.takeIf { SHA256_REGEX.matches(it) }
+            ?: error("Nexora Manager update has no valid SHA-256 digest")
+
+        try {
+            temporaryLocation.delete()
+            http.download(temporaryLocation) {
+                url(release.downloadUrl)
+                onDownload { bytesSentTotal, contentLength ->
+                    downloadedSize = bytesSentTotal
+                    contentLength?.let { totalSize = it }
                 }
             }
 
-            installUpdate()
+            val actualSha256 = temporaryLocation.sha256()
+            check(actualSha256.equals(expectedSha256, ignoreCase = true)) {
+                "Downloaded Nexora Manager update failed SHA-256 verification"
+            }
+
+            try {
+                Files.move(
+                    temporaryLocation.toPath(),
+                    location.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING,
+                    StandardCopyOption.ATOMIC_MOVE,
+                )
+            } catch (_: AtomicMoveNotSupportedException) {
+                Files.move(
+                    temporaryLocation.toPath(),
+                    location.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING,
+                )
+            }
+        } finally {
+            temporaryLocation.delete()
         }
     }
 
     fun installUpdate() = viewModelScope.launch {
         uiSafe(app, R.string.install_app_fail, "Failed to install") {
+            val release = releaseInfo ?: error("No Nexora Manager update metadata is available")
+            check(withContext(Dispatchers.IO) { hasVerifiedDownloadedUpdate(release) }) {
+                "Nexora Manager update failed SHA-256 verification before install"
+            }
+
             state = State.INSTALLING
 
             val session = withContext(Dispatchers.IO) {
@@ -206,6 +261,7 @@ class UpdateViewModel(
 
     fun cancelUpdate() {
         location.delete()
+        temporaryLocation.delete()
     }
 
     fun onBackPressed() {
@@ -229,5 +285,22 @@ class UpdateViewModel(
         INSTALLING(R.string.installing_manager_update),
         FAILED(R.string.install_update_manager_failed),
         SUCCESS(R.string.update_completed)
+    }
+}
+
+private val SHA256_REGEX = Regex("^[0-9a-fA-F]{64}$")
+
+private fun java.io.File.sha256(): String {
+    val digest = MessageDigest.getInstance("SHA-256")
+    inputStream().buffered().use { input ->
+        val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+        while (true) {
+            val count = input.read(buffer)
+            if (count < 0) break
+            digest.update(buffer, 0, count)
+        }
+    }
+    return digest.digest().joinToString("") { byte ->
+        "%02x".format(byte.toInt() and 0xff)
     }
 }

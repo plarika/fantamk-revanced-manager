@@ -31,7 +31,7 @@ jobs:
         env:
           ORG_GRADLE_PROJECT_githubPackagesUsername: ${{ github.actor }}
           ORG_GRADLE_PROJECT_githubPackagesPassword: ${{ github.token }}
-          ORG_GRADLE_PROJECT_version: 0.2.0-dev.1
+          ORG_GRADLE_PROJECT_version: 0.2.0-dev.2
         run: ./gradlew :app:assembleDebug --no-daemon
 
       - name: Verify no embedded GitHub token
@@ -45,6 +45,6 @@ jobs:
       - name: Upload debug APK
         uses: actions/upload-artifact@v7
         with:
-          name: nexora-manager-0.2.0-dev.1.apk
+          name: nexora-manager-0.2.0-dev.2.apk
           path: app/build/outputs/apk/debug/*.apk
           archive: false

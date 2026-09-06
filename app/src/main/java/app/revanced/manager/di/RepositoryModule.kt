@@ -11,6 +11,7 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     singleOf(::ReVancedAPI)
+    singleOf(::NexoraManagerReleaseService)
     singleOf(::ManagerUpdateRepository)
     singleOf(::AnnouncementRepository)
     singleOf(::Filesystem) {
@@ -27,5 +28,4 @@ val repositoryModule = module {
     singleOf(::WorkerRepository)
     singleOf(::DownloadedAppRepository)
     singleOf(::InstalledAppRepository)
-    singleOf(::ChangelogsRepository)
 }

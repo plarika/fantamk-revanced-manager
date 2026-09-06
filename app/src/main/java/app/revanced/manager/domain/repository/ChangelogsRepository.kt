@@ -21,14 +21,14 @@ sealed interface ChangelogSource : Parcelable {
 
 class ChangelogsRepository(
     private val api: ReVancedAPI,
+    private val managerUpdateRepository: ManagerUpdateRepository,
     private val source: ChangelogSource,
 ) : PagingSource<Int, ReVancedAssetHistory>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ReVancedAssetHistory> {
         return try {
             val items = when (source) {
-                is ChangelogSource.Manager ->
-                    api.getAppHistory().getOrThrow()
+                is ChangelogSource.Manager -> managerUpdateRepository.getHistory()
 
                 is ChangelogSource.Patches ->
                     api.getPatchesHistory(source.baseUrl, source.prerelease).getOrThrow()
@@ -37,7 +37,7 @@ class ChangelogsRepository(
             LoadResult.Page(
                 data = items,
                 prevKey = null,
-                nextKey = null
+                nextKey = null,
             )
         } catch (e: Exception) {
             LoadResult.Error(e)
