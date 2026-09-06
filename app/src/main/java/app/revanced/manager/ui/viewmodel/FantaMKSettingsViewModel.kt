@@ -47,11 +47,16 @@ class FantaMKSettingsViewModel(
             val existing = findSource()
             if (existing == null) {
                 patchBundleRepository.createRemote(FantaMKGitHubSource.ENDPOINT, autoUpdate = true)
-            } else {
-                patchBundleRepository.run {
-                    existing.setAutoUpdate(true)
-                    update(existing, force = true)
-                }
+                // createRemote persists the source first. Reload so it becomes an active
+                // source before forcing the first authenticated download.
+                patchBundleRepository.reload()
+            }
+
+            val activeSource = findSource()
+                ?: error("FantaMK source was not created")
+            patchBundleRepository.run {
+                activeSource.setAutoUpdate(true)
+                update(activeSource, force = true)
             }
 
             validateLoadedSource()
