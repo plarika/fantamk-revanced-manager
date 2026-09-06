@@ -73,7 +73,7 @@ jobs:
           APKSIGNER="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
           test -x "$APKSIGNER" || { echo 'apksigner not found'; exit 1; }
           "$APKSIGNER" verify --verbose --print-certs "$APK" | tee signing-report.txt
-          ACTUAL_SIGNER="$($APKSIGNER verify --print-certs "$APK" | sed -n 's/^Signer #1 certificate SHA-256 digest: //p' | tr 'A-F' 'a-f' | head -n 1)"
+          ACTUAL_SIGNER="$("$APKSIGNER" verify --print-certs "$APK" | sed -n 's/^.*certificate SHA-256 digest: //p' | tr 'A-F' 'a-f' | head -n 1)"
           test "$ACTUAL_SIGNER" = "$EXPECTED_SIGNER_SHA256" || { echo "Unexpected signing certificate: $ACTUAL_SIGNER"; exit 1; }
           sha256sum "$APK" | tee "$APK.sha256"
           echo "SIGNING_IDENTITY=PASS"
