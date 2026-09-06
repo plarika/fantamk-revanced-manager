@@ -2,7 +2,7 @@ package app.revanced.manager.domain.sources
 
 import app.revanced.manager.domain.manager.FantaMKCredentialStore
 import app.revanced.manager.network.dto.ReVancedAsset
-import app.revanced.manager.network.utils.getOrThrow
+import app.revanced.manager.network.utils.fold
 import app.revanced.manager.patcher.patch.PatchBundle
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.header
@@ -34,7 +34,16 @@ class FantaMKGitHubSource<T>(
         val release = http.request<GitHubRelease> {
             url(ENDPOINT)
             applyGitHubHeaders(GITHUB_JSON_ACCEPT)
-        }.getOrThrow()
+        }.fold(
+            success = { it },
+            error = { apiError ->
+                if (apiError.code == io.ktor.http.HttpStatusCode.NotFound) {
+                    error("GitHub denied access to the private FantaMK repository. Check that the fine-grained token includes revanced-patches-private with Contents: Read-only.")
+                }
+                throw apiError
+            },
+            failure = { throw it }
+        )
 
         val candidates = release.assets.filter { asset ->
             asset.name.startsWith("patches-") && asset.name.endsWith(".rvp")
