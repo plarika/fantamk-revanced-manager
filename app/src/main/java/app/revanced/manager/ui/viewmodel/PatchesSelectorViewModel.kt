@@ -15,6 +15,7 @@ import androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi
 import androidx.lifecycle.viewmodel.compose.saveable
 import app.revanced.manager.R
 import app.revanced.manager.domain.sources.PatchBundleSource
+import app.revanced.manager.domain.sources.FantaMKGitHubSource
 import app.revanced.manager.domain.sources.Source.State
 import app.revanced.manager.domain.manager.PreferencesManager
 import app.revanced.manager.domain.repository.PatchBundleRepository
@@ -368,8 +369,28 @@ class PatchesSelectorViewModel(input: SelectedApplicationInfo.PatchesSelector.Vi
     private fun mergeSourcesWithBundleInfo(
         sources: List<PatchBundleSource>,
         scopedBundleInfoByUid: Map<Int, PatchBundleInfo.Scoped>
-    ) = sources.map { source ->
-        scopedBundleInfoByUid[source.uid] ?: source.emptyScopedBundleInfo()
+    ): List<PatchBundleInfo.Scoped> {
+        val merged = sources.map { source ->
+            scopedBundleInfoByUid[source.uid] ?: source.emptyScopedBundleInfo()
+        }
+        val nexoraNames = setOf(
+            FantaMKGitHubSource.DISPLAY_NAME.lowercase(),
+            "FantaMK ReVanced Patches".lowercase(),
+            "FantaMK Patches".lowercase(),
+        )
+        val nexoraBundles = merged.filter { it.name.lowercase() in nexoraNames }
+        if (nexoraBundles.size <= 1) return merged
+
+        val canonical = nexoraBundles
+            .sortedWith(
+                compareByDescending<PatchBundleInfo.Scoped> { it.patches.size }
+                    .thenBy { it.uid }
+            )
+            .first()
+
+        return merged.filter { bundle ->
+            bundle.name.lowercase() !in nexoraNames || bundle.uid == canonical.uid
+        }
     }
 }
 
