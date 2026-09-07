@@ -3,13 +3,17 @@ package app.revanced.manager.ui.component.patches
 import androidx.compose.animation.core.EaseInOut
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -28,12 +32,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
 import app.revanced.manager.R
 import app.revanced.manager.patcher.patch.PatchBundleInfo
+import app.revanced.manager.ui.component.NexoraSourceStatus
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.haptics.HapticTriStateCheckbox
 import app.revanced.manager.util.relativeTime
@@ -62,15 +68,30 @@ fun SourceSectionHeader(
         animationSpec = tween(durationMillis = 250, easing = EaseInOut),
         label = "Bundle section expand state"
     )
+    val isNexora = bundle.name.contains("Nexora", ignoreCase = true)
+    val cardShape = RoundedCornerShape(26.dp)
 
     Column {
         Surface(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 6.dp),
-            shape = MaterialTheme.shapes.large,
-            color = MaterialTheme.colorScheme.surfaceContainer,
-            tonalElevation = 3.dp
+                .padding(horizontal = 16.dp, vertical = 6.dp)
+                .border(
+                    width = 1.dp,
+                    color = if (isNexora) {
+                        MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)
+                    } else {
+                        MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.65f)
+                    },
+                    shape = cardShape,
+                ),
+            shape = cardShape,
+            color = if (isNexora) {
+                MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.16f)
+            } else {
+                MaterialTheme.colorScheme.surfaceContainerLow
+            },
+            tonalElevation = if (isNexora) 5.dp else 2.dp
         ) {
             ListItem(
             modifier = Modifier
@@ -79,21 +100,33 @@ fun SourceSectionHeader(
             leadingContent = {
                 if (readOnly) {
                     Surface(
-                        shape = MaterialTheme.shapes.medium,
-                        color = MaterialTheme.colorScheme.primaryContainer
+                        shape = RoundedCornerShape(16.dp),
+                        color = if (isNexora) {
+                            MaterialTheme.colorScheme.primaryContainer
+                        } else {
+                            MaterialTheme.colorScheme.surfaceContainerHighest
+                        }
                     ) {
                         Box(
                             modifier = Modifier
                                 .padding(8.dp)
-                                .size(26.dp),
+                                .size(30.dp),
                             contentAlignment = Alignment.Center
                         ) {
-                            Icon(
-                                imageVector = Icons.Outlined.Source,
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp),
-                                tint = MaterialTheme.colorScheme.onPrimaryContainer
-                            )
+                            if (isNexora) {
+                                Image(
+                                    painter = painterResource(R.drawable.ic_logo_ring),
+                                    contentDescription = null,
+                                    modifier = Modifier.size(28.dp),
+                                )
+                            } else {
+                                Icon(
+                                    imageVector = Icons.Outlined.Source,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(22.dp),
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            }
                         }
                     }
                 } else {
@@ -105,7 +138,19 @@ fun SourceSectionHeader(
                 }
             },
             headlineContent = {
-                Text(text = bundle.name)
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(
+                        text = bundle.name,
+                        modifier = Modifier.weight(1f),
+                        style = MaterialTheme.typography.titleMedium,
+                    )
+                    if (readOnly && loadIssue == null && bundle.version != null) {
+                        NexoraSourceStatus(stringResource(R.string.nexora_source_ready))
+                    }
+                }
             },
             supportingContent = {
                 val patchCount = bundle.patches.size

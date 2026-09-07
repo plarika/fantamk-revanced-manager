@@ -31,6 +31,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.KeyboardArrowUp
@@ -41,6 +42,7 @@ import androidx.compose.material.icons.outlined.Apps
 import androidx.compose.material.icons.outlined.BugReport
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Edit
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.Source
 import androidx.compose.material.icons.outlined.WarningAmber
@@ -81,6 +83,8 @@ import app.revanced.manager.ui.component.AvailableUpdateDialog
 import app.revanced.manager.ui.component.ConfirmDialog
 import app.revanced.manager.ui.component.NotificationCard
 import app.revanced.manager.ui.component.NotificationCardType
+import app.revanced.manager.ui.component.NexoraLogoBadge
+import app.revanced.manager.ui.component.NexoraNeonBackdrop
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.haptics.HapticExtendedFloatingActionButton
 import app.revanced.manager.ui.component.sources.ImportSourceDialog
@@ -169,6 +173,11 @@ fun DashboardScreen(
         parametersOf(dashboardPatchesParams)
     }
     val dashboardPatchesBundles by dashboardPatchesViewModel.bundlesFlow.collectAsStateWithLifecycle(initialValue = emptyList())
+    val dashboardSourceCount = remember(dashboardPatchesBundles) {
+        dashboardPatchesBundles
+            .distinctBy { bundle -> bundle.name.lowercase() to bundle.version }
+            .size
+    }
 
     var patchesSourceEditMode by rememberSaveable { mutableStateOf(false) }
     var sourceDeleteUid by rememberSaveable { mutableStateOf<Int?>(null) }
@@ -285,10 +294,7 @@ fun DashboardScreen(
         onStorageSelect(app)
     }
 
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.surface
-    ) {
+    NexoraNeonBackdrop(modifier = Modifier.fillMaxSize()) {
         Box(modifier = Modifier.fillMaxSize()) {
             val statusBarHeight = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
             Box(
@@ -338,18 +344,7 @@ fun DashboardScreen(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
-                            Surface(
-                                shape = MaterialTheme.shapes.large,
-                                color = MaterialTheme.colorScheme.primaryContainer
-                            ) {
-                                Image(
-                                    painter = logoPainter,
-                                    contentDescription = null,
-                                    modifier = Modifier
-                                        .padding(6.dp)
-                                        .size(34.dp)
-                                )
-                            }
+                            NexoraLogoBadge(painter = logoPainter, size = 48)
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
                                     text = stringResource(R.string.nexora_app_name),
@@ -405,6 +400,30 @@ fun DashboardScreen(
                         }
                     }
                 },
+                bottomBar = {
+                    NexoraDashboardBottomBar(
+                        currentPage = pagerState.currentPage,
+                        onHome = {
+                            composableScope.launch {
+                                pagerState.animateScrollToPage(DashboardPage.DASHBOARD.ordinal)
+                                appsLazyListState.animateScrollToItem(0)
+                            }
+                        },
+                        onLibrary = {
+                            composableScope.launch {
+                                pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
+                            }
+                        },
+                        onAdd = {
+                            composableScope.launch {
+                                pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
+                            }
+                            showAddBundleDialog = true
+                        },
+                        onUpdates = onUpdateClick,
+                        onMore = onSettingsClick,
+                    )
+                },
                 containerColor = Color.Transparent,
                 floatingActionButton = {
                     val currentScrollState =
@@ -430,13 +449,6 @@ fun DashboardScreen(
                 }
             ) { paddingValues ->
                 Column(Modifier.padding(paddingValues)) {
-                    NexoraSectionSwitcher(
-                        currentPage = pagerState.currentPage,
-                        onSelect = { index ->
-                            composableScope.launch { pagerState.animateScrollToPage(index) }
-                        }
-                    )
-
                     Notifications(
                         if (bundleDownloadError != null) {
                             {
@@ -495,7 +507,15 @@ fun DashboardScreen(
                                 AppsScreen(
                                     onAppClick = { onAppClick(it.currentPackageName) },
                                     onPatchableAppClick = ::onPatchableSelection,
-                                    onStorageSelect = { selectedApp -> onStorageSelection(selectedApp)},
+                                    onStorageSelect = { selectedApp -> onStorageSelection(selectedApp) },
+                                    sourceCount = dashboardSourceCount,
+                                    managerUpdateAvailable = hasUpdate,
+                                    onLibraryClick = {
+                                        composableScope.launch {
+                                            pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
+                                        }
+                                    },
+                                    onUpdatesClick = onUpdateClick,
                                     lazyListState = appsLazyListState,
                                     searchLazyListState = appsSearchLazyListState,
                                     onSearchExpandedChange = { appsSearchExpanded = it }
@@ -527,6 +547,7 @@ fun DashboardScreen(
                                     onBundleInfoClick = onBundleClick,
                                     isSourceEditMode = patchesSourceEditMode,
                                     onSourceDeleteRequest = { sourceDeleteUid = it },
+                                    onSyncAll = vm::downloadSources,
                                     viewModel = dashboardPatchesViewModel
                                 )
                             }
@@ -534,6 +555,114 @@ fun DashboardScreen(
                     }
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun NexoraDashboardBottomBar(
+    currentPage: Int,
+    onHome: () -> Unit,
+    onLibrary: () -> Unit,
+    onAdd: () -> Unit,
+    onUpdates: () -> Unit,
+    onMore: () -> Unit,
+) {
+    val navInset = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = navInset),
+        color = Color(0xF20A0F1B),
+        tonalElevation = 10.dp,
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(2.dp),
+        ) {
+            NexoraBottomItem(
+                icon = Icons.Outlined.Home,
+                label = stringResource(R.string.nexora_nav_home),
+                selected = currentPage == DashboardPage.DASHBOARD.ordinal,
+                onClick = onHome,
+                modifier = Modifier.weight(1f),
+            )
+            NexoraBottomItem(
+                icon = Icons.Outlined.Apps,
+                label = stringResource(R.string.nexora_nav_apps),
+                selected = currentPage == DashboardPage.DASHBOARD.ordinal,
+                onClick = onHome,
+                modifier = Modifier.weight(1f),
+            )
+            Surface(
+                onClick = onAdd,
+                modifier = Modifier.padding(horizontal = 4.dp),
+                shape = RoundedCornerShape(22.dp),
+                color = MaterialTheme.colorScheme.primaryContainer,
+                tonalElevation = 8.dp,
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = stringResource(R.string.fab_add_patches),
+                    modifier = Modifier.padding(16.dp).size(26.dp),
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                )
+            }
+            NexoraBottomItem(
+                icon = Icons.Outlined.Source,
+                label = stringResource(R.string.nexora_nav_library),
+                selected = currentPage == DashboardPage.BUNDLES.ordinal,
+                onClick = onLibrary,
+                modifier = Modifier.weight(1f),
+            )
+            NexoraBottomItem(
+                icon = Icons.Filled.Settings,
+                label = stringResource(R.string.nexora_nav_more),
+                selected = false,
+                onClick = onMore,
+                modifier = Modifier.weight(1f),
+            )
+        }
+    }
+}
+
+@Composable
+private fun NexoraBottomItem(
+    icon: ImageVector,
+    label: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        onClick = onClick,
+        modifier = modifier,
+        shape = RoundedCornerShape(18.dp),
+        color = if (selected) {
+            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.62f)
+        } else Color.Transparent,
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 4.dp, vertical = 8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = label,
+                modifier = Modifier.size(21.dp),
+                tint = if (selected) MaterialTheme.colorScheme.primary
+                else MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Text(
+                text = label,
+                style = MaterialTheme.typography.labelSmall,
+                color = if (selected) MaterialTheme.colorScheme.primary
+                else MaterialTheme.colorScheme.onSurfaceVariant,
+            )
         }
     }
 }

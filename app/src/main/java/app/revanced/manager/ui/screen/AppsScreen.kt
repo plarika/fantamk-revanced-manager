@@ -26,6 +26,8 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Folder
+import androidx.compose.material.icons.filled.Update
 import androidx.compose.material.icons.filled.PushPin
 import androidx.compose.material.icons.filled.Storage
 import androidx.compose.material.icons.outlined.Search
@@ -50,6 +52,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -59,6 +62,8 @@ import app.revanced.manager.ui.component.AppIcon
 import app.revanced.manager.ui.component.AppLabel
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.LoadingIndicator
+import app.revanced.manager.ui.component.NexoraFeatureTile
+import app.revanced.manager.ui.component.NexoraHeroCard
 import app.revanced.manager.ui.component.SearchBar
 import app.revanced.manager.ui.component.SurfaceChip
 import app.revanced.manager.ui.component.TooltipIconButton
@@ -77,6 +82,10 @@ fun AppsScreen(
     onAppClick: (InstalledApp) -> Unit,
     onPatchableAppClick: (String) -> Unit,
     onStorageSelect: (SelectedApp.Local) -> Unit,
+    sourceCount: Int,
+    managerUpdateAvailable: Boolean,
+    onLibraryClick: () -> Unit,
+    onUpdatesClick: () -> Unit,
     lazyListState: LazyListState = rememberLazyListState(),
     searchLazyListState: LazyListState = rememberLazyListState(),
     onSearchExpandedChange: (Boolean) -> Unit = {},
@@ -250,56 +259,82 @@ fun AppsScreen(
             val allPatchableApps = patchable.filter { it.packageName !in patchedPackageNames }
 
             item(key = "NEXORA_OVERVIEW") {
-                Surface(
+                val logoPainter = painterResource(R.drawable.ic_logo_ring)
+                Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 6.dp),
-                    shape = MaterialTheme.shapes.extraLarge,
-                    color = MaterialTheme.colorScheme.primaryContainer,
-                    tonalElevation = 3.dp
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
-                    Row(
-                        modifier = Modifier.padding(horizontal = 18.dp, vertical = 16.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        Surface(
-                            shape = MaterialTheme.shapes.large,
-                            color = MaterialTheme.colorScheme.primary
-                        ) {
-                            Box(
-                                modifier = Modifier
-                                    .padding(10.dp)
-                                    .size(28.dp),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.AutoAwesome,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onPrimary
-                                )
+                    NexoraHeroCard(
+                        title = stringResource(R.string.nexora_home_hero_title),
+                        subtitle = stringResource(R.string.nexora_home_hero_subtitle),
+                        primaryStat = allPatchableApps.size.toString(),
+                        primaryLabel = stringResource(R.string.nexora_metric_available),
+                        secondaryStat = patched.size.toString(),
+                        secondaryLabel = stringResource(R.string.nexora_metric_modified),
+                        logo = logoPainter,
+                        actionLabel = stringResource(R.string.nexora_patch_now),
+                        onAction = {
+                            try {
+                                pickApkLauncher.launch(APK_MIMETYPE)
+                            } catch (_: ActivityNotFoundException) {
+                                context.toast(R.string.no_file_picker_found)
                             }
-                        }
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = stringResource(R.string.nexora_workspace_title),
-                                style = MaterialTheme.typography.titleMedium,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer
-                            )
-                            Text(
-                                text = stringResource(
-                                    R.string.nexora_workspace_summary,
-                                    allPatchableApps.size,
-                                    patched.size
-                                ),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.78f)
-                            )
-                        }
+                        },
+                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        NexoraFeatureTile(
+                            icon = Icons.Default.Apps,
+                            title = stringResource(R.string.nexora_nav_apps),
+                            value = allPatchableApps.size.toString(),
+                            subtitle = stringResource(R.string.nexora_metric_apps_subtitle),
+                            modifier = Modifier.weight(1f),
+                            accent = Color(0xFF00D8FF),
+                        )
+                        NexoraFeatureTile(
+                            icon = Icons.Default.Folder,
+                            title = stringResource(R.string.nexora_nav_library),
+                            value = sourceCount.toString(),
+                            subtitle = stringResource(R.string.nexora_metric_sources_subtitle),
+                            modifier = Modifier.weight(1f),
+                            accent = Color(0xFF1677FF),
+                            onClick = onLibraryClick,
+                        )
+                    }
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        NexoraFeatureTile(
+                            icon = Icons.Default.Update,
+                            title = stringResource(R.string.nexora_nav_updates),
+                            value = if (managerUpdateAvailable) "1" else "0",
+                            subtitle = stringResource(
+                                if (managerUpdateAvailable) {
+                                    R.string.nexora_metric_updates_available
+                                } else {
+                                    R.string.nexora_metric_updates_current
+                                }
+                            ),
+                            modifier = Modifier.weight(1f),
+                            accent = Color(0xFF00B8D9),
+                            onClick = onUpdatesClick,
+                        )
+                        NexoraFeatureTile(
+                            icon = Icons.Default.AutoAwesome,
+                            title = stringResource(R.string.nexora_metric_modified),
+                            value = patched.size.toString(),
+                            subtitle = stringResource(R.string.nexora_metric_modified_subtitle),
+                            modifier = Modifier.weight(1f),
+                            accent = Color(0xFF9B4DFF),
+                        )
                     }
                 }
             }
-
             item(key = "PATCHABLE_STORAGE") {
                 Surface(
                     modifier = Modifier

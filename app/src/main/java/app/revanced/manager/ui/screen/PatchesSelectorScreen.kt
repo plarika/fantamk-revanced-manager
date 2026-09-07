@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
@@ -33,6 +34,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
@@ -45,6 +47,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
@@ -53,6 +56,7 @@ import app.revanced.manager.R
 import app.revanced.manager.patcher.patch.PatchBundleInfo
 import app.revanced.manager.patcher.patch.PatchInfo
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
+import app.revanced.manager.ui.component.NexoraHeroCard
 import app.revanced.manager.ui.component.SearchBar
 import app.revanced.manager.ui.component.TooltipHost
 import app.revanced.manager.ui.component.TooltipIconButton
@@ -84,11 +88,19 @@ fun PatchesSelectorScreen(
     onBundleInfoClick: (Int) -> Unit,
     isSourceEditMode: Boolean = false,
     onSourceDeleteRequest: ((Int) -> Unit)? = null,
+    onSyncAll: (() -> Unit)? = null,
     viewModel: PatchesSelectorViewModel
 ) {
     val stickyHeaderTopGap = 8.dp
     val readOnly = viewModel.readOnly
     val bundles by viewModel.bundlesFlow.collectAsStateWithLifecycle(initialValue = emptyList())
+    val displayBundles = remember(bundles, readOnly) {
+        if (!readOnly) {
+            bundles
+        } else {
+            bundles.distinctBy { bundle -> bundle.name.lowercase() to bundle.version }
+        }
+    }
     val bundleLoadIssues by viewModel.bundleLoadIssuesFlow.collectAsStateWithLifecycle(initialValue = emptyMap())
     val patchLazyListState = rememberLazyListState()
     val searchLazyListState = rememberLazyListState()
@@ -134,36 +146,36 @@ fun PatchesSelectorScreen(
     }
 
     val effectiveCollapsedBundleUids =
-        remember(bundles, collapsedBundleUids, readOnly, isSourceEditMode) {
+        remember(displayBundles, collapsedBundleUids, readOnly, isSourceEditMode) {
             when {
-                isSourceEditMode -> bundles.map { it.uid }
-                readOnly -> bundles.map { it.uid }.filter { it !in collapsedBundleUids }
+                isSourceEditMode -> displayBundles.map { it.uid }
+                readOnly -> displayBundles.map { it.uid }.filter { it !in collapsedBundleUids }
                 else -> collapsedBundleUids
             }
         }
 
     val sections = remember(
-        bundles,
+        displayBundles,
         viewModel.filter,
         effectiveCollapsedBundleUids,
         effectiveSelectedPackageFilters
     ) {
         buildBundleSections(
-            bundles = bundles,
+            bundles = displayBundles,
             filter = viewModel.filter,
             collapsedBundleUids = effectiveCollapsedBundleUids,
             selectedPackageNames = effectiveSelectedPackageFilters
         )
     }
     val searchSections = remember(
-        bundles,
+        displayBundles,
         query,
         viewModel.filter,
         effectiveCollapsedBundleUids,
         effectiveSelectedPackageFilters
     ) {
         buildBundleSections(
-            bundles = bundles,
+            bundles = displayBundles,
             query = query,
             filter = viewModel.filter,
             collapsedBundleUids = effectiveCollapsedBundleUids,
@@ -177,7 +189,7 @@ fun PatchesSelectorScreen(
             onDismissRequest = { showBottomSheet = false },
             sections = sections,
             patchLazyListState = patchLazyListState,
-            bundles = bundles,
+            bundles = displayBundles,
             filter = viewModel.filter,
             onToggleFlag = viewModel::toggleFlag,
             packageName = viewModel.packageName.ifBlank { null },
@@ -502,6 +514,11 @@ fun PatchesSelectorScreen(
                     modifier = Modifier.fillMaxSize(),
                     state = patchLazyListState
                 ) {
+                    if (readOnly) {
+                        item(key = "NEXORA_LIBRARY_OVERVIEW") {
+                            NexoraLibraryOverview(displayBundles, onSyncAll)
+                        }
+                    }
                     sectionedPatchList(
                         sections = sections,
                         keyPrefix = "main"
@@ -512,5 +529,80 @@ fun PatchesSelectorScreen(
     }
 }
 
+@Composable
+private fun NexoraLibraryOverview(
+    bundles: List<PatchBundleInfo.Scoped>,
+    onSync: () -> Unit,
+) {
+    val nexoraBundle = bundles.firstOrNull { it.name.contains("Nexora", ignoreCase = true) }
+    val logo = painterResource(R.drawable.ic_logo_ring)
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(14.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            NexoraLibraryTab(
+                text = stringResource(R.string.nexora_library_sources_tab),
+                selected = true,
+                modifier = Modifier.weight(1f),
+            )
+            NexoraLibraryTab(
+                text = stringResource(R.string.nexora_library_collections_tab),
+                selected = false,
+                modifier = Modifier.weight(1f),
+            )
+            NexoraLibraryTab(
+                text = stringResource(R.string.nexora_library_history_tab),
+                selected = false,
+                modifier = Modifier.weight(1f),
+            )
+        }
+        NexoraLibraryHero(
+            title = stringResource(R.string.nexora_library_hero_title),
+            subtitle = stringResource(R.string.nexora_library_hero_subtitle),
+            patchCount = nexoraBundle?.patches?.size ?: 0,
+            logo = logo,
+            onSync = { onSyncAll?.invoke() },
+        )
+    }
+}
+
+@Composable
+private fun NexoraLibraryTab(
+    text: String,
+    selected: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        modifier = modifier,
+        shape = RoundedCornerShape(18.dp),
+        color = if (selected) {
+            MaterialTheme.colorScheme.primaryContainer
+        } else {
+            MaterialTheme.colorScheme.surfaceContainerLow
+        },
+        tonalElevation = if (selected) 5.dp else 1.dp,
+    ) {
+        Box(
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 11.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.labelLarge,
+                color = if (selected) {
+                    MaterialTheme.colorScheme.onPrimaryContainer
+                } else {
+                    MaterialTheme.colorScheme.onSurfaceVariant
+                },
+            )
+        }
+    }
+}
 private fun patchItemKey(keyPrefix: String, patchName: String, index: Int) =
     "$keyPrefix-$index-$patchName"
