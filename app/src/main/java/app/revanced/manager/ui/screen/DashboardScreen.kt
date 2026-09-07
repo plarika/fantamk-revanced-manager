@@ -4,14 +4,11 @@ import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
-import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -41,7 +38,6 @@ import androidx.compose.material.icons.filled.Update
 import androidx.compose.material.icons.outlined.Apps
 import androidx.compose.material.icons.outlined.BugReport
 import androidx.compose.material.icons.outlined.Delete
-import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.Source
@@ -434,11 +430,6 @@ fun DashboardScreen(
 
                     DashboardFab(
                         pagerState = pagerState,
-                        patchesSourceEditMode = patchesSourceEditMode,
-                        onEnablePatchesSourceEditMode = { patchesSourceEditMode = true },
-                        onAddBundleClick = {
-                            showAddBundleDialog = true
-                        },
                         showScrollToTop = showBackToTop,
                         onScrollToTop = {
                             composableScope.launch {
@@ -593,7 +584,7 @@ private fun NexoraDashboardBottomBar(
             NexoraBottomItem(
                 icon = Icons.Outlined.Apps,
                 label = stringResource(R.string.nexora_nav_apps),
-                selected = currentPage == DashboardPage.DASHBOARD.ordinal,
+                selected = false,
                 onClick = onHome,
                 modifier = Modifier.weight(1f),
             )
@@ -724,88 +715,28 @@ private fun NexoraSectionSwitcher(
 @Composable
 private fun DashboardFab(
     pagerState: PagerState,
-    patchesSourceEditMode: Boolean,
-    onEnablePatchesSourceEditMode: () -> Unit,
-    onAddBundleClick: () -> Unit,
     showScrollToTop: Boolean,
-    onScrollToTop: () -> Unit
+    onScrollToTop: () -> Unit,
 ) {
-    val fabState = when (pagerState.currentPage) {
-        DashboardPage.DASHBOARD.ordinal -> {
-            if (showScrollToTop) DashboardFabState.ScrollToTop else DashboardFabState.Hidden
-        }
-
-        DashboardPage.BUNDLES.ordinal -> {
-            if (patchesSourceEditMode) DashboardFabState.AddBundles else DashboardFabState.EditBundles
-        }
-
-        else -> DashboardFabState.Hidden
-    }
+    val visible = pagerState.currentPage == DashboardPage.DASHBOARD.ordinal && showScrollToTop
 
     AnimatedVisibility(
-        visible = fabState != DashboardFabState.Hidden, enter = fadeIn() + scaleIn(), exit = fadeOut() + scaleOut()
+        visible = visible,
+        enter = fadeIn() + scaleIn(),
+        exit = fadeOut() + scaleOut(),
     ) {
         HapticExtendedFloatingActionButton(
-            onClick = {
-                when (fabState) {
-                    DashboardFabState.AddBundles -> onAddBundleClick()
-                    DashboardFabState.EditBundles -> onEnablePatchesSourceEditMode()
-                    DashboardFabState.ScrollToTop -> onScrollToTop()
-                    else -> {}
-                }
-            },
-            tooltip = stringResource(
-                if (fabState == DashboardFabState.AddBundles) R.string.fab_add_patches else R.string.edit
-            ),
-            expanded = fabState == DashboardFabState.AddBundles,
+            onClick = onScrollToTop,
+            tooltip = stringResource(R.string.nexora_back_to_top),
+            expanded = false,
             icon = {
-                AnimatedContent(
-                    targetState = fabState,
-                    transitionSpec = {
-                        (fadeIn(animationSpec = tween(durationMillis = 180, delayMillis = 60)) +
-                                scaleIn(
-                                    animationSpec = tween(durationMillis = 180, delayMillis = 60),
-                                    initialScale = 0.85f
-                                )) togetherWith
-                                (fadeOut(animationSpec = tween(durationMillis = 90)) +
-                                        scaleOut(
-                                            animationSpec = tween(durationMillis = 90),
-                                            targetScale = 0.85f
-                                        ))
-                    },
-                    label = "dashboard_fab_icon_transition"
-                ) { state ->
-                    when (state) {
-                        DashboardFabState.EditBundles -> {
-                            Icon(
-                                Icons.Outlined.Edit,
-                                contentDescription = stringResource(R.string.edit)
-                            )
-                        }
-
-                        DashboardFabState.AddBundles -> {
-                            Icon(Icons.Default.Add, contentDescription = null)
-                        }
-
-                        DashboardFabState.ScrollToTop -> {
-                            Icon(Icons.Filled.KeyboardArrowUp, contentDescription = null)
-                        }
-
-                        else -> {}
-                    }
-                }
+                Icon(Icons.Filled.KeyboardArrowUp, contentDescription = null)
             },
-            text = { Text(stringResource(R.string.fab_add_patches)) }
+            text = {},
         )
     }
 }
 
-private enum class DashboardFabState {
-    Hidden,
-    EditBundles,
-    AddBundles,
-    ScrollToTop
-}
 
 @Composable
 fun Notifications(

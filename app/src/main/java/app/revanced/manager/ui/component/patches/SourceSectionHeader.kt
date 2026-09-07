@@ -17,7 +17,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.Source
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -28,6 +31,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -70,6 +76,7 @@ fun SourceSectionHeader(
     )
     val isNexora = bundle.name.contains("Nexora", ignoreCase = true)
     val cardShape = RoundedCornerShape(26.dp)
+    var menuExpanded by remember(bundle.uid) { mutableStateOf(false) }
 
     Column {
         Surface(
@@ -184,31 +191,73 @@ fun SourceSectionHeader(
                 }
             },
             trailingContent = {
-                if (sourceEditMode) {
-                    TooltipIconButton(
-                        onClick = onDeleteClick,
-                        enabled = bundle.uid != 0,
-                        tooltip = stringResource(R.string.delete)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Delete,
-                            contentDescription = stringResource(R.string.delete)
-                        )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(2.dp),
+                ) {
+                    if (readOnly && !sourceEditMode) {
+                        Box {
+                            TooltipIconButton(
+                                onClick = { menuExpanded = true },
+                                tooltip = stringResource(R.string.nexora_source_actions),
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.MoreVert,
+                                    contentDescription = stringResource(R.string.nexora_source_actions),
+                                )
+                            }
+                            DropdownMenu(
+                                expanded = menuExpanded,
+                                onDismissRequest = { menuExpanded = false },
+                            ) {
+                                DropdownMenuItem(
+                                    text = { Text(stringResource(R.string.nexora_view_details)) },
+                                    onClick = {
+                                        menuExpanded = false
+                                        onClick()
+                                    },
+                                )
+                                if (bundle.uid != 0) {
+                                    DropdownMenuItem(
+                                        text = { Text(stringResource(R.string.delete)) },
+                                        leadingIcon = {
+                                            Icon(Icons.Filled.Delete, contentDescription = null)
+                                        },
+                                        onClick = {
+                                            menuExpanded = false
+                                            onDeleteClick()
+                                        },
+                                    )
+                                }
+                            }
+                        }
                     }
-                } else {
-                    TooltipIconButton(
-                        onClick = onExpandToggle,
-                        tooltip = stringResource(
-                            if (expanded) R.string.collapse_content else R.string.expand_content
-                        )
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.KeyboardArrowDown,
-                            contentDescription = stringResource(
+                    if (sourceEditMode) {
+                        TooltipIconButton(
+                            onClick = onDeleteClick,
+                            enabled = bundle.uid != 0,
+                            tooltip = stringResource(R.string.delete)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.Delete,
+                                contentDescription = stringResource(R.string.delete)
+                            )
+                        }
+                    } else {
+                        TooltipIconButton(
+                            onClick = onExpandToggle,
+                            tooltip = stringResource(
                                 if (expanded) R.string.collapse_content else R.string.expand_content
-                            ),
-                            modifier = Modifier.rotate(arrowRotation)
-                        )
+                            )
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.KeyboardArrowDown,
+                                contentDescription = stringResource(
+                                    if (expanded) R.string.collapse_content else R.string.expand_content
+                                ),
+                                modifier = Modifier.rotate(arrowRotation)
+                            )
+                        }
                     }
                 }
             },

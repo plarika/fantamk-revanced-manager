@@ -35,4 +35,7 @@
     <string name="nexora_metric_updates_current">Everything is up to date</string>
     <string name="nexora_sync_now">Sync now</string>
     <string name="nexora_sources_available">Available sources</string>
+    <string name="nexora_source_actions">Source actions</string>
+    <string name="nexora_view_details">View details</string>
+    <string name="nexora_back_to_top">Back to top</string>
 </resources>
