@@ -27,7 +27,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.BatteryAlert
 import androidx.compose.material.icons.outlined.Code
-import androidx.compose.material.icons.outlined.Downloadimport androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.Download
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.SwapVert
 import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material.icons.outlined.Update
@@ -56,7 +57,8 @@ import app.revanced.manager.domain.manager.PreferencesManager
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.NotificationCard
 import app.revanced.manager.ui.component.NotificationCardType
-import app.revanced.manager.ui.component.TooltipIconButtonimport app.revanced.manager.ui.model.navigation.Settings
+import app.revanced.manager.ui.component.TooltipIconButton
+import app.revanced.manager.ui.model.navigation.Settings
 import com.google.accompanist.drawablepainter.rememberDrawablePainter
 import org.koin.compose.koinInject
 
@@ -84,7 +86,8 @@ private fun NexoraSettingsCard(
         Row(
             modifier = Modifier.padding(horizontal = 18.dp, vertical = 18.dp),
             verticalAlignment = Alignment.CenterVertically,
-        ) {            Surface(
+        ) {
+            Surface(
                 shape = RoundedCornerShape(18.dp),
                 color = MaterialTheme.colorScheme.secondaryContainer,
             ) {
@@ -113,7 +116,8 @@ private fun NexoraSettingsCard(
                 text = "›",
                 style = MaterialTheme.typography.headlineSmall,
                 color = MaterialTheme.colorScheme.primary,
-            )        }
+            )
+        }
     }
 }
 
@@ -141,7 +145,8 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
     }
 
     val scrollState = rememberScrollState()
-    val context = LocalContext.current    val powerManager = remember(context) { context.getSystemService<PowerManager>()!! }
+    val context = LocalContext.current
+    val powerManager = remember(context) { context.getSystemService<PowerManager>()!! }
     var showBatteryOptimizationsWarning by remember {
         mutableStateOf(!powerManager.isIgnoringBatteryOptimizations(context.packageName))
     }
@@ -168,7 +173,8 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
             Section(R.string.advanced, R.string.advanced_description, Icons.Outlined.Tune, Settings.Advanced),
         )
     }
-    val developerSection = remember(showDeveloperSettings) {        Section(
+    val developerSection = remember(showDeveloperSettings) {
+        Section(
             R.string.developer_options,
             R.string.developer_options_description,
             Icons.Outlined.Code,
@@ -197,7 +203,8 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(18.dp),                        verticalAlignment = Alignment.CenterVertically,
+                            .padding(18.dp),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
                         TooltipIconButton(
                             onClick = onBackClick,
@@ -315,7 +322,8 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.onPrimaryContainer,
                             )
-                        }                        Text(
+                        }
+                        Text(
                             text = "›",
                             style = MaterialTheme.typography.headlineSmall,
                             color = MaterialTheme.colorScheme.onPrimaryContainer,
