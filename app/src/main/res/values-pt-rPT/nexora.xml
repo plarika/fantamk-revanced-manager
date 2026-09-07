@@ -4,4 +4,9 @@
     <string name="nexora_nav_library">Biblioteca</string>
     <string name="nexora_workspace_title">Centro Nexora</string>
     <string name="nexora_workspace_summary">%1$d apps dispon&#x00ED;veis &#x2022; %2$d modificadas</string>
+    <string name="nexora_settings_title">Controlo Nexora</string>
+    <string name="nexora_settings_subtitle">Prefer&#x00EA;ncias, atualiza&#x00E7;&#x00F5;es e motor de patches</string>
+    <string name="nexora_settings_essential">Essenciais</string>
+    <string name="nexora_settings_system">Sistema</string>
+    <string name="nexora_safeguards_changed">As prote&#x00E7;&#x00F5;es de patch foram alteradas</string>
 </resources>

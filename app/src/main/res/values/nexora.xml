@@ -6,4 +6,9 @@
     <string name="nexora_nav_library">Library</string>
     <string name="nexora_workspace_title">Nexora workspace</string>
     <string name="nexora_workspace_summary">%1$d apps ready &#x2022; %2$d patched</string>
+    <string name="nexora_settings_title">Nexora control</string>
+    <string name="nexora_settings_subtitle">Preferences, updates and patch engine</string>
+    <string name="nexora_settings_essential">Essentials</string>
+    <string name="nexora_settings_system">System</string>
+    <string name="nexora_safeguards_changed">Patch safeguards have been changed</string>
 </resources>
