@@ -161,36 +161,58 @@ class PatchBundleRepository(
     val patchCountsFlow = bundleInfoFlow.map { it.mapValues { (_, info) -> info.patches.size } }
 
     suspend fun ensureFantaMKSource() {
-        var matchingSources = sources.first()
+        val legacyManifestNames = setOf(
+            "FantaMK ReVanced Patches",
+            "FantaMK Patches",
+            FantaMKGitHubSource.DISPLAY_NAME,
+        )
+
+        fun Source<PatchBundle>.isNexoraEquivalent(): Boolean {
+            val remoteEndpoint = (this as? RemoteSource<PatchBundle>)?.endpoint
+            if (remoteEndpoint == FantaMKGitHubSource.ENDPOINT) return true
+
+            return loaded?.manifestAttributes?.name in legacyManifestNames
+        }
+
+        var allSources = sources.first()
+        var source = allSources
             .filterIsInstance<RemoteSource<PatchBundle>>()
             .filter { it.endpoint == FantaMKGitHubSource.ENDPOINT }
-            .sortedBy { it.uid }
+            .minByOrNull { it.uid }
 
-        var source: RemoteSource<PatchBundle> = matchingSources.firstOrNull() ?: run {
+        if (source == null) {
             createRemote(FantaMKGitHubSource.ENDPOINT, autoUpdate = true)
             reload()
-            matchingSources = sources.first()
+            allSources = sources.first()
+            source = allSources
                 .filterIsInstance<RemoteSource<PatchBundle>>()
                 .filter { it.endpoint == FantaMKGitHubSource.ENDPOINT }
-                .sortedBy { it.uid }
-            matchingSources.firstOrNull()
+                .minByOrNull { it.uid }
                 ?: error("Nexora patch source was not created")
         }
 
-        val duplicates = matchingSources.filter { it.uid != source.uid }
+        val canonicalUid = source.uid
+        val duplicates = allSources.filter {
+            it.uid != canonicalUid && !it.isDefault && it.isNexoraEquivalent()
+        }
         if (duplicates.isNotEmpty()) {
-            Log.w(tag, "Removing ${duplicates.size} duplicate Nexora patch source(s)")
-            duplicates.forEach { remove(it) }
+            Log.w(
+                tag,
+                "Removing ${duplicates.size} duplicate/legacy Nexora patch source(s): " +
+                    duplicates.joinToString { "uid=${it.uid}:${it::class.simpleName}" }
+            )
+            remove(*duplicates.toTypedArray())
+            reload()
             source = sources.first()
                 .filterIsInstance<RemoteSource<PatchBundle>>()
-                .first { it.uid == source.uid }
+                .first { it.uid == canonicalUid && it.endpoint == FantaMKGitHubSource.ENDPOINT }
         }
 
         if (!source.autoUpdate) {
             source.setAutoUpdate(true)
             source = sources.first()
                 .filterIsInstance<RemoteSource<PatchBundle>>()
-                .first { it.uid == source.uid }
+                .first { it.uid == canonicalUid }
         }
 
         update(source, force = true)
