@@ -132,6 +132,34 @@ class PatchBundleRepository(
         releasedAt = props.releasedAt
     )
 
+    private val nexoraManifestNames = setOf(
+        "FantaMK ReVanced Patches",
+        "FantaMK Patches",
+        FantaMKGitHubSource.DISPLAY_NAME,
+    )
+
+    private fun Source<PatchBundle>.isNexoraEquivalent(): Boolean {
+        val remoteEndpoint = (this as? RemoteSource<PatchBundle>)?.endpoint
+        if (remoteEndpoint == FantaMKGitHubSource.ENDPOINT) return true
+        return loaded?.manifestAttributes?.name in nexoraManifestNames
+    }
+
+    private fun MutableMap<Int, Source<PatchBundle>>.canonicalMetadataSources(): MutableMap<Int, Source<PatchBundle>> {
+        val equivalentSources = values.filter { it.isNexoraEquivalent() }
+        if (equivalentSources.size <= 1) return this
+
+        val canonical = equivalentSources
+            .filterIsInstance<RemoteSource<PatchBundle>>()
+            .filter { it.endpoint == FantaMKGitHubSource.ENDPOINT }
+            .minByOrNull { it.uid }
+            ?: equivalentSources.minByOrNull { it.uid }
+            ?: return this
+
+        return filterValues { source ->
+            !source.isNexoraEquivalent() || source.uid == canonical.uid
+        }.toMutableMap()
+    }
+
     override fun realNameOf(loaded: PatchBundle): String? {
         val manifestName = loaded.manifestAttributes?.name
         return when (manifestName) {
@@ -139,7 +167,9 @@ class PatchBundleRepository(
             else -> manifestName
         }
     }
-    override suspend fun loadDataFromSources(sources: MutableMap<Int, Source<PatchBundle>>) = loadMetadata(sources).toPersistentMap()
+
+    override suspend fun loadDataFromSources(sources: MutableMap<Int, Source<PatchBundle>>) =
+        loadMetadata(sources.canonicalMetadataSources()).toPersistentMap()
 
     val sources = store.state.map { it.sources.values.toList() }
     val bundles = store.state.map {
@@ -161,19 +191,6 @@ class PatchBundleRepository(
     val patchCountsFlow = bundleInfoFlow.map { it.mapValues { (_, info) -> info.patches.size } }
 
     suspend fun ensureFantaMKSource() {
-        val legacyManifestNames = setOf(
-            "FantaMK ReVanced Patches",
-            "FantaMK Patches",
-            FantaMKGitHubSource.DISPLAY_NAME,
-        )
-
-        fun Source<PatchBundle>.isNexoraEquivalent(): Boolean {
-            val remoteEndpoint = (this as? RemoteSource<PatchBundle>)?.endpoint
-            if (remoteEndpoint == FantaMKGitHubSource.ENDPOINT) return true
-
-            return loaded?.manifestAttributes?.name in legacyManifestNames
-        }
-
         var allSources = sources.first()
         var source = allSources
             .filterIsInstance<RemoteSource<PatchBundle>>()
