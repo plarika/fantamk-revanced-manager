@@ -323,39 +323,3 @@ fun NexoraSourceStatus(
         )
     }
 }
-
-@Composable
-fun NexoraLibraryHero(
-    title: String,
-    subtitle: String,
-    patchCount: Int,
-    logo: Painter,
-    onSync: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val shape = RoundedCornerShape(30.dp)
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(shape)
-            .background(Brush.linearGradient(listOf(Color(0xFF1A103B), Color(0xFF291057), Color(0xFF062B48))))
-            .border(1.dp, Brush.linearGradient(listOf(NexoraViolet, NexoraCyan)), shape)
-            .padding(20.dp),
-    ) {
-        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(14.dp)) {
-                NexoraLogoBadge(painter = logo, size = 62)
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(title, style = MaterialTheme.typography.headlineSmall, color = Color.White)
-                    Text(subtitle, style = MaterialTheme.typography.bodyMedium, color = Color(0xFFC9CAE0))
-                }
-            }
-            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-                Text("$patchCount patches", style = MaterialTheme.typography.titleMedium, color = Color.White)
-                Surface(onClick = onSync, shape = RoundedCornerShape(18.dp), color = NexoraPurple) {
-                    Text("Sincronizar agora", modifier = Modifier.padding(horizontal = 18.dp, vertical = 11.dp), style = MaterialTheme.typography.labelLarge, color = Color.White)
-                }
-            }
-        }
-    }
-}

@@ -532,7 +532,7 @@ fun PatchesSelectorScreen(
 @Composable
 private fun NexoraLibraryOverview(
     bundles: List<PatchBundleInfo.Scoped>,
-    onSync: () -> Unit,
+    onSyncAll: (() -> Unit)?,
 ) {
     val nexoraBundle = bundles.firstOrNull { it.name.contains("Nexora", ignoreCase = true) }
     val logo = painterResource(R.drawable.ic_logo_ring)
@@ -562,12 +562,22 @@ private fun NexoraLibraryOverview(
                 modifier = Modifier.weight(1f),
             )
         }
-        NexoraLibraryHero(
+        NexoraHeroCard(
             title = stringResource(R.string.nexora_library_hero_title),
             subtitle = stringResource(R.string.nexora_library_hero_subtitle),
-            patchCount = nexoraBundle?.patches?.size ?: 0,
+            primaryStat = (nexoraBundle?.patches?.size ?: 0).toString(),
+            primaryLabel = stringResource(R.string.nexora_metric_patches),
+            secondaryStat = bundles.size.toString(),
+            secondaryLabel = stringResource(R.string.nexora_metric_sources),
             logo = logo,
-            onSync = { onSyncAll?.invoke() },
+            actionLabel = onSyncAll?.let { stringResource(R.string.nexora_sync_now) },
+            onAction = onSyncAll,
+        )
+        Text(
+            text = stringResource(R.string.nexora_sources_available),
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.padding(top = 2.dp, start = 2.dp),
         )
     }
 }
