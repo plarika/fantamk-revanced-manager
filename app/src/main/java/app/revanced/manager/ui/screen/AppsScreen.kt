@@ -6,6 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
@@ -340,6 +341,11 @@ fun AppsScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 6.dp)
+                        .border(
+                            1.dp,
+                            MaterialTheme.colorScheme.tertiary.copy(alpha = 0.32f),
+                            MaterialTheme.shapes.large,
+                        )
                         .clickable {
                             try {
                                 pickApkLauncher.launch(APK_MIMETYPE)
@@ -511,22 +517,48 @@ private fun AppItem(
     patchCount: Int? = null,
     suggestedVersion: String? = null,
 ) {
+    val cardShape = MaterialTheme.shapes.large
+    val accent = if (isPatched) {
+        MaterialTheme.colorScheme.primary
+    } else {
+        MaterialTheme.colorScheme.outlineVariant
+    }
     Surface(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 4.dp)
+            .padding(horizontal = 16.dp, vertical = 5.dp)
+            .border(1.dp, accent.copy(alpha = if (isPatched) 0.48f else 0.30f), cardShape)
             .combinedClickable(onClick = onClick, onLongClick = onLongClick),
-        shape = MaterialTheme.shapes.large,
-        color = MaterialTheme.colorScheme.surfaceContainerLow,
-        tonalElevation = 1.dp
+        shape = cardShape,
+        color = if (isPatched) {
+            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.12f)
+        } else {
+            MaterialTheme.colorScheme.surfaceContainerLow
+        },
+        tonalElevation = if (isPatched) 3.dp else 1.dp
     ) {
         ListItem(
             leadingContent = {
-                AppIcon(
-                    packageInfo = packageInfo,
-                    contentDescription = null,
-                    modifier = Modifier.size(40.dp)
-                )
+                Surface(
+                    shape = MaterialTheme.shapes.medium,
+                    color = if (isPatched) {
+                        MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.72f)
+                    } else {
+                        MaterialTheme.colorScheme.surfaceContainerHighest
+                    },
+                    tonalElevation = if (isPatched) 3.dp else 1.dp,
+                ) {
+                    Box(
+                        modifier = Modifier.padding(7.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        AppIcon(
+                            packageInfo = packageInfo,
+                            contentDescription = null,
+                            modifier = Modifier.size(40.dp)
+                        )
+                    }
+                }
             },
             headlineContent = {
                 Row(
