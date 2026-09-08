@@ -39,6 +39,8 @@
     <string name="nexora_updates_header_subtitle">Status da vers&#x00E3;o, canais e controles de atualiza&#x00E7;&#x00E3;o</string>
     <string name="nexora_updates_installed">instalada</string>
     <string name="nexora_updates_latest">mais recente</string>
+    <string name="nexora_updates_installed_ahead">A versão instalada está à frente do canal publicado</string>
+    <string name="nexora_updates_published_channel">canal publicado</string>
     <string name="nexora_updates_not_checked">Pronto para verificar atualiza&#x00E7;&#x00F5;es</string>
     <string name="nexora_updates_preferences">Prefer&#x00EA;ncias de atualiza&#x00E7;&#x00E3;o</string>
     <string name="nexora_updates_changelog_subtitle">Ver notas da vers&#x00E3;o e altera&#x00E7;&#x00F5;es anteriores</string>

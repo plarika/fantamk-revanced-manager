@@ -11,6 +11,7 @@ import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -605,17 +606,34 @@ private fun NexoraDashboardBottomBar(
             )
             Surface(
                 onClick = onAdd,
-                modifier = Modifier.padding(horizontal = 4.dp),
+                modifier = Modifier
+                    .padding(horizontal = 4.dp)
+                    .border(
+                        1.dp,
+                        Brush.linearGradient(listOf(Color(0xFF9B4DFF), Color(0xFF00D8FF))),
+                        RoundedCornerShape(22.dp),
+                    ),
                 shape = RoundedCornerShape(22.dp),
-                color = MaterialTheme.colorScheme.primaryContainer,
+                color = Color.Transparent,
                 tonalElevation = 8.dp,
             ) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = stringResource(R.string.fab_add_patches),
-                    modifier = Modifier.padding(16.dp).size(26.dp),
-                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                )
+                Box(
+                    modifier = Modifier
+                        .background(
+                            Brush.linearGradient(
+                                listOf(Color(0xFF6B2BFF), Color(0xFF9B4DFF), Color(0xFF1677FF))
+                            )
+                        )
+                        .padding(16.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = stringResource(R.string.fab_add_patches),
+                        modifier = Modifier.size(26.dp),
+                        tint = Color.White,
+                    )
+                }
             }
             NexoraBottomItem(
                 icon = Icons.Outlined.Source,

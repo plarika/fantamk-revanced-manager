@@ -55,6 +55,7 @@ import app.revanced.manager.ui.component.NexoraLogoBadge
 import app.revanced.manager.ui.component.NexoraNeonBackdrop
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.viewmodel.UpdatesSettingsViewModel
+import app.revanced.manager.domain.repository.isNewerVersion
 import app.revanced.manager.util.relativeTime
 import com.google.accompanist.drawablepainter.rememberDrawablePainter
 import kotlinx.coroutines.launch
@@ -232,12 +233,23 @@ fun UpdatesSettingsScreen(
         )
     }
 
+    val installedAheadOfPublished = managerVersion?.let { publishedVersion ->
+        isNewerVersion(BuildConfig.VERSION_NAME, publishedVersion)
+    } == true
     val statusText = when {
         hasUpdate -> stringResource(R.string.nexora_metric_updates_available)
+        installedAheadOfPublished -> stringResource(R.string.nexora_updates_installed_ahead)
         managerVersion != null -> stringResource(R.string.nexora_metric_updates_current)
         else -> stringResource(R.string.nexora_updates_not_checked)
     }
     val latestVersionText = managerVersion ?: "—"
+    val latestVersionLabel = stringResource(
+        if (installedAheadOfPublished) {
+            R.string.nexora_updates_published_channel
+        } else {
+            R.string.nexora_updates_latest
+        }
+    )
     val releaseAge = updateReleasedAt?.relativeTime(context)
     val changelogSubtitle = releaseAge?.let {
         stringResource(R.string.nexora_updates_release_age, it)
@@ -292,7 +304,7 @@ fun UpdatesSettingsScreen(
                     primaryStat = BuildConfig.VERSION_NAME,
                     primaryLabel = stringResource(R.string.nexora_updates_installed),
                     secondaryStat = latestVersionText,
-                    secondaryLabel = stringResource(R.string.nexora_updates_latest),
+                    secondaryLabel = latestVersionLabel,
                     logo = appIcon,
                     actionLabel = stringResource(
                         when {

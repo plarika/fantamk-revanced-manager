@@ -55,6 +55,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.revanced.manager.R
@@ -594,7 +595,12 @@ private fun AppItem(
                         )
                         if (suggestedVersion != null) SurfaceChip(suggestedVersion)
                     }
-                } ?: Text(packageName)
+                } ?: Text(
+                    text = packageName,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
             },
             trailingContent = if (packageInfo == null) {
                 { Text(stringResource(R.string.not_installed)) }

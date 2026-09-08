@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
 private val NexoraViolet = Color(0xFF9B4DFF)
@@ -223,10 +224,18 @@ private fun NexoraStatPill(
                 .background(accent)
         )
         Column {
+            val valueStyle = when {
+                value.length >= 12 -> MaterialTheme.typography.labelLarge
+                value.length >= 9 -> MaterialTheme.typography.titleSmall
+                else -> MaterialTheme.typography.titleLarge
+            }
             Text(
                 text = value,
-                style = MaterialTheme.typography.titleLarge,
+                style = valueStyle,
                 color = Color.White,
+                maxLines = 1,
+                softWrap = false,
+                overflow = TextOverflow.Clip,
             )
             Text(
                 text = label,
@@ -266,16 +275,29 @@ fun NexoraFeatureTile(
             .padding(16.dp),
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Surface(
-                shape = RoundedCornerShape(14.dp),
-                color = accent.copy(alpha = 0.2f),
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    tint = if (accent == NexoraPurple) NexoraViolet else accent,
-                    modifier = Modifier.padding(10.dp).size(24.dp),
-                )
+                Surface(
+                    shape = RoundedCornerShape(14.dp),
+                    color = accent.copy(alpha = 0.2f),
+                ) {
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+                        tint = if (accent == NexoraPurple) NexoraViolet else accent,
+                        modifier = Modifier.padding(10.dp).size(24.dp),
+                    )
+                }
+                if (onClick != null) {
+                    Text(
+                        text = "›",
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = accent,
+                    )
+                }
             }
             Text(
                 text = title,

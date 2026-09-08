@@ -41,6 +41,8 @@
     <string name="nexora_updates_header_subtitle">Release status, channels and update controls</string>
     <string name="nexora_updates_installed">installed</string>
     <string name="nexora_updates_latest">latest</string>
+    <string name="nexora_updates_installed_ahead">Installed build is ahead of the published channel</string>
+    <string name="nexora_updates_published_channel">published channel</string>
     <string name="nexora_updates_not_checked">Ready to check for updates</string>
     <string name="nexora_updates_preferences">Update preferences</string>
     <string name="nexora_updates_changelog_subtitle">See release notes and previous changes</string>
