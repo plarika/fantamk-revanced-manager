@@ -8,6 +8,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -80,42 +81,45 @@ private fun NexoraSettingsCard(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        shape = RoundedCornerShape(28.dp),
-        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        shape = RoundedCornerShape(12.dp),
+        color = Color(0xFF111827),
+        border = BorderStroke(1.dp, Color(0xFF1F2937)),
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 18.dp, vertical = 18.dp),
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 11.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Surface(
-                shape = RoundedCornerShape(18.dp),
-                color = MaterialTheme.colorScheme.secondaryContainer,
+                shape = RoundedCornerShape(10.dp),
+                color = Color(0xFF020617),
+                border = BorderStroke(1.dp, Color(0xFF1F2937)),
             ) {
                 Icon(
                     imageVector = section.image,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSecondaryContainer,
-                    modifier = Modifier.padding(14.dp).size(28.dp),
+                    tint = Color(0xFFA78BFA),
+                    modifier = Modifier.padding(10.dp).size(22.dp),
                 )
             }
-            Spacer(Modifier.width(16.dp))
+            Spacer(Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = stringResource(section.name),
-                    style = MaterialTheme.typography.titleMedium,
+                    style = MaterialTheme.typography.titleSmall,
+                    color = Color(0xFFF9FAFB),
                 )
                 Text(
                     text = supportingText,
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodySmall,
                     color = if (supportingColor == Color.Unspecified) {
-                        MaterialTheme.colorScheme.onSurfaceVariant
+                        Color(0xFF9CA3AF)
                     } else supportingColor,
                 )
             }
             Text(
                 text = "›",
-                style = MaterialTheme.typography.headlineSmall,
-                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.titleLarge,
+                color = Color(0xFFA78BFA),
             )
         }
     }
@@ -197,13 +201,14 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Surface(
-                    shape = RoundedCornerShape(34.dp),
-                    color = MaterialTheme.colorScheme.surfaceContainer,
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color(0xFF111827),
+                    border = BorderStroke(1.dp, Color(0xFF1F2937)),
                 ) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(18.dp),
+                            .padding(12.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         TooltipIconButton(
@@ -219,18 +224,19 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                         Image(
                             painter = appIcon,
                             contentDescription = stringResource(R.string.nexora_app_name),
-                            modifier = Modifier.size(58.dp),
+                            modifier = Modifier.size(42.dp),
                         )
                         Spacer(Modifier.width(14.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
                                 text = stringResource(R.string.nexora_settings_title),
-                                style = MaterialTheme.typography.headlineSmall,
+                                style = MaterialTheme.typography.titleLarge,
+                                color = Color(0xFFF9FAFB),
                             )
                             Text(
                                 text = stringResource(R.string.nexora_settings_subtitle),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = Color(0xFFA78BFA),
                             )
                         }
                     }
@@ -254,7 +260,7 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                 Text(
                     text = stringResource(R.string.nexora_settings_essential),
                     style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.primary,
+                    color = Color(0xFFA78BFA),
                     modifier = Modifier.padding(horizontal = 4.dp),
                 )
                 generalSections.forEach { section ->
@@ -267,7 +273,7 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                 Text(
                     text = stringResource(R.string.nexora_settings_system),
                     style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.primary,
+                    color = Color(0xFFA78BFA),
                     modifier = Modifier.padding(horizontal = 4.dp),
                 )
                 advancedSections.forEach { section ->
@@ -298,35 +304,36 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable { navigate(Settings.About) },
-                    shape = RoundedCornerShape(28.dp),
-                    color = MaterialTheme.colorScheme.primaryContainer,
+                    shape = RoundedCornerShape(12.dp),
+                    color = Color(0xFF111827),
+                    border = BorderStroke(1.dp, Color(0xFF1F2937)),
                 ) {
                     Row(
-                        modifier = Modifier.padding(18.dp),
+                        modifier = Modifier.padding(12.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Image(
                             painter = appIcon,
                             contentDescription = null,
-                            modifier = Modifier.size(52.dp),
+                            modifier = Modifier.size(40.dp),
                         )
                         Spacer(Modifier.width(14.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
                                 text = stringResource(R.string.nexora_app_name),
                                 style = MaterialTheme.typography.titleMedium,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                color = Color(0xFFF9FAFB),
                             )
                             Text(
                                 text = BuildConfig.VERSION_NAME,
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = Color(0xFF9CA3AF),
                             )
                         }
                         Text(
                             text = "›",
                             style = MaterialTheme.typography.headlineSmall,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer,
+                            color = Color(0xFFA78BFA),
                         )
                     }
                 }

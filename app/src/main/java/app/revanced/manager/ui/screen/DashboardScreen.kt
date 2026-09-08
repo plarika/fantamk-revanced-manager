@@ -157,11 +157,13 @@ fun DashboardScreen(
     val appsLazyListState = rememberLazyListState()
     val appsSearchLazyListState = rememberLazyListState()
     var appsSearchExpanded by rememberSaveable { mutableStateOf(false) }
+    var appsNavSelected by rememberSaveable { mutableStateOf(false) }
     val openApps: () -> Unit = {
         composableScope.launch {
             pagerState.animateScrollToPage(DashboardPage.DASHBOARD.ordinal)
             val target = if (appsLazyListState.layoutInfo.totalItemsCount > 1) 1 else 0
             appsLazyListState.animateScrollToItem(target)
+            appsNavSelected = true
         }
     }
 
@@ -362,7 +364,8 @@ fun DashboardScreen(
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
                                     text = stringResource(R.string.nexora_app_name),
-                                    style = MaterialTheme.typography.titleMedium
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = Color(0xFFF9FAFB),
                                 )
                                 Text(
                                     text = stringResource(R.string.nexora_compact_tagline),
@@ -376,7 +379,7 @@ fun DashboardScreen(
                                     tooltip = stringResource(R.string.update),
                                 ) { contentDescription ->
                                     BadgedBox(badge = { Badge(modifier = Modifier.size(6.dp)) }) {
-                                        Icon(Icons.Filled.Update, contentDescription)
+                                        Icon(Icons.Filled.Update, contentDescription, tint = Color(0xFFF9FAFB))
                                     }
                                 }
                             }
@@ -391,7 +394,7 @@ fun DashboardScreen(
                                         }
                                     }
                                 ) {
-                                    Icon(Icons.Filled.Notifications, contentDescription)
+                                    Icon(Icons.Filled.Notifications, contentDescription, tint = Color(0xFFF9FAFB))
                                 }
                             }
                             TooltipIconButton(
@@ -408,7 +411,7 @@ fun DashboardScreen(
                                         }
                                     }
                                 ) {
-                                    Icon(Icons.Filled.Settings, contentDescription)
+                                    Icon(Icons.Filled.Settings, contentDescription, tint = Color(0xFFF9FAFB))
                                 }
                             }
                         }
@@ -417,17 +420,18 @@ fun DashboardScreen(
                 bottomBar = {
                     NexoraDashboardBottomBar(
                         currentPage = pagerState.currentPage,
-                        appsSectionActive = pagerState.currentPage == DashboardPage.DASHBOARD.ordinal &&
-                            appsLazyListState.firstVisibleItemIndex >= 1,
+                        appsSectionActive = pagerState.currentPage == DashboardPage.DASHBOARD.ordinal && appsNavSelected,
                         onPanel = {
                             composableScope.launch {
                                 pagerState.animateScrollToPage(DashboardPage.DASHBOARD.ordinal)
                                 appsLazyListState.animateScrollToItem(0)
+                                appsNavSelected = false
                             }
                         },
                         onPatcher = {
                             composableScope.launch {
                                 pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
+                                appsNavSelected = false
                             }
                         },
                         onApps = openApps,

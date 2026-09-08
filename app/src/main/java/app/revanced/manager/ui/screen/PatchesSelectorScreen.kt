@@ -7,6 +7,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -49,8 +50,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
@@ -59,8 +60,8 @@ import app.revanced.manager.R
 import app.revanced.manager.patcher.patch.PatchBundleInfo
 import app.revanced.manager.patcher.patch.PatchInfo
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
-import app.revanced.manager.ui.component.NexoraHeroCard
 import app.revanced.manager.ui.component.NexoraCompactButton
+import app.revanced.manager.ui.component.NexoraCompactSection
 import app.revanced.manager.ui.component.SearchBar
 import app.revanced.manager.ui.component.TooltipHost
 import app.revanced.manager.ui.component.TooltipIconButton
@@ -579,7 +580,6 @@ private fun NexoraLibraryOverview(
     onPageSelected: (NexoraLibraryPage) -> Unit,
 ) {
     val nexoraBundle = bundles.firstOrNull { it.name.contains("Nexora", ignoreCase = true) }
-    val logo = painterResource(R.drawable.ic_logo_ring)
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -611,17 +611,44 @@ private fun NexoraLibraryOverview(
         }
         when (selectedPage) {
             NexoraLibraryPage.SOURCES -> {
-                NexoraHeroCard(
+                NexoraCompactSection(
                     title = stringResource(R.string.nexora_library_hero_title),
                     subtitle = stringResource(R.string.nexora_library_hero_subtitle),
-                    primaryStat = (nexoraBundle?.patches?.size ?: 0).toString(),
-                    primaryLabel = stringResource(R.string.nexora_metric_patches),
-                    secondaryStat = bundles.size.toString(),
-                    secondaryLabel = stringResource(R.string.nexora_metric_sources),
-                    logo = logo,
-                    actionLabel = onSyncAll?.let { stringResource(R.string.nexora_sync_now) },
-                    onAction = onSyncAll,
-                )
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        Surface(
+                            modifier = Modifier.weight(1f),
+                            shape = RoundedCornerShape(10.dp),
+                            color = Color(0xFF020617),
+                            border = BorderStroke(1.dp, Color(0xFF1F2937)),
+                        ) {
+                            Column(Modifier.padding(10.dp)) {
+                                Text((nexoraBundle?.patches?.size ?: 0).toString(), style = MaterialTheme.typography.titleLarge)
+                                Text(stringResource(R.string.nexora_metric_patches), style = MaterialTheme.typography.labelSmall, color = Color(0xFF9CA3AF))
+                            }
+                        }
+                        Surface(
+                            modifier = Modifier.weight(1f),
+                            shape = RoundedCornerShape(10.dp),
+                            color = Color(0xFF020617),
+                            border = BorderStroke(1.dp, Color(0xFF1F2937)),
+                        ) {
+                            Column(Modifier.padding(10.dp)) {
+                                Text(bundles.size.toString(), style = MaterialTheme.typography.titleLarge)
+                                Text(stringResource(R.string.nexora_metric_sources), style = MaterialTheme.typography.labelSmall, color = Color(0xFF9CA3AF))
+                            }
+                        }
+                    }
+                    onSyncAll?.let {
+                        NexoraCompactButton(
+                            text = stringResource(R.string.nexora_sync_now),
+                            onClick = it,
+                        )
+                    }
+                }
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -662,12 +689,13 @@ private fun NexoraLibraryIntro(
 ) {
     Surface(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
-        color = MaterialTheme.colorScheme.surfaceContainerLow,
-        tonalElevation = 2.dp,
+        shape = RoundedCornerShape(14.dp),
+        color = Color(0xFF111827),
+        border = BorderStroke(1.dp, Color(0xFF1F2937)),
+        tonalElevation = 1.dp,
     ) {
         Column(
-            modifier = Modifier.padding(horizontal = 18.dp, vertical = 16.dp),
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 11.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
             Text(title, style = MaterialTheme.typography.titleLarge)
@@ -690,12 +718,13 @@ private fun NexoraCollectionCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 6.dp),
-        shape = RoundedCornerShape(24.dp),
-        color = MaterialTheme.colorScheme.surfaceContainerLow,
-        tonalElevation = 2.dp,
+        shape = RoundedCornerShape(14.dp),
+        color = Color(0xFF111827),
+        border = BorderStroke(1.dp, Color(0xFF1F2937)),
+        tonalElevation = 1.dp,
     ) {
         Row(
-            modifier = Modifier.padding(18.dp),
+            modifier = Modifier.padding(12.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(14.dp),
         ) {
@@ -743,12 +772,13 @@ private fun NexoraHistoryCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 6.dp),
-        shape = RoundedCornerShape(24.dp),
-        color = MaterialTheme.colorScheme.surfaceContainerLow,
-        tonalElevation = 2.dp,
+        shape = RoundedCornerShape(14.dp),
+        color = Color(0xFF111827),
+        border = BorderStroke(1.dp, Color(0xFF1F2937)),
+        tonalElevation = 1.dp,
     ) {
         Row(
-            modifier = Modifier.padding(18.dp),
+            modifier = Modifier.padding(12.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(14.dp),
         ) {
@@ -803,26 +833,19 @@ private fun NexoraLibraryTab(
     Surface(
         onClick = onClick,
         modifier = modifier,
-        shape = RoundedCornerShape(18.dp),
-        color = if (selected) {
-            MaterialTheme.colorScheme.primaryContainer
-        } else {
-            MaterialTheme.colorScheme.surfaceContainerLow
-        },
-        tonalElevation = if (selected) 5.dp else 1.dp,
+        shape = RoundedCornerShape(10.dp),
+        color = if (selected) Color(0xFF785CFF) else Color(0xFF111827),
+        border = BorderStroke(1.dp, if (selected) Color(0xFF785CFF) else Color(0xFF1F2937)),
+        tonalElevation = 0.dp,
     ) {
         Box(
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 11.dp),
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 9.dp),
             contentAlignment = Alignment.Center,
         ) {
             Text(
                 text = text,
                 style = MaterialTheme.typography.labelLarge,
-                color = if (selected) {
-                    MaterialTheme.colorScheme.onPrimaryContainer
-                } else {
-                    MaterialTheme.colorScheme.onSurfaceVariant
-                },
+                color = if (selected) Color.White else Color(0xFFD1D5DB),
             )
         }
     }

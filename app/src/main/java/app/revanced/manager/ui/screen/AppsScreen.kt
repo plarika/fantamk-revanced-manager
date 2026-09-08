@@ -302,7 +302,7 @@ fun AppsScreen(
                                 )
                             ),
                             style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            color = Color(0xFF9CA3AF),
                         )
                         NexoraCompactButton(
                             text = stringResource(R.string.nexora_compact_check_updates),
@@ -550,45 +550,33 @@ private fun AppItem(
     patchCount: Int? = null,
     suggestedVersion: String? = null,
 ) {
-    val cardShape = MaterialTheme.shapes.large
-    val accent = if (isPatched) {
-        MaterialTheme.colorScheme.primary
-    } else {
-        MaterialTheme.colorScheme.outlineVariant
-    }
+    val cardShape = RoundedCornerShape(10.dp)
+    val accent = if (isPatched) Color(0xFF785CFF) else Color(0xFF1F2937)
     Surface(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 5.dp)
-            .border(1.dp, accent.copy(alpha = if (isPatched) 0.48f else 0.30f), cardShape)
+            .padding(horizontal = 10.dp, vertical = 4.dp)
+            .border(1.dp, accent.copy(alpha = if (isPatched) 0.70f else 1f), cardShape)
             .combinedClickable(onClick = onClick, onLongClick = onLongClick),
         shape = cardShape,
-        color = if (isPatched) {
-            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.12f)
-        } else {
-            MaterialTheme.colorScheme.surfaceContainerLow
-        },
-        tonalElevation = if (isPatched) 3.dp else 1.dp
+        color = Color(0xFF020617),
+        tonalElevation = 0.dp
     ) {
         ListItem(
             leadingContent = {
                 Surface(
-                    shape = MaterialTheme.shapes.medium,
-                    color = if (isPatched) {
-                        MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.72f)
-                    } else {
-                        MaterialTheme.colorScheme.surfaceContainerHighest
-                    },
-                    tonalElevation = if (isPatched) 3.dp else 1.dp,
+                    shape = RoundedCornerShape(8.dp),
+                    color = Color(0xFF111827),
+                    tonalElevation = 0.dp,
                 ) {
                     Box(
-                        modifier = Modifier.padding(7.dp),
+                        modifier = Modifier.padding(6.dp),
                         contentAlignment = Alignment.Center,
                     ) {
                         AppIcon(
                             packageInfo = packageInfo,
                             contentDescription = null,
-                            modifier = Modifier.size(40.dp)
+                            modifier = Modifier.size(32.dp)
                         )
                     }
                 }
@@ -603,7 +591,7 @@ private fun AppItem(
                             imageVector = Icons.Default.AutoAwesome,
                             contentDescription = null,
                             modifier = Modifier.size(16.dp),
-                            tint = MaterialTheme.colorScheme.primary
+                            tint = Color(0xFFA78BFA)
                         )
                     }
                     AppLabel(packageInfo, defaultText = packageName)

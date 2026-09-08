@@ -37,6 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -74,30 +75,26 @@ fun SourceSectionHeader(
         label = "Bundle section expand state"
     )
     val isNexora = bundle.name.contains("Nexora", ignoreCase = true)
-    val cardShape = RoundedCornerShape(26.dp)
+    val cardShape = RoundedCornerShape(12.dp)
     var menuExpanded by remember(bundle.uid) { mutableStateOf(false) }
 
     Column {
         Surface(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 6.dp)
+                .padding(horizontal = 10.dp, vertical = 4.dp)
                 .border(
                     width = 1.dp,
                     color = if (isNexora) {
-                        MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)
+                        Color(0xFF785CFF).copy(alpha = 0.70f)
                     } else {
-                        MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.65f)
+                        Color(0xFF1F2937)
                     },
                     shape = cardShape,
                 ),
             shape = cardShape,
-            color = if (isNexora) {
-                MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.16f)
-            } else {
-                MaterialTheme.colorScheme.surfaceContainerLow
-            },
-            tonalElevation = if (isNexora) 5.dp else 2.dp
+            color = Color(0xFF020617),
+            tonalElevation = 0.dp
         ) {
             ListItem(
             modifier = Modifier
@@ -106,31 +103,27 @@ fun SourceSectionHeader(
             leadingContent = {
                 if (readOnly) {
                     Surface(
-                        shape = RoundedCornerShape(16.dp),
-                        color = if (isNexora) {
-                            MaterialTheme.colorScheme.primaryContainer
-                        } else {
-                            MaterialTheme.colorScheme.surfaceContainerHighest
-                        }
+                        shape = RoundedCornerShape(8.dp),
+                        color = Color(0xFF111827)
                     ) {
                         Box(
                             modifier = Modifier
-                                .padding(8.dp)
-                                .size(30.dp),
+                                .padding(6.dp)
+                                .size(28.dp),
                             contentAlignment = Alignment.Center
                         ) {
                             if (isNexora) {
                                 Image(
                                     painter = painterResource(R.drawable.ic_logo_ring),
                                     contentDescription = null,
-                                    modifier = Modifier.size(28.dp),
+                                    modifier = Modifier.size(26.dp),
                                 )
                             } else {
                                 Icon(
                                     imageVector = Icons.Outlined.Source,
                                     contentDescription = null,
                                     modifier = Modifier.size(22.dp),
-                                    tint = MaterialTheme.colorScheme.primary
+                                    tint = Color(0xFFA78BFA)
                                 )
                             }
                         }
@@ -146,7 +139,8 @@ fun SourceSectionHeader(
             headlineContent = {
                 Text(
                     text = bundle.name,
-                    style = MaterialTheme.typography.titleMedium,
+                    style = MaterialTheme.typography.titleSmall,
+                    color = Color(0xFFF9FAFB),
                     maxLines = if (readOnly) 1 else 2,
                     overflow = TextOverflow.Ellipsis,
                 )
@@ -167,7 +161,7 @@ fun SourceSectionHeader(
                                     patchCount
                                 )
                             ).joinToString("\u2002\u2022\u2002"),
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            color = Color(0xFF9CA3AF),
                             maxLines = if (readOnly) 2 else 3,
                             overflow = TextOverflow.Ellipsis,
                         )
