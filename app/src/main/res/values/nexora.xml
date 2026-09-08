@@ -45,4 +45,10 @@
     <string name="nexora_updates_preferences">Update preferences</string>
     <string name="nexora_updates_changelog_subtitle">See release notes and previous changes</string>
     <string name="nexora_updates_release_age">Latest release %1$s</string>
+    <string name="nexora_collections_title">Patch collections</string>
+    <string name="nexora_collections_subtitle">Browse the collections currently loaded from your sources.</string>
+    <string name="nexora_history_title">Source history</string>
+    <string name="nexora_history_subtitle">Latest loaded release recorded for each source.</string>
+    <string name="nexora_history_released">Released %1$s</string>
+    <string name="nexora_history_date_unknown">Release date unavailable</string>
 </resources>

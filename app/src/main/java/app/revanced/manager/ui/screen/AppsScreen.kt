@@ -85,6 +85,7 @@ fun AppsScreen(
     onStorageSelect: (SelectedApp.Local) -> Unit,
     sourceCount: Int,
     managerUpdateAvailable: Boolean,
+    onAppsClick: () -> Unit,
     onLibraryClick: () -> Unit,
     onUpdatesClick: () -> Unit,
     lazyListState: LazyListState = rememberLazyListState(),
@@ -295,6 +296,7 @@ fun AppsScreen(
                             subtitle = stringResource(R.string.nexora_metric_apps_subtitle),
                             modifier = Modifier.weight(1f),
                             accent = Color(0xFF00D8FF),
+                            onClick = onAppsClick,
                         )
                         NexoraFeatureTile(
                             icon = Icons.Default.Folder,

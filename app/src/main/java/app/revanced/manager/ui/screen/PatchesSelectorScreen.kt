@@ -30,6 +30,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.outlined.FilterList
 import androidx.compose.material.icons.outlined.Restore
 import androidx.compose.material.icons.outlined.Save
+import androidx.compose.material.icons.outlined.Source
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -81,6 +82,12 @@ import app.revanced.manager.util.isScrollingUp
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.sample
 
+private enum class NexoraLibraryPage {
+    SOURCES,
+    COLLECTIONS,
+    HISTORY,
+}
+
 @OptIn(ExperimentalMaterial3Api::class, FlowPreview::class)
 @Composable
 fun PatchesSelectorScreen(
@@ -94,6 +101,7 @@ fun PatchesSelectorScreen(
 ) {
     val stickyHeaderTopGap = 8.dp
     val readOnly = viewModel.readOnly
+    var libraryPage by rememberSaveable { mutableStateOf(NexoraLibraryPage.SOURCES) }
     val bundles by viewModel.bundlesFlow.collectAsStateWithLifecycle(initialValue = emptyList())
     val displayBundles = remember(bundles, readOnly) {
         if (!readOnly) {
@@ -369,7 +377,10 @@ fun PatchesSelectorScreen(
                     query = query,
                     onQueryChange = setQuery,
                     expanded = searchExpanded,
-                    onExpandedChange = setSearchExpanded,
+                    onExpandedChange = { expanded ->
+                        if (readOnly && expanded) libraryPage = NexoraLibraryPage.SOURCES
+                        setSearchExpanded(expanded)
+                    },
                     placeholder = { Text(stringResource(R.string.search_patches)) },
                     windowInsets = if (readOnly) WindowInsets(top = 0, bottom = 0) else WindowInsets.systemBars,
                     leadingIcon = {
@@ -404,7 +415,10 @@ fun PatchesSelectorScreen(
                                 }
                             } else {
                                 TooltipIconButton(
-                                    onClick = { showBottomSheet = true },
+                                    onClick = {
+                                        if (readOnly) libraryPage = NexoraLibraryPage.SOURCES
+                                        showBottomSheet = true
+                                    },
                                     tooltip = stringResource(R.string.more),
                                 ) { contentDescription ->
                                     Icon(
@@ -517,13 +531,31 @@ fun PatchesSelectorScreen(
                 ) {
                     if (readOnly) {
                         item(key = "NEXORA_LIBRARY_OVERVIEW") {
-                            NexoraLibraryOverview(displayBundles, onSyncAll)
+                            NexoraLibraryOverview(
+                                bundles = displayBundles,
+                                onSyncAll = onSyncAll,
+                                selectedPage = libraryPage,
+                                onPageSelected = { libraryPage = it },
+                            )
                         }
+                        when (libraryPage) {
+                            NexoraLibraryPage.SOURCES -> sectionedPatchList(sections, "main")
+                            NexoraLibraryPage.COLLECTIONS -> itemsIndexed(
+                                items = displayBundles,
+                                key = { _, bundle -> "collection-${bundle.uid}" },
+                            ) { _, bundle ->
+                                NexoraCollectionCard(bundle) { onBundleInfoClick(bundle.uid) }
+                            }
+                            NexoraLibraryPage.HISTORY -> itemsIndexed(
+                                items = displayBundles.sortedByDescending { it.releasedAt?.toString().orEmpty() },
+                                key = { _, bundle -> "history-${bundle.uid}" },
+                            ) { _, bundle ->
+                                NexoraHistoryCard(bundle) { onBundleInfoClick(bundle.uid) }
+                            }
+                        }
+                    } else {
+                        sectionedPatchList(sections, "main")
                     }
-                    sectionedPatchList(
-                        sections = sections,
-                        keyPrefix = "main"
-                    )
                 }
             }
         }
@@ -534,6 +566,8 @@ fun PatchesSelectorScreen(
 private fun NexoraLibraryOverview(
     bundles: List<PatchBundleInfo.Scoped>,
     onSyncAll: (() -> Unit)?,
+    selectedPage: NexoraLibraryPage,
+    onPageSelected: (NexoraLibraryPage) -> Unit,
 ) {
     val nexoraBundle = bundles.firstOrNull { it.name.contains("Nexora", ignoreCase = true) }
     val logo = painterResource(R.drawable.ic_logo_ring)
@@ -549,37 +583,168 @@ private fun NexoraLibraryOverview(
         ) {
             NexoraLibraryTab(
                 text = stringResource(R.string.nexora_library_sources_tab),
-                selected = true,
+                selected = selectedPage == NexoraLibraryPage.SOURCES,
+                onClick = { onPageSelected(NexoraLibraryPage.SOURCES) },
                 modifier = Modifier.weight(1f),
             )
             NexoraLibraryTab(
                 text = stringResource(R.string.nexora_library_collections_tab),
-                selected = false,
+                selected = selectedPage == NexoraLibraryPage.COLLECTIONS,
+                onClick = { onPageSelected(NexoraLibraryPage.COLLECTIONS) },
                 modifier = Modifier.weight(1f),
             )
             NexoraLibraryTab(
                 text = stringResource(R.string.nexora_library_history_tab),
-                selected = false,
+                selected = selectedPage == NexoraLibraryPage.HISTORY,
+                onClick = { onPageSelected(NexoraLibraryPage.HISTORY) },
                 modifier = Modifier.weight(1f),
             )
         }
-        NexoraHeroCard(
-            title = stringResource(R.string.nexora_library_hero_title),
-            subtitle = stringResource(R.string.nexora_library_hero_subtitle),
-            primaryStat = (nexoraBundle?.patches?.size ?: 0).toString(),
-            primaryLabel = stringResource(R.string.nexora_metric_patches),
-            secondaryStat = bundles.size.toString(),
-            secondaryLabel = stringResource(R.string.nexora_metric_sources),
-            logo = logo,
-            actionLabel = onSyncAll?.let { stringResource(R.string.nexora_sync_now) },
-            onAction = onSyncAll,
-        )
-        Text(
-            text = stringResource(R.string.nexora_sources_available),
-            style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.padding(top = 2.dp, start = 2.dp),
-        )
+        when (selectedPage) {
+            NexoraLibraryPage.SOURCES -> {
+                NexoraHeroCard(
+                    title = stringResource(R.string.nexora_library_hero_title),
+                    subtitle = stringResource(R.string.nexora_library_hero_subtitle),
+                    primaryStat = (nexoraBundle?.patches?.size ?: 0).toString(),
+                    primaryLabel = stringResource(R.string.nexora_metric_patches),
+                    secondaryStat = bundles.size.toString(),
+                    secondaryLabel = stringResource(R.string.nexora_metric_sources),
+                    logo = logo,
+                    actionLabel = onSyncAll?.let { stringResource(R.string.nexora_sync_now) },
+                    onAction = onSyncAll,
+                )
+                Text(
+                    text = stringResource(R.string.nexora_sources_available),
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.padding(top = 2.dp, start = 2.dp),
+                )
+            }
+            NexoraLibraryPage.COLLECTIONS -> NexoraLibraryIntro(
+                title = stringResource(R.string.nexora_collections_title),
+                subtitle = stringResource(R.string.nexora_collections_subtitle),
+            )
+            NexoraLibraryPage.HISTORY -> NexoraLibraryIntro(
+                title = stringResource(R.string.nexora_history_title),
+                subtitle = stringResource(R.string.nexora_history_subtitle),
+            )
+        }
+    }
+}
+
+@Composable
+private fun NexoraLibraryIntro(
+    title: String,
+    subtitle: String,
+) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(24.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        tonalElevation = 2.dp,
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 18.dp, vertical = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            Text(title, style = MaterialTheme.typography.titleLarge)
+            Text(
+                subtitle,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+    }
+}
+
+@Composable
+private fun NexoraCollectionCard(
+    bundle: PatchBundleInfo.Scoped,
+    onClick: () -> Unit,
+) {
+    Surface(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 6.dp),
+        shape = RoundedCornerShape(24.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        tonalElevation = 2.dp,
+    ) {
+        Row(
+            modifier = Modifier.padding(18.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(14.dp),
+        ) {
+            Surface(
+                shape = RoundedCornerShape(16.dp),
+                color = MaterialTheme.colorScheme.primaryContainer,
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.Source,
+                    contentDescription = null,
+                    modifier = Modifier.padding(12.dp),
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                )
+            }
+            Column(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+            ) {
+                Text(bundle.name, style = MaterialTheme.typography.titleMedium)
+                Text(
+                    text = "${bundle.version ?: stringResource(R.string.any_version)} • ${bundle.patches.size} ${stringResource(R.string.nexora_metric_patches)}",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            Text(
+                text = "›",
+                style = MaterialTheme.typography.headlineSmall,
+                color = MaterialTheme.colorScheme.primary,
+            )
+        }
+    }
+}
+
+@Composable
+private fun NexoraHistoryCard(
+    bundle: PatchBundleInfo.Scoped,
+    onClick: () -> Unit,
+) {
+    val releasedText = bundle.releasedAt?.date?.toString()?.let {
+        stringResource(R.string.nexora_history_released, it)
+    } ?: stringResource(R.string.nexora_history_date_unknown)
+    Surface(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 6.dp),
+        shape = RoundedCornerShape(24.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        tonalElevation = 2.dp,
+    ) {
+        Column(
+            modifier = Modifier.padding(18.dp),
+            verticalArrangement = Arrangement.spacedBy(5.dp),
+        ) {
+            Text(bundle.name, style = MaterialTheme.typography.titleMedium)
+            Text(
+                text = bundle.version ?: stringResource(R.string.any_version),
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.primary,
+            )
+            Text(
+                text = releasedText,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Text(
+                text = "${bundle.patches.size} ${stringResource(R.string.nexora_metric_patches)}",
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
     }
 }
 
@@ -587,9 +752,11 @@ private fun NexoraLibraryOverview(
 private fun NexoraLibraryTab(
     text: String,
     selected: Boolean,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Surface(
+        onClick = onClick,
         modifier = modifier,
         shape = RoundedCornerShape(18.dp),
         color = if (selected) {

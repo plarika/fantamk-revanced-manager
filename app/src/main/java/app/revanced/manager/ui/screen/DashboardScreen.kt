@@ -156,6 +156,13 @@ fun DashboardScreen(
     val appsLazyListState = rememberLazyListState()
     val appsSearchLazyListState = rememberLazyListState()
     var appsSearchExpanded by rememberSaveable { mutableStateOf(false) }
+    val openApps: () -> Unit = {
+        composableScope.launch {
+            pagerState.animateScrollToPage(DashboardPage.DASHBOARD.ordinal)
+            val target = if (appsLazyListState.layoutInfo.totalItemsCount > 2) 2 else 0
+            appsLazyListState.animateScrollToItem(target)
+        }
+    }
 
     val dashboardPatchesParams = remember {
         SelectedApplicationInfo.PatchesSelector.ViewModelParams(
@@ -401,12 +408,15 @@ fun DashboardScreen(
                 bottomBar = {
                     NexoraDashboardBottomBar(
                         currentPage = pagerState.currentPage,
+                        appsSectionActive = pagerState.currentPage == DashboardPage.DASHBOARD.ordinal &&
+                            appsLazyListState.firstVisibleItemIndex >= 2,
                         onHome = {
                             composableScope.launch {
                                 pagerState.animateScrollToPage(DashboardPage.DASHBOARD.ordinal)
                                 appsLazyListState.animateScrollToItem(0)
                             }
                         },
+                        onApps = openApps,
                         onLibrary = {
                             composableScope.launch {
                                 pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
@@ -503,6 +513,7 @@ fun DashboardScreen(
                                     onStorageSelect = { selectedApp -> onStorageSelection(selectedApp) },
                                     sourceCount = dashboardSourceCount,
                                     managerUpdateAvailable = hasUpdate,
+                                    onAppsClick = openApps,
                                     onLibraryClick = {
                                         composableScope.launch {
                                             pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
@@ -555,7 +566,9 @@ fun DashboardScreen(
 @Composable
 private fun NexoraDashboardBottomBar(
     currentPage: Int,
+    appsSectionActive: Boolean,
     onHome: () -> Unit,
+    onApps: () -> Unit,
     onLibrary: () -> Unit,
     onAdd: () -> Unit,
     onUpdates: () -> Unit,
@@ -579,15 +592,15 @@ private fun NexoraDashboardBottomBar(
             NexoraBottomItem(
                 icon = Icons.Outlined.Home,
                 label = stringResource(R.string.nexora_nav_home),
-                selected = currentPage == DashboardPage.DASHBOARD.ordinal,
+                selected = currentPage == DashboardPage.DASHBOARD.ordinal && !appsSectionActive,
                 onClick = onHome,
                 modifier = Modifier.weight(1f),
             )
             NexoraBottomItem(
                 icon = Icons.Outlined.Apps,
                 label = stringResource(R.string.nexora_nav_apps),
-                selected = false,
-                onClick = onHome,
+                selected = currentPage == DashboardPage.DASHBOARD.ordinal && appsSectionActive,
+                onClick = onApps,
                 modifier = Modifier.weight(1f),
             )
             Surface(

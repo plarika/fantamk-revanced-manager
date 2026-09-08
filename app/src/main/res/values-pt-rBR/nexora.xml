@@ -43,4 +43,10 @@
     <string name="nexora_updates_preferences">Prefer&#x00EA;ncias de atualiza&#x00E7;&#x00E3;o</string>
     <string name="nexora_updates_changelog_subtitle">Ver notas da vers&#x00E3;o e altera&#x00E7;&#x00F5;es anteriores</string>
     <string name="nexora_updates_release_age">Vers&#x00E3;o mais recente %1$s</string>
+    <string name="nexora_collections_title">Cole&#x00E7;&#x00F5;es de patches</string>
+    <string name="nexora_collections_subtitle">Explore as cole&#x00E7;&#x00F5;es atualmente carregadas a partir das suas fontes.</string>
+    <string name="nexora_history_title">Hist&#x00F3;rico das fontes</string>
+    <string name="nexora_history_subtitle">&#x00DA;ltima vers&#x00E3;o carregada registrada para cada fonte.</string>
+    <string name="nexora_history_released">Lan&#x00E7;ada em %1$s</string>
+    <string name="nexora_history_date_unknown">Data de lan&#x00E7;amento indispon&#x00ED;vel</string>
 </resources>
