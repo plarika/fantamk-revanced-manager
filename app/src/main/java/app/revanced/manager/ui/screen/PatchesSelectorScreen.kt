@@ -60,6 +60,7 @@ import app.revanced.manager.patcher.patch.PatchBundleInfo
 import app.revanced.manager.patcher.patch.PatchInfo
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.NexoraHeroCard
+import app.revanced.manager.ui.component.NexoraCompactButton
 import app.revanced.manager.ui.component.SearchBar
 import app.revanced.manager.ui.component.TooltipHost
 import app.revanced.manager.ui.component.TooltipIconButton
@@ -98,6 +99,7 @@ fun PatchesSelectorScreen(
     isSourceEditMode: Boolean = false,
     onSourceDeleteRequest: ((Int) -> Unit)? = null,
     onSyncAll: (() -> Unit)? = null,
+    onAddSource: (() -> Unit)? = null,
     viewModel: PatchesSelectorViewModel
 ) {
     val stickyHeaderTopGap = 8.dp
@@ -539,6 +541,7 @@ fun PatchesSelectorScreen(
                             NexoraLibraryOverview(
                                 bundles = displayBundles,
                                 onSyncAll = onSyncAll,
+                                onAddSource = onAddSource,
                                 selectedPage = libraryPage,
                                 onPageSelected = { libraryPage = it },
                             )
@@ -571,6 +574,7 @@ fun PatchesSelectorScreen(
 private fun NexoraLibraryOverview(
     bundles: List<PatchBundleInfo.Scoped>,
     onSyncAll: (() -> Unit)?,
+    onAddSource: (() -> Unit)?,
     selectedPage: NexoraLibraryPage,
     onPageSelected: (NexoraLibraryPage) -> Unit,
 ) {
@@ -618,12 +622,26 @@ private fun NexoraLibraryOverview(
                     actionLabel = onSyncAll?.let { stringResource(R.string.nexora_sync_now) },
                     onAction = onSyncAll,
                 )
-                Text(
-                    text = stringResource(R.string.nexora_sources_available),
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.padding(top = 2.dp, start = 2.dp),
-                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 2.dp, start = 2.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(
+                        text = stringResource(R.string.nexora_sources_available),
+                        style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.weight(1f),
+                    )
+                    onAddSource?.let {
+                        NexoraCompactButton(
+                            text = stringResource(R.string.nexora_add_source),
+                            onClick = it,
+                        )
+                    }
+                }
             }
             NexoraLibraryPage.COLLECTIONS -> NexoraLibraryIntro(
                 title = stringResource(R.string.nexora_collections_title),

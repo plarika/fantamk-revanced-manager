@@ -160,7 +160,7 @@ fun DashboardScreen(
     val openApps: () -> Unit = {
         composableScope.launch {
             pagerState.animateScrollToPage(DashboardPage.DASHBOARD.ordinal)
-            val target = if (appsLazyListState.layoutInfo.totalItemsCount > 2) 2 else 0
+            val target = if (appsLazyListState.layoutInfo.totalItemsCount > 1) 1 else 0
             appsLazyListState.animateScrollToItem(target)
         }
     }
@@ -299,7 +299,15 @@ fun DashboardScreen(
         onStorageSelect(app)
     }
 
-    NexoraNeonBackdrop(modifier = Modifier.fillMaxSize()) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                Brush.verticalGradient(
+                    listOf(Color(0xFF111827), Color(0xFF050509), Color.Black)
+                )
+            )
+    ) {
         Box(modifier = Modifier.fillMaxSize()) {
             val statusBarHeight = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
             Box(
@@ -340,26 +348,26 @@ fun DashboardScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .statusBarsPadding()
-                            .padding(horizontal = 16.dp, vertical = 8.dp),
-                        shape = MaterialTheme.shapes.extraLarge,
-                        color = MaterialTheme.colorScheme.surfaceContainer,
+                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                        shape = RoundedCornerShape(16.dp),
+                        color = Color(0xFF111827),
                         tonalElevation = 6.dp
                     ) {
                         Row(
-                            modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
+                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
-                            NexoraLogoBadge(painter = logoPainter, size = 48)
+                            NexoraLogoBadge(painter = logoPainter, size = 34)
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
                                     text = stringResource(R.string.nexora_app_name),
-                                    style = MaterialTheme.typography.titleLarge
+                                    style = MaterialTheme.typography.titleMedium
                                 )
                                 Text(
-                                    text = stringResource(R.string.nexora_tagline),
-                                    style = MaterialTheme.typography.labelMedium,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    text = stringResource(R.string.nexora_compact_tagline),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = Color(0xFFA78BFA)
                                 )
                             }
                             if (hasUpdate) {
@@ -410,27 +418,20 @@ fun DashboardScreen(
                     NexoraDashboardBottomBar(
                         currentPage = pagerState.currentPage,
                         appsSectionActive = pagerState.currentPage == DashboardPage.DASHBOARD.ordinal &&
-                            appsLazyListState.firstVisibleItemIndex >= 2,
-                        onHome = {
+                            appsLazyListState.firstVisibleItemIndex >= 1,
+                        onPanel = {
                             composableScope.launch {
                                 pagerState.animateScrollToPage(DashboardPage.DASHBOARD.ordinal)
                                 appsLazyListState.animateScrollToItem(0)
                             }
                         },
+                        onPatcher = {
+                            composableScope.launch {
+                                pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
+                            }
+                        },
                         onApps = openApps,
-                        onLibrary = {
-                            composableScope.launch {
-                                pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
-                            }
-                        },
-                        onAdd = {
-                            composableScope.launch {
-                                pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
-                            }
-                            showAddBundleDialog = true
-                        },
-                        onUpdates = onUpdateClick,
-                        onMore = onSettingsClick,
+                        onSettings = onSettingsClick,
                     )
                 },
                 containerColor = Color.Transparent,
@@ -521,6 +522,7 @@ fun DashboardScreen(
                                         }
                                     },
                                     onUpdatesClick = onUpdateClick,
+                                    onSettingsClick = onSettingsClick,
                                     lazyListState = appsLazyListState,
                                     searchLazyListState = appsSearchLazyListState,
                                     onSearchExpandedChange = { appsSearchExpanded = it }
@@ -553,6 +555,7 @@ fun DashboardScreen(
                                     isSourceEditMode = patchesSourceEditMode,
                                     onSourceDeleteRequest = { sourceDeleteUid = it },
                                     onSyncAll = vm::downloadSources,
+                                    onAddSource = { showAddBundleDialog = true },
                                     viewModel = dashboardPatchesViewModel
                                 )
                             }
@@ -568,33 +571,38 @@ fun DashboardScreen(
 private fun NexoraDashboardBottomBar(
     currentPage: Int,
     appsSectionActive: Boolean,
-    onHome: () -> Unit,
+    onPanel: () -> Unit,
+    onPatcher: () -> Unit,
     onApps: () -> Unit,
-    onLibrary: () -> Unit,
-    onAdd: () -> Unit,
-    onUpdates: () -> Unit,
-    onMore: () -> Unit,
+    onSettings: () -> Unit,
 ) {
     val navInset = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     Surface(
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = navInset),
-        color = Color(0xF20A0F1B),
-        tonalElevation = 10.dp,
+        color = Color(0xF5020617),
+        tonalElevation = 8.dp,
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp, vertical = 8.dp),
+                .padding(horizontal = 8.dp, vertical = 6.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(2.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
         ) {
             NexoraBottomItem(
                 icon = Icons.Outlined.Home,
-                label = stringResource(R.string.nexora_nav_home),
+                label = stringResource(R.string.nexora_nav_panel),
                 selected = currentPage == DashboardPage.DASHBOARD.ordinal && !appsSectionActive,
-                onClick = onHome,
+                onClick = onPanel,
+                modifier = Modifier.weight(1f),
+            )
+            NexoraBottomItem(
+                icon = Icons.Outlined.Source,
+                label = stringResource(R.string.nexora_nav_patcher),
+                selected = currentPage == DashboardPage.BUNDLES.ordinal,
+                onClick = onPatcher,
                 modifier = Modifier.weight(1f),
             )
             NexoraBottomItem(
@@ -604,49 +612,11 @@ private fun NexoraDashboardBottomBar(
                 onClick = onApps,
                 modifier = Modifier.weight(1f),
             )
-            Surface(
-                onClick = onAdd,
-                modifier = Modifier
-                    .padding(horizontal = 4.dp)
-                    .border(
-                        1.dp,
-                        Brush.linearGradient(listOf(Color(0xFF9B4DFF), Color(0xFF00D8FF))),
-                        RoundedCornerShape(22.dp),
-                    ),
-                shape = RoundedCornerShape(22.dp),
-                color = Color.Transparent,
-                tonalElevation = 8.dp,
-            ) {
-                Box(
-                    modifier = Modifier
-                        .background(
-                            Brush.linearGradient(
-                                listOf(Color(0xFF6B2BFF), Color(0xFF9B4DFF), Color(0xFF1677FF))
-                            )
-                        )
-                        .padding(16.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = stringResource(R.string.fab_add_patches),
-                        modifier = Modifier.size(26.dp),
-                        tint = Color.White,
-                    )
-                }
-            }
-            NexoraBottomItem(
-                icon = Icons.Outlined.Source,
-                label = stringResource(R.string.nexora_nav_library),
-                selected = currentPage == DashboardPage.BUNDLES.ordinal,
-                onClick = onLibrary,
-                modifier = Modifier.weight(1f),
-            )
             NexoraBottomItem(
                 icon = Icons.Filled.Settings,
-                label = stringResource(R.string.nexora_nav_more),
+                label = stringResource(R.string.nexora_nav_settings),
                 selected = false,
-                onClick = onMore,
+                onClick = onSettings,
                 modifier = Modifier.weight(1f),
             )
         }
