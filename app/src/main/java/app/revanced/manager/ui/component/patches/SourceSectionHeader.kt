@@ -145,19 +145,11 @@ fun SourceSectionHeader(
                 }
             },
             headlineContent = {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    Text(
-                        text = bundle.name,
-                        modifier = Modifier.weight(1f),
-                        style = MaterialTheme.typography.titleMedium,
-                    )
-                    if (readOnly && loadIssue == null && bundle.version != null) {
-                        NexoraSourceStatus(stringResource(R.string.nexora_source_ready))
-                    }
-                }
+                Text(
+                    text = bundle.name,
+                    style = MaterialTheme.typography.titleMedium,
+                    maxLines = 2,
+                )
             },
             supportingContent = {
                 val patchCount = bundle.patches.size
@@ -165,7 +157,7 @@ fun SourceSectionHeader(
                 val releasedAt = bundle.releasedAt?.relativeTime(LocalContext.current)
                 if (version == null && loadIssue == null) return@ListItem
 
-                Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     version?.let {
                         Text(
                             text = listOf(
@@ -180,6 +172,10 @@ fun SourceSectionHeader(
                             ).joinToString("\u2002\u2022\u2002"),
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
+                    }
+
+                    if (readOnly && loadIssue == null && version != null) {
+                        NexoraSourceStatus(stringResource(R.string.nexora_source_ready))
                     }
 
                     loadIssue?.let {

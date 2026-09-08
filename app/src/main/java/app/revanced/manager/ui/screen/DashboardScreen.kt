@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -330,6 +331,7 @@ fun DashboardScreen(
                     Surface(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .statusBarsPadding()
                             .padding(horizontal = 16.dp, vertical = 8.dp),
                         shape = MaterialTheme.shapes.extraLarge,
                         color = MaterialTheme.colorScheme.surfaceContainer,
