@@ -39,6 +39,7 @@ import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -119,6 +120,10 @@ fun PatchesSelectorScreen(
     var collapsedBundleUids by rememberSaveable { mutableStateOf(emptyList<Int>()) }
     var selectedPackageFilters by rememberSaveable { mutableStateOf(emptySet<String>()) }
     val effectiveSelectedPackageFilters = if (readOnly) selectedPackageFilters else emptySet()
+
+    LaunchedEffect(readOnly, libraryPage) {
+        if (readOnly) patchLazyListState.scrollToItem(0)
+    }
 
     val showSaveButton by remember {
         derivedStateOf { !readOnly && viewModel.selectionIsValid(bundles) }

@@ -37,18 +37,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.state.ToggleableState
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import app.revanced.manager.R
 import app.revanced.manager.patcher.patch.PatchBundleInfo
 import app.revanced.manager.ui.component.NexoraSourceStatus
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.haptics.HapticTriStateCheckbox
-import app.revanced.manager.util.relativeTime
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -148,29 +147,29 @@ fun SourceSectionHeader(
                 Text(
                     text = bundle.name,
                     style = MaterialTheme.typography.titleMedium,
-                    maxLines = 2,
+                    maxLines = if (readOnly) 1 else 2,
+                    overflow = TextOverflow.Ellipsis,
                 )
             },
             supportingContent = {
                 val patchCount = bundle.patches.size
                 val version = bundle.version?.takeIf { it.isNotBlank() }
-                val releasedAt = bundle.releasedAt?.relativeTime(LocalContext.current)
                 if (version == null && loadIssue == null) return@ListItem
 
                 Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     version?.let {
                         Text(
                             text = listOf(
-                                // Show release date only when view-only
-                                if (readOnly && releasedAt != null) "v$it\u2002($releasedAt)"
-                                else it,
+                                if (readOnly) "v$it" else it,
                                 pluralStringResource(
                                     R.plurals.patch_count,
                                     patchCount,
                                     patchCount
                                 )
                             ).joinToString("\u2002\u2022\u2002"),
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = if (readOnly) 2 else 3,
+                            overflow = TextOverflow.Ellipsis,
                         )
                     }
 
@@ -187,9 +186,9 @@ fun SourceSectionHeader(
                 }
             },
             trailingContent = {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(2.dp),
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(0.dp),
                 ) {
                     if (readOnly && !sourceEditMode) {
                         Box {
