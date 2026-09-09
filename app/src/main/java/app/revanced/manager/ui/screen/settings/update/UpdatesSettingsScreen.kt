@@ -2,20 +2,18 @@ package app.revanced.manager.ui.screen.settings.update
 
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -38,100 +36,157 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.revanced.manager.BuildConfig
 import app.revanced.manager.R
+import app.revanced.manager.domain.repository.isNewerVersion
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.ConfirmDialog
-import app.revanced.manager.ui.component.NexoraHeroCard
 import app.revanced.manager.ui.component.NexoraLogoBadge
-import app.revanced.manager.ui.component.NexoraNeonBackdrop
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.viewmodel.UpdatesSettingsViewModel
-import app.revanced.manager.domain.repository.isNewerVersion
 import app.revanced.manager.util.relativeTime
 import com.google.accompanist.drawablepainter.rememberDrawablePainter
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
-private val UpdatePurple = Color(0xFF8B3DFF)
-private val UpdateViolet = Color(0xFFB36BFF)
-private val UpdateCyan = Color(0xFF00D8FF)
-private val UpdatePanel = Color(0xFF0D1324)
-private val UpdatePanelAlt = Color(0xFF11182B)
+private val CompactBackground = Color(0xFF050509)
+private val CompactCard = Color(0xFF111827)
+private val CompactInner = Color(0xFF020617)
+private val CompactBorder = Color(0xFF1F2937)
+private val CompactPurple = Color(0xFF785CFF)
+private val CompactLavender = Color(0xFFA78BFA)
+private val CompactSecondary = Color(0xFF9CA3AF)
+private val CompactGreen = Color(0xFF22C55E)
 
 @Composable
-private fun NexoraUpdateToggleCard(
-    icon: ImageVector,
-    title: String,
-    description: String,
-    checked: Boolean,
-    onCheckedChange: (Boolean) -> Unit,
+private fun CompactVersionMetric(
+    value: String,
+    label: String,
+    accent: Color,
     modifier: Modifier = Modifier,
-    warning: Boolean = false,
 ) {
-    val shape = RoundedCornerShape(24.dp)
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(shape)
-            .background(
-                Brush.linearGradient(
-                    listOf(
-                        UpdatePanelAlt,
-                        if (warning) Color(0xFF35151F) else UpdatePurple.copy(alpha = 0.11f),
-                        UpdatePanel,
-                    )
-                )
-            )
-            .border(
-                1.dp,
-                if (warning) Color(0xFFFF6F78).copy(alpha = 0.45f)
-                else UpdateViolet.copy(alpha = 0.28f),
-                shape,
-            )
-            .padding(horizontal = 18.dp, vertical = 16.dp),
+    Surface(
+        modifier = modifier,
+        shape = RoundedCornerShape(10.dp),
+        color = CompactInner,
+        border = BorderStroke(1.dp, CompactBorder),
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(14.dp),
+        Column(
+            modifier = Modifier.padding(horizontal = 11.dp, vertical = 9.dp),
+            verticalArrangement = Arrangement.spacedBy(2.dp),
         ) {
-            Surface(
-                shape = RoundedCornerShape(16.dp),
-                color = if (warning) Color(0xFF57202D) else UpdatePurple.copy(alpha = 0.18f),
-            ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    tint = if (warning) Color(0xFFFFA0A8) else UpdateCyan,
-                    modifier = Modifier.padding(12.dp).size(26.dp),
-                )
-            }
-            Column(
-                modifier = Modifier.weight(1f),
-                verticalArrangement = Arrangement.spacedBy(3.dp),
-            ) {
-                Text(title, style = MaterialTheme.typography.titleMedium, color = Color.White)
-                Text(
-                    description,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = if (warning) Color(0xFFFFA0A8) else Color(0xFFB9BED0),
-                )
-            }
-            Switch(checked = checked, onCheckedChange = onCheckedChange)
+            Text(
+                text = value,
+                style = MaterialTheme.typography.titleSmall,
+                color = accent,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+            )
+            Text(
+                text = label,
+                style = MaterialTheme.typography.labelSmall,
+                color = CompactSecondary,
+            )
         }
     }
 }
 
 @Composable
-private fun NexoraUpdateActionCard(
+private fun CompactPrimaryAction(
+    text: String,
+    onClick: () -> Unit,
+) {
+    Surface(
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(10.dp),
+        color = CompactPurple,
+        border = BorderStroke(1.dp, CompactLavender.copy(alpha = 0.45f)),
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 14.dp, vertical = 10.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.labelLarge,
+                color = Color.White,
+            )
+        }
+    }
+}
+
+@Composable
+private fun CompactUpdateToggleCard(
+    icon: ImageVector,
+    title: String,
+    description: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+    warning: Boolean = false,
+) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        color = CompactCard,
+        border = BorderStroke(
+            1.dp,
+            if (warning) MaterialTheme.colorScheme.error.copy(alpha = 0.45f) else CompactBorder,
+        ),
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 11.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Surface(
+                shape = RoundedCornerShape(10.dp),
+                color = CompactInner,
+                border = BorderStroke(1.dp, CompactBorder),
+            ) {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = if (warning) MaterialTheme.colorScheme.error else CompactLavender,
+                    modifier = Modifier.padding(9.dp).size(21.dp),
+                )
+            }
+            Column(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleSmall,
+                    color = Color(0xFFF9FAFB),
+                )
+                Text(
+                    text = description,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = if (warning) MaterialTheme.colorScheme.error else CompactSecondary,
+                )
+            }
+            Switch(
+                checked = checked,
+                onCheckedChange = onCheckedChange,
+            )
+        }
+    }
+}
+
+@Composable
+private fun CompactUpdateActionCard(
     icon: ImageVector,
     title: String,
     subtitle: String,
@@ -139,35 +194,45 @@ private fun NexoraUpdateActionCard(
 ) {
     Surface(
         onClick = onClick,
-        shape = RoundedCornerShape(24.dp),
-        color = Color.Transparent,
         modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        color = CompactCard,
+        border = BorderStroke(1.dp, CompactBorder),
     ) {
         Row(
-            modifier = Modifier
-                .background(
-                    Brush.horizontalGradient(
-                        listOf(UpdatePanelAlt, Color(0xFF181239), Color(0xFF0A2337))
-                    )
-                )
-                .border(1.dp, UpdateViolet.copy(alpha = 0.3f), RoundedCornerShape(24.dp))
-                .padding(18.dp),
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 11.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(14.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            Surface(shape = RoundedCornerShape(16.dp), color = UpdatePurple.copy(alpha = 0.2f)) {
+            Surface(
+                shape = RoundedCornerShape(10.dp),
+                color = CompactInner,
+                border = BorderStroke(1.dp, CompactBorder),
+            ) {
                 Icon(
                     imageVector = icon,
                     contentDescription = null,
-                    tint = UpdateCyan,
-                    modifier = Modifier.padding(12.dp).size(26.dp),
+                    tint = CompactLavender,
+                    modifier = Modifier.padding(9.dp).size(21.dp),
                 )
             }
             Column(modifier = Modifier.weight(1f)) {
-                Text(title, style = MaterialTheme.typography.titleMedium, color = Color.White)
-                Text(subtitle, style = MaterialTheme.typography.bodyMedium, color = Color(0xFFB9BED0))
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleSmall,
+                    color = Color(0xFFF9FAFB),
+                )
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = CompactSecondary,
+                )
             }
-            Text("›", style = MaterialTheme.typography.headlineSmall, color = UpdateViolet)
+            Text(
+                text = "›",
+                style = MaterialTheme.typography.titleLarge,
+                color = CompactLavender,
+            )
         }
     }
 }
@@ -193,7 +258,9 @@ fun UpdatesSettingsScreen(
     val useManagerPrereleases by vm.useManagerPrereleases.getAsState()
 
     val appIcon = rememberDrawablePainter(
-        drawable = remember(context) { AppCompatResources.getDrawable(context, R.drawable.ic_logo_ring) }
+        drawable = remember(context) {
+            AppCompatResources.getDrawable(context, R.drawable.ic_logo_ring)
+        },
     )
 
     fun runUpdateAction() {
@@ -248,75 +315,136 @@ fun UpdatesSettingsScreen(
             R.string.nexora_updates_published_channel
         } else {
             R.string.nexora_updates_latest
-        }
+        },
     )
     val releaseAge = updateReleasedAt?.relativeTime(context)
     val changelogSubtitle = releaseAge?.let {
         stringResource(R.string.nexora_updates_release_age, it)
     } ?: stringResource(R.string.nexora_updates_changelog_subtitle)
 
-    NexoraNeonBackdrop(modifier = Modifier.fillMaxSize()) {
-        ColumnWithScrollbar(modifier = Modifier.fillMaxSize(), state = scrollState) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                Brush.verticalGradient(
+                    listOf(Color(0xFF111827), CompactBackground, Color.Black),
+                ),
+            ),
+    ) {
+        ColumnWithScrollbar(
+            modifier = Modifier.fillMaxSize(),
+            state = scrollState,
+        ) {
             Column(
                 modifier = Modifier
                     .statusBarsPadding()
                     .navigationBarsPadding()
-                    .padding(horizontal = 16.dp, vertical = 14.dp),
-                verticalArrangement = Arrangement.spacedBy(18.dp),
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 Surface(
-                    shape = RoundedCornerShape(30.dp),
-                    color = Color(0xE6111728),
                     modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    color = CompactCard,
+                    border = BorderStroke(1.dp, CompactBorder),
                 ) {
                     Row(
-                        modifier = Modifier.padding(18.dp),
+                        modifier = Modifier.padding(12.dp),
                         verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
-                        TooltipIconButton(onClick = onBackClick, tooltip = stringResource(R.string.back)) {
+                        TooltipIconButton(
+                            onClick = onBackClick,
+                            tooltip = stringResource(R.string.back),
+                        ) {
                             Icon(
                                 Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = stringResource(R.string.back),
-                                tint = Color.White,
+                                tint = Color(0xFFF9FAFB),
                             )
                         }
-                        Spacer(Modifier.width(8.dp))
-                        NexoraLogoBadge(painter = appIcon, size = 54)
-                        Spacer(Modifier.width(14.dp))
+                        NexoraLogoBadge(painter = appIcon, size = 40)
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                stringResource(R.string.updates),
-                                style = MaterialTheme.typography.headlineSmall,
-                                color = Color.White,
+                                text = stringResource(R.string.updates),
+                                style = MaterialTheme.typography.titleLarge,
+                                color = Color(0xFFF9FAFB),
                             )
                             Text(
-                                stringResource(R.string.nexora_updates_header_subtitle),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = Color(0xFFBCC1D3),
+                                text = stringResource(R.string.nexora_updates_header_subtitle),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = CompactLavender,
                             )
                         }
                     }
                 }
 
-                NexoraHeroCard(
-                    title = stringResource(R.string.nexora_app_name),
-                    subtitle = statusText,
-                    primaryStat = BuildConfig.VERSION_NAME,
-                    primaryLabel = stringResource(R.string.nexora_updates_installed),
-                    secondaryStat = latestVersionText,
-                    secondaryLabel = latestVersionLabel,
-                    logo = appIcon,
-                    actionLabel = stringResource(
-                        when {
-                            checkingForUpdate -> R.string.update_check
-                            hasUpdate -> R.string.view_update
-                            else -> R.string.manual_update_check
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    color = CompactCard,
+                    border = BorderStroke(1.dp, CompactBorder),
+                ) {
+                    Column(
+                        modifier = Modifier.padding(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(9.dp),
+                    ) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        ) {
+                            NexoraLogoBadge(painter = appIcon, size = 36)
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    text = stringResource(R.string.nexora_app_name),
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = Color(0xFFF9FAFB),
+                                )
+                                Text(
+                                    text = statusText,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = when {
+                                        hasUpdate -> CompactLavender
+                                        managerVersion != null -> CompactGreen
+                                        else -> CompactSecondary
+                                    },
+                                )
+                            }
                         }
-                    ),
-                    onAction = ::runUpdateAction,
-                )
 
-                NexoraUpdateActionCard(
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            CompactVersionMetric(
+                                value = BuildConfig.VERSION_NAME,
+                                label = stringResource(R.string.nexora_updates_installed),
+                                accent = Color(0xFFF9FAFB),
+                                modifier = Modifier.weight(1f),
+                            )
+                            CompactVersionMetric(
+                                value = latestVersionText,
+                                label = latestVersionLabel,
+                                accent = CompactLavender,
+                                modifier = Modifier.weight(1f),
+                            )
+                        }
+
+                        CompactPrimaryAction(
+                            text = stringResource(
+                                when {
+                                    checkingForUpdate -> R.string.update_check
+                                    hasUpdate -> R.string.view_update
+                                    else -> R.string.manual_update_check
+                                },
+                            ),
+                            onClick = ::runUpdateAction,
+                        )
+                    }
+                }
+
+                CompactUpdateActionCard(
                     icon = Icons.Outlined.WorkOutline,
                     title = stringResource(R.string.changelog),
                     subtitle = changelogSubtitle,
@@ -324,13 +452,13 @@ fun UpdatesSettingsScreen(
                 )
 
                 Text(
-                    stringResource(R.string.nexora_updates_preferences),
+                    text = stringResource(R.string.nexora_updates_preferences),
                     style = MaterialTheme.typography.titleMedium,
-                    color = UpdateViolet,
-                    modifier = Modifier.padding(horizontal = 4.dp),
+                    color = CompactLavender,
+                    modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp),
                 )
 
-                NexoraUpdateToggleCard(
+                CompactUpdateToggleCard(
                     icon = Icons.Filled.Update,
                     title = stringResource(R.string.update_checking_manager),
                     description = stringResource(R.string.update_checking_manager_description),
@@ -341,18 +469,20 @@ fun UpdatesSettingsScreen(
                 )
 
                 AnimatedVisibility(visible = managerAutoUpdates) {
-                    NexoraUpdateToggleCard(
+                    CompactUpdateToggleCard(
                         icon = Icons.Filled.Notifications,
                         title = stringResource(R.string.show_manager_update_dialog_on_launch),
                         description = stringResource(R.string.show_manager_update_dialog_on_launch_description),
                         checked = showManagerUpdateDialogOnLaunch,
                         onCheckedChange = { value ->
-                            coroutineScope.launch { vm.showManagerUpdateDialogOnLaunch.update(value) }
+                            coroutineScope.launch {
+                                vm.showManagerUpdateDialogOnLaunch.update(value)
+                            }
                         },
                     )
                 }
 
-                NexoraUpdateToggleCard(
+                CompactUpdateToggleCard(
                     icon = Icons.Outlined.WarningAmber,
                     title = stringResource(R.string.manager_prereleases),
                     description = stringResource(R.string.manager_prereleases_description),
