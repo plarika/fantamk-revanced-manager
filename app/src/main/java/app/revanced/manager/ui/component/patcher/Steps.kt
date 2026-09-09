@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.outlined.Circle
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -79,34 +80,69 @@ fun Steps(
             onExpand()
     }
 
+    val accentColor = when (state) {
+        State.COMPLETED -> Color(0xFF22C55E)
+        State.FAILED -> MaterialTheme.colorScheme.error
+        State.RUNNING -> Color(0xFFA78BFA)
+        State.WAITING -> Color(0xFF4B5563)
+    }
+    val statusText = stringResource(
+        when (state) {
+            State.COMPLETED -> R.string.step_completed
+            State.FAILED -> R.string.step_failed
+            State.RUNNING -> R.string.step_running
+            State.WAITING -> R.string.step_waiting
+        }
+    )
+    val phaseMarker = String.format(Locale.ROOT, "%02d", StepCategory.entries.indexOf(category) + 1)
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
             .fillMaxWidth()
             .background(Color(0xFF111827))
-            .border(1.dp, Color(0xFF1F2937), RoundedCornerShape(16.dp))
+            .border(1.dp, accentColor.copy(alpha = if (state == State.WAITING) 0.22f else 0.42f), RoundedCornerShape(16.dp))
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(14.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
             modifier = Modifier
                 .clickable(true, onClick = onClick)
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 15.dp)
+                .padding(horizontal = 14.dp, vertical = 13.dp)
         ) {
-            StepIcon(state = state, size = 24.dp)
+            Surface(
+                shape = RoundedCornerShape(11.dp),
+                color = accentColor.copy(alpha = 0.10f),
+                border = androidx.compose.foundation.BorderStroke(1.dp, accentColor.copy(alpha = 0.30f)),
+            ) {
+                Box(
+                    modifier = Modifier.size(40.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = phaseMarker,
+                        style = MaterialTheme.typography.labelMedium,
+                        color = accentColor,
+                    )
+                }
+            }
 
-            Text(
-                text = stringResource(category.displayName),
-                style = MaterialTheme.typography.titleMedium,
-            )
-
-            Spacer(modifier = Modifier.weight(1f))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(category.displayName),
+                    style = MaterialTheme.typography.titleMedium,
+                )
+                Text(
+                    text = statusText,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = accentColor,
+                )
+            }
 
             Text(
                 text = "${filteredSteps.count { it.state == State.COMPLETED }}/${filteredSteps.size}",
                 style = MaterialTheme.typography.labelSmall,
-                color = if (state == State.RUNNING) Color(0xFFA78BFA) else MaterialTheme.colorScheme.onSurfaceVariant,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
 
             ArrowButton(modifier = Modifier.size(24.dp), expanded = isExpanded, onClick = null)

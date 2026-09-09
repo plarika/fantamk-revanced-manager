@@ -23,8 +23,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -35,7 +33,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -46,9 +43,9 @@ import app.revanced.manager.network.downloader.LoadedDownloader
 import app.revanced.manager.patcher.patch.PatchBundleInfo
 import app.revanced.manager.patcher.patch.PatchInfo
 import app.revanced.manager.ui.component.AlertDialogExtended
-import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.LoadingIndicator
+import app.revanced.manager.ui.component.NexoraFlowTopBar
 import app.revanced.manager.ui.component.NexoraInlineWarning
 import app.revanced.manager.ui.component.NexoraPatchingAppHeader
 import app.revanced.manager.ui.component.NexoraPatchingOption
@@ -166,14 +163,13 @@ fun SelectedAppInfoScreen(
     val error by vm.errorFlow.collectAsStateWithLifecycle(null)
     val downloaders by vm.downloaders.collectAsStateWithLifecycle(emptyList())
 
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-
     Scaffold(
+        containerColor = Color(0xFF050509),
         topBar = {
-            AppTopBar(
+            NexoraFlowTopBar(
                 title = stringResource(R.string.app_info),
-                scrollBehavior = scrollBehavior,
-                onBackClick = onBackClick
+                backContentDescription = stringResource(R.string.back),
+                onBackClick = onBackClick,
             )
         },
         floatingActionButton = {
@@ -195,6 +191,9 @@ fun SelectedAppInfoScreen(
                         stringResource(R.string.patch)
                     )
                 },
+                shape = RoundedCornerShape(16.dp),
+                containerColor = Color(0xFF785CFF),
+                contentColor = Color.White,
                 onClick = patchClick@{
                     // If the selected source is Auto (Search) but nothing can be resolved
                     // (no installed app, no downloaded APK, no downloader), prompt the user
@@ -222,7 +221,6 @@ fun SelectedAppInfoScreen(
                 }
             )
         },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
 
         if (showVersionSelector) {
@@ -274,7 +272,8 @@ fun SelectedAppInfoScreen(
             )
 
             PageItem(
-                R.string.patch_selector_item,
+                marker = "01",
+                title = R.string.patch_selector_item,
                 stringResource(
                     R.string.patch_selector_item_description,
                     selectedPatchCount
@@ -296,7 +295,8 @@ fun SelectedAppInfoScreen(
                 }
             )
             PageItem(
-                R.string.version,
+                marker = "02",
+                title = R.string.version,
                 selectedVersionLabel,
                 warningDescription = if (showVersionCompatibilityWarning) {
                     stringResource(R.string.version_compatibility_warning)
@@ -316,7 +316,8 @@ fun SelectedAppInfoScreen(
                 }
             }
             PageItem(
-                R.string.apk_source_selector_item,
+                marker = "03",
+                title = R.string.apk_source_selector_item,
                 when (val app = vm.selectedApp) {
                     is SelectedApp.Search -> autoSourceSubtitle
                     is SelectedApp.Installed -> stringResource(R.string.apk_source_installed)
@@ -367,6 +368,7 @@ fun SelectedAppInfoScreen(
 
 @Composable
 private fun PageItem(
+    marker: String,
     @StringRes title: Int,
     description: String,
     enabled: Boolean = true,
@@ -375,6 +377,7 @@ private fun PageItem(
     onClick: () -> Unit
 ) {
     NexoraPatchingOption(
+        marker = marker,
         title = stringResource(title),
         description = description,
         enabled = enabled,

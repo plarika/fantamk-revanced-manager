@@ -10,14 +10,15 @@ import androidx.activity.result.contract.ActivityResultContracts.CreateDocument
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.OpenInNew
 import androidx.compose.material.icons.outlined.Cancel
@@ -29,7 +30,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -49,10 +49,11 @@ import androidx.compose.ui.unit.dp
 import app.revanced.manager.R
 import app.revanced.manager.data.room.apps.installed.InstallType
 import app.revanced.manager.ui.component.AppScaffold
-import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.ConfirmDialog
 import app.revanced.manager.ui.component.InstallerStatusDialog
+import app.revanced.manager.ui.component.NexoraFlowTopBar
 import app.revanced.manager.ui.component.NexoraPatchingDialog
+import app.revanced.manager.ui.component.NexoraPipelineProgress
 import app.revanced.manager.ui.component.ShareSheet
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.haptics.HapticExtendedFloatingActionButton
@@ -176,11 +177,11 @@ fun PatcherScreen(
     }
 
     AppScaffold(
-        topBar = { scrollBehavior ->
-            AppTopBar(
+        topBar = { _ ->
+            NexoraFlowTopBar(
                 title = stringResource(R.string.patcher),
-                scrollBehavior = scrollBehavior,
-                onBackClick = ::onPageBack
+                backContentDescription = stringResource(R.string.back),
+                onBackClick = ::onPageBack,
             )
         },
         bottomBar = {
@@ -227,6 +228,9 @@ fun PatcherScreen(
                                     stringResource(R.string.install_app)
                                 )
                             },
+                            shape = RoundedCornerShape(16.dp),
+                            containerColor = Color(0xFF785CFF),
+                            contentColor = Color.White,
                             onClick = {
                                 if (viewModel.installedPackageName == null)
                                     if (viewModel.isDeviceRooted()) showInstallPicker = true
@@ -249,6 +253,7 @@ fun PatcherScreen(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
+                .background(Color(0xFF050509))
         ) {
             var expandedCategory by rememberSaveable { mutableStateOf<StepCategory?>(null) }
 
@@ -262,13 +267,8 @@ fun PatcherScreen(
                 label = "patcherProgress"
             )
 
-            LinearWavyProgressIndicator(
-                progress = { patcherProgress },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                color = Color(0xFFA78BFA),
-            )
+            NexoraPipelineProgress(progress = patcherProgress)
+
 
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
