@@ -3,6 +3,7 @@ package app.revanced.manager.ui.component.patcher
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.CheckCircle
@@ -79,9 +81,10 @@ fun Steps(
 
     Column(
         modifier = Modifier
-            .clip(MaterialTheme.shapes.large)
+            .clip(RoundedCornerShape(16.dp))
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surfaceContainerLow)
+            .background(Color(0xFF111827))
+            .border(1.dp, Color(0xFF1F2937), RoundedCornerShape(16.dp))
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -89,17 +92,21 @@ fun Steps(
             modifier = Modifier
                 .clickable(true, onClick = onClick)
                 .fillMaxWidth()
-                .padding(20.dp)
+                .padding(horizontal = 16.dp, vertical = 15.dp)
         ) {
             StepIcon(state = state, size = 24.dp)
 
-            Text(stringResource(category.displayName))
+            Text(
+                text = stringResource(category.displayName),
+                style = MaterialTheme.typography.titleMedium,
+            )
 
             Spacer(modifier = Modifier.weight(1f))
 
             Text(
                 text = "${filteredSteps.count { it.state == State.COMPLETED }}/${filteredSteps.size}",
-                style = MaterialTheme.typography.labelSmall
+                style = MaterialTheme.typography.labelSmall,
+                color = if (state == State.RUNNING) Color(0xFFA78BFA) else MaterialTheme.colorScheme.onSurfaceVariant,
             )
 
             ArrowButton(modifier = Modifier.size(24.dp), expanded = isExpanded, onClick = null)
@@ -108,7 +115,7 @@ fun Steps(
         AnimatedVisibility(visible = isExpanded) {
             Column(
                 modifier = Modifier
-                    .background(MaterialTheme.colorScheme.background.copy(0.6f))
+                    .background(Color(0xFF020617))
                     .fillMaxWidth()
                     .padding(top = 10.dp)
             ) {
@@ -212,7 +219,7 @@ fun StepIcon(state: State, progress: Float? = null, size: Dp) {
             State.COMPLETED -> Icon(
                 Icons.Filled.CheckCircle,
                 contentDescription = stringResource(R.string.step_completed),
-                tint = Color(0xFF59B463),
+                tint = Color(0xFF22C55E),
                 modifier = Modifier.size(size)
             )
 
@@ -226,7 +233,7 @@ fun StepIcon(state: State, progress: Float? = null, size: Dp) {
             State.WAITING -> Icon(
                 Icons.Outlined.Circle,
                 contentDescription = stringResource(R.string.step_waiting),
-                tint = MaterialTheme.colorScheme.onSurface.copy(.2f),
+                tint = Color(0xFF4B5563),
                 modifier = Modifier.size(size)
             )
 
@@ -239,9 +246,10 @@ fun StepIcon(state: State, progress: Float? = null, size: Dp) {
                                 contentDescription = description
                             }
                     },
-
                     progress = { progress },
-                    strokeWidth = strokeWidth
+                    color = Color(0xFFA78BFA),
+                    trackColor = Color(0xFF1F2937),
+                    strokeWidth = strokeWidth,
                 )
             }
         }

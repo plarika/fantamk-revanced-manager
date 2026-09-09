@@ -11,10 +11,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.AutoFixHigh
-import androidx.compose.material.icons.outlined.WarningAmber
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -47,12 +46,12 @@ import app.revanced.manager.network.downloader.LoadedDownloader
 import app.revanced.manager.patcher.patch.PatchBundleInfo
 import app.revanced.manager.patcher.patch.PatchInfo
 import app.revanced.manager.ui.component.AlertDialogExtended
-import app.revanced.manager.ui.component.AppInfo
 import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.LoadingIndicator
-import app.revanced.manager.ui.component.NotificationCard
-import app.revanced.manager.ui.component.NotificationCardType
+import app.revanced.manager.ui.component.NexoraInlineWarning
+import app.revanced.manager.ui.component.NexoraPatchingAppHeader
+import app.revanced.manager.ui.component.NexoraPatchingOption
 import app.revanced.manager.ui.component.haptics.HapticExtendedFloatingActionButton
 import app.revanced.manager.ui.model.SelectedApp
 import app.revanced.manager.ui.viewmodel.SelectedAppInfoViewModel
@@ -268,13 +267,11 @@ fun SelectedAppInfoScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            AppInfo(vm.selectedAppInfo, placeholderLabel = packageName) {
-                Text(
-                    version ?: stringResource(R.string.selected_app_meta_any_version),
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-            }
+            NexoraPatchingAppHeader(
+                appInfo = vm.selectedAppInfo,
+                placeholderLabel = packageName,
+                version = version ?: stringResource(R.string.selected_app_meta_any_version),
+            )
 
             PageItem(
                 R.string.patch_selector_item,
@@ -358,12 +355,11 @@ fun SelectedAppInfoScreen(
                 val needsInternet =
                     vm.selectedApp.let { it is SelectedApp.Search || it is SelectedApp.Download }
 
-                if (needsInternet && networkMetered) NotificationCard(
-                    type = NotificationCardType.WARNING,
-                    icon = Icons.Outlined.WarningAmber,
-                    text = stringResource(R.string.network_metered_warning),
-                    onDismiss = null
-                )
+                if (needsInternet && networkMetered) {
+                    NexoraInlineWarning(
+                        text = stringResource(R.string.network_metered_warning)
+                    )
+                }
             }
         }
     }
@@ -378,42 +374,12 @@ private fun PageItem(
     warningColor: Color = Color.Unspecified,
     onClick: () -> Unit
 ) {
-    ListItem(
-        modifier = Modifier
-            .clickable(enabled = enabled, onClick = onClick)
-            .enabled(enabled)
-            .padding(start = 8.dp),
-        headlineContent = {
-            Text(
-                stringResource(title),
-                color = MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.titleLarge
-            )
-        },
-        supportingContent = {
-            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                Text(
-                    description,
-                    color = MaterialTheme.colorScheme.outline,
-                    style = MaterialTheme.typography.bodyMedium
-                )
-
-                warningDescription?.let {
-                    Text(
-                        text = "(!) $it",
-                        color = if (warningColor == Color.Unspecified) {
-                            MaterialTheme.colorScheme.tertiary
-                        } else {
-                            warningColor
-                        },
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                }
-            }
-        },
-        trailingContent = {
-            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null)
-        }
+    NexoraPatchingOption(
+        title = stringResource(title),
+        description = description,
+        enabled = enabled,
+        warningDescription = warningDescription,
+        onClick = onClick,
     )
 }
 
@@ -474,6 +440,9 @@ private fun VersionSelectorDialog(
 ) {
     AlertDialogExtended(
         onDismissRequest = onDismissRequest,
+        shape = RoundedCornerShape(20.dp),
+        containerColor = Color(0xFF111827),
+        tonalElevation = 0.dp,
         confirmButton = {
             TextButton(onClick = onDismissRequest, shapes = ButtonDefaults.shapes()) {
                 Text(stringResource(R.string.cancel))
@@ -536,6 +505,9 @@ private fun AppSourceSelectorDialog(
 
     AlertDialogExtended(
         onDismissRequest = onDismissRequest,
+        shape = RoundedCornerShape(20.dp),
+        containerColor = Color(0xFF111827),
+        tonalElevation = 0.dp,
         confirmButton = {
             TextButton(onClick = onDismissRequest, shapes = ButtonDefaults.shapes()) {
                 Text(stringResource(R.string.cancel))

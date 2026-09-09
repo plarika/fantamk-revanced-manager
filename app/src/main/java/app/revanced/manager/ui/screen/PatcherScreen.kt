@@ -24,16 +24,13 @@ import androidx.compose.material.icons.outlined.Cancel
 import androidx.compose.material.icons.outlined.FileDownload
 import androidx.compose.material.icons.outlined.PostAdd
 import androidx.compose.material.icons.outlined.Save
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.derivedStateOf
@@ -44,6 +41,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
@@ -54,6 +52,7 @@ import app.revanced.manager.ui.component.AppScaffold
 import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.ConfirmDialog
 import app.revanced.manager.ui.component.InstallerStatusDialog
+import app.revanced.manager.ui.component.NexoraPatchingDialog
 import app.revanced.manager.ui.component.ShareSheet
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.haptics.HapticExtendedFloatingActionButton
@@ -166,28 +165,13 @@ fun PatcherScreen(
     }
 
     viewModel.activityPromptDialog?.let { title ->
-        AlertDialog(
-            onDismissRequest = viewModel::rejectInteraction,
-            confirmButton = {
-                TextButton(
-                    onClick = viewModel::allowInteraction,
-                    shapes = ButtonDefaults.shapes()
-                ) {
-                    Text(stringResource(R.string.continue_))
-                }
-            },
-            dismissButton = {
-                TextButton(
-                    onClick = viewModel::rejectInteraction,
-                    shapes = ButtonDefaults.shapes()
-                ) {
-                    Text(stringResource(R.string.cancel))
-                }
-            },
-            title = { Text(title) },
-            text = {
-                Text(stringResource(R.string.downloader_activity_dialog_body))
-            }
+        NexoraPatchingDialog(
+            title = title,
+            description = stringResource(R.string.downloader_activity_dialog_body),
+            confirmText = stringResource(R.string.continue_),
+            dismissText = stringResource(R.string.cancel),
+            onConfirm = viewModel::allowInteraction,
+            onDismiss = viewModel::rejectInteraction,
         )
     }
 
@@ -201,6 +185,7 @@ fun PatcherScreen(
         },
         bottomBar = {
             BottomAppBar(
+                containerColor = Color(0xFF0B1120),
                 actions = {
                     TooltipIconButton(
                         onClick = { exportApkLauncher.launch("${viewModel.packageName}_${viewModel.version}_revanced_patched.apk") },
@@ -279,7 +264,10 @@ fun PatcherScreen(
 
             LinearWavyProgressIndicator(
                 progress = { patcherProgress },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                color = Color(0xFFA78BFA),
             )
 
             LazyColumn(
