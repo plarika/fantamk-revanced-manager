@@ -274,7 +274,7 @@ fun SelectedAppInfoScreen(
             PageItem(
                 marker = "01",
                 title = R.string.patch_selector_item,
-                stringResource(
+                description = stringResource(
                     R.string.patch_selector_item_description,
                     selectedPatchCount
                 ),
@@ -297,7 +297,7 @@ fun SelectedAppInfoScreen(
             PageItem(
                 marker = "02",
                 title = R.string.version,
-                selectedVersionLabel,
+                description = selectedVersionLabel,
                 warningDescription = if (showVersionCompatibilityWarning) {
                     stringResource(R.string.version_compatibility_warning)
                 } else {
@@ -318,7 +318,7 @@ fun SelectedAppInfoScreen(
             PageItem(
                 marker = "03",
                 title = R.string.apk_source_selector_item,
-                when (val app = vm.selectedApp) {
+                description = when (val app = vm.selectedApp) {
                     is SelectedApp.Search -> autoSourceSubtitle
                     is SelectedApp.Installed -> stringResource(R.string.apk_source_installed)
                     is SelectedApp.Download -> stringResource(
