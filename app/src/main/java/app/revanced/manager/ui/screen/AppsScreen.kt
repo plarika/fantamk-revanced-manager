@@ -93,6 +93,7 @@ fun AppsScreen(
     onStorageSelect: (SelectedApp.Local) -> Unit,
     sourceCount: Int,
     managerUpdateAvailable: Boolean,
+    managerUpdateChecked: Boolean,
     onAppsClick: () -> Unit,
     onLibraryClick: () -> Unit,
     onUpdatesClick: () -> Unit,
@@ -298,8 +299,11 @@ fun AppsScreen(
                                 R.string.nexora_compact_manager_meta,
                                 BuildConfig.VERSION_NAME,
                                 stringResource(
-                                    if (managerUpdateAvailable) R.string.nexora_metric_updates_available
-                                    else R.string.nexora_metric_updates_current
+                                    when {
+                                        managerUpdateAvailable -> R.string.nexora_metric_updates_available
+                                        !managerUpdateChecked -> R.string.nexora_updates_not_checked
+                                        else -> R.string.nexora_metric_updates_current
+                                    }
                                 )
                             ),
                             style = MaterialTheme.typography.bodySmall,

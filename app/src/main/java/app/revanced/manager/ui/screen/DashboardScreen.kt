@@ -519,6 +519,7 @@ fun DashboardScreen(
                                     onStorageSelect = { selectedApp -> onStorageSelection(selectedApp) },
                                     sourceCount = dashboardSourceCount,
                                     managerUpdateAvailable = hasUpdate,
+                                    managerUpdateChecked = updateVersion != null,
                                     onAppsClick = openApps,
                                     onLibraryClick = {
                                         composableScope.launch {
