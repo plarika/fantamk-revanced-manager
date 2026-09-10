@@ -163,7 +163,8 @@ fun DashboardScreen(
 
     val appsLazyListState = rememberLazyListState()
     val appsSearchLazyListState = rememberLazyListState()
-    var appsSearchExpanded by rememberSaveable { mutableStateOf(false) }    val openApps: () -> Unit = {
+    var appsSearchExpanded by rememberSaveable { mutableStateOf(false) }
+    val openApps: () -> Unit = {
         composableScope.launch {
             pagerState.animateScrollToPage(DashboardPage.APPS.ordinal)
             appsLazyListState.animateScrollToItem(0)

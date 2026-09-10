@@ -24,7 +24,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.revanced.manager.BuildConfig
-import app.revanced.manager.Rimport app.revanced.manager.ui.component.LazyColumnWithScrollbar
+import app.revanced.manager.R
+import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.LoadingIndicator
 import app.revanced.manager.ui.component.NexoraOfficialActionCard
 import app.revanced.manager.ui.component.NexoraOfficialAmber
@@ -49,7 +50,8 @@ fun HomeScreen(
     onUpdatesClick: () -> Unit,
     onSettingsClick: () -> Unit,
     viewModel: AppsViewModel = koinViewModel(),
-) {    val installedApps by viewModel.installedApps.collectAsStateWithLifecycle()
+) {
+    val installedApps by viewModel.installedApps.collectAsStateWithLifecycle()
     val patchableApps by viewModel.patchableApps.collectAsStateWithLifecycle()
     val listState = rememberLazyListState()
 
@@ -75,7 +77,8 @@ fun HomeScreen(
 
         val patchedPackages = patched
             .flatMap { listOf(it.currentPackageName, it.originalPackageName) }
-            .toSet()        val availableApps = patchable.count { it.packageName !in patchedPackages }
+            .toSet()
+        val availableApps = patchable.count { it.packageName !in patchedPackages }
         val channelLabel = stringResource(
             if (BuildConfig.VERSION_NAME.contains('-')) R.string.nexora_compact_dev
             else R.string.nexora_compact_stable,
@@ -101,7 +104,8 @@ fun HomeScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 NexoraOfficialBrandHeader(
-                    logo = painterResource(R.drawable.ic_logo_ring),                    title = stringResource(R.string.nexora_home_hero_title),
+                    logo = painterResource(R.drawable.ic_logo_ring),
+                    title = stringResource(R.string.nexora_home_hero_title),
                     subtitle = stringResource(R.string.nexora_home_hero_subtitle),
                 )
                 NexoraOfficialPanel {
@@ -126,7 +130,8 @@ fun HomeScreen(
                                 value = patched.size.toString(),
                                 label = stringResource(R.string.nexora_metric_modified),
                                 icon = Icons.Default.AutoAwesome,
-                                modifier = Modifier.weight(1f),                                accent = NexoraOfficialGreen,
+                                modifier = Modifier.weight(1f),
+                                accent = NexoraOfficialGreen,
                             )
                             NexoraOfficialMetric(
                                 value = sourceCount.toString(),
@@ -153,7 +158,8 @@ fun HomeScreen(
                         onClick = onAppsClick,
                         modifier = Modifier.weight(1f),
                         accent = NexoraOfficialViolet,
-                    )                    NexoraOfficialActionCard(
+                    )
+                    NexoraOfficialActionCard(
                         icon = Icons.Default.Folder,
                         title = stringResource(R.string.nexora_nav_library),
                         subtitle = stringResource(R.string.nexora_library_hero_subtitle),
@@ -181,7 +187,8 @@ fun HomeScreen(
                         onClick = onSettingsClick,
                         modifier = Modifier.weight(1f),
                         accent = NexoraOfficialViolet,
-                    )                }
+                    )
+                }
             }
         }
     }
