@@ -66,6 +66,10 @@ import app.revanced.manager.ui.component.NexoraCompactSection
 import app.revanced.manager.ui.component.NexoraOfficialActionCard
 import app.revanced.manager.ui.component.NexoraOfficialBrandHeader
 import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialBorder
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
 import app.revanced.manager.ui.component.NexoraOfficialMetric
 import app.revanced.manager.ui.component.NexoraOfficialPanel
 import app.revanced.manager.ui.component.NexoraOfficialSectionTitle
@@ -699,19 +703,19 @@ private fun NexoraLibraryIntro(
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(14.dp),
-        color = Color(0xFF111827),
-        border = BorderStroke(1.dp, Color(0xFF1F2937)),
+        color = NexoraOfficialPanelStrong,
+        border = BorderStroke(1.dp, NexoraOfficialBorder),
         tonalElevation = 1.dp,
     ) {
         Column(
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 11.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
-            Text(title, style = MaterialTheme.typography.titleLarge)
+            Text(title, style = MaterialTheme.typography.titleLarge, color = NexoraOfficialText)
             Text(
                 subtitle,
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = NexoraOfficialMuted,
             )
         }
     }
@@ -728,8 +732,8 @@ private fun NexoraCollectionCard(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 6.dp),
         shape = RoundedCornerShape(14.dp),
-        color = Color(0xFF111827),
-        border = BorderStroke(1.dp, Color(0xFF1F2937)),
+        color = NexoraOfficialPanelStrong,
+        border = BorderStroke(1.dp, NexoraOfficialBorder),
         tonalElevation = 1.dp,
     ) {
         Row(
@@ -739,24 +743,24 @@ private fun NexoraCollectionCard(
         ) {
             Surface(
                 shape = RoundedCornerShape(16.dp),
-                color = MaterialTheme.colorScheme.primaryContainer,
+                color = NexoraOfficialViolet.copy(alpha = 0.16f),
             ) {
                 Icon(
                     imageVector = Icons.Outlined.Source,
                     contentDescription = null,
                     modifier = Modifier.padding(12.dp),
-                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                    tint = NexoraOfficialViolet,
                 )
             }
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
-                Text(bundle.name, style = MaterialTheme.typography.titleMedium)
+                Text(bundle.name, style = MaterialTheme.typography.titleMedium, color = NexoraOfficialText)
                 Text(
                     text = "${bundle.version ?: stringResource(R.string.any_version)} • ${bundle.patches.size} ${stringResource(R.string.nexora_metric_patches)}",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = NexoraOfficialMuted,
                 )
             }
             Text(
@@ -782,8 +786,8 @@ private fun NexoraHistoryCard(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 6.dp),
         shape = RoundedCornerShape(14.dp),
-        color = Color(0xFF111827),
-        border = BorderStroke(1.dp, Color(0xFF1F2937)),
+        color = NexoraOfficialPanelStrong,
+        border = BorderStroke(1.dp, NexoraOfficialBorder),
         tonalElevation = 1.dp,
     ) {
         Row(
@@ -793,20 +797,20 @@ private fun NexoraHistoryCard(
         ) {
             Surface(
                 shape = RoundedCornerShape(16.dp),
-                color = MaterialTheme.colorScheme.primaryContainer,
+                color = NexoraOfficialViolet.copy(alpha = 0.16f),
             ) {
                 Icon(
                     imageVector = Icons.Outlined.Restore,
                     contentDescription = null,
                     modifier = Modifier.padding(12.dp),
-                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                    tint = NexoraOfficialViolet,
                 )
             }
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
-                Text(bundle.name, style = MaterialTheme.typography.titleMedium)
+                Text(bundle.name, style = MaterialTheme.typography.titleMedium, color = NexoraOfficialText)
                 Text(
                     text = bundle.version ?: stringResource(R.string.any_version),
                     style = MaterialTheme.typography.bodyLarge,
@@ -815,12 +819,12 @@ private fun NexoraHistoryCard(
                 Text(
                     text = releasedText,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = NexoraOfficialMuted,
                 )
                 Text(
                     text = "${bundle.patches.size} ${stringResource(R.string.nexora_metric_patches)}",
                     style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = NexoraOfficialMuted,
                 )
             }
             Text(
@@ -843,8 +847,8 @@ private fun NexoraLibraryTab(
         onClick = onClick,
         modifier = modifier,
         shape = RoundedCornerShape(10.dp),
-        color = if (selected) Color(0xFF785CFF) else Color(0xFF111827),
-        border = BorderStroke(1.dp, if (selected) Color(0xFF785CFF) else Color(0xFF1F2937)),
+        color = if (selected) NexoraOfficialViolet else NexoraOfficialPanelStrong,
+        border = BorderStroke(1.dp, if (selected) NexoraOfficialViolet else NexoraOfficialBorder),
         tonalElevation = 0.dp,
     ) {
         Box(
@@ -854,7 +858,7 @@ private fun NexoraLibraryTab(
             Text(
                 text = text,
                 style = MaterialTheme.typography.labelLarge,
-                color = if (selected) Color.White else Color(0xFFD1D5DB),
+                color = if (selected) Color.White else NexoraOfficialText,
             )
         }
     }

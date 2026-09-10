@@ -74,6 +74,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.revanced.manager.R
 import app.revanced.manager.network.dto.ReVancedAnnouncement
@@ -655,7 +656,7 @@ private fun NexoraBottomItem(
         } else Color.Transparent,
     ) {
         Column(
-            modifier = Modifier.padding(horizontal = 4.dp, vertical = 8.dp),
+            modifier = Modifier.padding(horizontal = 1.dp, vertical = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
@@ -668,7 +669,7 @@ private fun NexoraBottomItem(
             )
             Text(
                 text = label,
-                style = MaterialTheme.typography.labelSmall,
+                style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp, letterSpacing = 0.sp),
                 color = if (selected) NexoraOfficialViolet
                 else Color(0xFF8B96B8),
                 maxLines = 1,
