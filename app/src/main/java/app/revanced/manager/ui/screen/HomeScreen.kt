@@ -54,7 +54,22 @@ fun HomeScreen(
     val installedApps by viewModel.installedApps.collectAsStateWithLifecycle()
     val patchableApps by viewModel.patchableApps.collectAsStateWithLifecycle()
     val listState = rememberLazyListState()
-
+    val channelLabel = stringResource(
+        if (BuildConfig.VERSION_NAME.contains('-')) R.string.nexora_compact_dev
+        else R.string.nexora_compact_stable,
+    )
+    val updateStatus = stringResource(
+        when {
+            managerUpdateAvailable -> R.string.nexora_metric_updates_available
+            !managerUpdateChecked -> R.string.nexora_updates_not_checked
+            else -> R.string.nexora_metric_updates_current
+        },
+    )
+    val updateAccent = when {
+        managerUpdateAvailable -> NexoraOfficialAmber
+        !managerUpdateChecked -> NexoraOfficialCyan
+        else -> NexoraOfficialGreen
+    }
     LazyColumnWithScrollbar(
         modifier = Modifier.fillMaxSize(),
         state = listState,
@@ -79,22 +94,6 @@ fun HomeScreen(
             .flatMap { listOf(it.currentPackageName, it.originalPackageName) }
             .toSet()
         val availableApps = patchable.count { it.packageName !in patchedPackages }
-        val channelLabel = stringResource(
-            if (BuildConfig.VERSION_NAME.contains('-')) R.string.nexora_compact_dev
-            else R.string.nexora_compact_stable,
-        )
-        val updateStatus = stringResource(
-            when {
-                managerUpdateAvailable -> R.string.nexora_metric_updates_available
-                !managerUpdateChecked -> R.string.nexora_updates_not_checked
-                else -> R.string.nexora_metric_updates_current
-            },
-        )
-        val updateAccent = when {
-            managerUpdateAvailable -> NexoraOfficialAmber
-            !managerUpdateChecked -> NexoraOfficialCyan
-            else -> NexoraOfficialGreen
-        }
 
         item(key = "NEXORA_HOME") {
             Column(
