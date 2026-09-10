@@ -42,6 +42,13 @@ import androidx.compose.ui.unit.dp
 import app.revanced.manager.R
 import app.revanced.manager.ui.component.ArrowButton
 import app.revanced.manager.ui.component.LoadingIndicator
+import app.revanced.manager.ui.component.NexoraOfficialBorder
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialGreen
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.model.State
 import app.revanced.manager.ui.model.StepCategory
 import app.revanced.manager.ui.model.Step
@@ -81,10 +88,10 @@ fun Steps(
     }
 
     val accentColor = when (state) {
-        State.COMPLETED -> Color(0xFF22C55E)
+        State.COMPLETED -> NexoraOfficialGreen
         State.FAILED -> MaterialTheme.colorScheme.error
-        State.RUNNING -> Color(0xFFA78BFA)
-        State.WAITING -> Color(0xFF4B5563)
+        State.RUNNING -> NexoraOfficialCyan
+        State.WAITING -> NexoraOfficialMuted
     }
     val statusText = stringResource(
         when (state) {
@@ -97,10 +104,14 @@ fun Steps(
     val phaseMarker = String.format(Locale.ROOT, "%02d", StepCategory.entries.indexOf(category) + 1)
     Column(
         modifier = Modifier
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(22.dp))
             .fillMaxWidth()
-            .background(Color(0xFF111827))
-            .border(1.dp, accentColor.copy(alpha = if (state == State.WAITING) 0.22f else 0.42f), RoundedCornerShape(16.dp))
+            .background(NexoraOfficialPanelStrong)
+            .border(
+                1.dp,
+                if (state == State.RUNNING) NexoraOfficialCyan.copy(alpha = 0.55f) else NexoraOfficialBorder,
+                RoundedCornerShape(22.dp),
+            )
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -111,7 +122,7 @@ fun Steps(
                 .padding(horizontal = 14.dp, vertical = 13.dp)
         ) {
             Surface(
-                shape = RoundedCornerShape(11.dp),
+                shape = RoundedCornerShape(14.dp),
                 color = accentColor.copy(alpha = 0.10f),
                 border = androidx.compose.foundation.BorderStroke(1.dp, accentColor.copy(alpha = 0.30f)),
             ) {
@@ -131,6 +142,7 @@ fun Steps(
                 Text(
                     text = stringResource(category.displayName),
                     style = MaterialTheme.typography.titleMedium,
+                    color = NexoraOfficialText,
                 )
                 Text(
                     text = statusText,
@@ -142,7 +154,7 @@ fun Steps(
             Text(
                 text = "${filteredSteps.count { it.state == State.COMPLETED }}/${filteredSteps.size}",
                 style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = NexoraOfficialMuted,
             )
 
             ArrowButton(modifier = Modifier.size(24.dp), expanded = isExpanded, onClick = null)
@@ -151,7 +163,7 @@ fun Steps(
         AnimatedVisibility(visible = isExpanded) {
             Column(
                 modifier = Modifier
-                    .background(Color(0xFF020617))
+                    .background(Color(0xCC030816))
                     .fillMaxWidth()
                     .padding(top = 10.dp)
             ) {
@@ -255,7 +267,7 @@ fun StepIcon(state: State, progress: Float? = null, size: Dp) {
             State.COMPLETED -> Icon(
                 Icons.Filled.CheckCircle,
                 contentDescription = stringResource(R.string.step_completed),
-                tint = Color(0xFF22C55E),
+                tint = NexoraOfficialGreen,
                 modifier = Modifier.size(size)
             )
 
@@ -269,7 +281,7 @@ fun StepIcon(state: State, progress: Float? = null, size: Dp) {
             State.WAITING -> Icon(
                 Icons.Outlined.Circle,
                 contentDescription = stringResource(R.string.step_waiting),
-                tint = Color(0xFF4B5563),
+                tint = NexoraOfficialBorder,
                 modifier = Modifier.size(size)
             )
 
@@ -283,8 +295,8 @@ fun StepIcon(state: State, progress: Float? = null, size: Dp) {
                             }
                     },
                     progress = { progress },
-                    color = Color(0xFFA78BFA),
-                    trackColor = Color(0xFF1F2937),
+                    color = NexoraOfficialCyan,
+                    trackColor = NexoraOfficialBorder,
                     strokeWidth = strokeWidth,
                 )
             }

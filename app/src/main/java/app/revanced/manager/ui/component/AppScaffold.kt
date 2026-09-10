@@ -29,6 +29,7 @@ fun AppScaffold(
     topBar: @Composable (TopAppBarScrollBehavior) -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
     floatingActionButton: @Composable () -> Unit = {},
+    containerColor: Color = MaterialTheme.colorScheme.background,
     content: @Composable (PaddingValues) -> Unit
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
@@ -38,6 +39,7 @@ fun AppScaffold(
         topBar = { topBar(scrollBehavior) },
         bottomBar = bottomBar,
         floatingActionButton = floatingActionButton,
+        containerColor = containerColor,
         content = content
     )
 }

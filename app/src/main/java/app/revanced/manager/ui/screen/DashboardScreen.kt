@@ -9,6 +9,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -82,6 +83,11 @@ import app.revanced.manager.ui.component.ConfirmDialog
 import app.revanced.manager.ui.component.NotificationCard
 import app.revanced.manager.ui.component.NotificationCardType
 import app.revanced.manager.ui.component.NexoraLogoBadge
+import app.revanced.manager.ui.component.NexoraOfficialBackdrop
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialBorder
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.NexoraNeonBackdrop
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.haptics.HapticExtendedFloatingActionButton
@@ -301,14 +307,8 @@ fun DashboardScreen(
         onStorageSelect(app)
     }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
-                Brush.verticalGradient(
-                    listOf(Color(0xFF111827), Color(0xFF050509), Color.Black)
-                )
-            )
+    NexoraOfficialBackdrop(
+        modifier = Modifier.fillMaxSize()
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             val statusBarHeight = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
@@ -428,13 +428,14 @@ fun DashboardScreen(
                                 appsNavSelected = false
                             }
                         },
-                        onPatcher = {
+                        onLibrary = {
                             composableScope.launch {
                                 pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
                                 appsNavSelected = false
                             }
                         },
                         onApps = openApps,
+                        onUpdates = onUpdateClick,
                         onSettings = onSettingsClick,
                     )
                 },
@@ -577,8 +578,9 @@ private fun NexoraDashboardBottomBar(
     currentPage: Int,
     appsSectionActive: Boolean,
     onPanel: () -> Unit,
-    onPatcher: () -> Unit,
+    onLibrary: () -> Unit,
     onApps: () -> Unit,
+    onUpdates: () -> Unit,
     onSettings: () -> Unit,
 ) {
     val navInset = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
@@ -586,7 +588,8 @@ private fun NexoraDashboardBottomBar(
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = navInset),
-        color = Color(0xF5020617),
+        color = NexoraOfficialPanelStrong,
+        border = BorderStroke(1.dp, NexoraOfficialBorder),
         tonalElevation = 8.dp,
     ) {
         Row(
@@ -605,9 +608,9 @@ private fun NexoraDashboardBottomBar(
             )
             NexoraBottomItem(
                 icon = Icons.Outlined.Source,
-                label = stringResource(R.string.nexora_nav_patcher),
+                label = stringResource(R.string.nexora_nav_library),
                 selected = currentPage == DashboardPage.BUNDLES.ordinal,
-                onClick = onPatcher,
+                onClick = onLibrary,
                 modifier = Modifier.weight(1f),
             )
             NexoraBottomItem(
@@ -615,6 +618,13 @@ private fun NexoraDashboardBottomBar(
                 label = stringResource(R.string.nexora_nav_apps),
                 selected = currentPage == DashboardPage.DASHBOARD.ordinal && appsSectionActive,
                 onClick = onApps,
+                modifier = Modifier.weight(1f),
+            )
+            NexoraBottomItem(
+                icon = Icons.Filled.Update,
+                label = stringResource(R.string.nexora_nav_updates),
+                selected = false,
+                onClick = onUpdates,
                 modifier = Modifier.weight(1f),
             )
             NexoraBottomItem(
@@ -641,7 +651,7 @@ private fun NexoraBottomItem(
         modifier = modifier,
         shape = RoundedCornerShape(18.dp),
         color = if (selected) {
-            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.62f)
+            NexoraOfficialViolet.copy(alpha = 0.18f)
         } else Color.Transparent,
     ) {
         Column(
@@ -653,14 +663,14 @@ private fun NexoraBottomItem(
                 imageVector = icon,
                 contentDescription = label,
                 modifier = Modifier.size(21.dp),
-                tint = if (selected) MaterialTheme.colorScheme.primary
-                else MaterialTheme.colorScheme.onSurfaceVariant,
+                tint = if (selected) NexoraOfficialCyan
+                else Color(0xFF8B96B8),
             )
             Text(
                 text = label,
                 style = MaterialTheme.typography.labelSmall,
-                color = if (selected) MaterialTheme.colorScheme.primary
-                else MaterialTheme.colorScheme.onSurfaceVariant,
+                color = if (selected) NexoraOfficialViolet
+                else Color(0xFF8B96B8),
             )
         }
     }

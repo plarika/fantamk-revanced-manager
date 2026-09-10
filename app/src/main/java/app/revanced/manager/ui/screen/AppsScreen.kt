@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -31,6 +32,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Update
 import androidx.compose.material.icons.filled.PushPin
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Storage
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -68,6 +70,16 @@ import app.revanced.manager.ui.component.AppIcon
 import app.revanced.manager.ui.component.AppLabel
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.LoadingIndicator
+import app.revanced.manager.ui.component.NexoraOfficialActionCard
+import app.revanced.manager.ui.component.NexoraOfficialAmber
+import app.revanced.manager.ui.component.NexoraOfficialBrandHeader
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialGreen
+import app.revanced.manager.ui.component.NexoraOfficialMetric
+import app.revanced.manager.ui.component.NexoraOfficialPanel
+import app.revanced.manager.ui.component.NexoraOfficialSectionTitle
+import app.revanced.manager.ui.component.NexoraOfficialStatusPill
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.NexoraCompactAppRow
 import app.revanced.manager.ui.component.NexoraCompactBadge
 import app.revanced.manager.ui.component.NexoraCompactButton
@@ -277,144 +289,128 @@ fun AppsScreen(
             val allPatchableApps = patchable.filter { it.packageName !in patchedPackageNames }
 
             item(key = "NEXORA_OVERVIEW") {
-                val previewPatched = patched.take(2)
-                val previewPatchable = allPatchableApps.take((3 - previewPatched.size).coerceAtLeast(0))
                 val channelLabel = stringResource(
                     if (BuildConfig.VERSION_NAME.contains('-')) R.string.nexora_compact_dev
                     else R.string.nexora_compact_stable
                 )
+                val updateStatus = stringResource(
+                    when {
+                        managerUpdateAvailable -> R.string.nexora_metric_updates_available
+                        !managerUpdateChecked -> R.string.nexora_updates_not_checked
+                        else -> R.string.nexora_metric_updates_current
+                    }
+                )
+                val updateAccent = when {
+                    managerUpdateAvailable -> NexoraOfficialAmber
+                    !managerUpdateChecked -> NexoraOfficialCyan
+                    else -> NexoraOfficialGreen
+                }
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 10.dp, vertical = 6.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                        .padding(horizontal = 14.dp, vertical = 12.dp),
+                    verticalArrangement = Arrangement.spacedBy(14.dp),
                 ) {
-                    NexoraCompactSection(
-                        title = stringResource(R.string.nexora_compact_panel),
-                        subtitle = stringResource(R.string.nexora_compact_welcome),
-                        trailing = { NexoraCompactBadge(channelLabel) },
-                    ) {
-                        Text(
-                            text = stringResource(
-                                R.string.nexora_compact_manager_meta,
-                                BuildConfig.VERSION_NAME,
-                                stringResource(
-                                    when {
-                                        managerUpdateAvailable -> R.string.nexora_metric_updates_available
-                                        !managerUpdateChecked -> R.string.nexora_updates_not_checked
-                                        else -> R.string.nexora_metric_updates_current
-                                    }
+                    NexoraOfficialBrandHeader(
+                        logo = painterResource(R.drawable.ic_logo_ring),
+                        title = stringResource(R.string.nexora_home_hero_title),
+                        subtitle = stringResource(R.string.nexora_home_hero_subtitle),
+                    )
+                    NexoraOfficialPanel {
+                        Column(
+                            modifier = Modifier.padding(16.dp),
+                            verticalArrangement = Arrangement.spacedBy(12.dp),
+                        ) {
+                            NexoraOfficialSectionTitle(
+                                overline = channelLabel,
+                                title = stringResource(R.string.nexora_workspace_title),
+                                trailing = updateStatus,
+                            )
+                            Row(modifier = Modifier.fillMaxWidth()) {
+                                NexoraOfficialMetric(
+                                    value = (patched.size + allPatchableApps.size).toString(),
+                                    label = stringResource(R.string.nexora_metric_available),
+                                    icon = Icons.Default.Apps,
+                                    modifier = Modifier.weight(1f),
+                                    accent = NexoraOfficialViolet,
                                 )
-                            ),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = Color(0xFF9CA3AF),
+                                NexoraOfficialMetric(
+                                    value = patched.size.toString(),
+                                    label = stringResource(R.string.nexora_metric_modified),
+                                    icon = Icons.Default.AutoAwesome,
+                                    modifier = Modifier.weight(1f),
+                                    accent = NexoraOfficialGreen,
+                                )
+                                NexoraOfficialMetric(
+                                    value = sourceCount.toString(),
+                                    label = stringResource(R.string.nexora_metric_sources),
+                                    icon = Icons.Default.Storage,
+                                    modifier = Modifier.weight(1f),
+                                    accent = NexoraOfficialCyan,
+                                )
+                            }
+                            NexoraOfficialStatusPill(
+                                text = updateStatus,
+                                accent = updateAccent,
+                            )
+                        }
+                    }
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        NexoraOfficialActionCard(
+                            icon = Icons.Default.Apps,
+                            title = stringResource(R.string.nexora_nav_apps),
+                            subtitle = stringResource(R.string.nexora_metric_apps_subtitle),
+                            onClick = onAppsClick,
+                            modifier = Modifier.weight(1f),
+                            accent = NexoraOfficialViolet,
                         )
-                        NexoraCompactButton(
-                            text = stringResource(R.string.nexora_compact_check_updates),
+                        NexoraOfficialActionCard(
+                            icon = Icons.Default.Folder,
+                            title = stringResource(R.string.nexora_nav_library),
+                            subtitle = stringResource(R.string.nexora_library_hero_subtitle),
+                            onClick = onLibraryClick,
+                            modifier = Modifier.weight(1f),
+                            accent = NexoraOfficialCyan,
+                        )
+                    }
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        NexoraOfficialActionCard(
+                            icon = Icons.Default.Update,
+                            title = stringResource(R.string.nexora_nav_updates),
+                            subtitle = stringResource(R.string.nexora_updates_header_subtitle),
                             onClick = onUpdatesClick,
+                            modifier = Modifier.weight(1f),
+                            accent = updateAccent,
+                        )
+                        NexoraOfficialActionCard(
+                            icon = Icons.Default.Settings,
+                            title = stringResource(R.string.nexora_nav_settings),
+                            subtitle = stringResource(R.string.nexora_compact_settings_desc),
+                            onClick = onSettingsClick,
+                            modifier = Modifier.weight(1f),
+                            accent = NexoraOfficialViolet,
                         )
                     }
-                    NexoraCompactSection(
-                        title = stringResource(R.string.nexora_compact_apps_title),
-                        subtitle = stringResource(R.string.nexora_compact_apps_subtitle),
-                        trailing = {
-                            NexoraCompactButton(
-                                text = stringResource(R.string.nexora_compact_view_all),
-                                onClick = onAppsClick,
-                            )
+                    NexoraOfficialActionCard(
+                        icon = Icons.Default.Storage,
+                        title = stringResource(R.string.nexora_compact_add_app),
+                        subtitle = stringResource(R.string.nexora_compact_patcher_desc),
+                        onClick = {
+                            try {
+                                pickApkLauncher.launch(APK_MIMETYPE)
+                            } catch (_: ActivityNotFoundException) {
+                                context.toast(R.string.no_file_picker_found)
+                            }
                         },
-                    ) {
-                        previewPatched.forEach { app ->
-                            val packageInfo = viewModel.packageInfoMap[app.currentPackageName]
-                            NexoraCompactAppRow(
-                                name = viewModel.loadLabel(packageInfo),
-                                meta = "${app.version} • ${app.currentPackageName}",
-                                status = stringResource(R.string.nexora_compact_patched),
-                                patched = true,
-                                onClick = { onAppClick(app) },
-                            ) {
-                                AppIcon(
-                                    packageInfo = packageInfo,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(28.dp),
-                                )
-                            }
-                        }
-                        previewPatchable.forEach { app ->
-                            NexoraCompactAppRow(
-                                name = viewModel.loadLabel(app.packageInfo),
-                                meta = app.packageName,
-                                status = stringResource(R.string.nexora_compact_available),
-                                patched = false,
-                                onClick = { onPatchableAppClick(app.packageName) },
-                            ) {
-                                AppIcon(
-                                    packageInfo = app.packageInfo,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(28.dp),
-                                )
-                            }
-                        }
-                        NexoraCompactButton(
-                            text = stringResource(R.string.nexora_compact_add_app),
-                            onClick = {
-                                try {
-                                    pickApkLauncher.launch(APK_MIMETYPE)
-                                } catch (_: ActivityNotFoundException) {
-                                    context.toast(R.string.no_file_picker_found)
-                                }
-                            },
-                        )
-                    }
-
-                    NexoraCompactSection(
-                        title = stringResource(R.string.nexora_compact_quick_actions),
-                        subtitle = stringResource(R.string.nexora_compact_quick_subtitle),
-                    ) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(6.dp),
-                        ) {
-                            NexoraCompactQuickCard(
-                                title = stringResource(R.string.nexora_compact_patcher),
-                                description = stringResource(R.string.nexora_compact_patcher_desc),
-                                onClick = {
-                                    try {
-                                        pickApkLauncher.launch(APK_MIMETYPE)
-                                    } catch (_: ActivityNotFoundException) {
-                                        context.toast(R.string.no_file_picker_found)
-                                    }
-                                },
-                                modifier = Modifier.weight(1f),
-                            )
-                            NexoraCompactQuickCard(
-                                title = stringResource(R.string.nexora_compact_integrations),
-                                description = stringResource(
-                                    R.string.nexora_compact_integrations_desc,
-                                    sourceCount,
-                                ),
-                                onClick = onLibraryClick,
-                                modifier = Modifier.weight(1f),
-                            )
-                        }
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(6.dp),
-                        ) {
-                            NexoraCompactQuickCard(
-                                title = stringResource(R.string.nexora_compact_settings),
-                                description = stringResource(R.string.nexora_compact_settings_desc),
-                                onClick = onSettingsClick,
-                                modifier = Modifier.weight(1f),
-                            )
-                            NexoraCompactQuickCard(
-                                title = stringResource(R.string.nexora_compact_logs),
-                                description = stringResource(R.string.nexora_compact_logs_desc),
-                                onClick = onUpdatesClick,
-                                modifier = Modifier.weight(1f),
-                            )
-                        }
-                    }
+                        modifier = Modifier.fillMaxWidth(),
+                        accent = NexoraOfficialCyan,
+                    )
                 }
             }
 
@@ -533,11 +529,11 @@ private fun SectionHeader(
             imageVector = icon,
             contentDescription = null,
             modifier = Modifier.size(18.dp),
-            tint = MaterialTheme.colorScheme.primary
+            tint = NexoraOfficialViolet
         )
         Text(
             text = title,
-            color = MaterialTheme.colorScheme.primary,
+            color = NexoraOfficialViolet,
             style = MaterialTheme.typography.labelLarge,
         )
     }
@@ -555,23 +551,24 @@ private fun AppItem(
     patchCount: Int? = null,
     suggestedVersion: String? = null,
 ) {
-    val cardShape = RoundedCornerShape(10.dp)
-    val accent = if (isPatched) Color(0xFF785CFF) else Color(0xFF1F2937)
+    val cardShape = RoundedCornerShape(18.dp)
+    val accent = if (isPatched) NexoraOfficialGreen else NexoraOfficialViolet
     Surface(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 10.dp, vertical = 4.dp)
-            .border(1.dp, accent.copy(alpha = if (isPatched) 0.70f else 1f), cardShape)
+            .padding(horizontal = 14.dp, vertical = 5.dp)
+            .border(1.dp, accent.copy(alpha = if (isPatched) 0.62f else 0.45f), cardShape)
             .combinedClickable(onClick = onClick, onLongClick = onLongClick),
         shape = cardShape,
-        color = Color(0xFF020617),
+        color = Color(0xEE071020),
         tonalElevation = 0.dp
     ) {
         ListItem(
             leadingContent = {
                 Surface(
-                    shape = RoundedCornerShape(8.dp),
-                    color = Color(0xFF111827),
+                    shape = RoundedCornerShape(14.dp),
+                    color = Color(0xFF050A16),
+                    border = BorderStroke(1.dp, accent.copy(alpha = 0.35f)),
                     tonalElevation = 0.dp,
                 ) {
                     Box(
@@ -596,7 +593,7 @@ private fun AppItem(
                             imageVector = Icons.Default.AutoAwesome,
                             contentDescription = null,
                             modifier = Modifier.size(16.dp),
-                            tint = Color(0xFFA78BFA)
+                            tint = NexoraOfficialViolet
                         )
                     }
                     AppLabel(packageInfo, defaultText = packageName)

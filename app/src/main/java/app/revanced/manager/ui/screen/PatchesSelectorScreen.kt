@@ -52,6 +52,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
@@ -62,6 +63,13 @@ import app.revanced.manager.patcher.patch.PatchInfo
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.NexoraCompactButton
 import app.revanced.manager.ui.component.NexoraCompactSection
+import app.revanced.manager.ui.component.NexoraOfficialActionCard
+import app.revanced.manager.ui.component.NexoraOfficialBrandHeader
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialMetric
+import app.revanced.manager.ui.component.NexoraOfficialPanel
+import app.revanced.manager.ui.component.NexoraOfficialSectionTitle
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.SearchBar
 import app.revanced.manager.ui.component.TooltipHost
 import app.revanced.manager.ui.component.TooltipIconButton
@@ -327,7 +335,7 @@ fun PatchesSelectorScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .zIndex(1f)
-                        .background(MaterialTheme.colorScheme.surface)
+                        .background(if (readOnly) Color.Transparent else MaterialTheme.colorScheme.surface)
                 ) {
                     SourceSectionHeader(
                         bundle = bundle,
@@ -379,6 +387,7 @@ fun PatchesSelectorScreen(
     }
 
     Scaffold(
+        containerColor = if (readOnly) Color.Transparent else MaterialTheme.colorScheme.background,
         topBar = {
             Box(modifier = Modifier.padding(horizontal = if (searchExpanded) 0.dp else 16.dp)) {
                 SearchBar(
@@ -442,7 +451,7 @@ fun PatchesSelectorScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .weight(1f)
-                            .background(MaterialTheme.colorScheme.surface)
+                            .background(if (readOnly) Color.Transparent else MaterialTheme.colorScheme.surface)
                     ) {
                         LazyColumnWithScrollbar(
                             modifier = Modifier.fillMaxSize(),
@@ -525,7 +534,7 @@ fun PatchesSelectorScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(stickyHeaderTopGap)
-                    .background(MaterialTheme.colorScheme.surface)
+                    .background(if (readOnly) Color.Transparent else MaterialTheme.colorScheme.surface)
             )
 
             Box(
@@ -579,13 +588,46 @@ private fun NexoraLibraryOverview(
     selectedPage: NexoraLibraryPage,
     onPageSelected: (NexoraLibraryPage) -> Unit,
 ) {
-    val nexoraBundle = bundles.firstOrNull { it.name.contains("Nexora", ignoreCase = true) }
+    val totalPatches = remember(bundles) { bundles.sumOf { it.patches.size } }
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 14.dp, vertical = 10.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
+        NexoraOfficialBrandHeader(
+            logo = painterResource(R.drawable.ic_logo_ring),
+            title = stringResource(R.string.nexora_nav_library),
+            subtitle = stringResource(R.string.nexora_library_hero_subtitle),
+        )
+        NexoraOfficialPanel {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                NexoraOfficialSectionTitle(
+                    overline = stringResource(R.string.nexora_library_hero_title),
+                    title = stringResource(R.string.nexora_sources_available),
+                    trailing = bundles.size.toString(),
+                )
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    NexoraOfficialMetric(
+                        value = totalPatches.toString(),
+                        label = stringResource(R.string.nexora_metric_patches),
+                        icon = Icons.Outlined.FilterList,
+                        modifier = Modifier.weight(1f),
+                        accent = NexoraOfficialViolet,
+                    )
+                    NexoraOfficialMetric(
+                        value = bundles.size.toString(),
+                        label = stringResource(R.string.nexora_metric_sources),
+                        icon = Icons.Outlined.Source,
+                        modifier = Modifier.weight(1f),
+                        accent = NexoraOfficialCyan,
+                    )
+                }
+            }
+        }
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -609,72 +651,39 @@ private fun NexoraLibraryOverview(
                 modifier = Modifier.weight(1f),
             )
         }
-        when (selectedPage) {
-            NexoraLibraryPage.SOURCES -> {
-                NexoraCompactSection(
-                    title = stringResource(R.string.nexora_library_hero_title),
-                    subtitle = stringResource(R.string.nexora_library_hero_subtitle),
-                ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    ) {
-                        Surface(
-                            modifier = Modifier.weight(1f),
-                            shape = RoundedCornerShape(10.dp),
-                            color = Color(0xFF020617),
-                            border = BorderStroke(1.dp, Color(0xFF1F2937)),
-                        ) {
-                            Column(Modifier.padding(10.dp)) {
-                                Text((nexoraBundle?.patches?.size ?: 0).toString(), style = MaterialTheme.typography.titleLarge)
-                                Text(stringResource(R.string.nexora_metric_patches), style = MaterialTheme.typography.labelSmall, color = Color(0xFF9CA3AF))
-                            }
-                        }
-                        Surface(
-                            modifier = Modifier.weight(1f),
-                            shape = RoundedCornerShape(10.dp),
-                            color = Color(0xFF020617),
-                            border = BorderStroke(1.dp, Color(0xFF1F2937)),
-                        ) {
-                            Column(Modifier.padding(10.dp)) {
-                                Text(bundles.size.toString(), style = MaterialTheme.typography.titleLarge)
-                                Text(stringResource(R.string.nexora_metric_sources), style = MaterialTheme.typography.labelSmall, color = Color(0xFF9CA3AF))
-                            }
-                        }
-                    }
-                    onSyncAll?.let {
-                        NexoraCompactButton(
-                            text = stringResource(R.string.nexora_sync_now),
-                            onClick = it,
-                        )
-                    }
-                }
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 2.dp, start = 2.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    Text(
-                        text = stringResource(R.string.nexora_sources_available),
-                        style = MaterialTheme.typography.titleLarge,
-                        color = MaterialTheme.colorScheme.onSurface,
+        if (selectedPage == NexoraLibraryPage.SOURCES) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                onSyncAll?.let {
+                    NexoraOfficialActionCard(
+                        icon = Icons.Outlined.Restore,
+                        title = stringResource(R.string.nexora_sync_now),
+                        subtitle = stringResource(R.string.nexora_library_hero_subtitle),
+                        onClick = it,
                         modifier = Modifier.weight(1f),
+                        accent = NexoraOfficialCyan,
                     )
-                    onAddSource?.let {
-                        NexoraCompactButton(
-                            text = stringResource(R.string.nexora_add_source),
-                            onClick = it,
-                        )
-                    }
+                }
+                onAddSource?.let {
+                    NexoraOfficialActionCard(
+                        icon = Icons.Outlined.Source,
+                        title = stringResource(R.string.nexora_add_source),
+                        subtitle = stringResource(R.string.nexora_metric_sources_subtitle),
+                        onClick = it,
+                        modifier = Modifier.weight(1f),
+                        accent = NexoraOfficialViolet,
+                    )
                 }
             }
-            NexoraLibraryPage.COLLECTIONS -> NexoraLibraryIntro(
+        } else if (selectedPage == NexoraLibraryPage.COLLECTIONS) {
+            NexoraLibraryIntro(
                 title = stringResource(R.string.nexora_collections_title),
                 subtitle = stringResource(R.string.nexora_collections_subtitle),
             )
-            NexoraLibraryPage.HISTORY -> NexoraLibraryIntro(
+        } else {
+            NexoraLibraryIntro(
                 title = stringResource(R.string.nexora_history_title),
                 subtitle = stringResource(R.string.nexora_history_subtitle),
             )

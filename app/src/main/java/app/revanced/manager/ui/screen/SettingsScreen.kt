@@ -58,6 +58,14 @@ import app.revanced.manager.domain.manager.PreferencesManager
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.NotificationCard
 import app.revanced.manager.ui.component.NotificationCardType
+import app.revanced.manager.ui.component.NexoraOfficialBackdrop
+import app.revanced.manager.ui.component.NexoraOfficialBackground
+import app.revanced.manager.ui.component.NexoraOfficialBorder
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.model.navigation.Settings
 import com.google.accompanist.drawablepainter.rememberDrawablePainter
@@ -81,23 +89,23 @@ private fun NexoraSettingsCard(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        shape = RoundedCornerShape(12.dp),
-        color = Color(0xFF111827),
-        border = BorderStroke(1.dp, Color(0xFF1F2937)),
+        shape = RoundedCornerShape(18.dp),
+        color = NexoraOfficialPanelStrong,
+        border = BorderStroke(1.dp, NexoraOfficialBorder),
     ) {
         Row(
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 11.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Surface(
-                shape = RoundedCornerShape(10.dp),
-                color = Color(0xFF020617),
-                border = BorderStroke(1.dp, Color(0xFF1F2937)),
+                shape = RoundedCornerShape(14.dp),
+                color = NexoraOfficialViolet.copy(alpha = 0.10f),
+                border = BorderStroke(1.dp, NexoraOfficialViolet.copy(alpha = 0.38f)),
             ) {
                 Icon(
                     imageVector = section.image,
                     contentDescription = null,
-                    tint = Color(0xFFA78BFA),
+                    tint = NexoraOfficialCyan,
                     modifier = Modifier.padding(10.dp).size(22.dp),
                 )
             }
@@ -106,20 +114,20 @@ private fun NexoraSettingsCard(
                 Text(
                     text = stringResource(section.name),
                     style = MaterialTheme.typography.titleSmall,
-                    color = Color(0xFFF9FAFB),
+                    color = NexoraOfficialText,
                 )
                 Text(
                     text = supportingText,
                     style = MaterialTheme.typography.bodySmall,
                     color = if (supportingColor == Color.Unspecified) {
-                        Color(0xFF9CA3AF)
+                        NexoraOfficialMuted
                     } else supportingColor,
                 )
             }
             Text(
                 text = "›",
                 style = MaterialTheme.typography.titleLarge,
-                color = Color(0xFFA78BFA),
+                color = NexoraOfficialViolet,
             )
         }
     }
@@ -186,7 +194,8 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
         ).takeIf { showDeveloperSettings }
     }
 
-    Scaffold { paddingValues ->
+    NexoraOfficialBackdrop(modifier = Modifier.fillMaxSize()) {
+        Scaffold(containerColor = Color.Transparent) { paddingValues ->
         ColumnWithScrollbar(
             modifier = Modifier
                 .padding(paddingValues)
@@ -231,12 +240,12 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                             Text(
                                 text = stringResource(R.string.nexora_settings_title),
                                 style = MaterialTheme.typography.titleLarge,
-                                color = Color(0xFFF9FAFB),
+                                color = NexoraOfficialText,
                             )
                             Text(
                                 text = stringResource(R.string.nexora_settings_subtitle),
                                 style = MaterialTheme.typography.bodySmall,
-                                color = Color(0xFFA78BFA),
+                                color = NexoraOfficialViolet,
                             )
                         }
                     }
@@ -260,7 +269,7 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                 Text(
                     text = stringResource(R.string.nexora_settings_essential),
                     style = MaterialTheme.typography.titleMedium,
-                    color = Color(0xFFA78BFA),
+                    color = NexoraOfficialViolet,
                     modifier = Modifier.padding(horizontal = 4.dp),
                 )
                 generalSections.forEach { section ->
@@ -273,7 +282,7 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                 Text(
                     text = stringResource(R.string.nexora_settings_system),
                     style = MaterialTheme.typography.titleMedium,
-                    color = Color(0xFFA78BFA),
+                    color = NexoraOfficialViolet,
                     modifier = Modifier.padding(horizontal = 4.dp),
                 )
                 advancedSections.forEach { section ->
@@ -322,7 +331,7 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                             Text(
                                 text = stringResource(R.string.nexora_app_name),
                                 style = MaterialTheme.typography.titleMedium,
-                                color = Color(0xFFF9FAFB),
+                                color = NexoraOfficialText,
                             )
                             Text(
                                 text = BuildConfig.VERSION_NAME,
@@ -333,11 +342,12 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                         Text(
                             text = "›",
                             style = MaterialTheme.typography.headlineSmall,
-                            color = Color(0xFFA78BFA),
+                            color = NexoraOfficialViolet,
                         )
                     }
                 }
             }
         }
+    }
     }
 }

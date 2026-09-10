@@ -51,9 +51,12 @@ import app.revanced.manager.data.room.apps.installed.InstallType
 import app.revanced.manager.ui.component.AppScaffold
 import app.revanced.manager.ui.component.ConfirmDialog
 import app.revanced.manager.ui.component.InstallerStatusDialog
-import app.revanced.manager.ui.component.NexoraFlowTopBar
+import app.revanced.manager.ui.component.NexoraOfficialBackdrop
+import app.revanced.manager.ui.component.NexoraOfficialPageHeader
+import app.revanced.manager.ui.component.NexoraOfficialProgressPanel
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialPurple
 import app.revanced.manager.ui.component.NexoraPatchingDialog
-import app.revanced.manager.ui.component.NexoraPipelineProgress
 import app.revanced.manager.ui.component.ShareSheet
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.haptics.HapticExtendedFloatingActionButton
@@ -176,17 +179,20 @@ fun PatcherScreen(
         )
     }
 
-    AppScaffold(
+    NexoraOfficialBackdrop(modifier = Modifier.fillMaxSize()) {
+        AppScaffold(
+            containerColor = Color.Transparent,
         topBar = { _ ->
-            NexoraFlowTopBar(
+            NexoraOfficialPageHeader(
                 title = stringResource(R.string.patcher),
-                backContentDescription = stringResource(R.string.back),
+                subtitle = stringResource(R.string.nexora_compact_patcher_desc),
+                backLabel = stringResource(R.string.back),
                 onBackClick = ::onPageBack,
             )
         },
         bottomBar = {
             BottomAppBar(
-                containerColor = Color(0xFF0B1120),
+                containerColor = NexoraOfficialPanelStrong,
                 actions = {
                     TooltipIconButton(
                         onClick = { exportApkLauncher.launch("${viewModel.packageName}_${viewModel.version}_revanced_patched.apk") },
@@ -229,7 +235,7 @@ fun PatcherScreen(
                                 )
                             },
                             shape = RoundedCornerShape(16.dp),
-                            containerColor = Color(0xFF785CFF),
+                            containerColor = NexoraOfficialPurple,
                             contentColor = Color.White,
                             onClick = {
                                 if (viewModel.installedPackageName == null)
@@ -253,7 +259,6 @@ fun PatcherScreen(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .background(Color(0xFF050509))
         ) {
             var expandedCategory by rememberSaveable { mutableStateOf<StepCategory?>(null) }
 
@@ -267,7 +272,12 @@ fun PatcherScreen(
                 label = "patcherProgress"
             )
 
-            NexoraPipelineProgress(progress = patcherProgress)
+            NexoraOfficialProgressPanel(
+                progress = patcherProgress,
+                title = if (patcherProgress >= 1f) stringResource(R.string.step_completed) else stringResource(R.string.patcher),
+                status = stringResource(R.string.nexora_app_name),
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            )
 
 
             LazyColumn(
@@ -291,5 +301,6 @@ fun PatcherScreen(
                 }
             }
         }
+    }
     }
 }

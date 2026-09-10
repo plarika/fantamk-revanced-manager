@@ -32,6 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -40,6 +41,10 @@ import app.revanced.manager.R
 import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.BottomContentBar
 import app.revanced.manager.ui.component.ChangelogList
+import app.revanced.manager.ui.component.NexoraOfficialBackdrop
+import app.revanced.manager.ui.component.NexoraOfficialPageHeader
+import app.revanced.manager.ui.component.NexoraOfficialViolet
+import app.revanced.manager.ui.component.NexoraPatchingDialog
 import app.revanced.manager.ui.viewmodel.UpdateViewModel
 import app.revanced.manager.ui.viewmodel.UpdateViewModel.State
 import org.koin.androidx.compose.koinViewModel
@@ -82,26 +87,19 @@ fun UpdateScreen(
         else -> null
     }
 
-    Scaffold(
+    NexoraOfficialBackdrop(modifier = Modifier.fillMaxSize()) {
+        Scaffold(
+        containerColor = Color.Transparent,
         topBar = {
-            AppTopBar(
-                title = {
-                    Column {
-                        Text(stringResource(vm.state.title))
-
-                        if (vm.state == State.DOWNLOADING) {
-                            Text(
-                                text = "${vm.downloadedSize.div(1000000)} MB /  ${
-                                    vm.totalSize.div(1000000)
-                                } MB (${vm.downloadProgress.times(100).toInt()}%)",
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.outline
-                            )
-                        }
-                    }
+            NexoraOfficialPageHeader(
+                title = stringResource(vm.state.title),
+                subtitle = if (vm.state == State.DOWNLOADING) {
+                    "${vm.downloadedSize.div(1000000)} MB / ${vm.totalSize.div(1000000)} MB (${vm.downloadProgress.times(100).toInt()}%)"
+                } else {
+                    stringResource(R.string.nexora_updates_header_subtitle)
                 },
-                scrollBehavior = scrollBehavior,
-                onBackClick = onBackClick
+                backLabel = stringResource(R.string.back),
+                onBackClick = onBackClick,
             )
         },
         bottomBar = {
@@ -136,7 +134,9 @@ fun UpdateScreen(
                 LinearWavyProgressIndicator(
                     progress = { updaterProgress },
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .padding(horizontal = 14.dp),
+                    color = NexoraOfficialViolet,
                 )
             }
 
@@ -182,4 +182,5 @@ private fun MeteredDownloadConfirmationDialog(
         icon = { Icon(Icons.Outlined.Update, null) },
         text = { Text(stringResource(R.string.download_confirmation_metered)) }
     )
+    }
 }
