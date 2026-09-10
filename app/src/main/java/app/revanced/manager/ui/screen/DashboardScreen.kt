@@ -107,8 +107,9 @@ enum class DashboardPage(
     val titleResId: Int,
     val icon: ImageVector
 ) {
-    DASHBOARD(R.string.nexora_nav_apps, Icons.Outlined.Apps),
-    BUNDLES(R.string.nexora_nav_library, Icons.Outlined.Source),
+    HOME(R.string.nexora_nav_panel, Icons.Outlined.Home),
+    APPS(R.string.nexora_nav_apps, Icons.Outlined.Apps),
+    LIBRARY(R.string.nexora_nav_library, Icons.Outlined.Source),
 }
 
 @SuppressLint("BatteryLife")
@@ -156,20 +157,16 @@ fun DashboardScreen(
     })
     val composableScope = rememberCoroutineScope()
     val pagerState = rememberPagerState(
-        initialPage = DashboardPage.DASHBOARD.ordinal,
+        initialPage = DashboardPage.HOME.ordinal,
         initialPageOffsetFraction = 0f
     ) { DashboardPage.entries.size }
 
     val appsLazyListState = rememberLazyListState()
     val appsSearchLazyListState = rememberLazyListState()
-    var appsSearchExpanded by rememberSaveable { mutableStateOf(false) }
-    var appsNavSelected by rememberSaveable { mutableStateOf(false) }
-    val openApps: () -> Unit = {
+    var appsSearchExpanded by rememberSaveable { mutableStateOf(false) }    val openApps: () -> Unit = {
         composableScope.launch {
-            pagerState.animateScrollToPage(DashboardPage.DASHBOARD.ordinal)
-            val target = if (appsLazyListState.layoutInfo.totalItemsCount > 1) 1 else 0
-            appsLazyListState.animateScrollToItem(target)
-            appsNavSelected = true
+            pagerState.animateScrollToPage(DashboardPage.APPS.ordinal)
+            appsLazyListState.animateScrollToItem(0)
         }
     }
 
@@ -196,7 +193,7 @@ fun DashboardScreen(
     var sourceDeleteUid by rememberSaveable { mutableStateOf<Int?>(null) }
 
     LaunchedEffect(pagerState.currentPage) {
-        if (pagerState.currentPage != DashboardPage.BUNDLES.ordinal) {
+        if (pagerState.currentPage != DashboardPage.LIBRARY.ordinal) {
             patchesSourceEditMode = false
         }
     }
@@ -420,21 +417,17 @@ fun DashboardScreen(
                 bottomBar = {
                     NexoraDashboardBottomBar(
                         currentPage = pagerState.currentPage,
-                        appsSectionActive = pagerState.currentPage == DashboardPage.DASHBOARD.ordinal && appsNavSelected,
                         onPanel = {
                             composableScope.launch {
-                                pagerState.animateScrollToPage(DashboardPage.DASHBOARD.ordinal)
-                                appsLazyListState.animateScrollToItem(0)
-                                appsNavSelected = false
-                            }
-                        },
-                        onLibrary = {
-                            composableScope.launch {
-                                pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
-                                appsNavSelected = false
+                                pagerState.animateScrollToPage(DashboardPage.HOME.ordinal)
                             }
                         },
                         onApps = openApps,
+                        onLibrary = {
+                            composableScope.launch {
+                                pagerState.animateScrollToPage(DashboardPage.LIBRARY.ordinal)
+                            }
+                        },
                         onUpdates = onUpdateClick,
                         onSettings = onSettingsClick,
                     )
@@ -459,7 +452,8 @@ fun DashboardScreen(
                 }
             ) { paddingValues ->
                 Column(Modifier.padding(paddingValues)) {
-                    Notifications(
+                    if (pagerState.currentPage == DashboardPage.HOME.ordinal) {
+                        Notifications(
                         if (bundleDownloadError != null) {
                             {
                                 NotificationCard(
@@ -505,44 +499,50 @@ fun DashboardScreen(
                                 )
                             }
                         }
-                    )
+                        )
+                    }
 
                     HorizontalPager(
                         state = pagerState,
                         userScrollEnabled = true,
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.weight(1f)
                     ) { index ->
                         when (DashboardPage.entries[index]) {
-                            DashboardPage.DASHBOARD -> {
-                                AppsScreen(
-                                    onAppClick = { onAppClick(it.currentPackageName) },
-                                    onPatchableAppClick = ::onPatchableSelection,
-                                    onStorageSelect = { selectedApp -> onStorageSelection(selectedApp) },
+                            DashboardPage.HOME -> {
+                                HomeScreen(
                                     sourceCount = dashboardSourceCount,
                                     managerUpdateAvailable = hasUpdate,
                                     managerUpdateChecked = updateVersion != null,
                                     onAppsClick = openApps,
                                     onLibraryClick = {
                                         composableScope.launch {
-                                            pagerState.animateScrollToPage(DashboardPage.BUNDLES.ordinal)
+                                            pagerState.animateScrollToPage(DashboardPage.LIBRARY.ordinal)
                                         }
                                     },
                                     onUpdatesClick = onUpdateClick,
                                     onSettingsClick = onSettingsClick,
-                                    lazyListState = appsLazyListState,
-                                    searchLazyListState = appsSearchLazyListState,
-                                    onSearchExpandedChange = { appsSearchExpanded = it }
                                 )
                             }
 
-                            DashboardPage.BUNDLES -> {
+                            DashboardPage.APPS -> {
+                                AppsScreen(
+                                    onAppClick = { onAppClick(it.currentPackageName) },
+                                    onPatchableAppClick = ::onPatchableSelection,
+                                    onStorageSelect = { selectedApp -> onStorageSelection(selectedApp) },
+                                    lazyListState = appsLazyListState,
+                                    searchLazyListState = appsSearchLazyListState,
+                                    onSearchExpandedChange = { appsSearchExpanded = it },
+                                )
+                            }
+
+                            DashboardPage.LIBRARY -> {
                                 BackHandler {
                                     if (patchesSourceEditMode) {
                                         patchesSourceEditMode = false
                                         return@BackHandler
                                     }
                                     composableScope.launch {
-                                        pagerState.animateScrollToPage(DashboardPage.DASHBOARD.ordinal)
+                                        pagerState.animateScrollToPage(DashboardPage.HOME.ordinal)
                                     }
                                 }
 
@@ -554,7 +554,7 @@ fun DashboardScreen(
                                             return@PatchesSelectorScreen
                                         }
                                         composableScope.launch {
-                                            pagerState.animateScrollToPage(DashboardPage.DASHBOARD.ordinal)
+                                            pagerState.animateScrollToPage(DashboardPage.HOME.ordinal)
                                         }
                                     },
                                     onBundleInfoClick = onBundleClick,
@@ -562,7 +562,7 @@ fun DashboardScreen(
                                     onSourceDeleteRequest = { sourceDeleteUid = it },
                                     onSyncAll = vm::downloadSources,
                                     onAddSource = { showAddBundleDialog = true },
-                                    viewModel = dashboardPatchesViewModel
+                                    viewModel = dashboardPatchesViewModel,
                                 )
                             }
                         }
@@ -576,10 +576,9 @@ fun DashboardScreen(
 @Composable
 private fun NexoraDashboardBottomBar(
     currentPage: Int,
-    appsSectionActive: Boolean,
     onPanel: () -> Unit,
-    onLibrary: () -> Unit,
     onApps: () -> Unit,
+    onLibrary: () -> Unit,
     onUpdates: () -> Unit,
     onSettings: () -> Unit,
 ) {
@@ -602,22 +601,22 @@ private fun NexoraDashboardBottomBar(
             NexoraBottomItem(
                 icon = Icons.Outlined.Home,
                 label = stringResource(R.string.nexora_nav_panel),
-                selected = currentPage == DashboardPage.DASHBOARD.ordinal && !appsSectionActive,
+                selected = currentPage == DashboardPage.HOME.ordinal,
                 onClick = onPanel,
-                modifier = Modifier.weight(1f),
-            )
-            NexoraBottomItem(
-                icon = Icons.Outlined.Source,
-                label = stringResource(R.string.nexora_nav_library),
-                selected = currentPage == DashboardPage.BUNDLES.ordinal,
-                onClick = onLibrary,
                 modifier = Modifier.weight(1f),
             )
             NexoraBottomItem(
                 icon = Icons.Outlined.Apps,
                 label = stringResource(R.string.nexora_nav_apps),
-                selected = currentPage == DashboardPage.DASHBOARD.ordinal && appsSectionActive,
+                selected = currentPage == DashboardPage.APPS.ordinal,
                 onClick = onApps,
+                modifier = Modifier.weight(1f),
+            )
+            NexoraBottomItem(
+                icon = Icons.Outlined.Source,
+                label = stringResource(R.string.nexora_nav_library),
+                selected = currentPage == DashboardPage.LIBRARY.ordinal,
+                onClick = onLibrary,
                 modifier = Modifier.weight(1f),
             )
             NexoraBottomItem(
@@ -671,64 +670,13 @@ private fun NexoraBottomItem(
                 style = MaterialTheme.typography.labelSmall,
                 color = if (selected) NexoraOfficialViolet
                 else Color(0xFF8B96B8),
+                maxLines = 1,
+                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
             )
         }
     }
 }
 
-@Composable
-private fun NexoraSectionSwitcher(
-    currentPage: Int,
-    onSelect: (Int) -> Unit
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 10.dp),
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
-    ) {
-        DashboardPage.entries.forEachIndexed { index, page ->
-            val selected = currentPage == index
-            Surface(
-                onClick = { onSelect(index) },
-                modifier = Modifier.weight(1f),
-                shape = MaterialTheme.shapes.large,
-                color = if (selected) {
-                    MaterialTheme.colorScheme.primaryContainer
-                } else {
-                    MaterialTheme.colorScheme.surfaceContainerLow
-                },
-                tonalElevation = if (selected) 4.dp else 1.dp
-            ) {
-                Row(
-                    modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(10.dp)
-                ) {
-                    Icon(
-                        imageVector = page.icon,
-                        contentDescription = null,
-                        modifier = Modifier.size(20.dp),
-                        tint = if (selected) {
-                            MaterialTheme.colorScheme.primary
-                        } else {
-                            MaterialTheme.colorScheme.onSurfaceVariant
-                        }
-                    )
-                    Text(
-                        text = stringResource(page.titleResId),
-                        style = MaterialTheme.typography.titleSmall,
-                        color = if (selected) {
-                            MaterialTheme.colorScheme.onPrimaryContainer
-                        } else {
-                            MaterialTheme.colorScheme.onSurfaceVariant
-                        }
-                    )
-                }
-            }
-        }
-    }
-}
 
 @Composable
 private fun DashboardFab(
@@ -736,7 +684,7 @@ private fun DashboardFab(
     showScrollToTop: Boolean,
     onScrollToTop: () -> Unit,
 ) {
-    val visible = pagerState.currentPage == DashboardPage.DASHBOARD.ordinal && showScrollToTop
+    val visible = pagerState.currentPage == DashboardPage.APPS.ordinal && showScrollToTop
 
     AnimatedVisibility(
         visible = visible,
