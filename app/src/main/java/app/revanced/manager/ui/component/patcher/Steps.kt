@@ -19,10 +19,12 @@ import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.outlined.Circle
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -157,7 +159,9 @@ fun Steps(
                 color = NexoraOfficialMuted,
             )
 
-            ArrowButton(modifier = Modifier.size(24.dp), expanded = isExpanded, onClick = null)
+            CompositionLocalProvider(LocalContentColor provides NexoraOfficialMuted) {
+                ArrowButton(modifier = Modifier.size(24.dp), expanded = isExpanded, onClick = null)
+            }
         }
 
         AnimatedVisibility(visible = isExpanded) {
@@ -225,6 +229,7 @@ fun SubStep(
                 style = MaterialTheme.typography.labelLarge,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
+                color = NexoraOfficialText,
                 modifier = Modifier.weight(1f, true),
             )
 
@@ -233,16 +238,19 @@ fun SubStep(
                     modifier = Modifier.size(24.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    ArrowButton(
-                        modifier = Modifier.size(20.dp),
-                        expanded = messageExpanded,
-                        onClick = null
-                    )
+                    CompositionLocalProvider(LocalContentColor provides NexoraOfficialMuted) {
+                        ArrowButton(
+                            modifier = Modifier.size(20.dp),
+                            expanded = messageExpanded,
+                            onClick = null
+                        )
+                    }
                 }
 
                 progressText != null -> Text(
                     progressText,
-                    style = MaterialTheme.typography.labelSmall
+                    style = MaterialTheme.typography.labelSmall,
+                    color = NexoraOfficialMuted,
                 )
             }
         }
@@ -251,7 +259,7 @@ fun SubStep(
             Text(
                 text = message.orEmpty(),
                 style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.secondary,
+                color = NexoraOfficialCyan,
                 modifier = Modifier.padding(horizontal = 36.dp, vertical = 8.dp)
             )
         }

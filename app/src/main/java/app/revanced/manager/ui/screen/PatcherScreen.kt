@@ -41,6 +41,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
@@ -56,6 +57,7 @@ import app.revanced.manager.ui.component.NexoraOfficialPageHeader
 import app.revanced.manager.ui.component.NexoraOfficialProgressPanel
 import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
 import app.revanced.manager.ui.component.NexoraOfficialPurple
+import app.revanced.manager.ui.component.NexoraOfficialText
 import app.revanced.manager.ui.component.NexoraPatchingDialog
 import app.revanced.manager.ui.component.ShareSheet
 import app.revanced.manager.ui.component.TooltipIconButton
@@ -193,6 +195,7 @@ fun PatcherScreen(
         bottomBar = {
             BottomAppBar(
                 containerColor = NexoraOfficialPanelStrong,
+                contentColor = NexoraOfficialText,
                 actions = {
                     TooltipIconButton(
                         onClick = { exportApkLauncher.launch("${viewModel.packageName}_${viewModel.version}_revanced_patched.apk") },
@@ -281,7 +284,9 @@ fun PatcherScreen(
 
 
             LazyColumn(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clipToBounds(),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 contentPadding = PaddingValues(16.dp)
             ) {
