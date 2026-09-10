@@ -32,12 +32,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val NexoraBackground = Color(0xFF050509)
-private val NexoraCard = Color(0xFF111827)
-private val NexoraInner = Color(0xFF020617)
-private val NexoraBorder = Color(0xFF1F2937)
-private val NexoraPurple = Color(0xFF785CFF)
-private val NexoraLavender = Color(0xFFA78BFA)
+private val NexoraBackground = NexoraOfficialBackground
+private val NexoraCard = NexoraOfficialPanel
+private val NexoraInner = NexoraOfficialPanelStrong
+private val NexoraBorder = NexoraOfficialBorder
+private val NexoraPurple = NexoraOfficialPurple
+private val NexoraLavender = NexoraOfficialViolet
 
 @Composable
 fun NexoraFlowTopBar(
@@ -45,68 +45,12 @@ fun NexoraFlowTopBar(
     backContentDescription: String,
     onBackClick: () -> Unit,
 ) {
-    Surface(
-        modifier = Modifier.fillMaxWidth(),
-        color = NexoraBackground,
-        tonalElevation = 0.dp,
-    ) {
-        Row(
-            modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            Surface(
-                onClick = onBackClick,
-                shape = RoundedCornerShape(12.dp),
-                color = NexoraInner,
-                border = BorderStroke(1.dp, NexoraBorder),
-            ) {
-                Box(
-                    modifier = Modifier.size(40.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = backContentDescription,
-                        tint = NexoraLavender,
-                    )
-                }
-            }
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "NEXORA",
-                    style = MaterialTheme.typography.labelSmall.copy(
-                        fontWeight = FontWeight.SemiBold,
-                        letterSpacing = 1.6.sp,
-                    ),
-                    color = NexoraLavender,
-                )
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onSurface,
-                )
-            }
-            Surface(
-                shape = RoundedCornerShape(999.dp),
-                color = NexoraPurple.copy(alpha = 0.10f),
-                border = BorderStroke(1.dp, NexoraLavender.copy(alpha = 0.30f)),
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(28.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(7.dp)
-                            .clip(RoundedCornerShape(99.dp))
-                            .background(NexoraLavender)
-                    )
-                }
-            }
-        }
-    }
+    NexoraOfficialPageHeader(
+        title = title,
+        subtitle = "M A N A G E R",
+        backLabel = backContentDescription,
+        onBackClick = onBackClick,
+    )
 }
 
 @Composable

@@ -45,6 +45,9 @@ import app.revanced.manager.patcher.patch.PatchInfo
 import app.revanced.manager.ui.component.AlertDialogExtended
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.LoadingIndicator
+import app.revanced.manager.ui.component.NexoraOfficialBackdrop
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.NexoraFlowTopBar
 import app.revanced.manager.ui.component.NexoraInlineWarning
 import app.revanced.manager.ui.component.NexoraPatchingAppHeader
@@ -163,8 +166,9 @@ fun SelectedAppInfoScreen(
     val error by vm.errorFlow.collectAsStateWithLifecycle(null)
     val downloaders by vm.downloaders.collectAsStateWithLifecycle(emptyList())
 
-    Scaffold(
-        containerColor = Color(0xFF050509),
+    NexoraOfficialBackdrop(modifier = Modifier.fillMaxSize()) {
+        Scaffold(
+            containerColor = Color.Transparent,
         topBar = {
             NexoraFlowTopBar(
                 title = stringResource(R.string.app_info),
@@ -191,8 +195,8 @@ fun SelectedAppInfoScreen(
                         stringResource(R.string.patch)
                     )
                 },
-                shape = RoundedCornerShape(16.dp),
-                containerColor = Color(0xFF785CFF),
+                shape = RoundedCornerShape(18.dp),
+                containerColor = NexoraOfficialViolet,
                 contentColor = Color.White,
                 onClick = patchClick@{
                     // If the selected source is Auto (Search) but nothing can be resolved
@@ -364,6 +368,7 @@ fun SelectedAppInfoScreen(
             }
         }
     }
+    }
 }
 
 @Composable
@@ -443,8 +448,8 @@ private fun VersionSelectorDialog(
 ) {
     AlertDialogExtended(
         onDismissRequest = onDismissRequest,
-        shape = RoundedCornerShape(20.dp),
-        containerColor = Color(0xFF111827),
+        shape = RoundedCornerShape(24.dp),
+        containerColor = NexoraOfficialPanelStrong,
         tonalElevation = 0.dp,
         confirmButton = {
             TextButton(onClick = onDismissRequest, shapes = ButtonDefaults.shapes()) {
@@ -508,8 +513,8 @@ private fun AppSourceSelectorDialog(
 
     AlertDialogExtended(
         onDismissRequest = onDismissRequest,
-        shape = RoundedCornerShape(20.dp),
-        containerColor = Color(0xFF111827),
+        shape = RoundedCornerShape(24.dp),
+        containerColor = NexoraOfficialPanelStrong,
         tonalElevation = 0.dp,
         confirmButton = {
             TextButton(onClick = onDismissRequest, shapes = ButtonDefaults.shapes()) {
