@@ -5,6 +5,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -154,6 +155,7 @@ fun UpdateScreen(
     }
 }
 
+}
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun MeteredDownloadConfirmationDialog(
@@ -182,5 +184,4 @@ private fun MeteredDownloadConfirmationDialog(
         icon = { Icon(Icons.Outlined.Update, null) },
         text = { Text(stringResource(R.string.download_confirmation_metered)) }
     )
-    }
 }
