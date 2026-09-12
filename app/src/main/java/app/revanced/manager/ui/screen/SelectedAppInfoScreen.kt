@@ -3,11 +3,13 @@ package app.revanced.manager.ui.screen
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -18,9 +20,8 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
-import androidx.compose.material3.ListItem
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -31,6 +32,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalResources
@@ -46,8 +48,11 @@ import app.revanced.manager.ui.component.AlertDialogExtended
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.LoadingIndicator
 import app.revanced.manager.ui.component.NexoraOfficialBackdrop
+import app.revanced.manager.ui.component.NexoraOfficialBorder
+import app.revanced.manager.ui.component.NexoraOfficialMuted
 import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
 import app.revanced.manager.ui.component.NexoraOfficialViolet
+import app.revanced.manager.ui.component.NexoraOfficialText
 import app.revanced.manager.ui.component.NexoraFlowTopBar
 import app.revanced.manager.ui.component.NexoraInlineWarning
 import app.revanced.manager.ui.component.NexoraPatchingAppHeader
@@ -59,8 +64,6 @@ import app.revanced.manager.util.APK_MIMETYPE
 import app.revanced.manager.util.EventEffect
 import app.revanced.manager.util.Options
 import app.revanced.manager.util.PatchSelection
-import app.revanced.manager.util.enabled
-import app.revanced.manager.util.transparentListItemColors
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 
@@ -343,14 +346,7 @@ fun SelectedAppInfoScreen(
                 it != SelectedAppInfoViewModel.Error.NoDownloadersInstalled
             }
             inlineError?.let {
-                Text(
-                    text = stringResource(it.resourceId),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.error,
-                    modifier = Modifier
-                        .padding(top = 6.dp)
-                        .padding(horizontal = 24.dp)
-                )
+                NexoraInlineWarning(text = stringResource(it.resourceId))
             }
 
             Column(
@@ -453,24 +449,28 @@ private fun VersionSelectorDialog(
         tonalElevation = 0.dp,
         confirmButton = {
             TextButton(onClick = onDismissRequest, shapes = ButtonDefaults.shapes()) {
-                Text(stringResource(R.string.cancel))
+                Text(stringResource(R.string.cancel), color = NexoraOfficialViolet)
             }
         },
-        title = { Text(stringResource(R.string.version)) },
+        title = {
+            Text(
+                text = stringResource(R.string.version),
+                color = NexoraOfficialText,
+            )
+        },
         textHorizontalPadding = PaddingValues(horizontal = 0.dp),
         text = {
-            LazyColumn {
+            LazyColumn(
+                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
                 if (allowAnyVersion) {
                     item(key = "any") {
-                        ListItem(
-                            modifier = Modifier.clickable { onSelect(null) },
-                            headlineContent = { Text(stringResource(R.string.selected_app_meta_any_version)) },
-                            supportingContent = if (selectedVersion == null) {
-                                { Text(stringResource(R.string.this_version)) }
-                            } else {
-                                null
-                            },
-                            colors = transparentListItemColors
+                        NexoraSelectorRow(
+                            title = stringResource(R.string.selected_app_meta_any_version),
+                            subtitle = if (selectedVersion == null) stringResource(R.string.this_version) else null,
+                            selected = selectedVersion == null,
+                            onClick = { onSelect(null) },
                         )
                     }
                 }
@@ -479,15 +479,11 @@ private fun VersionSelectorDialog(
                     items = availableVersions,
                     key = { version -> "version_$version" }
                 ) { version ->
-                    ListItem(
-                        modifier = Modifier.clickable { onSelect(version) },
-                        headlineContent = { Text(version) },
-                        supportingContent = if (selectedVersion == version) {
-                            { Text(stringResource(R.string.this_version)) }
-                        } else {
-                            null
-                        },
-                        colors = transparentListItemColors
+                    NexoraSelectorRow(
+                        title = version,
+                        subtitle = if (selectedVersion == version) stringResource(R.string.this_version) else null,
+                        selected = selectedVersion == version,
+                        onClick = { onSelect(version) },
                     )
                 }
             }
@@ -518,33 +514,34 @@ private fun AppSourceSelectorDialog(
         tonalElevation = 0.dp,
         confirmButton = {
             TextButton(onClick = onDismissRequest, shapes = ButtonDefaults.shapes()) {
-                Text(stringResource(R.string.cancel))
+                Text(stringResource(R.string.cancel), color = NexoraOfficialViolet)
             }
         },
-        title = { Text(stringResource(R.string.app_source_dialog_title)) },
+        title = {
+            Text(
+                text = stringResource(R.string.app_source_dialog_title),
+                color = NexoraOfficialText,
+            )
+        },
         textHorizontalPadding = PaddingValues(horizontal = 0.dp),
         text = {
-            LazyColumn {
+            LazyColumn(
+                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
                 item(key = "auto") {
                     val hasDownloader = downloaders.isNotEmpty()
-                    val hasDownloaded =
-                        downloadedApps.any { app -> requiredVersion == null || app.version == requiredVersion }
-                    val hasAutoSource =
-                        hasDownloader || hasDownloaded || autoSelection is SelectedApp.Installed
-                    ListItem(
-                        modifier = Modifier
-                            .clickable(enabled = canSelect && hasAutoSource) { onSelectAuto() }
-                            .enabled(hasAutoSource),
-                        headlineContent = { Text(stringResource(R.string.app_source_dialog_option_auto)) },
-                        supportingContent = {
-                            Text(
-                                if (hasAutoSource)
-                                    stringResource(R.string.app_source_dialog_option_auto_description)
-                                else
-                                    stringResource(R.string.app_source_dialog_option_auto_unavailable)
-                            )
+                    val hasDownloaded = downloadedApps.any { app -> requiredVersion == null || app.version == requiredVersion }
+                    val hasAutoSource = hasDownloader || hasDownloaded || autoSelection is SelectedApp.Installed
+                    NexoraSelectorRow(
+                        title = stringResource(R.string.app_source_dialog_option_auto),
+                        subtitle = if (hasAutoSource) {
+                            stringResource(R.string.app_source_dialog_option_auto_description)
+                        } else {
+                            stringResource(R.string.app_source_dialog_option_auto_unavailable)
                         },
-                        colors = transparentListItemColors
+                        enabled = canSelect && hasAutoSource,
+                        onClick = onSelectAuto,
                     )
                 }
 
@@ -553,38 +550,74 @@ private fun AppSourceSelectorDialog(
                     key = { "downloaded_${it.version}" }
                 ) { app ->
                     val usable = requiredVersion == null || app.version == requiredVersion
-                    ListItem(
-                        modifier = Modifier
-                            .clickable(enabled = canSelect && usable) { onSelect(app) }
-                            .enabled(usable),
-                        headlineContent = { Text(stringResource(R.string.apk_source_downloaded)) },
-                        supportingContent = { Text(app.version) },
-                        colors = transparentListItemColors
+                    NexoraSelectorRow(
+                        title = stringResource(R.string.apk_source_downloaded),
+                        subtitle = app.version,
+                        enabled = canSelect && usable,
+                        onClick = { onSelect(app) },
                     )
                 }
 
-                items(downloaders) { downloader ->
-                    ListItem(
-                        modifier = Modifier.clickable(enabled = canSelect) {
-                            onSelectDownloader(
-                                downloader
-                            )
-                        },
-                        headlineContent = { Text(downloader.name) },
-                        trailingContent = (@Composable { LoadingIndicator() }).takeIf { activeSearchJob == downloader },
-                        colors = transparentListItemColors
+                items(downloaders, key = { "downloader_${it.packageName}_${it.name}" }) { downloader ->
+                    NexoraSelectorRow(
+                        title = downloader.name,
+                        enabled = canSelect,
+                        trailing = (@Composable { LoadingIndicator() }).takeIf { activeSearchJob == downloader },
+                        onClick = { onSelectDownloader(downloader) },
                     )
                 }
 
                 item(key = "storage") {
-                    ListItem(
-                        modifier = Modifier.clickable { onSelectFromStorage() },
-                        headlineContent = { Text(stringResource(R.string.select_from_storage)) },
-                        supportingContent = { Text(stringResource(R.string.select_from_storage_description)) },
-                        colors = transparentListItemColors
+                    NexoraSelectorRow(
+                        title = stringResource(R.string.select_from_storage),
+                        subtitle = stringResource(R.string.select_from_storage_description),
+                        onClick = onSelectFromStorage,
                     )
                 }
             }
         }
     )
+}
+
+@Composable
+private fun NexoraSelectorRow(
+    title: String,
+    subtitle: String? = null,
+    selected: Boolean = false,
+    enabled: Boolean = true,
+    trailing: (@Composable () -> Unit)? = null,
+    onClick: () -> Unit,
+) {
+    Surface(
+        onClick = onClick,
+        enabled = enabled,
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(14.dp),
+        color = NexoraOfficialPanelStrong,
+        border = BorderStroke(
+            1.dp,
+            if (selected) NexoraOfficialViolet.copy(alpha = 0.72f)
+            else NexoraOfficialBorder.copy(alpha = if (enabled) 0.8f else 0.35f),
+        ),
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 11.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    color = if (enabled) NexoraOfficialText else NexoraOfficialMuted.copy(alpha = 0.5f),
+                )
+                subtitle?.let {
+                    Text(
+                        text = it,
+                        color = if (selected) NexoraOfficialViolet else NexoraOfficialMuted,
+                    )
+                }
+            }
+            trailing?.invoke()
+        }
+    }
 }

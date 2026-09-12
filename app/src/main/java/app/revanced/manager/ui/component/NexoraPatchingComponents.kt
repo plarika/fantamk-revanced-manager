@@ -228,7 +228,7 @@ fun NexoraInlineWarning(text: String) {
             Text(
                 text = text,
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = NexoraOfficialMuted,
                 modifier = Modifier.weight(1f),
             )
         }
