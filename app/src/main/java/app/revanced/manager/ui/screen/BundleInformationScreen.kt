@@ -6,13 +6,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.outlined.OpenInNew
 import androidx.compose.material.icons.automirrored.outlined.Send
@@ -29,15 +29,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MediumFlexibleTopAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -45,13 +41,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -65,6 +60,12 @@ import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.ConfirmDialog
 import app.revanced.manager.ui.component.ExceptionViewerDialog
 import app.revanced.manager.ui.component.ListSection
+import app.revanced.manager.ui.component.NexoraOfficialBackdrop
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPageHeader
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.TextInputDialog
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.haptics.HapticSwitch
@@ -96,7 +97,9 @@ fun BundleInformationScreen(
     }
     val subtitleVersion = bundleManifestAttributes?.version?.let { "v$it" }
     val contentScrollState = rememberScrollState()
-    val isContentScrollable by remember { derivedStateOf { contentScrollState.maxValue > 0 } }
+    val context = LocalContext.current
+    val releaseDate = src.asRemoteOrNull?.releasedAt?.relativeTime(context)?.lowercase(getDefault())
+    val headerSubtitle = listOfNotNull(subtitleAuthor, subtitleVersion, releaseDate?.let { "($it)" }).joinToString(" • ")
 
     if (showDeleteConfirmationDialog) {
         ConfirmDialog(
@@ -114,77 +117,35 @@ fun BundleInformationScreen(
         )
     }
 
-    val scrollBehavior = if (isContentScrollable) {
-        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
-    } else {
-        null
-    }
-
+    NexoraOfficialBackdrop(modifier = Modifier.fillMaxSize()) {
     Scaffold(
         topBar = {
-            MediumFlexibleTopAppBar(
-                title = { Text(src.name) },
-                subtitle = if (subtitleAuthor != null || subtitleVersion != null) {
-                    {
-                        val dot = "\u2022"          // •
-                        val emSpace = "\u2002"      // en space, roughly half character width
-                        val separator = "$emSpace$dot$emSpace"
-                        Text(text = buildAnnotatedString {
-                            append("$subtitleAuthor$separator$subtitleVersion")
-                            src.asRemoteOrNull?.releasedAt?.let {
-                                val releaseDate = it.relativeTime(
-                                    LocalContext.current
-                                ).lowercase(getDefault())
-
-                                append("\u2002($releaseDate)")
-                            }
-                        })
-
-                    }
-                } else {
-                    null
-                },
-                navigationIcon = {
-                    TooltipIconButton(
-                        onClick = onBackClick,
-                        tooltip = stringResource(R.string.back),
-                    ) { contentDescription ->
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = contentDescription
-                        )
-                    }
-                },
+            NexoraOfficialPageHeader(
+                title = src.name,
+                subtitle = headerSubtitle,
+                backLabel = stringResource(R.string.back),
+                onBackClick = onBackClick,
                 actions = {
                     if (!src.isDefault) TooltipIconButton(
                         onClick = { showDeleteConfirmationDialog = true },
                         tooltip = stringResource(R.string.delete),
                     ) { contentDescription ->
-                        Icon(
-                            Icons.Filled.Delete,
-                            contentDescription
-                        )
+                        Icon(Icons.Filled.Delete, contentDescription, tint = NexoraOfficialViolet)
                     }
                     if (!isLocal) TooltipIconButton(
                         onClick = viewModel::refresh,
                         tooltip = stringResource(R.string.refresh),
                     ) { contentDescription ->
-                        Icon(
-                            Icons.Filled.Refresh,
-                            contentDescription
-                        )
+                        Icon(Icons.Filled.Refresh, contentDescription, tint = NexoraOfficialCyan)
                     }
                 },
-                scrollBehavior = scrollBehavior
             )
         },
-        modifier = Modifier.then(
-            scrollBehavior?.let { Modifier.nestedScroll(it.nestedScrollConnection) } ?: Modifier
-        ),
+        containerColor = Color.Transparent,
     ) { paddingValues ->
         ColumnWithScrollbar(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(paddingValues),
             state = contentScrollState,
         ) {
@@ -192,7 +153,7 @@ fun BundleInformationScreen(
                 Text(
                     text = description,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = NexoraOfficialMuted,
                     modifier = Modifier.padding(
                         start = 16.dp,
                         end = 16.dp,
@@ -378,6 +339,7 @@ fun BundleInformationScreen(
             }
         }
     }
+    }
 }
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -420,12 +382,12 @@ private fun TagValue(
                 imageVector = icon,
                 contentDescription = null,
                 modifier = Modifier.size(24.dp),
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                tint = NexoraOfficialMuted
             )
             Text(
                 text = title,
                 style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurface
+                color = NexoraOfficialText
             )
         }
 
@@ -436,6 +398,7 @@ private fun TagValue(
                 Text(
                     text = buttonText,
                     style = MaterialTheme.typography.bodyMedium,
+                    color = NexoraOfficialCyan,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -443,14 +406,15 @@ private fun TagValue(
                 Icon(
                     imageVector = Icons.AutoMirrored.Outlined.OpenInNew,
                     contentDescription = null,
-                    modifier = Modifier.size(18.dp)
+                    modifier = Modifier.size(18.dp),
+                    tint = NexoraOfficialCyan
                 )
             }
         } else {
             Text(
                 text = buttonText,
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = NexoraOfficialMuted,
                 textAlign = TextAlign.End
             )
         }

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -308,6 +309,7 @@ fun NexoraOfficialPageHeader(
     backLabel: String,
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
+    actions: @Composable RowScope.() -> Unit = {},
 ) {
     Row(
         modifier = modifier
@@ -357,6 +359,7 @@ fun NexoraOfficialPageHeader(
                 .background(NexoraOfficialViolet)
                 .border(3.dp, NexoraOfficialViolet.copy(.18f), CircleShape)
         )
+        Row(content = actions)
     }
 }
 @Composable
