@@ -11,27 +11,27 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AutoFixHigh
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SecondaryScrollableTabRow
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
-import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.revanced.manager.R
 import app.revanced.manager.patcher.patch.Option
 import app.revanced.manager.patcher.patch.PatchBundleInfo.Extensions.requiredOptionsSet
-import app.revanced.manager.ui.component.AppTopBar
+import app.revanced.manager.ui.component.NexoraOfficialBackdrop
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPageHeader
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialPurple
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.haptics.HapticExtendedFloatingActionButton
 import app.revanced.manager.ui.component.haptics.HapticTab
@@ -71,14 +71,14 @@ fun RequiredOptionsScreen(
     }
     val composableScope = rememberCoroutineScope()
 
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-
+    NexoraOfficialBackdrop(modifier = Modifier.fillMaxSize()) {
     Scaffold(
         topBar = {
-            AppTopBar(
+            NexoraOfficialPageHeader(
                 title = stringResource(R.string.required_options_screen),
-                scrollBehavior = scrollBehavior,
-                onBackClick = onBackClick
+                subtitle = stringResource(R.string.nexora_compact_patcher_desc),
+                backLabel = stringResource(R.string.back),
+                onBackClick = onBackClick,
             )
         },
         floatingActionButton = {
@@ -96,10 +96,12 @@ fun RequiredOptionsScreen(
                     ?: true,
                 onClick = {
                     onContinue(vm.getCustomSelection(), vm.getOptions())
-                }
+                },
+                containerColor = NexoraOfficialPurple,
+                contentColor = Color.White,
             )
         },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        containerColor = Color.Transparent,
     ) { paddingValues ->
         Column(
             Modifier
@@ -109,7 +111,7 @@ fun RequiredOptionsScreen(
             if (list.isEmpty()) return@Column
             else if (list.size > 1) SecondaryScrollableTabRow(
                 selectedTabIndex = pagerState.currentPage,
-                containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(3.0.dp)
+                containerColor = NexoraOfficialPanelStrong
             ) {
                 list.forEachIndexed { index, (bundle, _) ->
                     HapticTab(
@@ -122,8 +124,8 @@ fun RequiredOptionsScreen(
                             }
                         },
                         text = { Text(bundle.name) },
-                        selectedContentColor = MaterialTheme.colorScheme.primary,
-                        unselectedContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        selectedContentColor = NexoraOfficialViolet,
+                        unselectedContentColor = NexoraOfficialMuted
                     )
                 }
             }
@@ -166,5 +168,6 @@ fun RequiredOptionsScreen(
                 }
             )
         }
+    }
     }
 }
