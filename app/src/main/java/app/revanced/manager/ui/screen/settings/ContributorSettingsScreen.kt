@@ -48,6 +48,11 @@ import app.revanced.manager.network.dto.ReVancedContributor
 import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.LoadingIndicator
+import app.revanced.manager.ui.component.NexoraOfficialBorder
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraPageScaffold
 import app.revanced.manager.ui.viewmodel.ContributorViewModel
 import coil.compose.AsyncImage
 import org.koin.androidx.compose.koinViewModel
@@ -59,18 +64,12 @@ fun ContributorSettingsScreen(
     viewModel: ContributorViewModel = koinViewModel()
 ) {
     val repositories = viewModel.repositories
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val uriHandler = LocalUriHandler.current
 
-    Scaffold(
-        topBar = {
-            AppTopBar(
-                title = stringResource(R.string.contributors),
-                scrollBehavior = scrollBehavior,
-                onBackClick = onBackClick
-            )
-        },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    NexoraPageScaffold(
+        title = stringResource(R.string.contributors),
+        subtitle = stringResource(R.string.contributors_description),
+        onBackClick = onBackClick,
     ) { paddingValues ->
         LazyColumnWithScrollbar(
             modifier = Modifier
@@ -87,7 +86,8 @@ fun ContributorSettingsScreen(
                     item {
                         Text(
                             text = stringResource(id = R.string.no_contributors_found),
-                            style = MaterialTheme.typography.titleLarge
+                            style = MaterialTheme.typography.titleLarge,
+                            color = NexoraOfficialText
                         )
                     }
                 } else {
@@ -136,10 +136,10 @@ fun ContributorsCard(
             .fillMaxWidth()
             .border(
                 width = 1.dp,
-                color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                color = NexoraOfficialBorder,
                 shape = MaterialTheme.shapes.medium
             ),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
+        colors = CardDefaults.cardColors(containerColor = NexoraOfficialPanelStrong)
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -151,11 +151,12 @@ fun ContributorsCard(
             ) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
+                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium),
+                    color = NexoraOfficialText
                 )
                 Text(
                     text = "(${(pagerState.currentPage + 1)}/${pagerState.pageCount})",
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = NexoraOfficialMuted,
                     style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
                 )
             }
@@ -198,7 +199,8 @@ fun ContributorsCard(
                                         text = it.username,
                                         style = MaterialTheme.typography.bodyLarge,
                                         maxLines = 1,
-                                        overflow = TextOverflow.Ellipsis
+                                        overflow = TextOverflow.Ellipsis,
+                                        color = NexoraOfficialText
                                     )
                                 }
                             } else {

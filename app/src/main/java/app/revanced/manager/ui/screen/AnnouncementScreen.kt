@@ -31,6 +31,10 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.view.children
 import app.revanced.manager.R
 import app.revanced.manager.network.dto.ReVancedAnnouncement
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraPageScaffold
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.util.relativeTime
 import kotlinx.datetime.TimeZone
@@ -44,47 +48,19 @@ fun AnnouncementScreen(
     announcement: ReVancedAnnouncement
 ) {
     val scrollState = rememberScrollState()
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
-        canScroll = {
-            scrollState.canScrollBackward || scrollState.canScrollForward
-        }
-    )
-    val headerTextColor = MaterialTheme.colorScheme.onSurface
-    val textColor = MaterialTheme.colorScheme.onSurfaceVariant
-    val linkColor = MaterialTheme.colorScheme.primary
+    val createDate = announcement.createdAt.toLocalDateTime(TimeZone.UTC).relativeTime(LocalContext.current)
+    val headerTextColor = NexoraOfficialText
+    val textColor = NexoraOfficialMuted
+    val linkColor = NexoraOfficialCyan
 
-    Scaffold(
-        topBar = {
-            TwoRowsTopAppBar(
-                title = { expanded ->
-                    Text(
-                        text = announcement.title,
-                        style = if (expanded) MaterialTheme.typography.headlineSmall else MaterialTheme.typography.titleMedium
-                    )
-                },
-                subtitle = {
-                    val createDate = announcement.createdAt.toLocalDateTime(TimeZone.UTC).relativeTime(LocalContext.current)
-                    Text("$createDate\u2002\u2022\u2002${announcement.author}")
-                },
-                navigationIcon = {
-                    TooltipIconButton(
-                        onClick = onBackClick,
-                        tooltip = stringResource(R.string.back)
-                    ) {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(R.string.back)
-                        )
-                    }
-                },
-                scrollBehavior = scrollBehavior
-            )
-        }
+    NexoraPageScaffold(
+        title = announcement.title,
+        subtitle = "$createDate\u2002\u2022\u2002${announcement.author}",
+        onBackClick = onBackClick,
     ) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .nestedScroll(scrollBehavior.nestedScrollConnection)
                 .verticalScroll(scrollState)
                 .padding(paddingValues)
         ) {

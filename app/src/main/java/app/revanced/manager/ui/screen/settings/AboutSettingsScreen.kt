@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.MailOutline
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledTonalButton
@@ -52,6 +53,13 @@ import app.revanced.manager.network.dto.ReVancedSocial
 import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.ListSection
+import app.revanced.manager.ui.component.NexoraOfficialBorder
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraOfficialViolet
+import app.revanced.manager.ui.component.NexoraPageScaffold
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.settings.SettingsListItem
 import app.revanced.manager.ui.model.navigation.Settings
@@ -146,7 +154,6 @@ fun AboutSettingsScreen(
         )
     )
 
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val snackbarHostState = remember { SnackbarHostState() }
 
     val showDeveloperSettings by viewModel.showDeveloperSettings.getAsState()
@@ -177,18 +184,11 @@ fun AboutSettingsScreen(
         developerTaps = 0
     }
 
-    Scaffold(
-        topBar = {
-            AppTopBar(
-                title = stringResource(R.string.about),
-                scrollBehavior = scrollBehavior,
-                onBackClick = onBackClick
-            )
-        },
-        snackbarHost = {
-            SnackbarHost(hostState = snackbarHostState)
-        },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    NexoraPageScaffold(
+        title = stringResource(R.string.about),
+        subtitle = BuildConfig.VERSION_NAME,
+        onBackClick = onBackClick,
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
     ) { paddingValues ->
         ColumnWithScrollbar(
             modifier = Modifier
@@ -211,6 +211,7 @@ fun AboutSettingsScreen(
                 Text(
                     stringResource(R.string.nexora_app_name),
                     style = MaterialTheme.typography.headlineSmall,
+                    color = NexoraOfficialText,
                     modifier = Modifier.semantics {
                         // Icon already has this information for the purpose of being clickable.
                         hideFromAccessibility()
@@ -219,7 +220,7 @@ fun AboutSettingsScreen(
                 Text(
                     text = stringResource(R.string.version) + " " + BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.outline
+                    color = NexoraOfficialMuted
                 )
             }
             FlowRow(
@@ -263,14 +264,15 @@ fun AboutSettingsScreen(
                             icon,
                             contentDescription = text,
                             modifier = Modifier.size(28.dp),
-                            tint = MaterialTheme.colorScheme.secondary
+                            tint = NexoraOfficialCyan
                         )
                     }
                 }
             }
             OutlinedCard(
                 modifier = Modifier.padding(horizontal = 16.dp),
-                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
+                colors = CardDefaults.outlinedCardColors(containerColor = NexoraOfficialPanelStrong),
+                border = BorderStroke(1.dp, NexoraOfficialBorder)
             ) {
                 Column(
                     modifier = Modifier.padding(16.dp),
@@ -278,12 +280,13 @@ fun AboutSettingsScreen(
                 ) {
                     Text(
                         text = stringResource(R.string.about_revanced_manager),
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
+                        color = NexoraOfficialViolet
                     )
                     Text(
                         text = stringResource(R.string.revanced_manager_description),
                         style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = NexoraOfficialMuted
                     )
                 }
             }

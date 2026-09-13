@@ -7,11 +7,14 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.paging.compose.collectAsLazyPagingItems
+import app.revanced.manager.R
 import app.revanced.manager.domain.repository.ChangelogSource
 import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.ChangelogList
+import app.revanced.manager.ui.component.NexoraPageScaffold
 import app.revanced.manager.ui.viewmodel.ChangelogsViewModel
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
@@ -23,18 +26,12 @@ fun ChangelogsSettingsScreen(
     onBackClick: () -> Unit,
     vm: ChangelogsViewModel = koinViewModel { parametersOf(source) }
 ) {
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val changelogs = vm.changelogs.collectAsLazyPagingItems()
 
-    Scaffold(
-        topBar = {
-            AppTopBar(
-                title = {},
-                scrollBehavior = scrollBehavior,
-                onBackClick = onBackClick
-            )
-        },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    NexoraPageScaffold(
+        title = stringResource(R.string.changelog),
+        subtitle = stringResource(R.string.changelog_description),
+        onBackClick = onBackClick,
     ) { paddingValues ->
         ChangelogList(changelogs = changelogs, modifier = Modifier.padding(paddingValues))
     }

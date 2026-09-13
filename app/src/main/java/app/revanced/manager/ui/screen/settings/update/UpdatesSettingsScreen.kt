@@ -50,6 +50,14 @@ import app.revanced.manager.domain.repository.isNewerVersion
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.ConfirmDialog
 import app.revanced.manager.ui.component.NexoraLogoBadge
+import app.revanced.manager.ui.component.NexoraOfficialBackground
+import app.revanced.manager.ui.component.NexoraOfficialBorder
+import app.revanced.manager.ui.component.NexoraOfficialGreen
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanel
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialPurple
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.viewmodel.UpdatesSettingsViewModel
 import app.revanced.manager.util.relativeTime
@@ -57,14 +65,14 @@ import com.google.accompanist.drawablepainter.rememberDrawablePainter
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
-private val CompactBackground = Color(0xFF050509)
-private val CompactCard = Color(0xFF111827)
-private val CompactInner = Color(0xFF020617)
-private val CompactBorder = Color(0xFF1F2937)
-private val CompactPurple = Color(0xFF785CFF)
-private val CompactLavender = Color(0xFFA78BFA)
-private val CompactSecondary = Color(0xFF9CA3AF)
-private val CompactGreen = Color(0xFF22C55E)
+private val CompactBackground = NexoraOfficialBackground
+private val CompactCard = NexoraOfficialPanelStrong
+private val CompactInner = NexoraOfficialPanel
+private val CompactBorder = NexoraOfficialBorder
+private val CompactPurple = NexoraOfficialPurple
+private val CompactLavender = NexoraOfficialViolet
+private val CompactSecondary = NexoraOfficialMuted
+private val CompactGreen = NexoraOfficialGreen
 
 @Composable
 private fun CompactVersionMetric(
@@ -327,7 +335,7 @@ fun UpdatesSettingsScreen(
             .fillMaxSize()
             .background(
                 Brush.verticalGradient(
-                    listOf(Color(0xFF111827), CompactBackground, Color.Black),
+                    listOf(CompactCard, CompactBackground, Color.Black),
                 ),
             ),
     ) {

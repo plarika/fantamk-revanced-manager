@@ -11,13 +11,14 @@ import androidx.compose.ui.res.stringResource
 import app.revanced.manager.R
 
 @Composable
-fun NexoraSettingsScaffold(
+fun NexoraPageScaffold(
     title: String,
     subtitle: String,
     onBackClick: () -> Unit,
     actions: @Composable RowScope.() -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
     floatingActionButton: @Composable () -> Unit = {},
+    snackbarHost: @Composable () -> Unit = {},
     content: @Composable (PaddingValues) -> Unit,
 ) {
     NexoraOfficialBackdrop(modifier = Modifier.fillMaxSize()) {
@@ -33,8 +34,30 @@ fun NexoraSettingsScaffold(
             },
             bottomBar = bottomBar,
             floatingActionButton = floatingActionButton,
+            snackbarHost = snackbarHost,
             containerColor = Color.Transparent,
             content = content,
         )
     }
 }
+
+@Composable
+fun NexoraSettingsScaffold(
+    title: String,
+    subtitle: String,
+    onBackClick: () -> Unit,
+    actions: @Composable RowScope.() -> Unit = {},
+    bottomBar: @Composable () -> Unit = {},
+    floatingActionButton: @Composable () -> Unit = {},
+    snackbarHost: @Composable () -> Unit = {},
+    content: @Composable (PaddingValues) -> Unit,
+) = NexoraPageScaffold(
+    title = title,
+    subtitle = subtitle,
+    onBackClick = onBackClick,
+    actions = actions,
+    bottomBar = bottomBar,
+    floatingActionButton = floatingActionButton,
+    snackbarHost = snackbarHost,
+    content = content,
+)

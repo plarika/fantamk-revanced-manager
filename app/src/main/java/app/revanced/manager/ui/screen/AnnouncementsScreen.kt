@@ -51,6 +51,12 @@ import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.ListSection
 import app.revanced.manager.ui.component.LoadingIndicator
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraOfficialViolet
+import app.revanced.manager.ui.component.NexoraPageScaffold
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.settings.SettingsListItem
 import app.revanced.manager.ui.viewmodel.AnnouncementsViewModel
@@ -67,7 +73,6 @@ fun AnnouncementsScreen(
     onAnnouncementClick: (ReVancedAnnouncement) -> Unit,
     vm: AnnouncementsViewModel = koinViewModel(),
 ) {
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     var showFilterSheet by rememberSaveable { mutableStateOf(false) }
     var archivedExpanded by rememberSaveable { mutableStateOf(false) }
     val tags by vm.tags.collectAsStateWithLifecycle(null)
@@ -84,34 +89,29 @@ fun AnnouncementsScreen(
         )
     }
 
-    Scaffold(
-        topBar = {
-            AppTopBar(
-                title = { Text(stringResource(R.string.announcements)) },
-                onBackClick = onBackClick,
-                actions = {
-                    if (tags != null) {
-                        TooltipIconButton(
-                            onClick = { showFilterSheet = true },
-                            tooltip = stringResource(R.string.announcements_filter_tag)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Filled.FilterAlt,
-                                contentDescription = stringResource(R.string.announcements_filter_tag)
-                            )
-                        }
-                    }
-                },
-                scrollBehavior = scrollBehavior
-            )
-        }
+    NexoraPageScaffold(
+        title = stringResource(R.string.announcements),
+        subtitle = stringResource(R.string.nexora_app_name),
+        onBackClick = onBackClick,
+        actions = {
+            if (tags != null) {
+                TooltipIconButton(
+                    onClick = { showFilterSheet = true },
+                    tooltip = stringResource(R.string.announcements_filter_tag)
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.FilterAlt,
+                        contentDescription = stringResource(R.string.announcements_filter_tag)
+                    )
+                }
+            }
+        },
     ) { paddingValues ->
         val readAnnouncements by vm.readAnnouncements.getAsState()
         LazyColumnWithScrollbar(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues)
-                .nestedScroll(scrollBehavior.nestedScrollConnection),
+                .padding(paddingValues),
             verticalArrangement = if (announcementSections?.isEmpty != false) {
                 Arrangement.Center
             } else {
@@ -124,7 +124,8 @@ fun AnnouncementsScreen(
                     item {
                         Text(
                             text = stringResource(id = R.string.no_announcements_found),
-                            style = MaterialTheme.typography.titleLarge
+                            style = MaterialTheme.typography.titleLarge,
+                            color = NexoraOfficialText
                         )
                     }
                 } else {
@@ -207,7 +208,10 @@ private fun FilterBottomSheet(
     onReset: () -> Unit,
     changeSelection: (String) -> Unit
 ) {
-    ModalBottomSheet(onDismissRequest = onDismissRequest) {
+    ModalBottomSheet(
+        onDismissRequest = onDismissRequest,
+        containerColor = NexoraOfficialPanelStrong,
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -217,7 +221,7 @@ private fun FilterBottomSheet(
             Text(
                 text = stringResource(R.string.announcements_filter_tag),
                 style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.onSurface,
+                color = NexoraOfficialText,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
             FlowRow(
@@ -273,11 +277,13 @@ private fun ArchivedAnnouncementsHeader(
             contentDescription = null,
             modifier = Modifier
                 .size(24.dp)
-                .padding(end = 8.dp)
+                .padding(end = 8.dp),
+            tint = NexoraOfficialCyan
         )
         Text(
             text = stringResource(R.string.announcements_show_archived),
             style = MaterialTheme.typography.titleMedium,
+            color = NexoraOfficialText,
             modifier = Modifier.weight(1f)
         )
         Icon(
@@ -285,7 +291,8 @@ private fun ArchivedAnnouncementsHeader(
             contentDescription = if (expanded) stringResource(R.string.collapse_content) else stringResource(
                 R.string.expand_content
             ),
-            modifier = Modifier.rotate(rotation)
+            modifier = Modifier.rotate(rotation),
+            tint = NexoraOfficialViolet
         )
     }
 }
@@ -361,12 +368,12 @@ fun AnnouncementTag(
         tags.forEach { tag ->
             Surface(
                 shape = MaterialTheme.shapes.large,
-                color = MaterialTheme.colorScheme.surface
+                color = NexoraOfficialPanelStrong
             ) {
                 Text(
                     text = tag,
                     style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = NexoraOfficialMuted,
                     modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                 )
             }
