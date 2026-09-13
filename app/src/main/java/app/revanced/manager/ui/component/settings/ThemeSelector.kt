@@ -1,7 +1,7 @@
 package app.revanced.manager.ui.component.settings
 
 import androidx.core.view.HapticFeedbackConstantsCompat
-import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -36,6 +36,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import app.revanced.manager.R
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanel
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.theme.Theme
 import app.revanced.manager.util.withHapticFeedback
 
@@ -48,8 +54,9 @@ fun ThemeSelector(
 ) {
     Surface(
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(4.dp),
-        color = animateColorAsState(MaterialTheme.colorScheme.surfaceContainerLow, MaterialTheme.motionScheme.defaultEffectsSpec(), "surfaceContainerLow").value,
+        shape = RoundedCornerShape(18.dp),
+        color = NexoraOfficialPanelStrong,
+        border = BorderStroke(1.dp, NexoraOfficialViolet.copy(alpha = 0.35f)),
     ) {
         Row(
             modifier = Modifier
@@ -119,12 +126,12 @@ private fun ThemeOption(
                 checkedShape = RoundedCornerShape(16.dp)
             ),
             colors = IconToggleButtonColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                disabledContainerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                checkedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-                checkedContentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                containerColor = NexoraOfficialPanel,
+                contentColor = NexoraOfficialMuted,
+                disabledContainerColor = NexoraOfficialPanel,
+                disabledContentColor = NexoraOfficialMuted,
+                checkedContainerColor = NexoraOfficialViolet.copy(alpha = 0.18f),
+                checkedContentColor = NexoraOfficialCyan
             )
         ) {
             Icon(
@@ -137,9 +144,9 @@ private fun ThemeOption(
             text = label,
             style = MaterialTheme.typography.labelMedium,
             color = if (isSelected) {
-                MaterialTheme.colorScheme.onSurface
+                NexoraOfficialText
             } else {
-                MaterialTheme.colorScheme.onSurfaceVariant
+                NexoraOfficialMuted
             }
         )
     }

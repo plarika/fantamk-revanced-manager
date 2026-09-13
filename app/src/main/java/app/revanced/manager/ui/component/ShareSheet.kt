@@ -108,6 +108,8 @@ fun ShareSheet(
         onDismissRequest = onDismissRequest,
         modifier = modifier,
         sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+        containerColor = NexoraOfficialPanelStrong,
+        contentColor = NexoraOfficialText,
     ) {
         Column(
             modifier = Modifier
@@ -118,7 +120,7 @@ fun ShareSheet(
             Text(
                 text = title,
                 style = MaterialTheme.typography.headlineSmall,
-                color = MaterialTheme.colorScheme.onSurface,
+                color = NexoraOfficialText,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
 
@@ -131,12 +133,12 @@ fun ShareSheet(
                     Surface(
                         modifier = Modifier.fillMaxWidth(),
                         shape = MaterialTheme.shapes.large,
-                        color = MaterialTheme.colorScheme.surfaceContainerLow
+                        color = NexoraOfficialPanel
                     ) {
                         Text(
                             text = preview.ifBlank { stringResource(R.string.loading) },
                             style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            color = NexoraOfficialMuted,
                             fontFamily = FontFamily.Monospace,
                             maxLines = 7,
                             overflow = TextOverflow.Ellipsis,
@@ -155,7 +157,7 @@ fun ShareSheet(
                                 brush = Brush.verticalGradient(
                                     colors = listOf(
                                         Color.Transparent,
-                                        MaterialTheme.colorScheme.surfaceContainerLow
+                                        NexoraOfficialPanel
                                     )
                                 )
                             )
@@ -193,28 +195,30 @@ fun ShareSheet(
                 SegmentedListItem(
                     onClick = onCopyToClipboard,
                     shapes = ListItemDefaults.segmentedShapes(index = 0, count = 1),
-                    colors = ListItemDefaults.colors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
+                    colors = ListItemDefaults.colors(containerColor = NexoraOfficialPanel),
                     leadingContent = {
                         Icon(
                             imageVector = Icons.Outlined.ContentCopy,
-                            contentDescription = null
+                            contentDescription = null,
+                            tint = NexoraOfficialCyan
                         )
                     }
                 ) {
-                    Text(text = stringResource(R.string.copy_to_clipboard))
+                    Text(text = stringResource(R.string.copy_to_clipboard), color = NexoraOfficialText)
                 }
                 SegmentedListItem(
                     onClick = onSaveToFilesClick,
                     shapes = ListItemDefaults.segmentedShapes(index = 0, count = 1),
-                    colors = ListItemDefaults.colors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
+                    colors = ListItemDefaults.colors(containerColor = NexoraOfficialPanel),
                     leadingContent = {
                         Icon(
                             imageVector = Icons.Outlined.Download,
-                            contentDescription = null
+                            contentDescription = null,
+                            tint = NexoraOfficialViolet
                         )
                     }
                 ) {
-                    Text(text = stringResource(R.string.save_as_file))
+                    Text(text = stringResource(R.string.save_as_file), color = NexoraOfficialText)
                 }
             }
         }
@@ -232,7 +236,7 @@ private fun ShareTarget(label: String, icon: Drawable?, onClick: () -> Unit) {
             modifier = Modifier
                 .size(62.dp)
                 .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.surfaceContainer)
+                .background(NexoraOfficialPanel)
                 .clickable(onClick = onClick),
             contentAlignment = Alignment.Center
         ) {
@@ -248,7 +252,7 @@ private fun ShareTarget(label: String, icon: Drawable?, onClick: () -> Unit) {
                     imageVector = Icons.Default.Android,
                     contentDescription = label,
                     modifier = Modifier.size(54.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    tint = NexoraOfficialMuted
                 )
             }
         }
@@ -259,7 +263,7 @@ private fun ShareTarget(label: String, icon: Drawable?, onClick: () -> Unit) {
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = NexoraOfficialMuted
         )
     }
 }

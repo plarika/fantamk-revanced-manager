@@ -48,13 +48,15 @@ fun ChangelogList(
                 val error = changelogs.loadState.refresh as LoadState.Error
                 Text(
                     text = error.error.message ?: stringResource(R.string.changelog_download_fail),
-                    style = MaterialTheme.typography.titleLarge
+                    style = MaterialTheme.typography.titleLarge,
+                    color = NexoraOfficialAmber
                 )
             }
 
             changelogs.itemCount == 0 -> Text(
                 text = stringResource(R.string.no_changelogs_found),
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleLarge,
+                color = NexoraOfficialMuted
             )
 
             else -> {
@@ -85,7 +87,7 @@ fun ChangelogList(
                                     .padding(16.dp),
                                 contentAlignment = Alignment.Center
                             ) {
-                                CircularProgressIndicator()
+                                CircularProgressIndicator(color = NexoraOfficialCyan)
                             }
                         }
                     }
@@ -109,7 +111,7 @@ private fun ChangelogItem(
         if (showDivider) {
             HorizontalDivider(
                 modifier = Modifier.padding(top = 32.dp),
-                color = MaterialTheme.colorScheme.outlineVariant
+                color = NexoraOfficialBorder
             )
         }
     }
@@ -131,7 +133,7 @@ fun Changelog(
             Icon(
                 imageVector = Icons.Outlined.Campaign,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
+                tint = NexoraOfficialCyan,
                 modifier = Modifier.size(32.dp)
             )
 
@@ -144,7 +146,7 @@ fun Changelog(
                     style = MaterialTheme.typography.titleLarge.copy(
                         fontWeight = FontWeight(800)
                     ),
-                    color = MaterialTheme.colorScheme.primary,
+                    color = NexoraOfficialViolet,
                 )
 
                 Spacer(modifier = Modifier)
@@ -152,13 +154,13 @@ fun Changelog(
                 Text(
                     "•",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.outline,
+                    color = NexoraOfficialMuted,
                 )
 
                 Text(
                     publishDate,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.outline,
+                    color = NexoraOfficialMuted,
                 )
             }
         }

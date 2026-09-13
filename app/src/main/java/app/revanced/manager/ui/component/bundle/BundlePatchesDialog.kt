@@ -31,6 +31,12 @@ import app.revanced.manager.domain.sources.PatchBundleSource
 import app.revanced.manager.domain.repository.PatchBundleRepository
 import app.revanced.manager.patcher.patch.PatchInfo
 import app.revanced.manager.ui.component.ArrowButton
+import app.revanced.manager.ui.component.NexoraOfficialBorder
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.FullscreenDialog
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.SearchView
@@ -91,12 +97,12 @@ fun BundlePatchesDialog(
                                 imageVector = Icons.Outlined.Search,
                                 contentDescription = stringResource(R.string.search_patches),
                                 modifier = Modifier.size(64.dp),
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                tint = NexoraOfficialCyan
                             )
                             Text(
                                 text = stringResource(R.string.type_anything),
                                 style = MaterialTheme.typography.bodyLarge,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                color = NexoraOfficialMuted
                             )
                         }
                     }
@@ -109,7 +115,7 @@ fun BundlePatchesDialog(
                             Text(
                                 text = stringResource(R.string.no_patch_found),
                                 style = MaterialTheme.typography.bodyLarge,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                color = NexoraOfficialMuted
                             )
                         }
                     }
@@ -184,6 +190,10 @@ fun PatchItem(
     var expandOptions by rememberSaveable { mutableStateOf(false) }
 
     ElevatedCard(
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = NexoraOfficialPanelStrong,
+            contentColor = NexoraOfficialText,
+        ),
         modifier = Modifier
             .fillMaxWidth()
             .then(
@@ -203,7 +213,7 @@ fun PatchItem(
             ) {
                 Text(
                     text = patch.name,
-                    color = MaterialTheme.colorScheme.primary,
+                    color = NexoraOfficialViolet,
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold
                 )
@@ -215,7 +225,8 @@ fun PatchItem(
             patch.description?.let {
                 Text(
                     text = it,
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = NexoraOfficialMuted
                 )
             }
             Column(
@@ -289,9 +300,9 @@ fun PatchItem(
                                 modifier = Modifier.fillMaxWidth(),
                                 colors = CardColors(
                                     containerColor = Color.Transparent,
-                                    contentColor = MaterialTheme.colorScheme.onSurface,
+                                    contentColor = NexoraOfficialText,
                                     disabledContainerColor = Color.Transparent,
-                                    disabledContentColor = MaterialTheme.colorScheme.onSurface
+                                    disabledContentColor = NexoraOfficialText
                                 ), shape = when {
                                     options.size == 1 -> RoundedCornerShape(8.dp)
                                     i == 0 -> RoundedCornerShape(topStart = 8.dp, topEnd = 8.dp)
@@ -310,11 +321,12 @@ fun PatchItem(
                                     Text(
                                         text = option.name,
                                         style = MaterialTheme.typography.titleMedium,
-                                        color = MaterialTheme.colorScheme.primary
+                                        color = NexoraOfficialCyan
                                     )
                                     Text(
                                         text = option.description,
-                                        style = MaterialTheme.typography.bodyMedium
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = NexoraOfficialMuted
                                     )
                                 }
                             }
@@ -346,12 +358,12 @@ fun PatchInfoChip(
         modifier = modifier.then(cardModifier),
         colors = CardColors(
             containerColor = Color.Transparent,
-            contentColor = MaterialTheme.colorScheme.onSurface,
+            contentColor = NexoraOfficialText,
             disabledContainerColor = Color.Transparent,
-            disabledContentColor = MaterialTheme.colorScheme.onSurface
+            disabledContentColor = NexoraOfficialText
         ),
         shape = shape,
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.20f))
+        border = BorderStroke(1.dp, NexoraOfficialBorder.copy(alpha = 0.75f))
     ) {
         Row(
             modifier = Modifier.padding(8.dp),
@@ -364,7 +376,7 @@ fun PatchInfoChip(
                 softWrap = wrapText,
                 maxLines = if (wrapText) Int.MAX_VALUE else 1,
                 style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = NexoraOfficialMuted
             )
         }
     }
