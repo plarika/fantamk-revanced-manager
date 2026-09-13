@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">សូមស្វាគមន៍មកកាន់</string>
   <string name="onboarding_welcome_back">សួស្តី! នេះគឺជាថ្មី</string>
   <string name="onboarding_apps_subtitle">អ្នកអាចជ្រើសរើសកម្មវិធីដើម្បីបំណះឥឡូវនេះ ឬធ្វើវានៅពេលក្រោយ</string>
-  <string name="onboarding_updates_subtitle">កំណត់រចនាសម្ព័ន្ធការអាប់ដេតដោយស្វ័យប្រវត្តិដើម្បីរក្សា ReVanced Manager និងបំណះឱ្យទាន់សម័យ</string>
-  <string name="onboarding_updates_note">ReVanced Manager នឹងភ្ជាប់ទៅ %s ដើម្បីទាញយកកំណែដំបូង ប្រសិនបើឧបករណ៍របស់អ្នកភ្ជាប់អ៊ីនធឺណិត។</string>
+  <string name="onboarding_updates_subtitle">កំណត់រចនាសម្ព័ន្ធការអាប់ដេតដោយស្វ័យប្រវត្តិដើម្បីរក្សា Nexora Manager និងបំណះឱ្យទាន់សម័យ</string>
+  <string name="onboarding_updates_note">Nexora Manager នឹងភ្ជាប់ទៅ %s ដើម្បីទាញយកកំណែដំបូង ប្រសិនបើឧបករណ៍របស់អ្នកភ្ជាប់អ៊ីនធឺណិត។</string>
   <string name="retry">ព្យាយាមម្ដងទៀត</string>
   <string name="onboarding_skip">រំលងសម្រាប់ពេលនេះ</string>
   <string name="onboarding_recommended_version">កំណែដែលបានណែនាំ: %s</string>
   <string name="onboarding_permissions_skip_title">រំលងសិទ្ធិអនុញ្ញាតទេ?</string>
   <string name="onboarding_permissions_skip_description">ដោយគ្មានសិទ្ធិអនុញ្ញាតដែលបានទាមទារ មុខងារមួយចំនួនប្រហែលជាមិនដំណើរការត្រឹមត្រូវទេ។ អ្នកអាចផ្ដល់សិទ្ធិទាំងនោះនៅពេលក្រោយក្នុងការកំណត់កម្មវិធី។</string>
   <string name="onboarding_permissions_skip_anyway">រំលងយ៉ាងណាក៏ដោយ</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager ត្រូវការសិទ្ធិអនុញ្ញាតមួយចំនួនដើម្បីដំណើរការបានត្រឹមត្រូវ</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager ត្រូវការសិទ្ធិអនុញ្ញាតមួយចំនួនដើម្បីដំណើរការបានត្រឹមត្រូវ</string>
   <string name="permission_install_apps">ដំឡើងកម្មវិធីដែលមិនស្គាល់</string>
   <string name="permission_install_apps_description">ទាមទារដើម្បីដំឡើងកម្មវិធីដែលបានកែច្នៃ</string>
   <string name="permission_notifications">ការជូនដំណឹង</string>
   <string name="permission_battery">បង្កើនប្រសិទ្ធភាពថ្ម</string>
   <string name="permission_battery_description">ការពារការកែច្នៃមិនឱ្យរំខាននៅផ្ទៃខាងក្រោយ</string>
   <string name="permission_grant">ផ្ដល់សិទ្ធិ</string>
-  <string name="downloader_host_permission_label">ម៉ាស៊ីន​ទាញ​យក ReVanced Manager</string>
-  <string name="downloader_host_permission_description">ប្រើ​សម្រាប់​គ្រប់គ្រង​សិទ្ធិ​ចូល​ប្រើ​ប្រាស់​កម្មវិធី​ទាញ​យក ReVanced Manager។ មាន​តែ ReVanced Manager ប៉ុណ្ណោះ​ដែល​មាន​នេះ។</string>
+  <string name="downloader_host_permission_label">ម៉ាស៊ីន​ទាញ​យក Nexora Manager</string>
+  <string name="downloader_host_permission_description">ប្រើ​សម្រាប់​គ្រប់គ្រង​សិទ្ធិ​ចូល​ប្រើ​ប្រាស់​កម្មវិធី​ទាញ​យក Nexora Manager។ មាន​តែ Nexora Manager ប៉ុណ្ណោះ​ដែល​មាន​នេះ។</string>
   <string name="fab_patch_app">កែច្នៃកម្មវិធី</string>
   <string name="fab_add_patches">បន្ថែម patches</string>
   <string name="new_downloader_notification">មាន downloader(s) ថ្មី។ ចុចទីនេះដើម្បីកំណត់រចនាសម្ព័ន្ធពួកវា។</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">ស្វ័យប្រវត្តិ · ប្រើកម្មវិធីទាញយកដែលមាន</string>
   <string name="apk_source_auto_storage">ស្វ័យប្រវត្តិ · ជ្រើសរើសពីកន្លែងផ្ទុក</string>
   <string name="apk_source_downloaded">បានទាញយករួចហើយ</string>
-  <string name="auto_updates_dialog_description">តើអ្នកចង់ឱ្យ ReVanced Manager ពិនិត្យរកមើលការអាប់ដេតជាប្រចាំសម្រាប់ធាតុផ្សំខាងក្រោមនេះទេ?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced Patches</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: កម្មវិធីទាញយក</string>
+  <string name="auto_updates_dialog_description">តើអ្នកចង់ឱ្យ Nexora Manager ពិនិត្យរកមើលការអាប់ដេតជាប្រចាំសម្រាប់ធាតុផ្សំខាងក្រោមនេះទេ?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: កម្មវិធីទាញយក</string>
   <string name="auto_updates_dialog_note">ការកំណត់ទាំងនេះអាចផ្លាស់ប្តូរបាននៅពេលក្រោយ។
 
-    ReVanced Manager នឹងភ្ជាប់ទៅ %s ដើម្បីទាញយកកំណែដំបូង ប្រសិនបើឧបករណ៍របស់អ្នកភ្ជាប់អ៊ីនធឺណិត។</string>
+    Nexora Manager នឹងភ្ជាប់ទៅ %s ដើម្បីទាញយកកំណែដំបូង ប្រសិនបើឧបករណ៍របស់អ្នកភ្ជាប់អ៊ីនធឺណិត។</string>
   <string name="announcements_filter_tag">ត្រងតាមស្លាក</string>
   <string name="announcements_show_archived">បង្ហាញឯកសារដែលបានទុកក្នុងបណ្ណសារ</string>
   <string name="updates_description">ពិនិត្យរកមើលការអាប់ដេត និងមើលកំណត់ហេតុនៃការផ្លាស់ប្តូរ</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">លុប​កម្មវិធី​ដែលបាន​ជ្រើសរើស</string>
   <string name="downloader_delete_apps_description">តើ​អ្នក​ប្រាកដ​ទេ​ថា​អ្នក​ចង់​លុប​កម្មវិធី​ដែលបាន​ជ្រើសរើស?</string>
   <string name="downloader_delete_single_description">តើអ្នកប្រាកដថាអ្នកចង់លុប \"%s\" ទេ?</string>
-  <string name="downloader_settings_no_apps_description">កម្មវិធីដែលបានទាញយកតាមរយៈ ReVanced Manager នឹងបង្ហាញនៅទីនេះ។</string>
+  <string name="downloader_settings_no_apps_description">កម្មវិធីដែលបានទាញយកតាមរយៈ Nexora Manager នឹងបង្ហាញនៅទីនេះ។</string>
   <string name="downloader_url">URL ឧបករណ៍ទាញយក</string>
   <string name="downloader_add">បន្ថែមឧបករណ៍ទាញយក</string>
   <string name="select_downloader_type_dialog_description">បន្ថែមឧបករណ៍ទាញយកថ្មីពី URL ឬឯកសារក្នុងស្រុក</string>
   <string name="local_downloaders_description">បន្ថែមឧបករណ៍ទាញយកពីកន្លែងផ្ទុកក្នុងស្រុក។</string>
   <string name="remote_downloaders_description">បន្ថែមឧបករណ៍ទាញយកពី URL។ អាចធ្វើបច្ចុប្បន្នភាពដោយស្វ័យប្រវត្តិ។</string>
-  <string name="install_revanced_downloaders">ដំឡើង downloaders ដើម្បីទទួលបានកម្មវិធីដោយផ្ទាល់នៅក្នុង ReVanced Manager។</string>
-  <string name="install_revanced_downloader">ដំឡើង ReVanced Downloaders</string>
+  <string name="install_revanced_downloaders">ដំឡើង downloaders ដើម្បីទទួលបានកម្មវិធីដោយផ្ទាល់នៅក្នុង Nexora Manager។</string>
   <string name="cancel_downloader_install_title">បោះបង់ការដំឡើង downloaders ទេ?</string>
   <string name="cancel_downloader_install_description">ការដំឡើង downloaders កំពុងដំណើរការ។ ប្រសិនបើអ្នកចេញឥឡូវនេះ ការទាញយកនឹងត្រូវបានបោះបង់។</string>
   <string name="downloader_sources_unavailable_title">ឧបករណ៍ទាញយកទាំងនេះបាត់</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">សេចក្ដីប្រកាស</string>
   <string name="archive">បណ្ណសារ</string>
   <string name="view_update">មើលការអាប់ដេត</string>
-  <string name="update_checking_downloader">ពិនិត្យរកមើលការអាប់ដេត ReVanced Downloaders នៅពេលចាប់ផ្ដើម</string>
-  <string name="update_checking_downloader_description">ពិនិត្យរកមើលការអាប់ដេតទៅ ReVanced Downloaders ដែលបានដំឡើងនៅពេលកម្មវិធីចាប់ផ្ដើម</string>
   <string name="prereleases_warning">កំណែមុនចេញផ្សាយអាចនឹងមិនស្ថិតស្ថេរ និងមានកំហុស។ អ្នកអាចជួបប្រទះការគាំង ការបាត់បង់ទិន្នន័យ ឬបញ្ហាដែលមិនបានរំពឹងទុកផ្សេងទៀត។ បើកដំណើរការនេះលុះត្រាតែអ្នកពេញចិត្តនឹងហានិភ័យទាំងនេះ។</string>
   <string name="changelog">មើលកំណត់ហេតុនៃការផ្លាស់ប្តូរ</string>
   <string name="no_announcements_found">មិនមានសេចក្ដីប្រកាសណាមួយទេ</string>

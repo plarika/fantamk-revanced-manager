@@ -14,7 +14,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="app_name">ReVanced Manager</string>
+  <string name="app_name">Nexora Manager</string>
   <string name="patcher">Javítóprogram</string>
   <string name="patches">Javítások</string>
   <string name="cli">CLI</string>
@@ -23,16 +23,16 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_back">Szia! Ez az új</string>
   <string name="onboarding_apps_subtitle">Most vagy később is kiválaszthatja a javítandó alkalmazást</string>
   <string name="onboarding_apps_network_error">Nem sikerült betölteni a javításokat, mert a hálózat nem elérhető vagy instabil. Csatlakozzon egy stabil hálózathoz, és próbálja újra.</string>
-  <string name="onboarding_updates_subtitle">Konfigurálja az automatikus frissítéseket, hogy a ReVanced Manager és a javítások naprakészek maradjanak</string>
+  <string name="onboarding_updates_subtitle">Konfigurálja az automatikus frissítéseket, hogy a Nexora Manager és a javítások naprakészek maradjanak</string>
   <string name="banner_sources_not_downloaded_description">A javítások és letöltők nem tölthetők le a beállítás során. Koppintson a frissítésre a letöltésükhöz.</string>
-  <string name="onboarding_updates_note">A ReVanced Manager csatlakozni fog a(z) %s-hez, hogy letöltse a kezdeti verziókat, amennyiben az eszköze csatlakozik az internethez.</string>
+  <string name="onboarding_updates_note">A Nexora Manager csatlakozni fog a(z) %s-hez, hogy letöltse a kezdeti verziókat, amennyiben az eszköze csatlakozik az internethez.</string>
   <string name="retry">Újrapróbálkozás</string>
   <string name="onboarding_skip">Most kihagyom</string>
   <string name="onboarding_recommended_version">Ajánlott verzió: %s</string>
   <string name="onboarding_permissions_skip_title">Engedélyek kihagyása?</string>
   <string name="onboarding_permissions_skip_description">A szükséges engedélyek nélkül egyes funkciók nem működhetnek megfelelően. Később megadhatja őket az alkalmazásbeállításokban.</string>
   <string name="onboarding_permissions_skip_anyway">Akárhogy is kihagyom</string>
-  <string name="onboarding_permissions_subtitle">A ReVanced Managernek néhány engedélyre van szüksége a megfelelő működéshez</string>
+  <string name="onboarding_permissions_subtitle">A Nexora Managernek néhány engedélyre van szüksége a megfelelő működéshez</string>
   <string name="permission_install_apps">Ismeretlen alkalmazások telepítése</string>
   <string name="permission_install_apps_description">Szükséges a javított alkalmazások telepítéséhez</string>
   <string name="permission_notifications">Értesítések</string>
@@ -40,8 +40,8 @@ Second \"item\" text"</string>
   <string name="permission_battery">Akkumulátor-optimalizálás</string>
   <string name="permission_battery_description">Megakadályozza a javítás megszakítását a háttérben</string>
   <string name="permission_grant">Megadás</string>
-  <string name="downloader_host_permission_label">ReVanced Manager letöltő gazdagép</string>
-  <string name="downloader_host_permission_description">A ReVanced Manager letöltők hozzáférésének szabályozására szolgál. Csak a ReVanced Manager rendelkezik ezzel.</string>
+  <string name="downloader_host_permission_label">Nexora Manager letöltő gazdagép</string>
+  <string name="downloader_host_permission_description">A Nexora Manager letöltők hozzáférésének szabályozására szolgál. Csak a Nexora Manager rendelkezik ezzel.</string>
   <string name="toast_copied_to_clipboard">Másolva!</string>
   <string name="copy_to_clipboard">Másolás vágólapra</string>
   <string name="dashboard">Vezérlőpult</string>
@@ -92,13 +92,12 @@ Second \"item\" text"</string>
   <string name="apk_source_downloaded">Már letöltve</string>
   <string name="legacy_import_failed">A régi beállítások importálása sikertelen</string>
   <string name="auto_updates_dialog_title">Frissítések konfigurálása</string>
-  <string name="auto_updates_dialog_description">Szeretné, hogy a ReVanced Manager rendszeresen ellenőrizze a következő komponensek frissítéseit?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced javítások</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Letöltők</string>
+  <string name="auto_updates_dialog_description">Szeretné, hogy a Nexora Manager rendszeresen ellenőrizze a következő komponensek frissítéseit?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: Letöltők</string>
   <string name="auto_updates_dialog_note">Ezek a beállítások később módosíthatók.
 
-    A ReVanced Manager csatlakozni fog a(z) %s-hez, hogy letöltse a kezdeti verziókat, amennyiben az eszköze csatlakozik az internethez.</string>
+    A Nexora Manager csatlakozni fog a(z) %s-hez, hogy letöltse a kezdeti verziókat, amennyiben az eszköze csatlakozik az internethez.</string>
   <string name="announcements_filter_tag">Szűrés címke szerint</string>
   <string name="announcements_show_archived">Archiváltak megjelenítése</string>
   <string name="general">Általános</string>
@@ -117,7 +116,6 @@ Second \"item\" text"</string>
   <string name="opensource_licenses">Nyílt forráskódú licencek</string>
   <string name="opensource_licenses_description">Tekintse meg az alkalmazás elkészítéséhez használt összes könyvtárat</string>
   <string name="contributors">Közreműködők</string>
-  <string name="contributors_description">Tekintse meg a ReVanced közreműködőit</string>
   <string name="dynamic_color">Dinamikus szín</string>
   <string name="dynamic_color_description">Színek adaptálása a háttérképhez</string>
   <string name="pure_black_theme">Tiszta fekete téma</string>
@@ -206,14 +204,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_description">Biztosan törölni szeretné a kijelölt alkalmazásokat?</string>
   <string name="downloader_delete_single_description">Biztosan törölni szeretné a(z) „%s” elemet?</string>
   <string name="downloader_settings_no_apps">Nincsenek letöltött alkalmazások.</string>
-  <string name="downloader_settings_no_apps_description">A ReVanced Manageren keresztül letöltött alkalmazások itt fognak megjelenni.</string>
+  <string name="downloader_settings_no_apps_description">A Nexora Manageren keresztül letöltött alkalmazások itt fognak megjelenni.</string>
   <string name="downloader_url">Letöltő URL</string>
   <string name="downloader_add">Letöltő hozzáadása</string>
   <string name="select_downloader_type_dialog_description">Új letöltők hozzáadása URL-ről vagy helyi fájlokból</string>
   <string name="local_downloaders_description">Letöltők hozzáadása helyi tárhelyről.</string>
   <string name="remote_downloaders_description">Letöltők hozzáadása URL-ről. Automatikusan frissíthető.</string>
-  <string name="install_revanced_downloaders">Telepítsen letöltőket, hogy közvetlenül a ReVanced Manageren belül szerezzen be alkalmazásokat.</string>
-  <string name="install_revanced_downloader">ReVanced letöltők telepítése</string>
+  <string name="install_revanced_downloaders">Telepítsen letöltőket, hogy közvetlenül a Nexora Manageren belül szerezzen be alkalmazásokat.</string>
   <string name="cancel_downloader_install_title">Letöltők telepítésének megszakítása?</string>
   <string name="cancel_downloader_install_description">Letöltők telepítése folyamatban van. Ha most elhagyja, a letöltés megszakad.</string>
   <string name="downloader_sources_unavailable_title">Ezek a letöltők hiányoznak</string>
@@ -265,8 +262,8 @@ Second \"item\" text"</string>
   <string name="api_url">API URL</string>
   <string name="api_url_description">A szükséges fájlok letöltéséhez használt API</string>
   <string name="api_url_dialog_title">API URL módosítása</string>
-  <string name="api_url_dialog_description">Módosítsa a ReVanced Manager API URL-jét. A ReVanced Manager az API-t használja a javítások és frissítések letöltésére.</string>
-  <string name="api_url_dialog_warning">A ReVanced Manager csatlakozik az API-hoz a javítások és frissítések letöltéséhez. Győződjön meg róla, hogy megbízik benne.</string>
+  <string name="api_url_dialog_description">Módosítsa a Nexora Manager API URL-jét. A Nexora Manager az API-t használja a javítások és frissítések letöltésére.</string>
+  <string name="api_url_dialog_warning">A Nexora Manager csatlakozik az API-hoz a javítások és frissítések letöltéséhez. Győződjön meg róla, hogy megbízik benne.</string>
   <string name="api_url_dialog_save">Beállítás</string>
   <string name="api_url_dialog_reset">API URL visszaállítása</string>
   <string name="device">Eszköz</string>
@@ -436,8 +433,7 @@ Second \"item\" text"</string>
   <string name="patches_delete_multiple_dialog_description">Biztosan törölni szeretné a kiválasztott javításokat?</string>
   <string name="announcements">Bejelentések</string>
   <string name="archive">Archívum</string>
-  <string name="about_revanced_manager">A ReVanced Manager névjegye</string>
-  <string name="revanced_manager_description">A ReVanced Manager egy Android alkalmazás, amely a ReVanced Patcher segítségével javítja az Android alkalmazásokat. Lehetővé teszi alkalmazások letöltését és javítását egyéni javításokkal, valamint a javítási folyamat kezelését.</string>
+  <string name="about_revanced_manager">A Nexora Manager névjegye</string>
   <string name="developer_options_taps">%d érintés maradt</string>
   <string name="developer_options_enabled">Fejlesztői beállítások engedélyezve</string>
   <string name="developer_options_already_enabled">A fejlesztői beállítások már engedélyezve vannak</string>
@@ -451,17 +447,15 @@ Second \"item\" text"</string>
   <string name="view_update">Frissítés megtekintése</string>
   <string name="manual_update_check_description">Kézi frissítéskeresés</string>
   <string name="update_checking_manager">Frissítések keresése indításkor</string>
-  <string name="update_checking_manager_description">Ellenőrizze a ReVanced Manager új verzióit az alkalmazás indításakor</string>
-  <string name="update_checking_downloader">ReVanced letöltők frissítéseinek ellenőrzése indításkor</string>
-  <string name="update_checking_downloader_description">Az összes telepített ReVanced letöltő frissítéseinek ellenőrzése az alkalmazás indításakor</string>
+  <string name="update_checking_manager_description">Ellenőrizze a Nexora Manager új verzióit az alkalmazás indításakor</string>
   <string name="manager_prereleases">Előzetes kiadások használata</string>
-  <string name="manager_prereleases_description">A ReVanced Manager előzetes kiadásainak használata</string>
+  <string name="manager_prereleases_description">A Nexora Manager előzetes kiadásainak használata</string>
   <string name="prereleases_warning">Az előzetes verziók instabilak lehetnek és hibákat tartalmazhatnak. Lehetnek összeomlások, adatvesztés vagy más váratlan problémák. Csak akkor engedélyezze ezt, ha tisztában van ezekkel a kockázatokkal.</string>
   <string name="changelog">Változási napló megtekintése</string>
   <string name="changelog_loading">Változásnapló betöltése</string>
   <string name="changelog_download_fail">Sikertelen változásnapló letöltés: %s</string>
   <string name="changelog_description">Nézze meg a legújabb változásokat ebben a frissítésben</string>
-  <string name="battery_optimization_notification">Az akkumulátor optimalizálásokat ki kell kapcsolni ahhoz, hogy a ReVanced Manager megfelelően működjön a háttérben. Kattintson ide az optimalizálások kikapcsolásához.</string>
+  <string name="battery_optimization_notification">Az akkumulátor optimalizálásokat ki kell kapcsolni ahhoz, hogy a Nexora Manager megfelelően működjön a háttérben. Kattintson ide az optimalizálások kikapcsolásához.</string>
   <string name="installing_manager_update">Frissítés telepítése…</string>
   <string name="downloading_manager_update">Frissítés letöltése…</string>
   <string name="download_manager_failed">Sikertelen frissítésletöltés: %s</string>
@@ -471,7 +465,7 @@ Second \"item\" text"</string>
   <string name="update">Frissítés</string>
   <string name="empty">Üres</string>
   <string name="installing_message">Érintse meg a <b>Frissítés</b> gombot, amikor a rendszer kéri.
-A ReVanced Manager bezárul a frissítés során.</string>
+A Nexora Manager bezárul a frissítés során.</string>
   <string name="no_changelogs_found">Nincs változásnapló található</string>
   <string name="just_now">Épp most</string>
   <string name="minutes_ago">%s perce</string>
@@ -487,7 +481,7 @@ A ReVanced Manager bezárul a frissítés során.</string>
   <string name="no_announcements_found">Nincs hirdetmény</string>
   <string name="update_check">Frissítések keresése…</string>
   <string name="dismiss_temporary">Most nem</string>
-  <string name="update_available_dialog_description">Elérhető a ReVanced Manager (%s) új verziója.</string>
+  <string name="update_available_dialog_description">Elérhető a Nexora Manager (%s) új verziója.</string>
   <string name="failed_to_download_update">Sikertelen frissítésletöltés: %s</string>
   <string name="download">Letöltés</string>
   <string name="download_confirmation_metered">Jelenleg díjköteles kapcsolaton van, és a szolgáltatója díjat számíthat fel az adatforgalomért.

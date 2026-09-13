@@ -14,7 +14,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="app_name">ReVanced Manager</string>
+  <string name="app_name">Nexora Manager</string>
   <string name="patcher">Penambal</string>
   <string name="patches">Tambalan</string>
   <string name="cli">CLI</string>
@@ -22,23 +22,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">Selamat datang di</string>
   <string name="onboarding_welcome_back">Hai! Ini yang baru</string>
   <string name="onboarding_apps_subtitle">Anda dapat memilih aplikasi untuk ditambal sekarang atau nanti</string>
-  <string name="onboarding_updates_subtitle">Konfigurasikan pembaruan otomatis untuk menjaga ReVanced Manager dan tambalan tetap terbarui</string>
-  <string name="onboarding_updates_note">ReVanced Manager akan terhubung ke %s untuk mengunduh versi awal jika perangkat Anda terhubung ke internet.</string>
+  <string name="onboarding_updates_subtitle">Konfigurasikan pembaruan otomatis untuk menjaga Nexora Manager dan tambalan tetap terbarui</string>
+  <string name="onboarding_updates_note">Nexora Manager akan terhubung ke %s untuk mengunduh versi awal jika perangkat Anda terhubung ke internet.</string>
   <string name="retry">Coba lagi</string>
   <string name="onboarding_skip">Lewati untuk sekarang</string>
   <string name="onboarding_recommended_version">Versi yang disarankan: %s</string>
   <string name="onboarding_permissions_skip_title">Lewati perizinan?</string>
   <string name="onboarding_permissions_skip_description">Tanpa perizinan yang diperlukan, beberapa fitur mungkin tidak berfungsi dengan benar. Anda dapat memberikannya nanti di pengaturan aplikasi.</string>
   <string name="onboarding_permissions_skip_anyway">Tetap lewati</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager memerlukan beberapa perizinan agar berfungsi dengan benar</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager memerlukan beberapa perizinan agar berfungsi dengan benar</string>
   <string name="permission_install_apps">Pasang aplikasi tidak dikenal</string>
   <string name="permission_install_apps_description">Diperlukan untuk memasang aplikasi yang ditambal</string>
   <string name="permission_notifications">Pemberitahuan</string>
   <string name="permission_battery">Optimisasi baterai</string>
   <string name="permission_battery_description">Mencegah penambalan terganggu di latar belakang</string>
   <string name="permission_grant">Berikan</string>
-  <string name="downloader_host_permission_label">Host pengunduh ReVanced Manager</string>
-  <string name="downloader_host_permission_description">Digunakan untuk mengontrol akses ke pengunduh ReVanced Manager. Hanya ReVanced Manager yang memilikinya.</string>
+  <string name="downloader_host_permission_label">Host pengunduh Nexora Manager</string>
+  <string name="downloader_host_permission_description">Digunakan untuk mengontrol akses ke pengunduh Nexora Manager. Hanya Nexora Manager yang memilikinya.</string>
   <string name="toast_copied_to_clipboard">Disalin!</string>
   <string name="copy_to_clipboard">Salin ke papan klip</string>
   <string name="dashboard">Beranda</string>
@@ -89,13 +89,12 @@ Second \"item\" text"</string>
   <string name="apk_source_downloaded">Sudah diunduh</string>
   <string name="legacy_import_failed">Tidak dapat mengimpor pengaturan lama</string>
   <string name="auto_updates_dialog_title">Konfigurasi pembaruan</string>
-  <string name="auto_updates_dialog_description">Apakah Anda ingin ReVanced Manager memeriksa pembaruan secara berkala untuk komponen berikut?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">Tambalan ReVanced</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Pengunduh</string>
+  <string name="auto_updates_dialog_description">Apakah Anda ingin Nexora Manager memeriksa pembaruan secara berkala untuk komponen berikut?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+  <string name="auto_updates_dialog_downloaders">Nexora Manager: Pengunduh</string>
   <string name="auto_updates_dialog_note">Pengaturan ini dapat diubah nanti.
 
-    ReVanced Manager akan terhubung ke %s untuk mengunduh versi awal jika perangkat Anda terhubung ke internet.</string>
+    Nexora Manager akan terhubung ke %s untuk mengunduh versi awal jika perangkat Anda terhubung ke internet.</string>
   <string name="announcements_filter_tag">Saring berdasarkan tag</string>
   <string name="announcements_show_archived">Tampilkan arsip</string>
   <string name="general">Umum</string>
@@ -114,8 +113,7 @@ Second \"item\" text"</string>
   <string name="opensource_licenses">Lisensi sumber terbuka</string>
   <string name="opensource_licenses_description">Lihat semua pustaka yang digunakan untuk membuat aplikasi ini</string>
   <string name="contributors">Kontributor</string>
-  <string name="contributors_description">Lihat kontributor ReVanced</string>
-  <string name="dynamic_color">Warna dinamis</string>
+<string name="dynamic_color">Warna dinamis</string>
   <string name="dynamic_color_description">Sesuaikan warna dengan wallpaper</string>
   <string name="pure_black_theme">Tema hitam murni</string>
   <string name="pure_black_theme_description">Gunakan latar belakang hitam murni untuk tema gelap</string>
@@ -203,15 +201,14 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_description">Apakah Anda yakin ingin menghapus aplikasi yang dipilih?</string>
   <string name="downloader_delete_single_description">Apakah Anda yakin ingin menghapus \"%s\"?</string>
   <string name="downloader_settings_no_apps">Tidak ditemukan aplikasi yang diunduh.</string>
-  <string name="downloader_settings_no_apps_description">Aplikasi yang diunduh melalui ReVanced Manager akan muncul di sini.</string>
+  <string name="downloader_settings_no_apps_description">Aplikasi yang diunduh melalui Nexora Manager akan muncul di sini.</string>
   <string name="downloader_url">URL Pengunduh</string>
   <string name="downloader_add">Tambah Pengunduh</string>
   <string name="select_downloader_type_dialog_description">Tambah pengunduh baru dari URL atau berkas lokal</string>
   <string name="local_downloaders_description">Tambah pengunduh dari penyimpanan lokal.</string>
   <string name="remote_downloaders_description">Tambah pengunduh dari URL. Dapat diperbarui secara otomatis.</string>
-  <string name="install_revanced_downloaders">Pasang pengunduh untuk mendapatkan aplikasi langsung di dalam ReVanced Manager.</string>
-  <string name="install_revanced_downloader">Pasang Pengunduh ReVanced</string>
-  <string name="cancel_downloader_install_title">Batalkan pemasangan pengunduh?</string>
+  <string name="install_revanced_downloaders">Pasang pengunduh untuk mendapatkan aplikasi langsung di dalam Nexora Manager.</string>
+<string name="cancel_downloader_install_title">Batalkan pemasangan pengunduh?</string>
   <string name="cancel_downloader_install_description">Pemasangan pengunduh sedang berlangsung. Jika Anda keluar sekarang, unduhan akan dibatalkan.</string>
   <string name="downloader_sources_unavailable_title">Pengunduh ini hilang</string>
   <string name="downloader_sources_unavailable_description">Klik tombol perbarui untuk memperbaikinya.</string>
@@ -262,8 +259,8 @@ Second \"item\" text"</string>
   <string name="api_url">URL API</string>
   <string name="api_url_description">API yang digunakan untuk mengunduh berkas yang diperlukan</string>
   <string name="api_url_dialog_title">Ubah URL API</string>
-  <string name="api_url_dialog_description">Ubah URL API ReVanced Manager. ReVanced Manager menggunakan API untuk mengunduh patch dan pembaruan.</string>
-  <string name="api_url_dialog_warning">ReVanced Manager terhubung ke API untuk mengunduh patch dan pembaruan. Pastikan Anda memercayainya.</string>
+  <string name="api_url_dialog_description">Ubah URL API Nexora Manager. Nexora Manager menggunakan API untuk mengunduh patch dan pembaruan.</string>
+  <string name="api_url_dialog_warning">Nexora Manager terhubung ke API untuk mengunduh patch dan pembaruan. Pastikan Anda memercayainya.</string>
   <string name="api_url_dialog_save">Tetapkan</string>
   <string name="api_url_dialog_reset">Atur ulang URL API</string>
   <string name="device">Perangkat</string>
@@ -433,9 +430,8 @@ Second \"item\" text"</string>
   <string name="patches_delete_multiple_dialog_description">Anda yakin ingin menghapus patch yang dipilih?</string>
   <string name="announcements">Pengumuman</string>
   <string name="archive">Arsip</string>
-  <string name="about_revanced_manager">Tentang ReVanced Manager</string>
-  <string name="revanced_manager_description">ReVanced Manager adalah aplikasi Android yang menggunakan ReVanced Patcher untuk menambal aplikasi Android. Aplikasi ini memungkinkan Anda mengunduh dan menambal aplikasi dengan patch khusus, serta mengelola proses penambalan.</string>
-  <string name="developer_options_taps">%d ketukan tersisa</string>
+  <string name="about_revanced_manager">Tentang Nexora Manager</string>
+<string name="developer_options_taps">%d ketukan tersisa</string>
   <string name="developer_options_enabled">Opsi developer diaktifkan</string>
   <string name="developer_options_already_enabled">Opsi developer sudah diaktifkan</string>
   <string name="update_available">Pembaruan tersedia</string>
@@ -448,17 +444,15 @@ Second \"item\" text"</string>
   <string name="view_update">Lihat pembaruan</string>
   <string name="manual_update_check_description">Periksa pembaruan secara manual</string>
   <string name="update_checking_manager">Periksa pembaruan saat diluncurkan</string>
-  <string name="update_checking_manager_description">Periksa versi baru ReVanced Manager saat aplikasi dimulai</string>
-  <string name="update_checking_downloader">Periksa pembaruan Pengunduh ReVanced saat diluncurkan</string>
-  <string name="update_checking_downloader_description">Periksa pembaruan Pengunduh ReVanced yang terpasang saat aplikasi dimulai</string>
-  <string name="manager_prereleases">Gunakan pra-rilis</string>
-  <string name="manager_prereleases_description">Gunakan versi pra-rilis ReVanced Manager</string>
+  <string name="update_checking_manager_description">Periksa versi baru Nexora Manager saat aplikasi dimulai</string>
+<string name="manager_prereleases">Gunakan pra-rilis</string>
+  <string name="manager_prereleases_description">Gunakan versi pra-rilis Nexora Manager</string>
   <string name="prereleases_warning">Versi pra-rilis mungkin tidak stabil dan mengandung bug. Anda mungkin mengalami kerusakan, kehilangan data, atau masalah tak terduga lainnya. Hanya aktifkan ini jika Anda nyaman dengan risiko ini.</string>
   <string name="changelog">Lihat catatan perubahan</string>
   <string name="changelog_loading">Memuat daftar perubahan</string>
   <string name="changelog_download_fail">Gagal mengunduh daftar perubahan: %s</string>
   <string name="changelog_description">Lihat perubahan terbaru dalam pembaruan ini</string>
-  <string name="battery_optimization_notification">Pengoptimalan baterai harus dimatikan agar ReVanced Manager berfungsi dengan benar di latar belakang. Klik di sini untuk mematikan pengoptimalan.</string>
+  <string name="battery_optimization_notification">Pengoptimalan baterai harus dimatikan agar Nexora Manager berfungsi dengan benar di latar belakang. Klik di sini untuk mematikan pengoptimalan.</string>
   <string name="installing_manager_update">Menginstal pembaruan…</string>
   <string name="downloading_manager_update">Mengunduh pembaruan…</string>
   <string name="download_manager_failed">Gagal mengunduh pembaruan: %s</string>
@@ -467,7 +461,7 @@ Second \"item\" text"</string>
   <string name="save_with_count">Simpan (%1$s)</string>
   <string name="update">Perbarui</string>
   <string name="empty">Kosong</string>
-  <string name="installing_message">Ketuk <b>Perbarui</b> saat diminta. ReVanced Manager akan menutup saat memperbarui.</string>
+  <string name="installing_message">Ketuk <b>Perbarui</b> saat diminta. Nexora Manager akan menutup saat memperbarui.</string>
   <string name="no_changelogs_found">Tidak ada daftar perubahan ditemukan</string>
   <string name="just_now">Baru saja</string>
   <string name="minutes_ago">%s mnt lalu</string>
@@ -483,7 +477,7 @@ Second \"item\" text"</string>
   <string name="no_announcements_found">Tidak ditemukan pengumuman</string>
   <string name="update_check">Memeriksa pembaruan…</string>
   <string name="dismiss_temporary">Nanti saja</string>
-  <string name="update_available_dialog_description">Versi baru ReVanced Manager (%s) tersedia.</string>
+  <string name="update_available_dialog_description">Versi baru Nexora Manager (%s) tersedia.</string>
   <string name="failed_to_download_update">Gagal mengunduh pembaruan: %s</string>
   <string name="download">Unduh</string>
   <string name="download_confirmation_metered">Anda saat ini menggunakan koneksi berbayar, dan mungkin ada biaya data dari penyedia layanan Anda.

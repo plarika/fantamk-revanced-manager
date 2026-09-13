@@ -14,7 +14,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="app_name">ReVanced Manager</string>
+  <string name="app_name">Nexora Manager</string>
   <string name="patcher">Paikkaaja</string>
   <string name="patches">Paikkaukset</string>
   <string name="cli">CLI</string>
@@ -23,16 +23,16 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_back">Hei! Se on uusi</string>
   <string name="onboarding_apps_subtitle">Voit valita paikattavan sovelluksen nyt tai tehdä sen myöhemmin</string>
   <string name="onboarding_apps_network_error">Päivityksiä ei voitu ladata, koska verkko ei ole käytettävissä tai on epävakaa. Yhdistä vakaaseen verkkoon ja yritä uudelleen.</string>
-  <string name="onboarding_updates_subtitle">Määritä automaattiset päivitykset pitääksesi ReVanced Managerin ja paikat ajan tasalla</string>
+  <string name="onboarding_updates_subtitle">Määritä automaattiset päivitykset pitääksesi Nexora Managerin ja paikat ajan tasalla</string>
   <string name="banner_sources_not_downloaded_description">Päivityksiä ja latausohjelmia ei voitu ladata asennuksen aikana. Napauta päivitä ladataksesi ne.</string>
-  <string name="onboarding_updates_note">ReVanced Manager muodostaa yhteyden kohteeseen %s ladatakseen alkuperäiset versiot, jos laitteesi on yhdistetty internetiin.</string>
+  <string name="onboarding_updates_note">Nexora Manager muodostaa yhteyden kohteeseen %s ladatakseen alkuperäiset versiot, jos laitteesi on yhdistetty internetiin.</string>
   <string name="retry">Yritä uudelleen</string>
   <string name="onboarding_skip">Ohita toistaiseksi</string>
   <string name="onboarding_recommended_version">Suositeltu versio: %s</string>
   <string name="onboarding_permissions_skip_title">Ohita käyttöoikeudet?</string>
   <string name="onboarding_permissions_skip_description">Ilman vaadittuja käyttöoikeuksia jotkin ominaisuudet eivät ehkä toimi oikein. Voit myöntää ne myöhemmin sovelluksen asetuksista.</string>
   <string name="onboarding_permissions_skip_anyway">Ohita joka tapauksessa</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager tarvitsee joitakin käyttöoikeuksia toimiakseen oikein.</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager tarvitsee joitakin käyttöoikeuksia toimiakseen oikein.</string>
   <string name="permission_install_apps">Asenna tuntemattomia sovelluksia</string>
   <string name="permission_install_apps_description">Vaaditaan paikattujen sovellusten asentamiseen</string>
   <string name="permission_notifications">Ilmoitukset</string>
@@ -40,8 +40,8 @@ Second \"item\" text"</string>
   <string name="permission_battery">Akun optimointi</string>
   <string name="permission_battery_description">Estää paikkauksen keskeytymisen taustalla</string>
   <string name="permission_grant">Myönnä</string>
-  <string name="downloader_host_permission_label">ReVanced Manager -lataajaisäntä</string>
-  <string name="downloader_host_permission_description">Käytetään hallitsemaan pääsyä ReVanced Manager -lataajiin. Vain ReVanced Managerilla on tämä.</string>
+  <string name="downloader_host_permission_label">Nexora Manager -lataajaisäntä</string>
+  <string name="downloader_host_permission_description">Käytetään hallitsemaan pääsyä Nexora Manager -lataajiin. Vain Nexora Managerilla on tämä.</string>
   <string name="toast_copied_to_clipboard">Kopioitu!</string>
   <string name="copy_to_clipboard">Kopioi leikepöydälle</string>
   <string name="dashboard">Hallintapaneeli</string>
@@ -92,13 +92,12 @@ Second \"item\" text"</string>
   <string name="apk_source_downloaded">Jo ladattu</string>
   <string name="legacy_import_failed">Vanhoja asetuksia ei voitu tuoda</string>
   <string name="auto_updates_dialog_title">Määritä päivitykset</string>
-  <string name="auto_updates_dialog_description">Haluatko, että ReVanced Manager tarkistaa säännöllisesti päivitykset seuraaville komponenteille?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced-paikkaukset</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Lataajat</string>
+  <string name="auto_updates_dialog_description">Haluatko, että Nexora Manager tarkistaa säännöllisesti päivitykset seuraaville komponenteille?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: Lataajat</string>
   <string name="auto_updates_dialog_note">Nämä asetukset voidaan muuttaa myöhemmin.
 
-    ReVanced Manager muodostaa yhteyden kohteeseen %s ladatakseen alkuperäiset versiot, jos laitteesi on yhdistetty internetiin.</string>
+    Nexora Manager muodostaa yhteyden kohteeseen %s ladatakseen alkuperäiset versiot, jos laitteesi on yhdistetty internetiin.</string>
   <string name="announcements_filter_tag">Suodata tunnisteen mukaan</string>
   <string name="announcements_show_archived">Näytä arkistoidut</string>
   <string name="general">Yleiset</string>
@@ -117,7 +116,6 @@ Second \"item\" text"</string>
   <string name="opensource_licenses">Avoimen lähdekoodin lisenssit</string>
   <string name="opensource_licenses_description">Näytä kaikki tämän sovelluksen luomiseen käytetyt kirjastot</string>
   <string name="contributors">Osallistujat</string>
-  <string name="contributors_description">Näytä ReVancedin osallistujat</string>
   <string name="dynamic_color">Dynaaminen väri</string>
   <string name="dynamic_color_description">Sovita värit taustakuvaan</string>
   <string name="pure_black_theme">Musta teema</string>
@@ -216,14 +214,13 @@ Et voi päivittää aiemmin asennettuja sovelluksia tästä lähteestä.</string
   <string name="downloader_delete_apps_description">Haluatko varmasti poistaa valitut sovellukset?</string>
   <string name="downloader_delete_single_description">Haluatko varmasti poistaa kohteen \"%s\"?</string>
   <string name="downloader_settings_no_apps">Ladattuja sovelluksia ei löytynyt.</string>
-  <string name="downloader_settings_no_apps_description">ReVanced Managerin kautta ladatut sovellukset näkyvät täällä.</string>
+  <string name="downloader_settings_no_apps_description">Nexora Managerin kautta ladatut sovellukset näkyvät täällä.</string>
   <string name="downloader_url">Lataajan URL-osoite</string>
   <string name="downloader_add">Lisää lataaja</string>
   <string name="select_downloader_type_dialog_description">Lisää uusia lataajia URL-osoitteesta tai paikallisista tiedostoista</string>
   <string name="local_downloaders_description">Lisää lataajia paikallisesta tallennustilasta.</string>
   <string name="remote_downloaders_description">Lisää lataajia URL-osoitteesta. Voidaan päivittää automaattisesti.</string>
-  <string name="install_revanced_downloaders">Asenna lataajia saadaksesi sovelluksia suoraan ReVanced Managerin kautta.</string>
-  <string name="install_revanced_downloader">Asenna ReVanced -lataajat</string>
+  <string name="install_revanced_downloaders">Asenna lataajia saadaksesi sovelluksia suoraan Nexora Managerin kautta.</string>
   <string name="cancel_downloader_install_title">Peruutetaanko lataajien asennus?</string>
   <string name="cancel_downloader_install_description">Lataajien asennus on käynnissä. Jos poistut nyt, lataus peruutetaan.</string>
   <string name="downloader_sources_unavailable_title">Nämä lataajat puuttuvat</string>
@@ -276,8 +273,8 @@ Et voi päivittää aiemmin asennettuja sovelluksia tästä lähteestä.</string
   <string name="api_url">API-URL</string>
   <string name="api_url_description">API, jota käytetään tarvittavien tiedostojen lataamiseen</string>
   <string name="api_url_dialog_title">Vaihda API-URL</string>
-  <string name="api_url_dialog_description">Vaihda ReVanced Managerin API-URL. ReVanced Manager käyttää APIa paikkausten ja päivitysten lataamiseen.</string>
-  <string name="api_url_dialog_warning">ReVanced Manager yhdistää APIin paikkausten ja päivitysten lataamiseksi. Varmista, että luotat siihen.</string>
+  <string name="api_url_dialog_description">Vaihda Nexora Managerin API-URL. Nexora Manager käyttää APIa paikkausten ja päivitysten lataamiseen.</string>
+  <string name="api_url_dialog_warning">Nexora Manager yhdistää APIin paikkausten ja päivitysten lataamiseksi. Varmista, että luotat siihen.</string>
   <string name="api_url_dialog_save">Aseta</string>
   <string name="api_url_dialog_reset">Nollaa API-URL</string>
   <string name="device">Laite</string>
@@ -456,8 +453,7 @@ Se on yhteensopiva vain seuraavien versioiden kanssa: %2$s</string>
   <string name="patches_delete_multiple_dialog_description">Haluatko varmasti poistaa valitut paikkaukset?</string>
   <string name="announcements">Tiedotukset</string>
   <string name="archive">Arkisto</string>
-  <string name="about_revanced_manager">Tietoja ReVanced Managerista</string>
-  <string name="revanced_manager_description">ReVanced Manager on Android-sovellus, joka käyttää ReVanced Patcheria Android-sovellusten paikkaamiseen. Sen avulla voit ladata ja paikata sovelluksia mukautetuilla paikkauksilla, ja hallita paikkausprosessia.</string>
+  <string name="about_revanced_manager">Tietoja Nexora Managerista</string>
   <string name="developer_options_taps">%d napautusta jäljellä</string>
   <string name="developer_options_enabled">Kehittäjäasetukset käytössä</string>
   <string name="developer_options_already_enabled">Kehittäjäasetukset ovat jo käytössä</string>
@@ -471,17 +467,15 @@ Se on yhteensopiva vain seuraavien versioiden kanssa: %2$s</string>
   <string name="view_update">Näytä päivitys</string>
   <string name="manual_update_check_description">Tarkista päivitykset manuaalisesti</string>
   <string name="update_checking_manager">Tarkista päivitykset käynnistettäessä</string>
-  <string name="update_checking_manager_description">Tarkista ReVanced Managerin uudet versiot sovelluksen käynnistyessä</string>
-  <string name="update_checking_downloader">Tarkista ReVanced -lataajien päivitykset käynnistyksen yhteydessä</string>
-  <string name="update_checking_downloader_description">Tarkista asennettujen ReVanced -lataajien päivitykset sovelluksen käynnistyessä</string>
+  <string name="update_checking_manager_description">Tarkista Nexora Managerin uudet versiot sovelluksen käynnistyessä</string>
   <string name="manager_prereleases">Käytä ennakkoversioita</string>
-  <string name="manager_prereleases_description">Käytä ReVanced Managerin ennakkoversioita</string>
+  <string name="manager_prereleases_description">Käytä Nexora Managerin ennakkoversioita</string>
   <string name="prereleases_warning">Ennakkoversiot voivat olla epävakaita ja sisältää virheitä. Saatat kokea kaatumisia, tietojen katoamista tai muita odottamattomia ongelmia. Ota tämä käyttöön vain, jos olet tietoinen näistä riskeistä.</string>
   <string name="changelog">Näytä muutosloki</string>
   <string name="changelog_loading">Ladataan muutoslokia</string>
   <string name="changelog_download_fail">Muutoslokin lataaminen epäonnistui: %s</string>
   <string name="changelog_description">Katso tämän päivityksen uusimmat muutokset</string>
-  <string name="battery_optimization_notification">Akun optimoinnit on poistettava käytöstä, jotta ReVanced Manager toimii oikein taustalla. Napauta tästä poistaaksesi optimoinnit käytöstä.</string>
+  <string name="battery_optimization_notification">Akun optimoinnit on poistettava käytöstä, jotta Nexora Manager toimii oikein taustalla. Napauta tästä poistaaksesi optimoinnit käytöstä.</string>
   <string name="installing_manager_update">Asennetaan päivitystä…</string>
   <string name="downloading_manager_update">Ladataan päivitystä…</string>
   <string name="download_manager_failed">Päivityksen lataaminen epäonnistui: %s</string>
@@ -491,7 +485,7 @@ Se on yhteensopiva vain seuraavien versioiden kanssa: %2$s</string>
   <string name="update">Päivitä</string>
   <string name="empty">Tyhjä</string>
   <string name="installing_message">Napauta <b>Päivitä</b> pyydettäessä.
-ReVanced Manager sulkeutuu päivityksen aikana.</string>
+Nexora Manager sulkeutuu päivityksen aikana.</string>
   <string name="no_changelogs_found">Muutoslokeja ei löytynyt</string>
   <string name="just_now">Juuri nyt</string>
   <string name="minutes_ago">%s min sitten</string>
@@ -507,7 +501,7 @@ ReVanced Manager sulkeutuu päivityksen aikana.</string>
   <string name="no_announcements_found">Tiedotuksia ei löytynyt</string>
   <string name="update_check">Tarkistetaan päivityksiä…</string>
   <string name="dismiss_temporary">Ei nyt</string>
-  <string name="update_available_dialog_description">Uusi versio ReVanced Managerista (%s) on saatavilla.</string>
+  <string name="update_available_dialog_description">Uusi versio Nexora Managerista (%s) on saatavilla.</string>
   <string name="failed_to_download_update">Päivityksen lataaminen epäonnistui: %s</string>
   <string name="download">Lataa</string>
   <string name="download_confirmation_metered">Käytössäsi on tällä hetkellä käytön mukaan laskutettava yhteys, ja palveluntarjoajasi saattaa veloittaa tiedonsiirrosta.

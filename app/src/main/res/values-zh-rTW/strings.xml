@@ -14,7 +14,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="app_name">ReVanced Manager</string>
+  <string name="app_name">Nexora Manager</string>
   <string name="patcher">修補程式</string>
   <string name="patches">修補</string>
   <string name="cli">命令列介面</string>
@@ -22,23 +22,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">歡迎使用</string>
   <string name="onboarding_welcome_back">您好！這是全新的</string>
   <string name="onboarding_apps_subtitle">您可以立即選擇要修補的應用程式，或稍後再進行</string>
-  <string name="onboarding_updates_subtitle">設定自動更新，以保持 ReVanced Manager 和修補程式為最新版本</string>
-  <string name="onboarding_updates_note">ReVanced Manager 將連接到 %s 以下載初始版本，如果您的裝置已連接到網際網路。</string>
+  <string name="onboarding_updates_subtitle">設定自動更新，以保持 Nexora Manager 和修補程式為最新版本</string>
+  <string name="onboarding_updates_note">Nexora Manager 將連接到 %s 以下載初始版本，如果您的裝置已連接到網際網路。</string>
   <string name="retry">重試</string>
   <string name="onboarding_skip">暫時跳過</string>
   <string name="onboarding_recommended_version">建議版本：%s</string>
   <string name="onboarding_permissions_skip_title">跳過權限嗎？</string>
   <string name="onboarding_permissions_skip_description">如果沒有所需的權限，某些功能可能無法正常運作。您稍後可以在應用程式設定中授予它們。</string>
   <string name="onboarding_permissions_skip_anyway">仍然跳過</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager 需要一些權限才能正常運作</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager 需要一些權限才能正常運作</string>
   <string name="permission_install_apps">安裝不明應用程式</string>
   <string name="permission_install_apps_description">安裝已修補應用程式所需</string>
   <string name="permission_notifications">通知</string>
   <string name="permission_battery">電池最佳化</string>
   <string name="permission_battery_description">防止修補在背景中斷</string>
   <string name="permission_grant">授予</string>
-  <string name="downloader_host_permission_label">ReVanced Manager 下載器主機</string>
-  <string name="downloader_host_permission_description">用於控制對 ReVanced Manager 下載器的存取。只有 ReVanced Manager 擁有這個權限。</string>
+  <string name="downloader_host_permission_label">Nexora Manager 下載器主機</string>
+  <string name="downloader_host_permission_description">用於控制對 Nexora Manager 下載器的存取。只有 Nexora Manager 擁有這個權限。</string>
   <string name="toast_copied_to_clipboard">已複製！</string>
   <string name="copy_to_clipboard">複製到剪貼簿</string>
   <string name="dashboard">儀表板</string>
@@ -89,13 +89,12 @@ Second \"item\" text"</string>
   <string name="apk_source_downloaded">已下載</string>
   <string name="legacy_import_failed">無法匯入舊版設定</string>
   <string name="auto_updates_dialog_title">設定更新</string>
-  <string name="auto_updates_dialog_description">您是否希望 ReVanced Manager 定期檢查以下元件的更新？</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced 修補</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager：下載器</string>
+  <string name="auto_updates_dialog_description">您是否希望 Nexora Manager 定期檢查以下元件的更新？</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+  <string name="auto_updates_dialog_downloaders">Nexora Manager：下載器</string>
   <string name="auto_updates_dialog_note">這些設定稍後可以更改。
 
-    ReVanced Manager 將連接到 %s 以下載初始版本，如果您的裝置已連接到網際網路。</string>
+    Nexora Manager 將連接到 %s 以下載初始版本，如果您的裝置已連接到網際網路。</string>
   <string name="announcements_filter_tag">依標籤篩選</string>
   <string name="announcements_show_archived">顯示已封存</string>
   <string name="general">一般</string>
@@ -114,8 +113,7 @@ Second \"item\" text"</string>
   <string name="opensource_licenses">開放原始碼授權</string>
   <string name="opensource_licenses_description">檢視所有用於製作此應用程式的程式庫</string>
   <string name="contributors">貢獻者</string>
-  <string name="contributors_description">檢視 ReVanced 的貢獻者</string>
-  <string name="dynamic_color">動態顏色</string>
+<string name="dynamic_color">動態顏色</string>
   <string name="dynamic_color_description">將顏色調整為符合桌布</string>
   <string name="pure_black_theme">純黑主題</string>
   <string name="pure_black_theme_description">在深色主題下使用純黑背景</string>
@@ -213,15 +211,14 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_description">確定要刪除所選的應用程式嗎？</string>
   <string name="downloader_delete_single_description">您確定要刪除「%s」嗎？</string>
   <string name="downloader_settings_no_apps">找不到已下載的應用程式。</string>
-  <string name="downloader_settings_no_apps_description">透過 ReVanced Manager 下載的應用程式將會顯示在這裡。</string>
+  <string name="downloader_settings_no_apps_description">透過 Nexora Manager 下載的應用程式將會顯示在這裡。</string>
   <string name="downloader_url">下載器網址</string>
   <string name="downloader_add">新增下載器</string>
   <string name="select_downloader_type_dialog_description">從網址或本機檔案新增下載器</string>
   <string name="local_downloaders_description">從本機儲存空間新增下載器。</string>
   <string name="remote_downloaders_description">從網址新增下載器。可自動更新。</string>
-  <string name="install_revanced_downloaders">安裝下載器以直接在 ReVanced Manager 內取得應用程式。</string>
-  <string name="install_revanced_downloader">安裝 ReVanced 下載器</string>
-  <string name="cancel_downloader_install_title">取消下載器安裝？</string>
+  <string name="install_revanced_downloaders">安裝下載器以直接在 Nexora Manager 內取得應用程式。</string>
+<string name="cancel_downloader_install_title">取消下載器安裝？</string>
   <string name="cancel_downloader_install_description">下載器安裝正在進行中。如果您現在離開，下載將會取消。</string>
   <string name="downloader_sources_unavailable_title">這些下載器遺失了</string>
   <string name="downloader_sources_unavailable_description">按一下更新按鈕以修正。</string>
@@ -273,8 +270,8 @@ Second \"item\" text"</string>
   <string name="api_url">API 網址</string>
   <string name="api_url_description">用於下載必要檔案的 API</string>
   <string name="api_url_dialog_title">變更 API 網址</string>
-  <string name="api_url_dialog_description">變更 ReVanced Manager 的 API 網址。ReVanced Manager 使用 API 下載修補程式和更新。</string>
-  <string name="api_url_dialog_warning">ReVanced Manager 連線到 API 以下載修補程式和更新。請確保您信任它。</string>
+  <string name="api_url_dialog_description">變更 Nexora Manager 的 API 網址。Nexora Manager 使用 API 下載修補程式和更新。</string>
+  <string name="api_url_dialog_warning">Nexora Manager 連線到 API 以下載修補程式和更新。請確保您信任它。</string>
   <string name="api_url_dialog_save">設定</string>
   <string name="api_url_dialog_reset">重設 API 網址</string>
   <string name="device">裝置</string>
@@ -453,9 +450,8 @@ Second \"item\" text"</string>
   <string name="patches_delete_multiple_dialog_description">確定要刪除選取的修補程式嗎？</string>
   <string name="announcements">公告</string>
   <string name="archive">封存</string>
-  <string name="about_revanced_manager">關於 ReVanced Manager</string>
-  <string name="revanced_manager_description">ReVanced Manager 是一個 Android 應用程式，使用 ReVanced Patcher 來修補 Android 應用程式。它允許您下載和使用自訂修補程式修補應用程式，並管理修補過程。</string>
-  <string name="developer_options_taps">剩餘 %d 次輕觸</string>
+  <string name="about_revanced_manager">關於 Nexora Manager</string>
+<string name="developer_options_taps">剩餘 %d 次輕觸</string>
   <string name="developer_options_enabled">已啟用開發人員選項</string>
   <string name="developer_options_already_enabled">開發人員選項已啟用</string>
   <string name="update_available">有可用更新</string>
@@ -468,17 +464,15 @@ Second \"item\" text"</string>
   <string name="view_update">檢視更新</string>
   <string name="manual_update_check_description">手動檢查更新</string>
   <string name="update_checking_manager">啟動時檢查更新</string>
-  <string name="update_checking_manager_description">應用程式啟動時檢查 ReVanced Manager 的新版本</string>
-  <string name="update_checking_downloader">啟動時檢查 ReVanced 下載器更新</string>
-  <string name="update_checking_downloader_description">應用程式啟動時檢查已安裝 ReVanced 下載器的更新</string>
-  <string name="manager_prereleases">使用預先發布版</string>
-  <string name="manager_prereleases_description">使用 ReVanced Manager 的預先發布版</string>
+  <string name="update_checking_manager_description">應用程式啟動時檢查 Nexora Manager 的新版本</string>
+<string name="manager_prereleases">使用預先發布版</string>
+  <string name="manager_prereleases_description">使用 Nexora Manager 的預先發布版</string>
   <string name="prereleases_warning">預發行版本可能不穩定並包含錯誤。您可能會遇到崩潰、資料遺失或其他意外問題。僅在您接受這些風險的情況下啟用此功能。</string>
   <string name="changelog">檢視變更記錄</string>
   <string name="changelog_loading">正在載入變更日誌</string>
   <string name="changelog_download_fail">下載變更日誌失敗：%s</string>
   <string name="changelog_description">查看此更新中的最新變更</string>
-  <string name="battery_optimization_notification">必須關閉電池最佳化，ReVanced Manager 才能在背景正常運作。按一下這裡關閉最佳化。</string>
+  <string name="battery_optimization_notification">必須關閉電池最佳化，Nexora Manager 才能在背景正常運作。按一下這裡關閉最佳化。</string>
   <string name="installing_manager_update">正在安裝更新…</string>
   <string name="downloading_manager_update">正在下載更新…</string>
   <string name="download_manager_failed">下載更新失敗：%s</string>
@@ -487,7 +481,7 @@ Second \"item\" text"</string>
   <string name="save_with_count">儲存 (%1$s)</string>
   <string name="update">更新</string>
   <string name="empty">空白</string>
-  <string name="installing_message">出現提示時輕觸<b>更新</b>。\n更新時 ReVanced Manager 將關閉。</string>
+  <string name="installing_message">出現提示時輕觸<b>更新</b>。\n更新時 Nexora Manager 將關閉。</string>
   <string name="no_changelogs_found">未找到變更日誌</string>
   <string name="just_now">剛才</string>
   <string name="minutes_ago">%s 分鐘前</string>
@@ -503,7 +497,7 @@ Second \"item\" text"</string>
   <string name="no_announcements_found">找不到任何公告</string>
   <string name="update_check">正在檢查更新…</string>
   <string name="dismiss_temporary">暫時不要</string>
-  <string name="update_available_dialog_description">ReVanced Manager 的新版本 (%s) 已可用。</string>
+  <string name="update_available_dialog_description">Nexora Manager 的新版本 (%s) 已可用。</string>
   <string name="failed_to_download_update">下載更新失敗：%s</string>
   <string name="download">下載</string>
   <string name="download_confirmation_metered">您目前使用計量付費連線，服務供應商可能會收取數據費用。\n\n您仍要繼續嗎？</string>

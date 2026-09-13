@@ -77,7 +77,7 @@ publishing {
     repositories {
         maven {
             name = "githubPackages"
-            url = uri("https://maven.pkg.github.com/revanced/revanced-manager")
+            url = uri("https://maven.pkg.github.com/plarika/fantamk-revanced-manager")
             credentials(PasswordCredentials::class)
         }
     }
@@ -93,9 +93,9 @@ publishing {
             version = project.version.toString()
 
             pom {
-                name = "ReVanced Manager API"
-                description = "API for ReVanced Manager."
-                url = "https://revanced.app"
+                name = "Nexora Manager API"
+                description = "API for Nexora Manager."
+                url = "https://github.com/plarika/fantamk-revanced-manager"
 
                 licenses {
                     license {
@@ -105,15 +105,14 @@ publishing {
                 }
                 developers {
                     developer {
-                        id = "ReVanced"
-                        name = "ReVanced"
-                        email = "contact@revanced.app"
+                        id = "Nexora"
+                        name = "Nexora"
                     }
                 }
                 scm {
-                    connection = "scm:git:git://github.com/revanced/revanced-manager.git"
-                    developerConnection = "scm:git:git@github.com:revanced/revanced-manager.git"
-                    url = "https://github.com/revanced/revanced-manager"
+                    connection = "scm:git:git://github.com/plarika/fantamk-revanced-manager.git"
+                    developerConnection = "scm:git:git@github.com:plarika/fantamk-revanced-manager.git"
+                    url = "https://github.com/plarika/fantamk-revanced-manager"
                 }
             }
         }

@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">Siyakwamukela ku</string>
   <string name="onboarding_welcome_back">Sawubona! Kungokusha</string>
   <string name="onboarding_apps_subtitle">Ungakhetha uhlelo lokusebenza ukuze ulunge njengamanje noma ukwenze kamuva</string>
-  <string name="onboarding_updates_subtitle">Lungiselela izibuyekezo ezizenzekelayo ukuze ugcine i-ReVanced Manager nezilungiso zisesikhathini</string>
-  <string name="onboarding_updates_note">I-ReVanced Manager izoxhuma ku-%s ukuze ilande izinguqulo zokuqala uma idivayisi yakho ixhunywe ku-inthanethi.</string>
+  <string name="onboarding_updates_subtitle">Lungiselela izibuyekezo ezizenzekelayo ukuze ugcine i-Nexora Manager nezilungiso zisesikhathini</string>
+  <string name="onboarding_updates_note">I-Nexora Manager izoxhuma ku-%s ukuze ilande izinguqulo zokuqala uma idivayisi yakho ixhunywe ku-inthanethi.</string>
   <string name="retry">Zama futhi</string>
   <string name="onboarding_skip">Yeqa okwamanje</string>
   <string name="onboarding_recommended_version">Inguqulo enconyiwe: %s</string>
   <string name="onboarding_permissions_skip_title">Yeqa izimvume?</string>
   <string name="onboarding_permissions_skip_description">Ngaphandle kwezimvume ezidingekayo, ezinye izici zingase zingasebenzi kahle. Ungazinikeza kamuva kuzilungiselelo zohlelo lokusebenza.</string>
   <string name="onboarding_permissions_skip_anyway">Yeqa noma kunjalo</string>
-  <string name="onboarding_permissions_subtitle">I-ReVanced Manager idinga izimvume ezimbalwa ukuze isebenze kahle</string>
+  <string name="onboarding_permissions_subtitle">I-Nexora Manager idinga izimvume ezimbalwa ukuze isebenze kahle</string>
   <string name="permission_install_apps">Faka izinhlelo zokusebenza ezingaziwa</string>
   <string name="permission_install_apps_description">Kuyadingeka ukufaka izinhlelo zokusebenza ezilungisiwe</string>
   <string name="permission_notifications">Izaziso</string>
   <string name="permission_battery">Ukulungiswa kwebhethri</string>
   <string name="permission_battery_description">Ivikela ukuthi ukulungisa kungaphazamiseki ngemuva</string>
   <string name="permission_grant">Nikeza</string>
-  <string name="downloader_host_permission_label">ReVanced Manager umphathi wokulanda</string>
-  <string name="downloader_host_permission_description">Isetshenziselwa ukulawula ukufinyelela kuma-downloader we-ReVanced Manager. I-ReVanced Manager kuphela enakho lokhu.</string>
+  <string name="downloader_host_permission_label">Nexora Manager umphathi wokulanda</string>
+  <string name="downloader_host_permission_description">Isetshenziselwa ukulawula ukufinyelela kuma-downloader we-Nexora Manager. I-Nexora Manager kuphela enakho lokhu.</string>
   <string name="fab_patch_app">Pheqa uhlelo lokusebenza</string>
   <string name="fab_add_patches">Engeza izipeqe</string>
   <string name="new_downloader_notification">Izilandi ezintsha ziyatholakala. Chofoza lapha ukuze uzilungiselele.</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">Okuzenzakalelayo · Kusebenzisa abalanda okutholakalayo</string>
   <string name="apk_source_auto_storage">Okuzenzakalelayo · Khetha kusuka endaweni yokugcina</string>
   <string name="apk_source_downloaded">Eselandiwe</string>
-  <string name="auto_updates_dialog_description">Ingabe ufuna i-ReVanced Manager ihlole njalo izibuyekezo zezakhi ezilandelayo?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">Izipeqe ze-ReVanced</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Abalandi</string>
+  <string name="auto_updates_dialog_description">Ingabe ufuna i-Nexora Manager ihlole njalo izibuyekezo zezakhi ezilandelayo?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: Abalandi</string>
   <string name="auto_updates_dialog_note">Lezi zilungiselelo zingashintshwa kamuva.
 
-    I-ReVanced Manager izoxhuma ku-%s ukuze ilande izinguqulo zokuqala uma idivayisi yakho ixhunywe ku-inthanethi.</string>
+    I-Nexora Manager izoxhuma ku-%s ukuze ilande izinguqulo zokuqala uma idivayisi yakho ixhunywe ku-inthanethi.</string>
   <string name="announcements_filter_tag">Hlunga ngethegi</string>
   <string name="announcements_show_archived">Bonisa okufakwe kungobo yomlando</string>
   <string name="updates_description">Hlola izibuyekezo futhi ubuke i-changelog</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">Susa izinhlelo zokusebenza ezikhethiwe</string>
   <string name="downloader_delete_apps_description">Uqinisekile ufuna ukususa izinhlelo zokusebenza ezikhethiwe?</string>
   <string name="downloader_delete_single_description">Uqinisekile ufuna ukususa \"%s\"?</string>
-  <string name="downloader_settings_no_apps_description">Izinhlelo zokusebenza ezilandwe nge-ReVanced Manager zizovela lapha.</string>
+  <string name="downloader_settings_no_apps_description">Izinhlelo zokusebenza ezilandwe nge-Nexora Manager zizovela lapha.</string>
   <string name="downloader_url">Isixhumanisi Sesilandi</string>
   <string name="downloader_add">Engeza Isilandi</string>
   <string name="select_downloader_type_dialog_description">Engeza izilandi ezintsha kusuka ku-URL noma kumafayela endawo</string>
   <string name="local_downloaders_description">Engeza izilandi kusuka kusitoreji sendawo.</string>
   <string name="remote_downloaders_description">Engeza izilandi kusuka ku-URL. Zingabuyekezwa ngokuzenzakalelayo.</string>
-  <string name="install_revanced_downloaders">Faka izilandi ukuze uthole izinhlelo zokusebenza ngokuqondile ngaphakathi kwe-ReVanced Manager.</string>
-  <string name="install_revanced_downloader">Faka izilandi ze-ReVanced</string>
+  <string name="install_revanced_downloaders">Faka izilandi ukuze uthole izinhlelo zokusebenza ngokuqondile ngaphakathi kwe-Nexora Manager.</string>
   <string name="cancel_downloader_install_title">Khansela ukufakwa kwezilandi?</string>
   <string name="cancel_downloader_install_description">Ukufakwa kwezilandi kuyaqhubeka. Uma uhamba manje, ukulanda kuzokhanselwa.</string>
   <string name="downloader_sources_unavailable_title">Lezi zilandi azikho</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">Izimemezelo</string>
   <string name="archive">Ingobo yomlando</string>
   <string name="view_update">Buka isibuyekezo</string>
-  <string name="update_checking_downloader">Hlola izibuyekezo ze-ReVanced Downloaders ekuqalisweni</string>
-  <string name="update_checking_downloader_description">Hlola izibuyekezo zezilandi ze-ReVanced ezifakiwe lapho uhlelo lokusebenza luqala</string>
   <string name="prereleases_warning">Izingqikithi zangaphambi kokukhishwa zingase zingazinzi futhi ziqukethe iziphazamiso. Ungase uhlangabezane nokuphahlazeka, ukulahlekelwa idatha, noma ezinye izinkinga ezingalindelekile. Vumela lokhu kuphela uma ukhululekile ngalezi zingozi.</string>
   <string name="changelog">Buka i-changelog</string>
   <string name="no_announcements_found">Azikho izimemezelo ezitholakele</string>

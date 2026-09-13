@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">Benvido a</string>
   <string name="onboarding_welcome_back">Ola! É o novo</string>
   <string name="onboarding_apps_subtitle">Podes seleccionar unha aplicación para parchear agora ou facelo máis tarde</string>
-  <string name="onboarding_updates_subtitle">Configura as actualizacións automáticas para manter ReVanced Manager e os parches actualizados</string>
-  <string name="onboarding_updates_note">ReVanced Manager conectarase a %s para descargar as versións iniciais se o teu dispositivo está conectado a internet.</string>
+  <string name="onboarding_updates_subtitle">Configura as actualizacións automáticas para manter Nexora Manager e os parches actualizados</string>
+  <string name="onboarding_updates_note">Nexora Manager conectarase a %s para descargar as versións iniciais se o teu dispositivo está conectado a internet.</string>
   <string name="retry">Reintentar</string>
   <string name="onboarding_skip">Omitir por agora</string>
   <string name="onboarding_recommended_version">Versión recomendada: %s</string>
   <string name="onboarding_permissions_skip_title">Omitir permisos?</string>
   <string name="onboarding_permissions_skip_description">Sen os permisos necesarios, algunhas funcións poden non funcionar correctamente. Podes concedelos máis tarde na configuración da aplicación.</string>
   <string name="onboarding_permissions_skip_anyway">Omitir de todos os xeitos</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager necesita algúns permisos para funcionar correctamente</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager necesita algúns permisos para funcionar correctamente</string>
   <string name="permission_install_apps">Instalar aplicacións descoñecidas</string>
   <string name="permission_install_apps_description">Necesario para instalar aplicacións parcheadas</string>
   <string name="permission_notifications">Notificacións</string>
   <string name="permission_battery">Optimización da batería</string>
   <string name="permission_battery_description">Evita que o parcheado sexa interrompido en segundo plano</string>
   <string name="permission_grant">Conceder</string>
-  <string name="downloader_host_permission_label">Servidor de descarga de ReVanced Manager</string>
-  <string name="downloader_host_permission_description">Utilízase para controlar o acceso aos descargadores de ReVanced Manager. Só ReVanced Manager ten isto.</string>
+  <string name="downloader_host_permission_label">Servidor de descarga de Nexora Manager</string>
+  <string name="downloader_host_permission_description">Utilízase para controlar o acceso aos descargadores de Nexora Manager. Só Nexora Manager ten isto.</string>
   <string name="fab_patch_app">Parchear unha aplicación</string>
   <string name="fab_add_patches">Engadir parches</string>
   <string name="new_downloader_notification">Hai novos descargadores dispoñibles. Fai clic aquí para configuralos.</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">Automático · Usando descargadores dispoñibles</string>
   <string name="apk_source_auto_storage">Automático · Seleccionar desde o almacenamento</string>
   <string name="apk_source_downloaded">Xa descargado</string>
-  <string name="auto_updates_dialog_description">Queres que ReVanced Manager comprobe periodicamente as actualizacións dos seguintes compoñentes?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">Parches de ReVanced</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Descargadores</string>
+  <string name="auto_updates_dialog_description">Queres que Nexora Manager comprobe periodicamente as actualizacións dos seguintes compoñentes?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: Descargadores</string>
   <string name="auto_updates_dialog_note">Estes axustes pódense cambiar máis tarde.
 
-    ReVanced Manager conectarase a %s para descargar as versións iniciais se o teu dispositivo está conectado a internet.</string>
+    Nexora Manager conectarase a %s para descargar as versións iniciais se o teu dispositivo está conectado a internet.</string>
   <string name="announcements_filter_tag">Filtrar por etiqueta</string>
   <string name="announcements_show_archived">Mostrar arquivados</string>
   <string name="updates_description">Comprobar actualizacións e ver o rexistro de cambios</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">Eliminar aplicacións seleccionadas</string>
   <string name="downloader_delete_apps_description">Está seguro de que quere eliminar as aplicacións seleccionadas?</string>
   <string name="downloader_delete_single_description">Seguro que queres eliminar \"%s\"?</string>
-  <string name="downloader_settings_no_apps_description">As aplicacións descargadas a través de ReVanced Manager aparecerán aquí.</string>
+  <string name="downloader_settings_no_apps_description">As aplicacións descargadas a través de Nexora Manager aparecerán aquí.</string>
   <string name="downloader_url">URL do descargador</string>
   <string name="downloader_add">Engadir descargador</string>
   <string name="select_downloader_type_dialog_description">Engadir novos descargadores desde URL ou ficheiros locais</string>
   <string name="local_downloaders_description">Engadir descargadores desde o almacenamento local.</string>
   <string name="remote_downloaders_description">Engadir descargadores desde URL. Pódense actualizar automaticamente.</string>
-  <string name="install_revanced_downloaders">Instala descargadores para obter aplicacións directamente dentro de ReVanced Manager.</string>
-  <string name="install_revanced_downloader">Instalar descargadores de ReVanced</string>
+  <string name="install_revanced_downloaders">Instala descargadores para obter aplicacións directamente dentro de Nexora Manager.</string>
   <string name="cancel_downloader_install_title">Cancelar instalación de descargadores?</string>
   <string name="cancel_downloader_install_description">Unha instalación de descargadores está en progreso. Se saes agora, a descarga cancelarase.</string>
   <string name="downloader_sources_unavailable_title">Faltan estes descargadores</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">Anuncios</string>
   <string name="archive">Arquivo</string>
   <string name="view_update">Ver actualización</string>
-  <string name="update_checking_downloader">Comprobar actualizacións dos descargadores de ReVanced no inicio</string>
-  <string name="update_checking_downloader_description">Comprobar actualizacións dos descargadores de ReVanced instalados cando a aplicación se inicia</string>
   <string name="prereleases_warning">As versións preliminares poden ser inestables e conter erros. Podes experimentar fallos, perda de datos ou outros problemas inesperados. Activa isto só se te sentes cómodo con estes riscos.</string>
   <string name="changelog">Ver rexistro de cambios</string>
   <string name="no_announcements_found">Non se atoparon anuncios</string>

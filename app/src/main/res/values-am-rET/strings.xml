@@ -16,25 +16,25 @@ Second \"item\" text"</string>
 <resources>
   <string name="patcher">ጠጋኝ</string>
   <string name="onboarding_welcome_to">እንኳን ደህና መጡ</string>
-  <string name="onboarding_welcome_back">ሰላም! አዲሱ ReVanced Manager ነው</string>
+  <string name="onboarding_welcome_back">ሰላም! አዲሱ Nexora Manager ነው</string>
   <string name="onboarding_apps_subtitle">አሁን ለመጠገን መተግበሪያ መምረጥ ወይም በኋላ ማድረግ ይችላሉ</string>
-  <string name="onboarding_updates_subtitle">ReVanced Managerን እና መጠገኛዎችን ወቅታዊ ለማድረግ ራስ-ሰር ዝመናዎችን ያዋቅሩ</string>
-  <string name="onboarding_updates_note">ReVanced Manager የእርስዎ መሣሪያ ከበይነመረቡ ጋር የተገናኘ ከሆነ የመጀመሪያዎቹን ስሪቶች ለማውረድ ከ%s ጋር ይገናኛል።</string>
+  <string name="onboarding_updates_subtitle">Nexora Managerን እና መጠገኛዎችን ወቅታዊ ለማድረግ ራስ-ሰር ዝመናዎችን ያዋቅሩ</string>
+  <string name="onboarding_updates_note">Nexora Manager የእርስዎ መሣሪያ ከበይነመረቡ ጋር የተገናኘ ከሆነ የመጀመሪያዎቹን ስሪቶች ለማውረድ ከ%s ጋር ይገናኛል።</string>
   <string name="retry">እንደገና ይሞክሩ</string>
   <string name="onboarding_skip">ለአሁኑ ይዝለሉ</string>
   <string name="onboarding_recommended_version">የሚመከር ስሪት: %s</string>
   <string name="onboarding_permissions_skip_title">ፈቃዶችን ዝለል?</string>
   <string name="onboarding_permissions_skip_description">አስፈላጊ ፈቃዶች ከሌሉ አንዳንድ ባህሪያት በትክክል ላይሰሩ ይችላሉ። በኋላ በመተግበሪያ ቅንብሮች ውስጥ መስጠት ይችላሉ።</string>
   <string name="onboarding_permissions_skip_anyway">ያም ሆነ ይህ ዝለል</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager በትክክል ለመስራት ጥቂት ፈቃዶች ያስፈልገዋል።</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager በትክክል ለመስራት ጥቂት ፈቃዶች ያስፈልገዋል።</string>
   <string name="permission_install_apps">ያልታወቁ መተግበሪያዎችን ጫን</string>
   <string name="permission_install_apps_description">የተጠገኑ መተግበሪያዎችን ለመጫን ያስፈልጋል</string>
   <string name="permission_notifications">ማሳወቂያዎች</string>
   <string name="permission_battery">የባትሪ ማመቻቸት</string>
   <string name="permission_battery_description">ከበስተጀርባ እየተጠገነ እንዳይቋረጥ ይከላከላል</string>
   <string name="permission_grant">ስጥ</string>
-  <string name="downloader_host_permission_label">ReVanced Manager ማውረጃ አስተናጋጅ</string>
-  <string name="downloader_host_permission_description">የ ReVanced Manager ማውረጃዎችን መዳረሻ ለመቆጣጠር ጥቅም ላይ ይውላል። ይህ ያለው ReVanced Manager ብቻ ነው።</string>
+  <string name="downloader_host_permission_label">Nexora Manager ማውረጃ አስተናጋጅ</string>
+  <string name="downloader_host_permission_description">የ Nexora Manager ማውረጃዎችን መዳረሻ ለመቆጣጠር ጥቅም ላይ ይውላል። ይህ ያለው Nexora Manager ብቻ ነው።</string>
   <string name="fab_patch_app">መተግበሪያ ጠግን</string>
   <string name="fab_add_patches">ጥገናዎችን ጨምር</string>
   <string name="new_downloader_notification">አዲስ ማውረጃ(ዎች) ይገኛሉ። እነሱን ለማዋቀር እዚህ ይጫኑ።</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">ራስ-ሰር · ያሉትን ማውረጃዎች በመጠቀም</string>
   <string name="apk_source_auto_storage">ራስ-ሰር · ከማከማቻ ምረጥ</string>
   <string name="apk_source_downloaded">አስቀድሞ ወርዷል</string>
-  <string name="auto_updates_dialog_description">ReVanced Manager ለሚከተሉት አካላት በየጊዜው ዝመናዎችን እንዲፈትሽ ይፈልጋሉ?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced Patches</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: አውራጆች</string>
+  <string name="auto_updates_dialog_description">Nexora Manager ለሚከተሉት አካላት በየጊዜው ዝመናዎችን እንዲፈትሽ ይፈልጋሉ?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: አውራጆች</string>
   <string name="auto_updates_dialog_note">እነዚህ ቅንብሮች በኋላ ላይ ሊለወጡ ይችላሉ።
 
-    ReVanced Manager የእርስዎ መሣሪያ ከበይነመረቡ ጋር የተገናኘ ከሆነ የመጀመሪያዎቹን ስሪቶች ለማውረድ ከ%s ጋር ይገናኛል።</string>
+    Nexora Manager የእርስዎ መሣሪያ ከበይነመረቡ ጋር የተገናኘ ከሆነ የመጀመሪያዎቹን ስሪቶች ለማውረድ ከ%s ጋር ይገናኛል።</string>
   <string name="announcements_filter_tag">በመለያ አጣራ</string>
   <string name="announcements_show_archived">በማህደር ያሉትን አሳይ</string>
   <string name="updates_description">ዝመናዎችን ይፈትሹ እና የለውጥ መዝገብን ይመልከቱ</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">የተመረጡ መተግበሪያዎችን ይሰርዙ</string>
   <string name="downloader_delete_apps_description">የተመረጡትን መተግበሪያዎች መሰረዝ እንደሚፈልጉ እርግጠኛ ነዎት?</string>
   <string name="downloader_delete_single_description">\"%s\" ን መሰረዝ ይፈልጋሉ?</string>
-  <string name="downloader_settings_no_apps_description">በReVanced Manager በኩል የወረዱ መተግበሪያዎች እዚህ ይታያሉ።</string>
+  <string name="downloader_settings_no_apps_description">በNexora Manager በኩል የወረዱ መተግበሪያዎች እዚህ ይታያሉ።</string>
   <string name="downloader_url">ማውረጃ URL</string>
   <string name="downloader_add">ማውረጃ ያክሉ</string>
   <string name="select_downloader_type_dialog_description">አዳዲስ ማውረጃዎችን ከURL ወይም ከአካባቢያዊ ፋይሎች ያክሉ</string>
   <string name="local_downloaders_description">ማውረጃዎችን ከአካባቢያዊ ማከማቻ ያክሉ</string>
   <string name="remote_downloaders_description">ማውረጃዎችን ከURL ያክሉ። በራስ-ሰር ሊዘመኑ ይችላሉ።</string>
-  <string name="install_revanced_downloaders">መተግበሪያዎችን በቀጥታ በReVanced Manager ውስጥ ለማግኘት ማውረጃዎችን ይጫኑ።</string>
-  <string name="install_revanced_downloader">ReVanced Downloaders ጫን</string>
+  <string name="install_revanced_downloaders">መተግበሪያዎችን በቀጥታ በNexora Manager ውስጥ ለማግኘት ማውረጃዎችን ይጫኑ።</string>
   <string name="cancel_downloader_install_title">ማውረጃዎች መጫኑ ይሰረዝ?</string>
   <string name="cancel_downloader_install_description">የማውረጃዎች መጫን በመካሄድ ላይ ነው። አሁን ከሄዱ፣ ውርዱ ይሰረዛል።</string>
   <string name="downloader_sources_unavailable_title">እነዚህ ማውረጃዎች ጠፍተዋል</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">ማስታወቂያዎች</string>
   <string name="archive">ማህደር</string>
   <string name="view_update">ዝመናን ይመልከቱ</string>
-  <string name="update_checking_downloader">ReVanced Downloaders ሲጀመር ዝመናዎችን ይፈትሹ</string>
-  <string name="update_checking_downloader_description">መተግበሪያው ሲጀመር ለተጫኑ ReVanced Downloaders ዝመናዎችን ይፈትሹ</string>
   <string name="prereleases_warning">ቅድመ-ልቀት ስሪቶች ያልተረጋጉ እና ስህተቶችን ሊይዙ ይችላሉ። ብልሽቶች፣ የውሂብ መጥፋት ወይም ሌሎች ያልተጠበቁ ችግሮች ሊያጋጥሙዎት ይችላሉ። ለእነዚህ አደጋዎች ምቾት የሚሰማዎት ከሆነ ብቻ ይህን ያንቁ።</string>
   <string name="changelog">የለውጥ መዝገብን ይመልከቱ</string>
   <string name="no_announcements_found">ምንም ማስታወቂያዎች አልተገኙም</string>

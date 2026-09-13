@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">Velkommen til</string>
   <string name="onboarding_welcome_back">Hei! Det er den nye</string>
   <string name="onboarding_apps_subtitle">Du kan velge en app å patche nå eller gjøre det senere</string>
-  <string name="onboarding_updates_subtitle">Konfigurer automatiske oppdateringer for å holde ReVanced Manager og patcher oppdatert</string>
-  <string name="onboarding_updates_note">ReVanced Manager vil koble til %s for å laste ned innledende versjoner hvis enheten din er koblet til internett.</string>
+  <string name="onboarding_updates_subtitle">Konfigurer automatiske oppdateringer for å holde Nexora Manager og patcher oppdatert</string>
+  <string name="onboarding_updates_note">Nexora Manager vil koble til %s for å laste ned innledende versjoner hvis enheten din er koblet til internett.</string>
   <string name="retry">Prøv på nytt</string>
   <string name="onboarding_skip">Hopp over for nå</string>
   <string name="onboarding_recommended_version">Anbefalt versjon: %s</string>
   <string name="onboarding_permissions_skip_title">Hopp over tillatelser?</string>
   <string name="onboarding_permissions_skip_description">Uten de nødvendige tillatelsene kan enkelte funksjoner ikke fungere korrekt. Du kan gi dem senere i appinnstillingene.</string>
   <string name="onboarding_permissions_skip_anyway">Hopp over likevel</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager trenger noen tillatelser for å fungere skikkelig</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager trenger noen tillatelser for å fungere skikkelig</string>
   <string name="permission_install_apps">Installer ukjente apper</string>
   <string name="permission_install_apps_description">Kreves for å installere lappede applikasjoner</string>
   <string name="permission_notifications">Varsler</string>
   <string name="permission_battery">Batterioptimalisering</string>
   <string name="permission_battery_description">Forhindrer at lapping avbrytes i bakgrunnen</string>
   <string name="permission_grant">Gi</string>
-  <string name="downloader_host_permission_label">ReVanced Manager nedlastervert</string>
-  <string name="downloader_host_permission_description">Brukes til å kontrollere tilgang til ReVanced Manager-nedlastere. Kun ReVanced Manager har dette.</string>
+  <string name="downloader_host_permission_label">Nexora Manager nedlastervert</string>
+  <string name="downloader_host_permission_description">Brukes til å kontrollere tilgang til Nexora Manager-nedlastere. Kun Nexora Manager har dette.</string>
   <string name="fab_patch_app">Lap en app</string>
   <string name="fab_add_patches">Legg til lapper</string>
   <string name="new_downloader_notification">Ny(e) nedlaster(e) tilgjengelig. Klikk her for å konfigurere dem.</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">Automatisk · Bruker tilgjengelige nedlastere</string>
   <string name="apk_source_auto_storage">Automatisk · Velg fra lagring</string>
   <string name="apk_source_downloaded">Allerede nedlastet</string>
-  <string name="auto_updates_dialog_description">Vil du at ReVanced Manager periodisk skal sjekke etter oppdateringer for følgende komponenter?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced-lapper</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Nedlastere</string>
+  <string name="auto_updates_dialog_description">Vil du at Nexora Manager periodisk skal sjekke etter oppdateringer for følgende komponenter?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: Nedlastere</string>
   <string name="auto_updates_dialog_note">Disse innstillingene kan endres senere.
 
-    ReVanced Manager vil koble til %s for å laste ned innledende versjoner hvis enheten din er koblet til internett.</string>
+    Nexora Manager vil koble til %s for å laste ned innledende versjoner hvis enheten din er koblet til internett.</string>
   <string name="announcements_filter_tag">Filtrer etter tagg</string>
   <string name="announcements_show_archived">Vis arkiverte</string>
   <string name="updates_description">Sjekk etter oppdateringer og se endringslogg</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">Slett valgte apper</string>
   <string name="downloader_delete_apps_description">Er du sikker på at du vil slette de valgte appene?</string>
   <string name="downloader_delete_single_description">Er du sikker på at du vil slette \"%s\"?</string>
-  <string name="downloader_settings_no_apps_description">Apper lastet ned via ReVanced Manager vil vises her.</string>
+  <string name="downloader_settings_no_apps_description">Apper lastet ned via Nexora Manager vil vises her.</string>
   <string name="downloader_url">Nedlaster-URL</string>
   <string name="downloader_add">Legg til nedlaster</string>
   <string name="select_downloader_type_dialog_description">Legg til nye nedlastere fra URL eller lokale filer</string>
   <string name="local_downloaders_description">Legg til nedlastere fra lokal lagring.</string>
   <string name="remote_downloaders_description">Legg til nedlastere fra URL. Kan oppdateres automatisk.</string>
-  <string name="install_revanced_downloaders">Installer nedlastere for å få apper direkte i ReVanced Manager.</string>
-  <string name="install_revanced_downloader">Installer ReVanced-nedlastere</string>
+  <string name="install_revanced_downloaders">Installer nedlastere for å få apper direkte i Nexora Manager.</string>
   <string name="cancel_downloader_install_title">Avbryt nedlasterinstallasjon?</string>
   <string name="cancel_downloader_install_description">En nedlasterinstallasjon pågår. Hvis du forlater nå, vil nedlastingen bli avbrutt.</string>
   <string name="downloader_sources_unavailable_title">Disse nedlasterne mangler</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">Kunngjøringer</string>
   <string name="archive">Arkiv</string>
   <string name="view_update">Vis oppdatering</string>
-  <string name="update_checking_downloader">Sjekk etter ReVanced-nedlasteroppdateringer ved oppstart</string>
-  <string name="update_checking_downloader_description">Sjekk etter oppdateringer til installerte ReVanced-nedlastere når applikasjonen starter</string>
   <string name="prereleases_warning">Forhåndsutgivelser kan være ustabile og inneholde feil. Du kan oppleve krasjer, tap av data eller andre uventede problemer. Aktiver dette kun hvis du er komfortabel med disse risikoene.</string>
   <string name="changelog">Vis endringslogg</string>
   <string name="no_announcements_found">Ingen kunngjøringer funnet</string>

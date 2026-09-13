@@ -1,6 +1,6 @@
 # 💼 Prerequisites
 
-In order to use ReVanced Manager, certain requirements must be met.
+In order to use Nexora Manager, certain requirements must be met.
 
 ## 🤝 Requirements
 
@@ -8,6 +8,6 @@ In order to use ReVanced Manager, certain requirements must be met.
 
 ## ⏭️ What's next
 
-The next page will guide you through the installation of ReVanced Manager.
+The next page will guide you through the installation of Nexora Manager.
 
 Continue: [⬇️ Installation](1_installation.md)

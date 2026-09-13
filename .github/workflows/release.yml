@@ -79,5 +79,5 @@ jobs:
               if: steps.release.outputs.NEW_TAG != ''
               uses: actions/attest@v4
               with:
-                  subject-name: "ReVanced Manager ${{ steps.release.outputs.NEW_TAG }}"
-                  subject-path: app/build/outputs/apk/release/revanced-manager*.apk
+                  subject-name: "Nexora Manager ${{ steps.release.outputs.NEW_TAG }}"
+                  subject-path: app/build/outputs/apk/release/nexora-manager*.apk

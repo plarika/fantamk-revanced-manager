@@ -14,7 +14,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="app_name">ReVanced Manager</string>
+  <string name="app_name">Nexora Manager</string>
   <string name="patcher">Patcher</string>
   <string name="patches">Yamalar</string>
   <string name="cli">CLI</string>
@@ -22,23 +22,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">Xoş gəlmisiniz</string>
   <string name="onboarding_welcome_back">Salam! Bu yeni</string>
   <string name="onboarding_apps_subtitle">Siz indi yamaqlamaq üçün bir tətbiq seçə bilərsiniz və ya bunu sonra edə bilərsiniz</string>
-  <string name="onboarding_updates_subtitle">ReVanced Manager və yamaqları güncəl saxlamaq üçün avtomatik yeniləmələri konfiqurasiya edin</string>
-  <string name="onboarding_updates_note">Cihazınız internetə qoşulu olarsa, ilkin versiyaları yükləmək üçün ReVanced Manager %s-a qoşulacaq.</string>
+  <string name="onboarding_updates_subtitle">Nexora Manager və yamaqları güncəl saxlamaq üçün avtomatik yeniləmələri konfiqurasiya edin</string>
+  <string name="onboarding_updates_note">Cihazınız internetə qoşulu olarsa, ilkin versiyaları yükləmək üçün Nexora Manager %s-a qoşulacaq.</string>
   <string name="retry">Yenidən cəhd et</string>
   <string name="onboarding_skip">İndilik atla</string>
   <string name="onboarding_recommended_version">Tövsiyə olunan versiya: %s</string>
   <string name="onboarding_permissions_skip_title">İcazələri atla?</string>
   <string name="onboarding_permissions_skip_description">Tələb olunan icazələr olmadan bəzi funksiyalar düzgün işləməyə bilər. Onları daha sonra tətbiq parametrlərində verə bilərsiniz.</string>
   <string name="onboarding_permissions_skip_anyway">Hər halda atla</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager düzgün işləmək üçün bir neçə icazəyə ehtiyac duyur</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager düzgün işləmək üçün bir neçə icazəyə ehtiyac duyur</string>
   <string name="permission_install_apps">Naməlum tətbiqləri quraşdırın</string>
   <string name="permission_install_apps_description">Yamaqlanmış tətbiqləri quraşdırmaq üçün tələb olunur</string>
   <string name="permission_notifications">Bildirişlər</string>
   <string name="permission_battery">Batareya optimallaşdırılması</string>
   <string name="permission_battery_description">Arxa planda yamaqlamanın kəsilməsinin qarşısını alır</string>
   <string name="permission_grant">İcazə ver</string>
-  <string name="downloader_host_permission_label">ReVanced Manager yükləyici hostu</string>
-  <string name="downloader_host_permission_description">ReVanced Manager yükləyicilərinə girişi idarə etmək üçün istifadə olunur. Yalnız ReVanced Manager-də bu var.</string>
+  <string name="downloader_host_permission_label">Nexora Manager yükləyici hostu</string>
+  <string name="downloader_host_permission_description">Nexora Manager yükləyicilərinə girişi idarə etmək üçün istifadə olunur. Yalnız Nexora Manager-də bu var.</string>
   <string name="toast_copied_to_clipboard">Kopyalandı!</string>
   <string name="copy_to_clipboard">Buferə kopyala</string>
   <string name="dashboard">İdarə Paneli</string>
@@ -89,13 +89,12 @@ Second \"item\" text"</string>
   <string name="apk_source_downloaded">Artıq yüklənib</string>
   <string name="legacy_import_failed">Köhnə parametrlər idxal edilə bilmədi</string>
   <string name="auto_updates_dialog_title">Yeniləmələri konfiqurasiya edin</string>
-  <string name="auto_updates_dialog_description">ReVanced Manager-in aşağıdakı komponentlər üçün vaxtaşırı yeniləmələri yoxlamasını istəyirsinizmi?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced Yamaları</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Yükləyicilər</string>
+  <string name="auto_updates_dialog_description">Nexora Manager-in aşağıdakı komponentlər üçün vaxtaşırı yeniləmələri yoxlamasını istəyirsinizmi?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+  <string name="auto_updates_dialog_downloaders">Nexora Manager: Yükləyicilər</string>
   <string name="auto_updates_dialog_note">Bu tənzimləmələr daha sonra dəyişdirilə bilər.
 
-    Cihazınız internetə qoşulu olarsa, ilkin versiyaları yükləmək üçün ReVanced Manager %s-a qoşulacaq.</string>
+    Cihazınız internetə qoşulu olarsa, ilkin versiyaları yükləmək üçün Nexora Manager %s-a qoşulacaq.</string>
   <string name="announcements_filter_tag">Etiketə görə filtrləyin</string>
   <string name="announcements_show_archived">Arxivləşdirilmişləri göstər</string>
   <string name="general">Ümumi</string>
@@ -114,8 +113,7 @@ Second \"item\" text"</string>
   <string name="opensource_licenses">Açıq mənbə lisenziyaları</string>
   <string name="opensource_licenses_description">Bu tətbiqi yaratmaq üçün istifadə olunan bütün kitabxanaları göstər</string>
   <string name="contributors">İştirakçılar</string>
-  <string name="contributors_description">ReVanced iştirakçılarına baxın</string>
-  <string name="dynamic_color">Dinamik rəng</string>
+<string name="dynamic_color">Dinamik rəng</string>
   <string name="dynamic_color_description">Rəngləri divar kağızına uyğunlaşdırın</string>
   <string name="pure_black_theme">Saf qara mövzu</string>
   <string name="pure_black_theme_description">Qaranlıq mövzu üçün saf qara fonlardan istifadə edin</string>
@@ -213,15 +211,14 @@ Bu mənbədən əvvəlcədən quraşdırılmış tətbiqləri yeniləyə bilməy
   <string name="downloader_delete_apps_description">Seçilmiş tətbiqləri silmək istədiyinizə əminsiniz?</string>
   <string name="downloader_delete_single_description">\"%s\" silmək istədiyinizə əminsinizmi?</string>
   <string name="downloader_settings_no_apps">Yüklənmiş tətbiq tapılmadı.</string>
-  <string name="downloader_settings_no_apps_description">ReVanced Manager vasitəsilə yüklənmiş tətbiqlər burada görünəcək.</string>
+  <string name="downloader_settings_no_apps_description">Nexora Manager vasitəsilə yüklənmiş tətbiqlər burada görünəcək.</string>
   <string name="downloader_url">Endiricinin URL-i</string>
   <string name="downloader_add">Endirici əlavə et</string>
   <string name="select_downloader_type_dialog_description">URL-dən və ya yerli fayllardan yeni endiricilər əlavə edin</string>
   <string name="local_downloaders_description">Yerli yaddaşdan endiricilər əlavə edin.</string>
   <string name="remote_downloaders_description">URL-dən endiricilər əlavə edin. Avtomatik olaraq yenilənə bilər.</string>
-  <string name="install_revanced_downloaders">Tətbiqləri birbaşa ReVanced Manager daxilində əldə etmək üçün yükləyiciləri quraşdırın.</string>
-  <string name="install_revanced_downloader">ReVanced Yükləyicilərini quraşdırın</string>
-  <string name="cancel_downloader_install_title">Yükləyicilərin quraşdırılması ləğv edilsin?</string>
+  <string name="install_revanced_downloaders">Tətbiqləri birbaşa Nexora Manager daxilində əldə etmək üçün yükləyiciləri quraşdırın.</string>
+<string name="cancel_downloader_install_title">Yükləyicilərin quraşdırılması ləğv edilsin?</string>
   <string name="cancel_downloader_install_description">Yükləyicilərin quraşdırılması prosesi davam edir. İndi çıxsanız, yükləmə ləğv ediləcək.</string>
   <string name="downloader_sources_unavailable_title">Bu endiricilər çatışmır</string>
   <string name="downloader_sources_unavailable_description">Düzəltmək üçün yeniləmə düyməsinə klikləyin.</string>
@@ -272,8 +269,8 @@ Bu mənbədən əvvəlcədən quraşdırılmış tətbiqləri yeniləyə bilməy
   <string name="api_url">API URL</string>
   <string name="api_url_description">Lazımi faylları yükləmək üçün istifadə olunan API</string>
   <string name="api_url_dialog_title">API URL-ni dəyişdir</string>
-  <string name="api_url_dialog_description">ReVanced Manager-ın API URL-ni dəyişdirin. ReVanced Manager yamaqları və yeniləmələri yükləmək üçün API-dən istifadə edir.</string>
-  <string name="api_url_dialog_warning">ReVanced Manager yamaqları və yeniləmələri yükləmək üçün API-yə qoşulur. Ona güvəndiyinizə əmin olun.</string>
+  <string name="api_url_dialog_description">Nexora Manager-ın API URL-ni dəyişdirin. Nexora Manager yamaqları və yeniləmələri yükləmək üçün API-dən istifadə edir.</string>
+  <string name="api_url_dialog_warning">Nexora Manager yamaqları və yeniləmələri yükləmək üçün API-yə qoşulur. Ona güvəndiyinizə əmin olun.</string>
   <string name="api_url_dialog_save">Təyin et</string>
   <string name="api_url_dialog_reset">API URL-ni sıfırla</string>
   <string name="device">Cihaz</string>
@@ -443,9 +440,8 @@ Bu mənbədən əvvəlcədən quraşdırılmış tətbiqləri yeniləyə bilməy
   <string name="patches_delete_multiple_dialog_description">Seçilmiş yamaları silmək istədiyinizə əminsiniz?</string>
   <string name="announcements">Elanlar</string>
   <string name="archive">Arxiv</string>
-  <string name="about_revanced_manager">ReVanced Manager haqqında</string>
-  <string name="revanced_manager_description">ReVanced Manager, Android tətbiqlərini yamalamaq üçün ReVanced Patcher istifadə edən bir Android tətbiqidir. O, xüsusi yamalarla tətbiqləri yükləməyə və yamalamağa, həmçinin yamalanma prosesini idarə etməyə imkan verir.</string>
-  <string name="developer_options_taps">%d toxunuş qalıb</string>
+  <string name="about_revanced_manager">Nexora Manager haqqında</string>
+<string name="developer_options_taps">%d toxunuş qalıb</string>
   <string name="developer_options_enabled">Tərtibatçı seçimləri aktivləşdirildi</string>
   <string name="developer_options_already_enabled">Tərtibatçı seçimləri artıq aktivləşdirilib</string>
   <string name="update_available">Yeniləmə mövcuddur</string>
@@ -458,17 +454,15 @@ Bu mənbədən əvvəlcədən quraşdırılmış tətbiqləri yeniləyə bilməy
   <string name="view_update">Yeniləməyə bax</string>
   <string name="manual_update_check_description">Yeniləmələri əl ilə yoxla</string>
   <string name="update_checking_manager">Başlayarkən yeniləmələri yoxla</string>
-  <string name="update_checking_manager_description">Tətbiq başlayanda ReVanced Manager-in yeni versiyalarını yoxla</string>
-  <string name="update_checking_downloader">Başlayarkən ReVanced Yükləyiciləri üçün yeniləmələri yoxla</string>
-  <string name="update_checking_downloader_description">Tətbiq başladığında quraşdırılmış ReVanced Yükləyiciləri üçün yeniləmələri yoxla</string>
-  <string name="manager_prereleases">İlkin buraxılışları istifadə et</string>
-  <string name="manager_prereleases_description">ReVanced Manager-in ilkin versiyalarından istifadə et</string>
+  <string name="update_checking_manager_description">Tətbiq başlayanda Nexora Manager-in yeni versiyalarını yoxla</string>
+<string name="manager_prereleases">İlkin buraxılışları istifadə et</string>
+  <string name="manager_prereleases_description">Nexora Manager-in ilkin versiyalarından istifadə et</string>
   <string name="prereleases_warning">Sınaq versiyaları qeyri-sabit ola bilər və səhvlər ehtiva edə bilər. Qəzalar, məlumat itkisi və ya digər gözlənilməz problemlərlə qarşılaşa bilərsiniz. Yalnız bu risklərlə rahatsınızsa bunu aktiv edin.</string>
   <string name="changelog">Dəyişikliklər jurnalına bax</string>
   <string name="changelog_loading">Dəyişiklik qeydi yüklənir</string>
   <string name="changelog_download_fail">Dəyişiklik qeydini yükləmək alınmadı: %s</string>
   <string name="changelog_description">Bu yeniləmədəki son dəyişikliklərə bax</string>
-  <string name="battery_optimization_notification">ReVanced Manager-in arxa planda düzgün işləməsi üçün batareya optimizasiyası söndürülməlidir. Optimizasiyaları söndürmək üçün buraya klikləyin.</string>
+  <string name="battery_optimization_notification">Nexora Manager-in arxa planda düzgün işləməsi üçün batareya optimizasiyası söndürülməlidir. Optimizasiyaları söndürmək üçün buraya klikləyin.</string>
   <string name="installing_manager_update">Yeniləmə quraşdırılır…</string>
   <string name="downloading_manager_update">Yeniləmə yüklənir…</string>
   <string name="download_manager_failed">Yeniləməni yükləmək alınmadı: %s</string>
@@ -477,7 +471,7 @@ Bu mənbədən əvvəlcədən quraşdırılmış tətbiqləri yeniləyə bilməy
   <string name="save_with_count">Saxla (%1$s)</string>
   <string name="update">Yenilə</string>
   <string name="empty">Boş</string>
-  <string name="installing_message">Xahiş edildikdə <b>Yenilə</b> düyməsinə toxunun.\nReVanced Manager yenilənərkən bağlanacaq.</string>
+  <string name="installing_message">Xahiş edildikdə <b>Yenilə</b> düyməsinə toxunun.\nNexora Manager yenilənərkən bağlanacaq.</string>
   <string name="no_changelogs_found">Dəyişiklik qeydləri tapılmadı</string>
   <string name="just_now">İndi</string>
   <string name="minutes_ago">%s dəq əvvəl</string>
@@ -493,7 +487,7 @@ Bu mənbədən əvvəlcədən quraşdırılmış tətbiqləri yeniləyə bilməy
   <string name="no_announcements_found">Elan tapılmadı</string>
   <string name="update_check">Yeniləmələr yoxlanılır…</string>
   <string name="dismiss_temporary">İndi yox</string>
-  <string name="update_available_dialog_description">ReVanced Manager-in (%s) yeni versiyası mövcuddur.</string>
+  <string name="update_available_dialog_description">Nexora Manager-in (%s) yeni versiyası mövcuddur.</string>
   <string name="failed_to_download_update">Yeniləməni yükləmək alınmadı: %s</string>
   <string name="download">Yüklə</string>
   <string name="download_confirmation_metered">Hazırda ölçülü bağlantıdasınız və xidmət provayderiniz tərəfindən məlumat haqqları tətbiq oluna bilər.\n\nDavam etmək istəyirsiniz?</string>

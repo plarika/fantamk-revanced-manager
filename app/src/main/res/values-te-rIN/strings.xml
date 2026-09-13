@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">కు స్వాగతం</string>
   <string name="onboarding_welcome_back">నమస్తే! ఇది కొత్త</string>
   <string name="onboarding_apps_subtitle">మీరు ఇప్పుడు ప్యాచ్ చేయడానికి ఒక యాప్‌ను ఎంచుకోవచ్చు లేదా తర్వాత చేయవచ్చు</string>
-  <string name="onboarding_updates_subtitle">ReVanced Manager మరియు ప్యాచ్‌లను ఎప్పటికప్పుడు అప్‌డేట్‌గా ఉంచడానికి స్వయంచాలక అప్‌డేట్‌లను కాన్ఫిగర్ చేయండి</string>
-  <string name="onboarding_updates_note">మీ పరికరం ఇంటర్నెట్‌కు కనెక్ట్ చేయబడి ఉంటే, ReVanced Manager ప్రారంభ సంస్కరణలను డౌన్‌లోడ్ చేయడానికి %sకి కనెక్ట్ అవుతుంది.</string>
+  <string name="onboarding_updates_subtitle">Nexora Manager మరియు ప్యాచ్‌లను ఎప్పటికప్పుడు అప్‌డేట్‌గా ఉంచడానికి స్వయంచాలక అప్‌డేట్‌లను కాన్ఫిగర్ చేయండి</string>
+  <string name="onboarding_updates_note">మీ పరికరం ఇంటర్నెట్‌కు కనెక్ట్ చేయబడి ఉంటే, Nexora Manager ప్రారంభ సంస్కరణలను డౌన్‌లోడ్ చేయడానికి %sకి కనెక్ట్ అవుతుంది.</string>
   <string name="retry">మళ్ళీ ప్రయత్నించండి</string>
   <string name="onboarding_skip">ప్రస్తుతానికి దాటవేయి</string>
   <string name="onboarding_recommended_version">సిఫార్సు చేయబడిన వెర్షన్: %s</string>
   <string name="onboarding_permissions_skip_title">అనుమతులను దాటవేయాలా?</string>
   <string name="onboarding_permissions_skip_description">అవసరమైన అనుమతులు లేకుండా, కొన్ని ఫీచర్‌లు సరిగ్గా పనిచేయకపోవచ్చు. మీరు తర్వాత యాప్ సెట్టింగ్‌లలో వాటిని మంజూరు చేయవచ్చు.</string>
   <string name="onboarding_permissions_skip_anyway">ఏమైనా దాటవేయి</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager సరిగ్గా పనిచేయడానికి కొన్ని అనుమతులు అవసరం</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager సరిగ్గా పనిచేయడానికి కొన్ని అనుమతులు అవసరం</string>
   <string name="permission_install_apps">తెలియని యాప్‌లను ఇన్‌స్టాల్ చేయండి</string>
   <string name="permission_install_apps_description">ప్యాచ్ చేయబడిన అప్లికేషన్‌లను ఇన్‌స్టాల్ చేయడానికి అవసరం</string>
   <string name="permission_notifications">నోటిఫికేషన్‌లు</string>
   <string name="permission_battery">బ్యాటరీ ఆప్టిమైజేషన్</string>
   <string name="permission_battery_description">బ్యాక్‌గ్రౌండ్‌లో ప్యాచింగ్ అంతరాయం లేకుండా నిరోధిస్తుంది</string>
   <string name="permission_grant">మంజూరు చేయండి</string>
-  <string name="downloader_host_permission_label">ReVanced Manager డౌన్‌లోడర్ హోస్ట్</string>
-  <string name="downloader_host_permission_description">ReVanced Manager డౌన్‌లోడర్‌లకు ప్రాప్యతను నియంత్రించడానికి ఉపయోగించబడుతుంది. ReVanced Manager కి మాత్రమే ఇది ఉంటుంది.</string>
+  <string name="downloader_host_permission_label">Nexora Manager డౌన్‌లోడర్ హోస్ట్</string>
+  <string name="downloader_host_permission_description">Nexora Manager డౌన్‌లోడర్‌లకు ప్రాప్యతను నియంత్రించడానికి ఉపయోగించబడుతుంది. Nexora Manager కి మాత్రమే ఇది ఉంటుంది.</string>
   <string name="fab_patch_app">ఒక యాప్‌ను ప్యాచ్ చేయండి</string>
   <string name="fab_add_patches">ప్యాచ్‌లను జోడించండి</string>
   <string name="new_downloader_notification">కొత్త డౌన్‌లోడర్(లు) అందుబాటులో ఉన్నాయి. వాటిని కాన్ఫిగర్ చేయడానికి ఇక్కడ క్లిక్ చేయండి.</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">ఆటో · అందుబాటులో ఉన్న డౌన్‌లోడర్‌లను ఉపయోగించి</string>
   <string name="apk_source_auto_storage">ఆటో · నిల్వ నుండి ఎంచుకోండి</string>
   <string name="apk_source_downloaded">ఇప్పటికే డౌన్‌లోడ్ చేయబడింది</string>
-  <string name="auto_updates_dialog_description">ReVanced Manager క్రింది భాగాల కోసం అప్‌డేట్‌ల కోసం క్రమానుగతంగా తనిఖీ చేయాలని మీరు కోరుకుంటున్నారా?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced ప్యాచ్‌లు</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: డౌన్‌లోడర్‌లు</string>
+  <string name="auto_updates_dialog_description">Nexora Manager క్రింది భాగాల కోసం అప్‌డేట్‌ల కోసం క్రమానుగతంగా తనిఖీ చేయాలని మీరు కోరుకుంటున్నారా?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: డౌన్‌లోడర్‌లు</string>
   <string name="auto_updates_dialog_note">ఈ సెట్టింగ్‌లను తర్వాత మార్చవచ్చు.
 
-    మీ పరికరం ఇంటర్నెట్‌కు కనెక్ట్ చేయబడి ఉంటే, ReVanced Manager ప్రారంభ సంస్కరణలను డౌన్‌లోడ్ చేయడానికి %sకి కనెక్ట్ అవుతుంది.</string>
+    మీ పరికరం ఇంటర్నెట్‌కు కనెక్ట్ చేయబడి ఉంటే, Nexora Manager ప్రారంభ సంస్కరణలను డౌన్‌లోడ్ చేయడానికి %sకి కనెక్ట్ అవుతుంది.</string>
   <string name="announcements_filter_tag">ట్యాగ్ ద్వారా ఫిల్టర్ చేయండి</string>
   <string name="announcements_show_archived">ఆర్కైవ్ చేసినవి చూపించు</string>
   <string name="updates_description">అప్‌డేట్‌ల కోసం తనిఖీ చేయండి మరియు చేంజ్ లాగ్‌ను వీక్షించండి</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">ఎంచుకున్న యాప్‌లను తొలగించండి</string>
   <string name="downloader_delete_apps_description">మీరు ఎంచుకున్న యాప్‌లను తొలగించాలనుకుంటున్నారని ఖచ్చితంగా ఉన్నారా?</string>
   <string name="downloader_delete_single_description">మీరు \"%s\"ని తొలగించడానికి ఖచ్చితంగా ఉన్నారా?</string>
-  <string name="downloader_settings_no_apps_description">ReVanced Manager ద్వారా డౌన్‌లోడ్ చేయబడిన యాప్‌లు ఇక్కడ కనిపిస్తాయి.</string>
+  <string name="downloader_settings_no_apps_description">Nexora Manager ద్వారా డౌన్‌లోడ్ చేయబడిన యాప్‌లు ఇక్కడ కనిపిస్తాయి.</string>
   <string name="downloader_url">డౌన్‌లోడర్ URL</string>
   <string name="downloader_add">డౌన్‌లోడర్‌ను జోడించు</string>
   <string name="select_downloader_type_dialog_description">URL లేదా స్థానిక ఫైల్‌ల నుండి కొత్త డౌన్‌లోడర్‌లను జోడించండి</string>
   <string name="local_downloaders_description">స్థానిక నిల్వ నుండి డౌన్‌లోడర్‌లను జోడించండి.</string>
   <string name="remote_downloaders_description">URL నుండి డౌన్‌లోడర్‌లను జోడించండి. స్వయంచాలకంగా నవీకరించబడవచ్చు.</string>
-  <string name="install_revanced_downloaders">ReVanced Manager లోపల నేరుగా యాప్‌లను పొందడానికి డౌన్‌లోడర్‌లను ఇన్‌స్టాల్ చేయండి.</string>
-  <string name="install_revanced_downloader">ReVanced డౌన్‌లోడర్‌లను ఇన్‌స్టాల్ చేయండి</string>
+  <string name="install_revanced_downloaders">Nexora Manager లోపల నేరుగా యాప్‌లను పొందడానికి డౌన్‌లోడర్‌లను ఇన్‌స్టాల్ చేయండి.</string>
   <string name="cancel_downloader_install_title">డౌన్‌లోడర్‌ల ఇన్‌స్టాల్‌ను రద్దు చేయాలా?</string>
   <string name="cancel_downloader_install_description">డౌన్‌లోడర్‌ల ఇన్‌స్టాల్ పురోగతిలో ఉంది. మీరు ఇప్పుడు నిష్క్రమిస్తే, డౌన్‌లోడ్ రద్దు చేయబడుతుంది.</string>
   <string name="downloader_sources_unavailable_title">ఈ డౌన్‌లోడర్‌లు లేవు</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">ప్రకటనలు</string>
   <string name="archive">ఆర్కైవ్</string>
   <string name="view_update">అప్‌డేట్‌ను వీక్షించండి</string>
-  <string name="update_checking_downloader">లాంచ్‌లో ReVanced డౌన్‌లోడర్‌ల అప్‌డేట్‌ల కోసం తనిఖీ చేయండి</string>
-  <string name="update_checking_downloader_description">అప్లికేషన్ ప్రారంభమైనప్పుడు ఇన్‌స్టాల్ చేయబడిన ReVanced డౌన్‌లోడర్‌లకు అప్‌డేట్‌ల కోసం తనిఖీ చేయండి</string>
   <string name="prereleases_warning">ప్రీ-రిలీజ్ వెర్షన్‌లు అస్థిరంగా ఉండవచ్చు మరియు బగ్‌లను కలిగి ఉండవచ్చు. మీరు క్రాష్‌లు, డేటా నష్టం లేదా ఇతర ఊహించని సమస్యలను అనుభవించవచ్చు. మీరు ఈ ప్రమాదాలతో సౌకర్యవంతంగా ఉంటే మాత్రమే దీన్ని ప్రారంభించండి.</string>
   <string name="changelog">చేంజ్ లాగ్‌ను వీక్షించండి</string>
   <string name="no_announcements_found">ప్రకటనలు కనుగొనబడలేదు</string>

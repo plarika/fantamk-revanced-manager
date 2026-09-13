@@ -14,7 +14,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="app_name">ReVanced Manager</string>
+  <string name="app_name">Nexora Manager</string>
   <string name="patcher">Paisteoir</string>
   <string name="patches">Paistí</string>
   <string name="cli">CLI</string>
@@ -23,16 +23,16 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_back">Haigh! Is é an ceann nua é</string>
   <string name="onboarding_apps_subtitle">Is féidir leat aip a roghnú chun paiste a chur air anois nó é a dhéanamh níos déanaí</string>
   <string name="onboarding_apps_network_error">Níorbh fhéidir paistí a luchtú toisc go bhfuil an líonra neamhshábháilte nó ar fáil. Ceangail le líonra cobhsaí agus bain triail as arís.</string>
-  <string name="onboarding_updates_subtitle">Cumraigh nuashonruithe uathoibríocha chun ReVanced Manager agus paistí a choinneáil cothrom le dáta</string>
+  <string name="onboarding_updates_subtitle">Cumraigh nuashonruithe uathoibríocha chun Nexora Manager agus paistí a choinneáil cothrom le dáta</string>
   <string name="banner_sources_not_downloaded_description">Níorbh fhéidir paistí agus íoslódóirí a íoslódáil le linn an tsocraithe. Tapáil nuashonrú chun iad a íoslódáil.</string>
-  <string name="onboarding_updates_note">Déanfaidh ReVanced Manager nasc le %s chun leaganacha tosaigh a íoslódáil má tá do ghléas ceangailte leis an idirlíon.</string>
+  <string name="onboarding_updates_note">Déanfaidh Nexora Manager nasc le %s chun leaganacha tosaigh a íoslódáil má tá do ghléas ceangailte leis an idirlíon.</string>
   <string name="retry">Bain triail eile as</string>
   <string name="onboarding_skip">Scipáil anois</string>
   <string name="onboarding_recommended_version">Leagan molta: %s</string>
   <string name="onboarding_permissions_skip_title">Scipáil ceadanna?</string>
   <string name="onboarding_permissions_skip_description">Gan na ceadanna riachtanacha, b\'fhéidir nach n-oibreoidh roinnt gnéithe i gceart. Is féidir leat iad a dheonú níos déanaí i socruithe an aip.</string>
   <string name="onboarding_permissions_skip_anyway">Scipáil ar aon nós</string>
-  <string name="onboarding_permissions_subtitle">Teastaíonn cúpla cead ó ReVanced Manager chun oibriú i gceart</string>
+  <string name="onboarding_permissions_subtitle">Teastaíonn cúpla cead ó Nexora Manager chun oibriú i gceart</string>
   <string name="permission_install_apps">Suiteáil aipeanna anaithnid</string>
   <string name="permission_install_apps_description">Riachtanach chun feidhmchláir phaisteáilte a shuiteáil</string>
   <string name="permission_notifications">Fógraí</string>
@@ -40,8 +40,8 @@ Second \"item\" text"</string>
   <string name="permission_battery">Optamú ceallraí</string>
   <string name="permission_battery_description">Coscann paisteáil ó bheith curtha isteach sa chúlra</string>
   <string name="permission_grant">Deontas</string>
-  <string name="downloader_host_permission_label">Óstach íoslódálaí ReVanced Manager</string>
-  <string name="downloader_host_permission_description">Úsáidtear é chun rochtain ar íoslódálaithe ReVanced Manager a rialú. Níl sé seo ach ag ReVanced Manager.</string>
+  <string name="downloader_host_permission_label">Óstach íoslódálaí Nexora Manager</string>
+  <string name="downloader_host_permission_description">Úsáidtear é chun rochtain ar íoslódálaithe Nexora Manager a rialú. Níl sé seo ach ag Nexora Manager.</string>
   <string name="toast_copied_to_clipboard">Cóipeáilte!</string>
   <string name="copy_to_clipboard">Cóipeáil chuig gearrthaisce</string>
   <string name="dashboard">Deais</string>
@@ -92,13 +92,12 @@ Second \"item\" text"</string>
   <string name="apk_source_downloaded">Íoslódáilte cheana féin</string>
   <string name="legacy_import_failed">Níorbh fhéidir socruithe oidhreachta a iompórtáil</string>
   <string name="auto_updates_dialog_title">Cumraigh nuashonruithe</string>
-  <string name="auto_updates_dialog_description">An dteastaíonn uait go ndéanfadh ReVanced Manager seiceáil tréimhsiúil le haghaidh nuashonruithe do na comhpháirteanna seo a leanas?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">Paistí ReVanced</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Íoslódálaithe</string>
+  <string name="auto_updates_dialog_description">An dteastaíonn uait go ndéanfadh Nexora Manager seiceáil tréimhsiúil le haghaidh nuashonruithe do na comhpháirteanna seo a leanas?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: Íoslódálaithe</string>
   <string name="auto_updates_dialog_note">Is féidir na socruithe seo a athrú níos déanaí.
 
-Ceanglóidh ReVanced Manager le %s chun leaganacha tosaigh a íoslódáil má tá do ghléas ceangailte leis an idirlíon.</string>
+Ceanglóidh Nexora Manager le %s chun leaganacha tosaigh a íoslódáil má tá do ghléas ceangailte leis an idirlíon.</string>
   <string name="announcements_filter_tag">Scag de réir clibe</string>
   <string name="announcements_show_archived">Taispeáin cartlannaithe</string>
   <string name="general">Ginearálta</string>
@@ -117,7 +116,6 @@ Ceanglóidh ReVanced Manager le %s chun leaganacha tosaigh a íoslódáil má t�
   <string name="opensource_licenses">Ceadúnais foinse oscailte</string>
   <string name="opensource_licenses_description">Féach ar na leabharlanna uile a úsáideadh chun an feidhmchlár seo a chruthú</string>
   <string name="contributors">Ranníocóirí</string>
-  <string name="contributors_description">Féach ar ranníocóirí ReVanced</string>
   <string name="dynamic_color">Dath dinimiciúil</string>
   <string name="dynamic_color_description">Dathanna a oiriúnú don cúlbhrat</string>
   <string name="pure_black_theme">Téama dubh íon</string>
@@ -216,14 +214,13 @@ Ní bheidh tú in ann na haipeanna a suiteáladh roimhe seo ón bhfoinse seo a n
   <string name="downloader_delete_apps_description">An bhfuil tú cinnte gur mhaith leat na haipeanna roghnaithe a scriosadh?</string>
   <string name="downloader_delete_single_description">An bhfuil tú cinnte gur mhaith leat \"%s\" a scriosadh?</string>
   <string name="downloader_settings_no_apps">Níor aimsíodh aon aipeanna íoslódáilte.</string>
-  <string name="downloader_settings_no_apps_description">Tiocfaidh aipeanna a íoslódáladh trí ReVanced Manager anseo.</string>
+  <string name="downloader_settings_no_apps_description">Tiocfaidh aipeanna a íoslódáladh trí Nexora Manager anseo.</string>
   <string name="downloader_url">URL Íoslódálaí</string>
   <string name="downloader_add">Cuir Íoslódálaí leis</string>
   <string name="select_downloader_type_dialog_description">Cuir íoslódálaithe nua leis ó URL nó ó chomhaid áitiúla</string>
   <string name="local_downloaders_description">Cuir íoslódálaithe leis ó stóráil áitiúil.</string>
   <string name="remote_downloaders_description">Cuir íoslódálaithe leis ó URL. Is féidir iad a nuashonrú go huathoibríoch.</string>
-  <string name="install_revanced_downloaders">Suiteáil íoslódálaithe chun aipeanna a fháil go díreach laistigh de ReVanced Manager.</string>
-  <string name="install_revanced_downloader">Suiteáil Íoslódálaithe ReVanced</string>
+  <string name="install_revanced_downloaders">Suiteáil íoslódálaithe chun aipeanna a fháil go díreach laistigh de Nexora Manager.</string>
   <string name="cancel_downloader_install_title">Cealaigh suiteáil na n-íoslódálaithe?</string>
   <string name="cancel_downloader_install_description">Tá suiteáil íoslódálaithe ar siúl. Má fhágann tú anois, cuirfear an íoslódáil ar ceal.</string>
   <string name="downloader_sources_unavailable_title">Tá na híoslódálaithe seo ar iarraidh</string>
@@ -276,8 +273,8 @@ D’fhéadfadh an feidhmchlár rabhadh a thabhairt fós faoi líonraí méadrait
   <string name="api_url">URL API</string>
   <string name="api_url_description">An API a úsáidtear chun comhaid riachtanacha a íoslódáil</string>
   <string name="api_url_dialog_title">Athraigh URL API</string>
-  <string name="api_url_dialog_description">Athraigh URL API ReVanced Manager. Úsáideann ReVanced Manager an API chun paistí agus nuashonruithe a íoslódáil.</string>
-  <string name="api_url_dialog_warning">Ceanglaíonn ReVanced Manager leis an API chun paistí agus nuashonruithe a íoslódáil. Bí cinnte go bhfuil muinín agat as.</string>
+  <string name="api_url_dialog_description">Athraigh URL API Nexora Manager. Úsáideann Nexora Manager an API chun paistí agus nuashonruithe a íoslódáil.</string>
+  <string name="api_url_dialog_warning">Ceanglaíonn Nexora Manager leis an API chun paistí agus nuashonruithe a íoslódáil. Bí cinnte go bhfuil muinín agat as.</string>
   <string name="api_url_dialog_save">Socraigh</string>
   <string name="api_url_dialog_reset">Athshocraigh URL API</string>
   <string name="device">Gléas</string>
@@ -456,8 +453,7 @@ Níl sé comhoiriúnach ach leis an leagan(acha) seo a leanas: %2$s</string>
   <string name="patches_delete_multiple_dialog_description">An bhfuil tú cinnte gur mhaith leat na paistí roghnaithe a scriosadh?</string>
   <string name="announcements">Fógraí</string>
   <string name="archive">Cartlann</string>
-  <string name="about_revanced_manager">Maidir le ReVanced Manager</string>
-  <string name="revanced_manager_description">Is feidhmchlár Android é ReVanced Manager a úsáideann ReVanced Patcher chun aipeanna Android a phaisteáil. Ligeann sé duit aipeanna a íoslódáil agus a phaisteáil le paistí saincheaptha, agus an próiseas paisteála a bhainistiú.</string>
+  <string name="about_revanced_manager">Maidir le Nexora Manager</string>
   <string name="developer_options_taps">%d sconna fágtha</string>
   <string name="developer_options_enabled">Roghanna forbróra cumasaithe</string>
   <string name="developer_options_already_enabled">Tá roghanna forbróra cumasaithe cheana féin</string>
@@ -471,17 +467,15 @@ Níl sé comhoiriúnach ach leis an leagan(acha) seo a leanas: %2$s</string>
   <string name="view_update">Féach ar an nuashonrú</string>
   <string name="manual_update_check_description">Seiceáil de láimh le haghaidh nuashonruithe</string>
   <string name="update_checking_manager">Seiceáil le haghaidh nuashonruithe ar sheoladh</string>
-  <string name="update_checking_manager_description">Seiceáil le haghaidh leaganacha nua de ReVanced Manager nuair a thosaíonn an feidhmchlár</string>
-  <string name="update_checking_downloader">Seiceáil le haghaidh nuashonruithe ar Íoslódálaithe ReVanced nuair a seoltar é</string>
-  <string name="update_checking_downloader_description">Seiceáil le haghaidh nuashonruithe ar Íoslódálaithe ReVanced suiteáilte nuair a thosaíonn an feidhmchlár</string>
+  <string name="update_checking_manager_description">Seiceáil le haghaidh leaganacha nua de Nexora Manager nuair a thosaíonn an feidhmchlár</string>
   <string name="manager_prereleases">Úsáid réamh-eisiúintí</string>
-  <string name="manager_prereleases_description">Bain úsáid as leaganacha réamh-eisiúna de ReVanced Manager</string>
+  <string name="manager_prereleases_description">Bain úsáid as leaganacha réamh-eisiúna de Nexora Manager</string>
   <string name="prereleases_warning">D\'fhéadfadh leaganacha réamheisiúna a bheith éagobhsaí agus fabhtanna a bheith iontu. D\'fhéadfá teacht ar thuairteanna, caillteanas sonraí, nó saincheisteanna gan choinne eile. Ná cumasaigh é seo ach amháin má tá tú sásta leis na rioscaí seo.</string>
   <string name="changelog">Féach ar an loga athraithe</string>
   <string name="changelog_loading">Ag luchtú log athraithe</string>
   <string name="changelog_download_fail">Theip ar log athraithe a íoslódáil: %s</string>
   <string name="changelog_description">Féach ar na hathruithe is déanaí sa nuashonrú seo</string>
-  <string name="battery_optimization_notification">Ní mór optamaithe ceallraí a mhúchadh chun go n-oibreoidh ReVanced Manager i gceart sa chúlra. Cliceáil anseo chun optamaithe a mhúchadh.</string>
+  <string name="battery_optimization_notification">Ní mór optamaithe ceallraí a mhúchadh chun go n-oibreoidh Nexora Manager i gceart sa chúlra. Cliceáil anseo chun optamaithe a mhúchadh.</string>
   <string name="installing_manager_update">Ag suiteáil nuashonrú…</string>
   <string name="downloading_manager_update">Ag íoslódáil nuashonrú…</string>
   <string name="download_manager_failed">Theip ar an nuashonrú a íoslódáil: %s</string>
@@ -491,7 +485,7 @@ Níl sé comhoiriúnach ach leis an leagan(acha) seo a leanas: %2$s</string>
   <string name="update">Nuashonraigh</string>
   <string name="empty">Folamh</string>
   <string name="installing_message">Beartaigh ar <b>Nuashonraigh</b> nuair a spreagtar thú.
-Dúnfaidh ReVanced Manager nuair a bheidh sé ag nuashonrú.</string>
+Dúnfaidh Nexora Manager nuair a bheidh sé ag nuashonrú.</string>
   <string name="no_changelogs_found">Níor aimsíodh aon logaí athraithe</string>
   <string name="just_now">Díreach anois</string>
   <string name="minutes_ago">%sn ó shin</string>
@@ -507,7 +501,7 @@ Dúnfaidh ReVanced Manager nuair a bheidh sé ag nuashonrú.</string>
   <string name="no_announcements_found">Ní bhfuarthas aon fhógraí</string>
   <string name="update_check">Ag seiceáil le haghaidh nuashonruithe…</string>
   <string name="dismiss_temporary">Ní anois</string>
-  <string name="update_available_dialog_description">Tá leagan nua de ReVanced Manager (%s) ar fáil.</string>
+  <string name="update_available_dialog_description">Tá leagan nua de Nexora Manager (%s) ar fáil.</string>
   <string name="failed_to_download_update">Theip ar an nuashonrú a íoslódáil: %s</string>
   <string name="download">Íoslódáil</string>
   <string name="download_confirmation_metered">Tá tú ar nasc méadraithe faoi láthair, agus d\'fhéadfadh táillí sonraí ón soláthraí seirbhíse a bheith i bhfeidhm.

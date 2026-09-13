@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">स्वागत छ</string>
   <string name="onboarding_welcome_back">नमस्ते! यो नयाँ हो</string>
   <string name="onboarding_apps_subtitle">तपाईं अहिले प्याच गर्न एउटा एप चयन गर्न सक्नुहुन्छ वा पछि गर्न सक्नुहुन्छ</string>
-  <string name="onboarding_updates_subtitle">ReVanced Manager र प्याचहरू अद्यावधिक राख्न स्वचालित अपडेटहरू कन्फिगर गर्नुहोस्</string>
-  <string name="onboarding_updates_note">तपाईंको उपकरण इन्टरनेटमा जडान भएको खण्डमा प्रारम्भिक संस्करणहरू डाउनलोड गर्नका लागि ReVanced Manager ले %s मा जडान गर्नेछ।</string>
+  <string name="onboarding_updates_subtitle">Nexora Manager र प्याचहरू अद्यावधिक राख्न स्वचालित अपडेटहरू कन्फिगर गर्नुहोस्</string>
+  <string name="onboarding_updates_note">तपाईंको उपकरण इन्टरनेटमा जडान भएको खण्डमा प्रारम्भिक संस्करणहरू डाउनलोड गर्नका लागि Nexora Manager ले %s मा जडान गर्नेछ।</string>
   <string name="retry">पुन: प्रयास गर्नुहोस्</string>
   <string name="onboarding_skip">अहिलेका लागि छोड्नुहोस्</string>
   <string name="onboarding_recommended_version">सिफारिस गरिएको संस्करण: %s</string>
   <string name="onboarding_permissions_skip_title">अनुमतिहरू छोड्ने?</string>
   <string name="onboarding_permissions_skip_description">आवश्यक अनुमतिहरू बिना, केही सुविधाहरूले सही रूपमा काम नगर्न सक्छन्। तपाईंले तिनीहरूलाई पछि एप सेटिङहरूमा दिन सक्नुहुन्छ।</string>
   <string name="onboarding_permissions_skip_anyway">जे भए पनि छोड्नुहोस्</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager लाई सही रूपमा काम गर्न केही अनुमतिहरू चाहिन्छ</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager लाई सही रूपमा काम गर्न केही अनुमतिहरू चाहिन्छ</string>
   <string name="permission_install_apps">अज्ञात एपहरू स्थापना गर्नुहोस्</string>
   <string name="permission_install_apps_description">प्याच गरिएका अनुप्रयोगहरू स्थापना गर्न आवश्यक छ</string>
   <string name="permission_notifications">अधिसूचनाहरू</string>
   <string name="permission_battery">ब्याट्री अनुकूलन</string>
   <string name="permission_battery_description">पृष्ठभूमिमा प्याचिङ अवरुद्ध हुनबाट रोक्छ</string>
   <string name="permission_grant">अनुदान</string>
-  <string name="downloader_host_permission_label">ReVanced Manager डाउनलोडर होस्ट</string>
-  <string name="downloader_host_permission_description">ReVanced Manager डाउनलोडरहरूमा पहुँच नियन्त्रण गर्न प्रयोग गरिन्छ। यो ReVanced Manager सँग मात्र छ।</string>
+  <string name="downloader_host_permission_label">Nexora Manager डाउनलोडर होस्ट</string>
+  <string name="downloader_host_permission_description">Nexora Manager डाउनलोडरहरूमा पहुँच नियन्त्रण गर्न प्रयोग गरिन्छ। यो Nexora Manager सँग मात्र छ।</string>
   <string name="fab_patch_app">एक एप प्याच गर्नुहोस्</string>
   <string name="fab_add_patches">प्याचहरू थप्नुहोस्</string>
   <string name="new_downloader_notification">नयाँ डाउनलोडर(हरू) उपलब्ध छन्। तिनीहरूलाई कन्फिगर गर्न यहाँ क्लिक गर्नुहोस्।</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">स्वचालित · उपलब्ध डाउनलोडरहरू प्रयोग गर्दै</string>
   <string name="apk_source_auto_storage">स्वचालित · भण्डारणबाट चयन गर्नुहोस्</string>
   <string name="apk_source_downloaded">पहिल्यै डाउनलोड गरियो</string>
-  <string name="auto_updates_dialog_description">के तपाईं ReVanced Manager लाई निम्न घटकहरूको लागि आवधिक रूपमा अपडेटहरू जाँच गर्न चाहनुहुन्छ?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced प्याचहरू</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: डाउनलोडरहरू</string>
+  <string name="auto_updates_dialog_description">के तपाईं Nexora Manager लाई निम्न घटकहरूको लागि आवधिक रूपमा अपडेटहरू जाँच गर्न चाहनुहुन्छ?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: डाउनलोडरहरू</string>
   <string name="auto_updates_dialog_note">यी सेटिङहरू पछि परिवर्तन गर्न सकिन्छ।
 
-    तपाईंको उपकरण इन्टरनेटमा जडान भएको खण्डमा प्रारम्भिक संस्करणहरू डाउनलोड गर्नका लागि ReVanced Manager ले %s मा जडान गर्नेछ।</string>
+    तपाईंको उपकरण इन्टरनेटमा जडान भएको खण्डमा प्रारम्भिक संस्करणहरू डाउनलोड गर्नका लागि Nexora Manager ले %s मा जडान गर्नेछ।</string>
   <string name="announcements_filter_tag">ट्याग अनुसार फिल्टर गर्नुहोस्</string>
   <string name="announcements_show_archived">अभिलेख गरिएकाहरू देखाउनुहोस्</string>
   <string name="updates_description">अपडेटहरूको लागि जाँच गर्नुहोस् र चेन्जलग हेर्नुहोस्</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">चयन गरिएका एपहरू मेटाउनुहोस्</string>
   <string name="downloader_delete_apps_description">के तपाईं चयन गरिएका एपहरू मेटाउन निश्चित हुनुहुन्छ?</string>
   <string name="downloader_delete_single_description">के तपाईं \"%s\" मेटाउन चाहनुहुन्छ?</string>
-  <string name="downloader_settings_no_apps_description">ReVanced Manager मार्फत डाउनलोड गरिएका एपहरू यहाँ देखा पर्नेछन्।</string>
+  <string name="downloader_settings_no_apps_description">Nexora Manager मार्फत डाउनलोड गरिएका एपहरू यहाँ देखा पर्नेछन्।</string>
   <string name="downloader_url">डाउनलोडर URL</string>
   <string name="downloader_add">डाउनलोडर थप्नुहोस्</string>
   <string name="select_downloader_type_dialog_description">URL वा स्थानीय फाइलहरूबाट नयाँ डाउनलोडरहरू थप्नुहोस्</string>
   <string name="local_downloaders_description">स्थानीय भण्डारणबाट डाउनलोडरहरू थप्नुहोस्।</string>
   <string name="remote_downloaders_description">URL बाट डाउनलोडरहरू थप्नुहोस्। स्वचालित रूपमा अद्यावधिक गर्न सकिन्छ।</string>
-  <string name="install_revanced_downloaders">ReVanced Manager भित्र सीधा एपहरू प्राप्त गर्न डाउनलोडरहरू स्थापना गर्नुहोस्।</string>
-  <string name="install_revanced_downloader">ReVanced डाउनलोडरहरू स्थापना गर्नुहोस्</string>
+  <string name="install_revanced_downloaders">Nexora Manager भित्र सीधा एपहरू प्राप्त गर्न डाउनलोडरहरू स्थापना गर्नुहोस्।</string>
   <string name="cancel_downloader_install_title">डाउनलोडरहरूको स्थापना रद्द गर्ने?</string>
   <string name="cancel_downloader_install_description">डाउनलोडरहरूको स्थापना प्रक्रियामा छ। यदि तपाईं अहिले छोड्नुहुन्छ भने, डाउनलोड रद्द हुनेछ।</string>
   <string name="downloader_sources_unavailable_title">यी डाउनलोडरहरू हराएका छन्</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">घोषणाहरू</string>
   <string name="archive">अभिलेख</string>
   <string name="view_update">अपडेट हेर्नुहोस्</string>
-  <string name="update_checking_downloader">सुरु गर्दा ReVanced डाउनलोडर अपडेटहरूको लागि जाँच गर्नुहोस्</string>
-  <string name="update_checking_downloader_description">अनुप्रयोग सुरु हुँदा स्थापित ReVanced डाउनलोडरहरूका लागि अपडेटहरू जाँच गर्नुहोस्</string>
   <string name="prereleases_warning">पूर्व-रिलीज संस्करणहरू अस्थिर हुन सक्छन् र बगहरू समावेश गर्न सक्छन्। तपाईंले क्र्यासहरू, डेटा हानि, वा अन्य अप्रत्याशित समस्याहरू अनुभव गर्न सक्नुहुन्छ। यदि तपाईं यी जोखिमहरूसँग सहज हुनुहुन्छ भने मात्र यसलाई सक्षम गर्नुहोस्।</string>
   <string name="changelog">चेन्जलग हेर्नुहोस्</string>
   <string name="no_announcements_found">कुनै घोषणा भेटिएन</string>

@@ -1,6 +1,6 @@
 # 🛠️ Build from source
 
-This page will guide you through building ReVanced Manager from source.
+This page will guide you through building Nexora Manager from source.
 
 1. Install Java Development Kit 17 (e.g. [Temurin JDK](https://adoptium.net/temurin/releases/?os=any&arch=any&version=17))
 
@@ -17,7 +17,7 @@ This page will guide you through building ReVanced Manager from source.
 2. Clone the repository
 
    ```sh
-   git clone https://github.com/revanced/revanced-manager.git && cd revanced-manager
+   git clone <NEXORA_REPOSITORY_URL> nexora-manager && cd nexora-manager
    ```
 
 3. Build the APK
@@ -28,7 +28,7 @@ This page will guide you through building ReVanced Manager from source.
 
 > [!NOTE]
 > If the build fails due to authentication, you may need to authenticate to GitHub Packages.
-> Create a personal access tokens with the scope `read:packages` [here](https://github.com/settings/tokens/new?scopes=read:packages&description=ReVanced) and add your token to ~/.gradle/gradle.properties. Create the file if it does not exist.
+> Create a personal access tokens with the scope `read:packages` [here](https://github.com/settings/tokens/new?scopes=read:packages&description=Nexora-Manager) and add your token to ~/.gradle/gradle.properties. Create the file if it does not exist.
 >
 > Example `gradle.properties` file:
 >

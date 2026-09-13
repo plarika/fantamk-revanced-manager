@@ -1,11 +1,11 @@
-# ⚙️ Configuring ReVanced Manager
+# ⚙️ Configuring Nexora Manager
 
-Learn how to configure ReVanced Manager.
+Learn how to configure Nexora Manager.
 
 ## 🔧 Settings
-- **General**: Change app language, adjust the appearances of ReVanced Manager app, or enable or disable metered networks check.
-- **Updates**: Check for ReVanced Manager app update, or use a pre-release version.
-- **Downloads**: Enable or disable ReVanced Manager downloader and manage past downloaded apps here.
+- **General**: Change app language, adjust the appearances of Nexora Manager app, or enable or disable metered networks check.
+- **Updates**: Check for Nexora Manager app update, or use a pre-release version.
+- **Downloads**: Enable or disable Nexora Manager downloader and manage past downloaded apps here.
 - **Import & export**: Import or export patch selections, patch options and the signing keystore.
 - **Advanced**:
   - **Disable version compatibility check**: Patching versions of apps the patches are explicitly compatible with is enforced.
@@ -29,11 +29,11 @@ Learn how to configure ReVanced Manager.
     >   Universal patches do not specify compatibility with an app and may not work on all apps regardless.
     >   Unless you know what you are doing, it is recommended to keep this disabled.
   - **(Experimental) Run patcher in another process**: Allow patcher to run faster and use more memory than limit.
-  - **Export debug logs**: Export debug logs of _ReVanced Manager_ app.
-- **About**: View more information and links about ReVanced and ReVanced Manager.
+  - **Export debug logs**: Export debug logs of _Nexora Manager_ app.
+- **About**: View more information, licensing and project links for Nexora Manager.
 
 ## ⏭️ What's next
 
-The next page will explain how to troubleshoot issues with ReVanced Manager.
+The next page will explain how to troubleshoot issues with Nexora Manager.
 
 Continue: [❓ Troubleshooting](3_troubleshooting.md)

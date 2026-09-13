@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">සාදරයෙන් පිළිගනිමු</string>
   <string name="onboarding_welcome_back">ආයුබෝවන්! එය අලුත්</string>
   <string name="onboarding_apps_subtitle">ඔබට දැන් පැච් කිරීමට යෙදුමක් තෝරා ගැනීමට හෝ පසුව එය කිරීමට හැකිය</string>
-  <string name="onboarding_updates_subtitle">ReVanced Manager සහ පැච් යාවත්කාලීනව තබා ගැනීමට ස්වයංක්‍රීය යාවත්කාලීන සකසන්න</string>
-  <string name="onboarding_updates_note">ReVanced Manager ඔබගේ උපාංගය අන්තර්ජාලයට සම්බන්ධ වී ඇත්නම්, මූලික සංස්කරණ බාගත කිරීම සඳහා %s වෙත සම්බන්ධ වනු ඇත.</string>
+  <string name="onboarding_updates_subtitle">Nexora Manager සහ පැච් යාවත්කාලීනව තබා ගැනීමට ස්වයංක්‍රීය යාවත්කාලීන සකසන්න</string>
+  <string name="onboarding_updates_note">Nexora Manager ඔබගේ උපාංගය අන්තර්ජාලයට සම්බන්ධ වී ඇත්නම්, මූලික සංස්කරණ බාගත කිරීම සඳහා %s වෙත සම්බන්ධ වනු ඇත.</string>
   <string name="retry">නැවත උත්සාහ කරන්න</string>
   <string name="onboarding_skip">දැනට මඟ හරින්න</string>
   <string name="onboarding_recommended_version">නිර්දේශිත අනුවාදය: %s</string>
   <string name="onboarding_permissions_skip_title">අවසර මඟ හරිනවාද?</string>
   <string name="onboarding_permissions_skip_description">අවශ්‍ය අවසරයන් නොමැතිව, සමහර විශේෂාංග නිවැරදිව ක්‍රියා නොකරනු ඇත. ඔබට පසුව යෙදුම් සැකසීම් තුළින් ඒවා ලබා දිය හැක.</string>
   <string name="onboarding_permissions_skip_anyway">කෙසේ හෝ මඟ හරින්න</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager ට නිසි ලෙස ක්‍රියා කිරීමට අවසර කිහිපයක් අවශ්‍ය වේ</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager ට නිසි ලෙස ක්‍රියා කිරීමට අවසර කිහිපයක් අවශ්‍ය වේ</string>
   <string name="permission_install_apps">නොදන්නා යෙදුම් ස්ථාපනය කරන්න</string>
   <string name="permission_install_apps_description">පැච් කරන ලද යෙදුම් ස්ථාපනය කිරීමට අවශ්‍ය වේ</string>
   <string name="permission_notifications">දැනුම්දීම්</string>
   <string name="permission_battery">බැටරි ප්‍රශස්තකරණය</string>
   <string name="permission_battery_description">පසුබිමේ පැච් කිරීම බාධා වීම වළක්වයි</string>
   <string name="permission_grant">ලබා දෙන්න</string>
-  <string name="downloader_host_permission_label">ReVanced Manager බාගන්නා ධාරකය</string>
-  <string name="downloader_host_permission_description">ReVanced Manager බාගන්නන්ට ප්‍රවේශය පාලනය කිරීමට භාවිතා කරයි. මෙය ඇත්තේ ReVanced Manager ට පමණි.</string>
+  <string name="downloader_host_permission_label">Nexora Manager බාගන්නා ධාරකය</string>
+  <string name="downloader_host_permission_description">Nexora Manager බාගන්නන්ට ප්‍රවේශය පාලනය කිරීමට භාවිතා කරයි. මෙය ඇත්තේ Nexora Manager ට පමණි.</string>
   <string name="fab_patch_app">යෙදුමක් පැච් කරන්න</string>
   <string name="fab_add_patches">පැච් එකතු කරන්න</string>
   <string name="new_downloader_notification">නව බාගැනීම්කරු(න්) තිබේ. ඒවා වින්‍යාස කිරීමට මෙහි ක්ලික් කරන්න.</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">ස්වයංක්‍රීය · පවතින බාගැනීම් යොදාගනිමින්</string>
   <string name="apk_source_auto_storage">ස්වයංක්‍රීය · ගබඩාවෙන් තෝරන්න</string>
   <string name="apk_source_downloaded">දැනටමත් බාගත කර ඇත</string>
-  <string name="auto_updates_dialog_description">ReVanced Manager ට පහත සඳහන් සංරචක සඳහා යාවත්කාලීන කිරීම් වරින් වර පරීක්ෂා කිරීමට ඔබට අවශ්‍යද?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced පැච්</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: බාගත කරන්නන්</string>
+  <string name="auto_updates_dialog_description">Nexora Manager ට පහත සඳහන් සංරචක සඳහා යාවත්කාලීන කිරීම් වරින් වර පරීක්ෂා කිරීමට ඔබට අවශ්‍යද?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: බාගත කරන්නන්</string>
   <string name="auto_updates_dialog_note">මෙම සැකසුම් පසුව වෙනස් කළ හැක.
 
-    ReVanced Manager ඔබගේ උපාංගය අන්තර්ජාලයට සම්බන්ධ වී ඇත්නම්, මූලික සංස්කරණ බාගත කිරීම සඳහා %s වෙත සම්බන්ධ වනු ඇත.</string>
+    Nexora Manager ඔබගේ උපාංගය අන්තර්ජාලයට සම්බන්ධ වී ඇත්නම්, මූලික සංස්කරණ බාගත කිරීම සඳහා %s වෙත සම්බන්ධ වනු ඇත.</string>
   <string name="announcements_filter_tag">ටැගය මඟින් පෙරහන් කරන්න</string>
   <string name="announcements_show_archived">සංරක්ෂණය කළ දෑ පෙන්වන්න</string>
   <string name="updates_description">යාවත්කාලීන කිරීම් පරීක්ෂා කර වෙනස්වීම් වාර්තාව බලන්න</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">තෝරාගත් යෙදුම් මකන්න</string>
   <string name="downloader_delete_apps_description">තෝරාගත් යෙදුම් මකා දැමීමට ඔබට විශ්වාසද?</string>
   <string name="downloader_delete_single_description">ඔබට \"%s\" මකා දැමීමට අවශ්‍ය බව සහතිකද?</string>
-  <string name="downloader_settings_no_apps_description">ReVanced Manager හරහා බාගත කළ යෙදුම් මෙහි දිස්වනු ඇත.</string>
+  <string name="downloader_settings_no_apps_description">Nexora Manager හරහා බාගත කළ යෙදුම් මෙහි දිස්වනු ඇත.</string>
   <string name="downloader_url">බාගන්නා URL</string>
   <string name="downloader_add">බාගන්නා එකතු කරන්න</string>
   <string name="select_downloader_type_dialog_description">URL එකකින් හෝ දේශීය ගොනු වලින් නව බාගන්නන් එකතු කරන්න</string>
   <string name="local_downloaders_description">දේශීය ගබඩාවෙන් බාගන්නන් එකතු කරන්න.</string>
   <string name="remote_downloaders_description">URL එකකින් බාගන්නන් එකතු කරන්න. ස්වයංක්‍රීයව යාවත්කාලීන කළ හැක.</string>
-  <string name="install_revanced_downloaders">ReVanced Manager තුළින් සෘජුවම යෙදුම් ලබා ගැනීමට බාගැනීම්කරු ස්ථාපනය කරන්න.</string>
-  <string name="install_revanced_downloader">ReVanced බාගැනීම්කරු ස්ථාපනය කරන්න</string>
+  <string name="install_revanced_downloaders">Nexora Manager තුළින් සෘජුවම යෙදුම් ලබා ගැනීමට බාගැනීම්කරු ස්ථාපනය කරන්න.</string>
   <string name="cancel_downloader_install_title">බාගැනීම්කරු ස්ථාපනය අවලංගු කරනවාද?</string>
   <string name="cancel_downloader_install_description">බාගැනීම්කරු ස්ථාපනයක් සිදුවෙමින් පවතී. ඔබ දැන් පිටව ගියහොත්, බාගත කිරීම අවලංගු වනු ඇත.</string>
   <string name="downloader_sources_unavailable_title">මෙම බාගන්නන් අතුරුදහන් වී ඇත</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">නිවේදන</string>
   <string name="archive">ලේඛනාගාරය</string>
   <string name="view_update">යාවත්කාලීන කිරීම බලන්න</string>
-  <string name="update_checking_downloader">දියත් කිරීමේදී ReVanced බාගැනීම්කරු යාවත්කාලීන කිරීම් පරීක්ෂා කරන්න</string>
-  <string name="update_checking_downloader_description">යෙදුම ආරම්භ වන විට ස්ථාපනය කර ඇති ReVanced බාගැනීම්කරු සඳහා යාවත්කාලීන කිරීම් පරීක්ෂා කරන්න</string>
   <string name="prereleases_warning">පූර්ව නිකුත් කිරීමේ අනුවාද අස්ථායී විය හැකි අතර දෝෂ අඩංගු විය හැක. ඔබට බිඳ වැටීම්, දත්ත අහිමිවීම් හෝ වෙනත් අනපේක්ෂිත ගැටළු අත්විඳිය හැක. මෙම අවදානම් සමඟ ඔබට පහසු නම් පමණක් මෙය සක්‍රිය කරන්න.</string>
   <string name="changelog">වෙනස්වීම් වාර්තාව බලන්න</string>
   <string name="no_announcements_found">නිවේදන හමු නොවීය</string>

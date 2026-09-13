@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">Қош келдіңіз</string>
   <string name="onboarding_welcome_back">Сәлем! Бұл жаңа</string>
   <string name="onboarding_apps_subtitle">Қазір патч жасау үшін қолданбаны таңдай аласыз немесе кейінірек жасай аласыз</string>
-  <string name="onboarding_updates_subtitle">ReVanced Manager және патчтарды жаңартып отыру үшін автоматты жаңартуларды реттеңіз</string>
-  <string name="onboarding_updates_note">ReVanced Manager құрылғыңыз интернетке қосылған болса, бастапқы нұсқаларды жүктеп алу үшін %s-ке қосылады.</string>
+  <string name="onboarding_updates_subtitle">Nexora Manager және патчтарды жаңартып отыру үшін автоматты жаңартуларды реттеңіз</string>
+  <string name="onboarding_updates_note">Nexora Manager құрылғыңыз интернетке қосылған болса, бастапқы нұсқаларды жүктеп алу үшін %s-ке қосылады.</string>
   <string name="retry">Қайталау</string>
   <string name="onboarding_skip">Әзірге өткізіп жіберу</string>
   <string name="onboarding_recommended_version">Ұсынылатын нұсқа: %s</string>
   <string name="onboarding_permissions_skip_title">Рұқсаттарды өткізіп жіберу керек пе?</string>
   <string name="onboarding_permissions_skip_description">Қажетті рұқсаттарсыз кейбір функциялар дұрыс жұмыс істемеуі мүмкін. Оларды кейінірек қолданба параметрлерінде беруге болады.</string>
   <string name="onboarding_permissions_skip_anyway">Бәрібір өткізіп жіберу</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager дұрыс жұмыс істеуі үшін бірнеше рұқсат қажет</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager дұрыс жұмыс істеуі үшін бірнеше рұқсат қажет</string>
   <string name="permission_install_apps">Белгісіз қолданбаларды орнату</string>
   <string name="permission_install_apps_description">Патчталған қолданбаларды орнату үшін қажет</string>
   <string name="permission_notifications">Хабарландырулар</string>
   <string name="permission_battery">Батареяны оңтайландыру</string>
   <string name="permission_battery_description">Патчтаудың фондық режимде үзілуіне жол бермейді</string>
   <string name="permission_grant">Рұқсат беру</string>
-  <string name="downloader_host_permission_label">ReVanced Manager жүктеуші хосты</string>
-  <string name="downloader_host_permission_description">ReVanced Manager жүктеушілеріне кіруді басқару үшін қолданылады. Бұл тек ReVanced Manager-де бар.</string>
+  <string name="downloader_host_permission_label">Nexora Manager жүктеуші хосты</string>
+  <string name="downloader_host_permission_description">Nexora Manager жүктеушілеріне кіруді басқару үшін қолданылады. Бұл тек Nexora Manager-де бар.</string>
   <string name="fab_patch_app">Қолданбаны патчтау</string>
   <string name="fab_add_patches">Патчтарды қосу</string>
   <string name="new_downloader_notification">Жаңа жүктеуші(лер) қолжетімді. Оларды конфигурациялау үшін осы жерді басыңыз.</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">Авто · Қолжетімді жүктеушілерді пайдалана отырып</string>
   <string name="apk_source_auto_storage">Авто · Сақтау қоймасынан таңдау</string>
   <string name="apk_source_downloaded">Қазірдің өзінде жүктеп алынған</string>
-  <string name="auto_updates_dialog_description">ReVanced Manager келесі компоненттер үшін жаңартуларды мезгіл-мезгіл тексеріп отырғанын қалайсыз ба?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced патчтары</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Жүктеушілер</string>
+  <string name="auto_updates_dialog_description">Nexora Manager келесі компоненттер үшін жаңартуларды мезгіл-мезгіл тексеріп отырғанын қалайсыз ба?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: Жүктеушілер</string>
   <string name="auto_updates_dialog_note">Бұл параметрлерді кейінірек өзгертуге болады.
 
-    ReVanced Manager құрылғыңыз интернетке қосылған болса, бастапқы нұсқаларды жүктеп алу үшін %s-ке қосылады.</string>
+    Nexora Manager құрылғыңыз интернетке қосылған болса, бастапқы нұсқаларды жүктеп алу үшін %s-ке қосылады.</string>
   <string name="announcements_filter_tag">Тег бойынша сүзу</string>
   <string name="announcements_show_archived">Мұрағатталғанды көрсету</string>
   <string name="updates_description">Жаңартуларды тексеру және өзгерістер журналын көру</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">Таңдалған қолданбаларды жою</string>
   <string name="downloader_delete_apps_description">Таңдалған қолданбаларды жоюды қалайтыныңызға сенімдісіз бе?</string>
   <string name="downloader_delete_single_description">\"%s\" жойғыңыз келетініне сенімдісіз бе?</string>
-  <string name="downloader_settings_no_apps_description">ReVanced Manager арқылы жүктеп алынған қолданбалар осы жерде көрсетіледі.</string>
+  <string name="downloader_settings_no_apps_description">Nexora Manager арқылы жүктеп алынған қолданбалар осы жерде көрсетіледі.</string>
   <string name="downloader_url">Жүктеуші URL мекенжайы</string>
   <string name="downloader_add">Жүктеушіні қосу</string>
   <string name="select_downloader_type_dialog_description">Жаңа жүктеушілерді URL мекенжайынан немесе жергілікті файлдардан қосу</string>
   <string name="local_downloaders_description">Жүктеушілерді жергілікті сақтау қоймасынан қосу.</string>
   <string name="remote_downloaders_description">Жүктеушілерді URL мекенжайынан қосу. Автоматты түрде жаңартылуы мүмкін.</string>
-  <string name="install_revanced_downloaders">Қолданбаларды ReVanced Manager ішінде тікелей алу үшін жүктеушілерді орнатыңыз.</string>
-  <string name="install_revanced_downloader">ReVanced жүктеушілерін орнату</string>
+  <string name="install_revanced_downloaders">Қолданбаларды Nexora Manager ішінде тікелей алу үшін жүктеушілерді орнатыңыз.</string>
   <string name="cancel_downloader_install_title">Жүктеушілерді орнатуды болдырмау керек пе?</string>
   <string name="cancel_downloader_install_description">Жүктеушілерді орнату жүріп жатыр. Егер қазір шықсаңыз, жүктеу тоқтатылады.</string>
   <string name="downloader_sources_unavailable_title">Бұл жүктеушілер жоқ</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">Хабарландырулар</string>
   <string name="archive">Мұрағат</string>
   <string name="view_update">Жаңартуды қарау</string>
-  <string name="update_checking_downloader">Іске қосқанда ReVanced жүктеушілерінің жаңартуларын тексеру</string>
-  <string name="update_checking_downloader_description">Қолданба іске қосылғанда орнатылған ReVanced жүктеушілерінің жаңартуларын тексеру</string>
   <string name="prereleases_warning">Алдын ала шығарылған нұсқалар тұрақсыз болуы және қателерді қамтуы мүмкін. Сіз апаттарды, деректердің жоғалуын немесе басқа күтпеген мәселелерді бастан кешіруіңіз мүмкін. Егер осы тәуекелдермен келіссеңіз ғана, оны қосыңыз.</string>
   <string name="changelog">Өзгерістер журналын қарау</string>
   <string name="no_announcements_found">Хабарландырулар табылмады</string>

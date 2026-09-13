@@ -1,7 +1,7 @@
 # 🛠️ Usage
 
-The following pages will guide you through using ReVanced Manager to patch and manage apps, 
-manage patches, and update or configure ReVanced Manager.
+The following pages will guide you through using Nexora Manager to patch and manage apps,
+manage patches, and update or configure Nexora Manager.
 
 ## 📖 Table of contents
 
@@ -9,11 +9,11 @@ manage patches, and update or configure ReVanced Manager.
 2. [🧰 Managing apps](2_2_managing_apps.md)
 3. [🧩 Managing patches](2_3_managing_patches.md)
 4. [🧩 Managing downloaders](2_4_managing_downloaders.md)
-4. [🔄 Updating ReVanced Manager](2_5_updating.md)
-5. [⚙️ Configuring ReVanced Manager](2_6_settings.md)
+4. [🔄 Updating Nexora Manager](2_5_updating.md)
+5. [⚙️ Configuring Nexora Manager](2_6_settings.md)
 
 ## ⏭️ What's next
 
-The next page will explain how to use ReVanced Manager to patch apps.
+The next page will explain how to use Nexora Manager to patch apps.
 
 Continue: [💉 Patching apps](2_1_patching.md)

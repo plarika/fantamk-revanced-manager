@@ -14,7 +14,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="app_name">ReVanced Manager</string>
+  <string name="app_name">Nexora Manager</string>
   <string name="patcher">Labotājs</string>
   <string name="patches">Pači</string>
   <string name="cli">CLI</string>
@@ -22,23 +22,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">Laipni lūdzam</string>
   <string name="onboarding_welcome_back">Sveiki! Tas ir jaunais</string>
   <string name="onboarding_apps_subtitle">Varat izvēlēties lietotni labošanai tagad vai darīt to vēlāk</string>
-  <string name="onboarding_updates_subtitle">Konfigurējiet automātiskos atjauninājumus, lai saglabātu ReVanced Manager un labojumus atjauninātus</string>
-  <string name="onboarding_updates_note">ReVanced Manager izveidos savienojumu ar %s, lai lejupielādētu sākotnējās versijas, ja jūsu ierīce ir savienota ar internetu.</string>
+  <string name="onboarding_updates_subtitle">Konfigurējiet automātiskos atjauninājumus, lai saglabātu Nexora Manager un labojumus atjauninātus</string>
+  <string name="onboarding_updates_note">Nexora Manager izveidos savienojumu ar %s, lai lejupielādētu sākotnējās versijas, ja jūsu ierīce ir savienota ar internetu.</string>
   <string name="retry">Mēģināt vēlreiz</string>
   <string name="onboarding_skip">Pagaidām izlaist</string>
   <string name="onboarding_recommended_version">Ieteicamā versija: %s</string>
   <string name="onboarding_permissions_skip_title">Izlaist atļaujas?</string>
   <string name="onboarding_permissions_skip_description">Bez nepieciešamajām atļaujām dažas funkcijas var nedarboties pareizi. Tās varat piešķirt vēlāk lietotnes iestatījumos.</string>
   <string name="onboarding_permissions_skip_anyway">Tomēr izlaist</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager ir nepieciešamas dažas atļaujas, lai darbotos pareizi</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager ir nepieciešamas dažas atļaujas, lai darbotos pareizi</string>
   <string name="permission_install_apps">Instalēt nezināmas lietotnes</string>
   <string name="permission_install_apps_description">Nepieciešams, lai instalētu labotās lietotnes</string>
   <string name="permission_notifications">Paziņojumi</string>
   <string name="permission_battery">Akumulatora optimizācija</string>
   <string name="permission_battery_description">Novērš labošanas pārtraukšanu fonā</string>
   <string name="permission_grant">Piešķirt</string>
-  <string name="downloader_host_permission_label">ReVanced Manager lejupielādētāja resursdators</string>
-  <string name="downloader_host_permission_description">Izmanto, lai kontrolētu piekļuvi ReVanced Manager lejupielādētājiem. Tikai ReVanced Manager ir šī iespēja.</string>
+  <string name="downloader_host_permission_label">Nexora Manager lejupielādētāja resursdators</string>
+  <string name="downloader_host_permission_description">Izmanto, lai kontrolētu piekļuvi Nexora Manager lejupielādētājiem. Tikai Nexora Manager ir šī iespēja.</string>
   <string name="toast_copied_to_clipboard">Nokopēts!</string>
   <string name="copy_to_clipboard">Kopēt starpliktuvē</string>
   <string name="dashboard">Informācijas panelis</string>
@@ -89,13 +89,12 @@ Second \"item\" text"</string>
   <string name="apk_source_downloaded">Jau lejupielādēts</string>
   <string name="legacy_import_failed">Nevarēja importēt mantotos iestatījumus</string>
   <string name="auto_updates_dialog_title">Konfigurēt atjauninājumus</string>
-  <string name="auto_updates_dialog_description">Vai vēlaties, lai ReVanced Manager periodiski pārbaudītu atjauninājumus šādām komponentēm?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced labojumi</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Lejupielādētāji</string>
+  <string name="auto_updates_dialog_description">Vai vēlaties, lai Nexora Manager periodiski pārbaudītu atjauninājumus šādām komponentēm?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+  <string name="auto_updates_dialog_downloaders">Nexora Manager: Lejupielādētāji</string>
   <string name="auto_updates_dialog_note">Šos iestatījumus var mainīt vēlāk.
 
-    ReVanced Manager izveidos savienojumu ar %s, lai lejupielādētu sākotnējās versijas, ja jūsu ierīce ir savienota ar internetu.</string>
+    Nexora Manager izveidos savienojumu ar %s, lai lejupielādētu sākotnējās versijas, ja jūsu ierīce ir savienota ar internetu.</string>
   <string name="announcements_filter_tag">Filtrēt pēc birkas</string>
   <string name="announcements_show_archived">Rādīt arhivētos</string>
   <string name="general">Vispārīgi</string>
@@ -114,8 +113,7 @@ Second \"item\" text"</string>
   <string name="opensource_licenses">Atvērtā koda licences</string>
   <string name="opensource_licenses_description">Skatīt visas bibliotēkas, kas izmantotas šīs lietojumprogrammas izveidei</string>
   <string name="contributors">Līdzautori</string>
-  <string name="contributors_description">Skatīt ReVanced līdzautorus</string>
-  <string name="dynamic_color">Dinamiskā krāsa</string>
+<string name="dynamic_color">Dinamiskā krāsa</string>
   <string name="dynamic_color_description">Pielāgot krāsas fona attēlam</string>
   <string name="pure_black_theme">Tīri melna tēma</string>
   <string name="pure_black_theme_description">Izmantot tīri melnus fonus tumšai tēmai</string>
@@ -203,15 +201,14 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_description">Vai tiešām vēlaties dzēst atlasītās lietotnes?</string>
   <string name="downloader_delete_single_description">Vai tiešām vēlaties dzēst \"%s\"?</string>
   <string name="downloader_settings_no_apps">Nav atrasta neviena lejupielādēta lietotne.</string>
-  <string name="downloader_settings_no_apps_description">Lietotnes, kas lejupielādētas, izmantojot ReVanced Manager, parādīsies šeit.</string>
+  <string name="downloader_settings_no_apps_description">Lietotnes, kas lejupielādētas, izmantojot Nexora Manager, parādīsies šeit.</string>
   <string name="downloader_url">Lejupielādētāja URL</string>
   <string name="downloader_add">Pievienot lejupielādētāju</string>
   <string name="select_downloader_type_dialog_description">Pievienot jaunus lejupielādētājus no URL vai lokāliem failiem</string>
   <string name="local_downloaders_description">Pievienot lejupielādētājus no lokālās krātuves.</string>
   <string name="remote_downloaders_description">Pievienot lejupielādētājus no URL. Var tikt automātiski atjaunināti.</string>
-  <string name="install_revanced_downloaders">Instalējiet lejupielādētājus, lai iegūtu lietotnes tieši ReVanced Manager ietvaros.</string>
-  <string name="install_revanced_downloader">Instalēt ReVanced lejupielādētājus</string>
-  <string name="cancel_downloader_install_title">Atcelt lejupielādētāju instalēšanu?</string>
+  <string name="install_revanced_downloaders">Instalējiet lejupielādētājus, lai iegūtu lietotnes tieši Nexora Manager ietvaros.</string>
+<string name="cancel_downloader_install_title">Atcelt lejupielādētāju instalēšanu?</string>
   <string name="cancel_downloader_install_description">Notiek lejupielādētāju instalēšana. Ja tagad aiziesit, lejupielāde tiks atcelta.</string>
   <string name="downloader_sources_unavailable_title">Šie lejupielādētāji trūkst</string>
   <string name="downloader_sources_unavailable_description">Noklikšķiniet uz atjaunināšanas pogas, lai to labotu.</string>
@@ -262,8 +259,8 @@ Second \"item\" text"</string>
   <string name="api_url">API URL</string>
   <string name="api_url_description">API, ko izmanto nepieciešamo failu lejupielādei</string>
   <string name="api_url_dialog_title">Mainīt API URL</string>
-  <string name="api_url_dialog_description">Mainīt ReVanced Manager API URL. ReVanced Manager izmanto API, lai lejupielādētu ielāpus un atjauninājumus.</string>
-  <string name="api_url_dialog_warning">ReVanced Manager savienojas ar API, lai lejupielādētu ielāpus un atjauninājumus. Pārliecinieties, ka tam uzticaties.</string>
+  <string name="api_url_dialog_description">Mainīt Nexora Manager API URL. Nexora Manager izmanto API, lai lejupielādētu ielāpus un atjauninājumus.</string>
+  <string name="api_url_dialog_warning">Nexora Manager savienojas ar API, lai lejupielādētu ielāpus un atjauninājumus. Pārliecinieties, ka tam uzticaties.</string>
   <string name="api_url_dialog_save">Iestatīt</string>
   <string name="api_url_dialog_reset">Atiestatīt API URL</string>
   <string name="device">Ierīce</string>
@@ -433,9 +430,8 @@ Second \"item\" text"</string>
   <string name="patches_delete_multiple_dialog_description">Vai tiešām vēlaties dzēst atlasītās ielāpes?</string>
   <string name="announcements">Paziņojumi</string>
   <string name="archive">Arhivs</string>
-  <string name="about_revanced_manager">Par ReVanced Manager</string>
-  <string name="revanced_manager_description">ReVanced Manager ir Android lietotne, kas izmanto ReVanced Patcher, lai ielāpītu Android lietotnes. Tā ļauj lejupielādēt un ielāpītu lietotnes ar pielāgotām ielāpēm, kā arī pārvaldīt ielāpīšanas procesu.</string>
-  <string name="developer_options_taps">Atlikuši %d pieskārieni</string>
+  <string name="about_revanced_manager">Par Nexora Manager</string>
+<string name="developer_options_taps">Atlikuši %d pieskārieni</string>
   <string name="developer_options_enabled">Izstrādātāja opcijas iespējotas</string>
   <string name="developer_options_already_enabled">Izstrādātāja opcijas jau ir iespējotas</string>
   <string name="update_available">Ir pieejams atjauninājums</string>
@@ -448,17 +444,15 @@ Second \"item\" text"</string>
   <string name="view_update">Skatīt atjauninājumu</string>
   <string name="manual_update_check_description">Manuāli pārbaudīt atjauninājumus</string>
   <string name="update_checking_manager">Pārbaudīt atjauninājumus palaišanas brīdī</string>
-  <string name="update_checking_manager_description">Pārbaudīt ReVanced Manager jaunas versijas, kad lietojumprogramma tiek startēta</string>
-  <string name="update_checking_downloader">Pārbaudīt ReVanced lejupielādētāju atjauninājumus palaišanas laikā</string>
-  <string name="update_checking_downloader_description">Pārbaudīt instalēto ReVanced lejupielādētāju atjauninājumus, kad lietotne startē</string>
-  <string name="manager_prereleases">Izmantot pirmsizlaides versijas</string>
-  <string name="manager_prereleases_description">Izmantot ReVanced Manager pirmsizlaides versijas</string>
+  <string name="update_checking_manager_description">Pārbaudīt Nexora Manager jaunas versijas, kad lietojumprogramma tiek startēta</string>
+<string name="manager_prereleases">Izmantot pirmsizlaides versijas</string>
+  <string name="manager_prereleases_description">Izmantot Nexora Manager pirmsizlaides versijas</string>
   <string name="prereleases_warning">Pirmsizlaides versijas var būt nestabilas un saturēt kļūdas. Var rasties avārijas, datu zudumi vai citas neparedzētas problēmas. Iespējojiet to tikai tad, ja esat gatavs šiem riskiem.</string>
   <string name="changelog">Skatīt izmaiņu žurnālu</string>
   <string name="changelog_loading">Ielādē izmaiņu žurnālu</string>
   <string name="changelog_download_fail">Neizdevās lejupielādēt izmaiņu žurnālu: %s</string>
   <string name="changelog_description">Apskatiet jaunākās izmaiņas šajā atjauninājumā</string>
-  <string name="battery_optimization_notification">Akumulatora optimizācijām jābūt izslēgtām, lai ReVanced Manager pareizi darbotos fonā. Noklikšķiniet šeit, lai izslēgtu optimizācijas.</string>
+  <string name="battery_optimization_notification">Akumulatora optimizācijām jābūt izslēgtām, lai Nexora Manager pareizi darbotos fonā. Noklikšķiniet šeit, lai izslēgtu optimizācijas.</string>
   <string name="installing_manager_update">Instalē atjauninājumu…</string>
   <string name="downloading_manager_update">Lejupielādē atjauninājumu…</string>
   <string name="download_manager_failed">Neizdevās lejupielādēt atjauninājumu: %s</string>
@@ -468,7 +462,7 @@ Second \"item\" text"</string>
   <string name="update">Atjaunināt</string>
   <string name="empty">Tukšs</string>
   <string name="installing_message">Pieskarieties pie <b>Atjaunināt</b>, kad tiek prasīts.
-ReVanced Manager aizvērsies, kad notiks atjaunināšana.</string>
+Nexora Manager aizvērsies, kad notiks atjaunināšana.</string>
   <string name="no_changelogs_found">Nav atrasti izmaiņu žurnāli</string>
   <string name="just_now">Tikko</string>
   <string name="minutes_ago">Pirms %s min</string>
@@ -484,7 +478,7 @@ ReVanced Manager aizvērsies, kad notiks atjaunināšana.</string>
   <string name="no_announcements_found">Nav atrasti paziņojumi</string>
   <string name="update_check">Pārbauda atjauninājumus…</string>
   <string name="dismiss_temporary">Ne tagad</string>
-  <string name="update_available_dialog_description">Ir pieejama jauna ReVanced Manager (%s) versija.</string>
+  <string name="update_available_dialog_description">Ir pieejama jauna Nexora Manager (%s) versija.</string>
   <string name="failed_to_download_update">Neizdevās lejupielādēt atjauninājumu: %s</string>
   <string name="download">Lejupielādēt</string>
   <string name="download_confirmation_metered">Jūs pašlaik izmantojat ierobežotu savienojumu, un jūsu pakalpojumu sniedzējs var piemērot datu maksu.

@@ -1,6 +1,6 @@
-# 💊 ReVanced Manager
+# 💊 Nexora Manager
 
-This documentation explains how to use [ReVanced Manager](https://github.com/revanced/revanced-manager).
+This documentation explains how to use Nexora Manager.
 
 ## 📖 Table of contents
 
@@ -11,13 +11,13 @@ This documentation explains how to use [ReVanced Manager](https://github.com/rev
    2. [🧰 Managing apps](2_2_managing_apps.md)
    3. [🧩 Managing patches](2_3_managing_patches.md)
    4. [🧩 Managing downloaders](2_4_managing_downloaders.md)
-   4. [🔄 Updating ReVanced Manager](2_5_updating.md)
-   5. [⚙️ Configuring ReVanced Manager](2_6_settings.md)
+   4. [🔄 Updating Nexora Manager](2_5_updating.md)
+   5. [⚙️ Configuring Nexora Manager](2_6_settings.md)
 3. [❔ Troubleshooting](3_troubleshooting.md)
 4. [🔨 Building from source](4_building.md)
 
 ## ⏭️ Start here
 
-The next page will tell you about the prerequisites for using ReVanced Manager.
+The next page will tell you about the prerequisites for using Nexora Manager.
 
 Continue: [💼 Prerequisites](0_prerequisites.md)

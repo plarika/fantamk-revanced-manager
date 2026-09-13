@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">ကြိုဆိုပါတယ်</string>
   <string name="onboarding_welcome_back">မင်္ဂလာပါ! အသစ်ထွက်ရှိထားတာကတော့</string>
   <string name="onboarding_apps_subtitle">အက်ပ်တစ်ခုကို အခုပဲပြင်ဆင်နိုင်ပါတယ် ဒါမှမဟုတ် နောက်မှလုပ်ဆောင်နိုင်ပါတယ်</string>
-  <string name="onboarding_updates_subtitle">ReVanced Manager နှင့် patch များကို နောက်ဆုံးပေါ်ဖြစ်အောင် အလိုအလျောက် အပ်ဒိတ်များကို စီစဉ်သတ်မှတ်ပါ</string>
-  <string name="onboarding_updates_note">အကယ်၍ သင့်စက်ပစ္စည်း အင်တာနက်နှင့် ချိတ်ဆက်ထားပါက ReVanced Manager သည် ကနဦးဗားရှင်းများကို ဒေါင်းလုဒ်လုပ်ရန် %s သို့ ချိတ်ဆက်ပါမည်။</string>
+  <string name="onboarding_updates_subtitle">Nexora Manager နှင့် patch များကို နောက်ဆုံးပေါ်ဖြစ်အောင် အလိုအလျောက် အပ်ဒိတ်များကို စီစဉ်သတ်မှတ်ပါ</string>
+  <string name="onboarding_updates_note">အကယ်၍ သင့်စက်ပစ္စည်း အင်တာနက်နှင့် ချိတ်ဆက်ထားပါက Nexora Manager သည် ကနဦးဗားရှင်းများကို ဒေါင်းလုဒ်လုပ်ရန် %s သို့ ချိတ်ဆက်ပါမည်။</string>
   <string name="retry">ပြန်ကြိုးစားပါ။</string>
   <string name="onboarding_skip">ခဏကျော်သွားပါ။</string>
   <string name="onboarding_recommended_version">အကြံပြုထားသော ဗားရှင်း: %s</string>
   <string name="onboarding_permissions_skip_title">ခွင့်ပြုချက်များ ကျော်သွားမလား။</string>
   <string name="onboarding_permissions_skip_description">လိုအပ်သော ခွင့်ပြုချက်များမရှိပါက အချို့ လုပ်ဆောင်ချက်များသည် ကောင်းမွန်စွာ အလုပ်မလုပ်နိုင်ပါ။ အက်ပ် ဆက်တင်များတွင် နောက်မှ ခွင့်ပြုနိုင်ပါသည်။</string>
   <string name="onboarding_permissions_skip_anyway">ဘာပဲဖြစ်ဖြစ် ကျော်သွားပါ။</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager သည် ကောင်းမွန်စွာ အလုပ်လုပ်ရန် ခွင့်ပြုချက်အချို့ လိုအပ်ပါသည်။</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager သည် ကောင်းမွန်စွာ အလုပ်လုပ်ရန် ခွင့်ပြုချက်အချို့ လိုအပ်ပါသည်။</string>
   <string name="permission_install_apps">မသိသော အက်ပ်များကို ထည့်သွင်းပါ။</string>
   <string name="permission_install_apps_description">ပြင်ဆင်ထားသော အက်ပ်များ ထည့်သွင်းရန် လိုအပ်ပါသည်။</string>
   <string name="permission_notifications">အကြောင်းကြားချက်များ</string>
   <string name="permission_battery">ဘက်ထရီ အကောင်းဆုံး ဖြစ်အောင်လုပ်ခြင်း</string>
   <string name="permission_battery_description">နောက်ခံ၌ ပြင်ဆင်ခြင်းကို အနှောင့်အယှက်မဖြစ်စေရန် ကာကွယ်ပေးသည်။</string>
   <string name="permission_grant">ခွင့်ပြုပါ။</string>
-  <string name="downloader_host_permission_label">ReVanced Manager ဒေါင်းလုဒ်လုပ်သူ ဟိုစ့်</string>
-  <string name="downloader_host_permission_description">ReVanced Manager ဒေါင်းလုဒ်လုပ်သူများထံ ဝင်ရောက်ခွင့်ကို ထိန်းချုပ်ရန် အသုံးပြုသည်။ ReVanced Manager တွင်သာ ၎င်းရှိသည်။</string>
+  <string name="downloader_host_permission_label">Nexora Manager ဒေါင်းလုဒ်လုပ်သူ ဟိုစ့်</string>
+  <string name="downloader_host_permission_description">Nexora Manager ဒေါင်းလုဒ်လုပ်သူများထံ ဝင်ရောက်ခွင့်ကို ထိန်းချုပ်ရန် အသုံးပြုသည်။ Nexora Manager တွင်သာ ၎င်းရှိသည်။</string>
   <string name="fab_patch_app">အက်ပ်တစ်ခုကို ပြင်ဆင်ပါ။</string>
   <string name="fab_add_patches">ပြင်ဆင်ချက်များ ထည့်ပါ။</string>
   <string name="new_downloader_notification">ဒေါင်းလုပ်လုပ်သူအသစ် (များ) ရရှိနိုင်ပါသည်။ ၎င်းတို့ကို စီစဉ်သတ်မှတ်ရန် ဤနေရာကို နှိပ်ပါ။</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">အလိုအလျောက် · ရနိုင်သော ဒေါင်းလုဒ်လုပ်သူများ အသုံးပြု၍</string>
   <string name="apk_source_auto_storage">အလိုအလျောက် · သိုလှောင်မှုမှ ရွေးချယ်ခြင်း</string>
   <string name="apk_source_downloaded">ဒေါင်းလုပ်လုပ်ပြီးသား</string>
-  <string name="auto_updates_dialog_description">ReVanced Manager ကို အောက်ပါ အစိတ်အပိုင်းများအတွက် အချိန်မှန် အပ်ဒိတ်များ စစ်ဆေးစေလိုပါသလား။</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced ပြင်ဆင်ချက်များ</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: ဒေါင်းလုဒ်ဆွဲသူများ</string>
+  <string name="auto_updates_dialog_description">Nexora Manager ကို အောက်ပါ အစိတ်အပိုင်းများအတွက် အချိန်မှန် အပ်ဒိတ်များ စစ်ဆေးစေလိုပါသလား။</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: ဒေါင်းလုဒ်ဆွဲသူများ</string>
   <string name="auto_updates_dialog_note">ဤဆက်တင်များကို နောက်ပိုင်းတွင် ပြောင်းလဲနိုင်သည်။
 
-    အကယ်၍ သင့်စက်ပစ္စည်း အင်တာနက်နှင့် ချိတ်ဆက်ထားပါက ReVanced Manager သည် ကနဦးဗားရှင်းများကို ဒေါင်းလုဒ်လုပ်ရန် %s သို့ ချိတ်ဆက်ပါမည်။</string>
+    အကယ်၍ သင့်စက်ပစ္စည်း အင်တာနက်နှင့် ချိတ်ဆက်ထားပါက Nexora Manager သည် ကနဦးဗားရှင်းများကို ဒေါင်းလုဒ်လုပ်ရန် %s သို့ ချိတ်ဆက်ပါမည်။</string>
   <string name="announcements_filter_tag">တက်ဂ်ဖြင့် စစ်ထုတ်ရန်</string>
   <string name="announcements_show_archived">မှတ်တမ်းတင်ပြီးသားများကို ပြရန်</string>
   <string name="updates_description">အပ်ဒိတ်များ စစ်ဆေးပြီး ပြောင်းလဲမှု မှတ်တမ်းကို ကြည့်ရှုပါ။</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">ရွေးချယ်ထားသော အက်ပ်များကို ဖျက်မည်</string>
   <string name="downloader_delete_apps_description">ရွေးချယ်ထားသော အက်ပ်များကို ဖျက်လိုကြောင်း သေချာပါသလား။</string>
   <string name="downloader_delete_single_description">\"%s\" ကို ဖျက်လိုကြောင်း သေချာပါသလား။</string>
-  <string name="downloader_settings_no_apps_description">ReVanced Manager မှတစ်ဆင့် ဒေါင်းလုပ်လုပ်ထားသော အက်ပ်များသည် ဤနေရာတွင် ပေါ်လာမည်ဖြစ်သည်။</string>
+  <string name="downloader_settings_no_apps_description">Nexora Manager မှတစ်ဆင့် ဒေါင်းလုပ်လုပ်ထားသော အက်ပ်များသည် ဤနေရာတွင် ပေါ်လာမည်ဖြစ်သည်။</string>
   <string name="downloader_url">ဒေါင်းလုပ်လုပ်သူ URL</string>
   <string name="downloader_add">ဒေါင်းလုပ်လုပ်သူထည့်ပါ</string>
   <string name="select_downloader_type_dialog_description">URL သို့မဟုတ် ဒေသတွင်းဖိုင်များမှ ဒေါင်းလုပ်လုပ်သူအသစ်များ ထည့်ပါ</string>
   <string name="local_downloaders_description">ဒေသတွင်းသိုလှောင်မှုမှ ဒေါင်းလုပ်လုပ်သူများထည့်ပါ</string>
   <string name="remote_downloaders_description">URL မှ ဒေါင်းလုပ်လုပ်သူများထည့်ပါ။ အလိုအလျောက် အပ်ဒိတ်လုပ်နိုင်ပါသည်။</string>
-  <string name="install_revanced_downloaders">ReVanced Manager အတွင်း၌ အက်ပ်များကို တိုက်ရိုက်ရယူရန် ဒေါင်းလုပ်လုပ်သူများကို ထည့်သွင်းပါ။</string>
-  <string name="install_revanced_downloader">ReVanced ဒေါင်းလုပ်လုပ်သူများကို ထည့်သွင်းပါ။</string>
+  <string name="install_revanced_downloaders">Nexora Manager အတွင်း၌ အက်ပ်များကို တိုက်ရိုက်ရယူရန် ဒေါင်းလုပ်လုပ်သူများကို ထည့်သွင်းပါ။</string>
   <string name="cancel_downloader_install_title">ဒေါင်းလုပ်လုပ်သူ ထည့်သွင်းခြင်းကို ပယ်ဖျက်မလား။</string>
   <string name="cancel_downloader_install_description">ဒေါင်းလုပ်လုပ်သူ ထည့်သွင်းမှု လုပ်ဆောင်နေပါသည်။ ယခု ထွက်ခွာပါက ဒေါင်းလုပ်လုပ်ခြင်းကို ပယ်ဖျက်သွားမည်ဖြစ်သည်။</string>
   <string name="downloader_sources_unavailable_title">ဤဒေါင်းလုပ်လုပ်သူများ ပျောက်ဆုံးနေသည်</string>
@@ -140,8 +138,6 @@ Second \"item\" text"</string>
   <string name="announcements">ကြေညာချက်များ</string>
   <string name="archive">မှတ်တမ်း</string>
   <string name="view_update">အပ်ဒိတ်ကို ကြည့်ရှုပါ။</string>
-  <string name="update_checking_downloader">စတင်သောအခါ ReVanced ဒေါင်းလုပ်လုပ်သူများ အပ်ဒိတ်များကို စစ်ဆေးပါ။</string>
-  <string name="update_checking_downloader_description">အက်ပ်စတင်သောအခါ ထည့်သွင်းထားသော ReVanced ဒေါင်းလုပ်လုပ်သူများ၏ အပ်ဒိတ်များကို စစ်ဆေးပါ။</string>
   <string name="prereleases_warning">မထုတ်ပြန်မီ ဗားရှင်းများသည် မတည်ငြိမ်နိုင်ပြီး bug များ ပါဝင်နိုင်သည်။ အက်ပ်ပိတ်ခြင်း၊ ဒေတာဆုံးရှုံးခြင်း သို့မဟုတ် အခြား မမျှော်လင့်ထားသော ပြဿနာများ ကြုံတွေ့ရနိုင်သည်။ ဤအန္တရာယ်များကို လက်ခံနိုင်မှသာ ဤအရာကို ဖွင့်ပါ။</string>
   <string name="changelog">ပြောင်းလဲမှု မှတ်တမ်းကို ကြည့်ရှုပါ။</string>
   <string name="no_announcements_found">ကြေညာချက်များ မတွေ့ရှိပါ</string>

@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">Xush kelibsiz</string>
   <string name="onboarding_welcome_back">Salom! Bu yangi</string>
   <string name="onboarding_apps_subtitle">Hozir dasturni tanlab tuzatishingiz yoki buni keyinroq qilishingiz mumkin</string>
-  <string name="onboarding_updates_subtitle">ReVanced Manager va yamalarni yangilab turish uchun avtomatik yangilanishlarni sozlang</string>
-  <string name="onboarding_updates_note">ReVanced Manager qurilmangiz internetga ulangan bo\'lsa, dastlabki versiyalarni yuklab olish uchun %s ga ulanadi.</string>
+  <string name="onboarding_updates_subtitle">Nexora Manager va yamalarni yangilab turish uchun avtomatik yangilanishlarni sozlang</string>
+  <string name="onboarding_updates_note">Nexora Manager qurilmangiz internetga ulangan bo\'lsa, dastlabki versiyalarni yuklab olish uchun %s ga ulanadi.</string>
   <string name="retry">Qayta urinish</string>
   <string name="onboarding_skip">Hozircha o\'tkazib yuborish</string>
   <string name="onboarding_recommended_version">Tavsiya etilgan versiya: %s</string>
   <string name="onboarding_permissions_skip_title">Ruxsatnomalarni o\'tkazib yuborish kerakmi?</string>
   <string name="onboarding_permissions_skip_description">Kerakli ruxsatnomalarsiz ba\'zi funksiyalar to\'g\'ri ishlamasligi mumkin. Ularni keyinchalik ilova sozlamalarida berishingiz mumkin.</string>
   <string name="onboarding_permissions_skip_anyway">Baribir o\'tkazib yuborish</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager to\'g\'ri ishlashi uchun bir nechta ruxsatnomalar kerak.</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager to\'g\'ri ishlashi uchun bir nechta ruxsatnomalar kerak.</string>
   <string name="permission_install_apps">Noma\'lum ilovalarni o\'rnatish</string>
   <string name="permission_install_apps_description">Patch o\'rnatilgan ilovalarni o\'rnatish uchun talab qilinadi</string>
   <string name="permission_notifications">Bildirishnomalar</string>
   <string name="permission_battery">Batareya optimizatsiyasi</string>
   <string name="permission_battery_description">Patch o\'rnatishning fonda to\'xtatilishini oldini oladi</string>
   <string name="permission_grant">Ruxsat berish</string>
-  <string name="downloader_host_permission_label">ReVanced Manager yuklab oluvchi xosti</string>
-  <string name="downloader_host_permission_description">ReVanced Manager yuklab oluvchilarga kirishni nazorat qilish uchun ishlatiladi. Faqat ReVanced Managerda bu mavjud.</string>
+  <string name="downloader_host_permission_label">Nexora Manager yuklab oluvchi xosti</string>
+  <string name="downloader_host_permission_description">Nexora Manager yuklab oluvchilarga kirishni nazorat qilish uchun ishlatiladi. Faqat Nexora Managerda bu mavjud.</string>
   <string name="fab_patch_app">Ilovaga patch o\'rnatish</string>
   <string name="fab_add_patches">Patch qo\'shish</string>
   <string name="new_downloader_notification">Yangi yuklab oluvchi(lar) mavjud. Ularni sozlash uchun shu yerni bosing.</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">Avto · Mavjud yuklab oluvchilardan foydalangan holda</string>
   <string name="apk_source_auto_storage">Avto · Xotiradan tanlang</string>
   <string name="apk_source_downloaded">Allaqachon yuklab olingan</string>
-  <string name="auto_updates_dialog_description">ReVanced Manager quyidagi komponentlar uchun muntazam ravishda yangilanishlarni tekshirishini istaysizmi?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced Patchlari</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Yuklab oluvchilar</string>
+  <string name="auto_updates_dialog_description">Nexora Manager quyidagi komponentlar uchun muntazam ravishda yangilanishlarni tekshirishini istaysizmi?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: Yuklab oluvchilar</string>
   <string name="auto_updates_dialog_note">Bu sozlamalar keyinroq o\'zgartirilishi mumkin.
 
-    ReVanced Manager qurilmangiz internetga ulangan bo\'lsa, dastlabki versiyalarni yuklab olish uchun %s ga ulanadi.</string>
+    Nexora Manager qurilmangiz internetga ulangan bo\'lsa, dastlabki versiyalarni yuklab olish uchun %s ga ulanadi.</string>
   <string name="announcements_filter_tag">Teg bo\'yicha filtrlash</string>
   <string name="announcements_show_archived">Arxivlanganlarni ko\'rsatish</string>
   <string name="updates_description">Yangilanishlarni tekshirish va o\'zgarishlar jurnalini ko\'rish</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">Tanlangan ilovalarni o‘chirish</string>
   <string name="downloader_delete_apps_description">Tanlangan ilovalarni o‘chirishga ishonchingiz komilmi?</string>
   <string name="downloader_delete_single_description">\"%s\" ni o\'chirib tashlashni xohlaysizmi?</string>
-  <string name="downloader_settings_no_apps_description">ReVanced Manager orqali yuklab olingan ilovalar bu yerda ko\'rinadi.</string>
+  <string name="downloader_settings_no_apps_description">Nexora Manager orqali yuklab olingan ilovalar bu yerda ko\'rinadi.</string>
   <string name="downloader_url">Yuklovchi URL manzili</string>
   <string name="downloader_add">Yuklovchini qo\'shish</string>
   <string name="select_downloader_type_dialog_description">Yangi yuklovchilarni URL manzilidan yoki mahalliy fayllardan qo\'shing</string>
   <string name="local_downloaders_description">Yuklovchilarni mahalliy xotiradan qo\'shish.</string>
   <string name="remote_downloaders_description">Yuklovchilarni URL manzilidan qo\'shish. Avtomatik yangilanishi mumkin.</string>
-  <string name="install_revanced_downloaders">Ilovalarni to\'g\'ridan-to\'g\'ri ReVanced Manager ichida olish uchun yuklab oluvchilarni o\'rnating.</string>
-  <string name="install_revanced_downloader">ReVanced Yuklab Oluvchilarini o\'rnatish</string>
+  <string name="install_revanced_downloaders">Ilovalarni to\'g\'ridan-to\'g\'ri Nexora Manager ichida olish uchun yuklab oluvchilarni o\'rnating.</string>
   <string name="cancel_downloader_install_title">Yuklab oluvchilarni o\'rnatishni bekor qilish kerakmi?</string>
   <string name="cancel_downloader_install_description">Yuklab oluvchilar o\'rnatilmoqda. Agar hozir chiqib ketsangiz, yuklab olish bekor qilinadi.</string>
   <string name="downloader_sources_unavailable_title">Bu yuklovchilar topilmadi</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">E\'lonlar</string>
   <string name="archive">Arxiv</string>
   <string name="view_update">Yangilanishni ko\'rish</string>
-  <string name="update_checking_downloader">Ishga tushirishda ReVanced Yuklab Oluvchilari yangilanishlarini tekshirish</string>
-  <string name="update_checking_downloader_description">Ilova ishga tushganda o\'rnatilgan ReVanced Yuklab Oluvchilarining yangilanishlarini tekshirish</string>
   <string name="prereleases_warning">Dastlabki (pre-release) versiyalar beqaror bo\'lishi va xatoliklarni o\'z ichiga olishi mumkin. Siz ilova qotib qolishi, ma\'lumotlar yo\'qolishi yoki boshqa kutilmagan muammolarga duch kelishingiz mumkin. Faqat bu xavflar bilan rozi bo\'lsangizgina buni yoqing.</string>
   <string name="changelog">O\'zgarishlar jurnalini ko\'rish</string>
   <string name="no_announcements_found">E\'lonlar topilmadi</string>

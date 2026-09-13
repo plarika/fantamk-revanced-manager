@@ -14,7 +14,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="app_name">ReVanced Manager</string>
+  <string name="app_name">Nexora Manager</string>
   <string name="patcher">แพตเชอร์</string>
   <string name="patches">แพตช์</string>
   <string name="cli">CLI</string>
@@ -22,23 +22,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">ยินดีต้อนรับสู่</string>
   <string name="onboarding_welcome_back">สวัสดี! นี่คือ</string>
   <string name="onboarding_apps_subtitle">คุณสามารถเลือกแอปที่จะแพตช์ตอนนี้หรือทำในภายหลัง</string>
-  <string name="onboarding_updates_subtitle">กำหนดค่าการอัปเดตอัตโนมัติเพื่อให้ ReVanced Manager และแพตช์เป็นปัจจุบันอยู่เสมอ</string>
-  <string name="onboarding_updates_note">ReVanced Manager จะเชื่อมต่อกับ %s เพื่อดาวน์โหลดเวอร์ชันเริ่มต้น หากอุปกรณ์ของคุณเชื่อมต่ออินเทอร์เน็ต</string>
+  <string name="onboarding_updates_subtitle">กำหนดค่าการอัปเดตอัตโนมัติเพื่อให้ Nexora Manager และแพตช์เป็นปัจจุบันอยู่เสมอ</string>
+  <string name="onboarding_updates_note">Nexora Manager จะเชื่อมต่อกับ %s เพื่อดาวน์โหลดเวอร์ชันเริ่มต้น หากอุปกรณ์ของคุณเชื่อมต่ออินเทอร์เน็ต</string>
   <string name="retry">ลองใหม่</string>
   <string name="onboarding_skip">ข้ามไปก่อน</string>
   <string name="onboarding_recommended_version">เวอร์ชันที่แนะนำ: %s</string>
   <string name="onboarding_permissions_skip_title">ข้ามการอนุญาตหรือไม่</string>
   <string name="onboarding_permissions_skip_description">หากไม่มีการอนุญาตที่จำเป็น ฟีเจอร์บางอย่างอาจทำงานไม่ถูกต้อง คุณสามารถให้สิทธิ์ได้ในภายหลังในการตั้งค่าแอป</string>
   <string name="onboarding_permissions_skip_anyway">ข้ามไปอยู่ดี</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager ต้องการการอนุญาตบางอย่างเพื่อให้ทำงานได้อย่างถูกต้อง</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager ต้องการการอนุญาตบางอย่างเพื่อให้ทำงานได้อย่างถูกต้อง</string>
   <string name="permission_install_apps">ติดตั้งแอปที่ไม่รู้จัก</string>
   <string name="permission_install_apps_description">จำเป็นสำหรับการติดตั้งแอปพลิเคชันที่ได้รับการแพตช์</string>
   <string name="permission_notifications">บริค์ซ์</string>
   <string name="permission_battery">การเพิ่มประสิทธิภาพแบตเตอรี่</string>
   <string name="permission_battery_description">ป้องกันไม่ให้การแพตช์ถูกขัดจังหวะในเบื้องหลัง</string>
   <string name="permission_grant">ให้สิทธิ์</string>
-  <string name="downloader_host_permission_label">โฮสต์ดาวน์โหลด ReVanced Manager</string>
-  <string name="downloader_host_permission_description">ใช้เพื่อควบคุมการเข้าถึงโปรแกรมดาวน์โหลด ReVanced Manager มีเพียง ReVanced Manager เท่านั้นที่มีสิ่งนี้</string>
+  <string name="downloader_host_permission_label">โฮสต์ดาวน์โหลด Nexora Manager</string>
+  <string name="downloader_host_permission_description">ใช้เพื่อควบคุมการเข้าถึงโปรแกรมดาวน์โหลด Nexora Manager มีเพียง Nexora Manager เท่านั้นที่มีสิ่งนี้</string>
   <string name="toast_copied_to_clipboard">คัดลอกแล้ว!</string>
   <string name="copy_to_clipboard">คัดลอกไปยังคลิปบอร์ด</string>
   <string name="dashboard">แดชบอร์ด</string>
@@ -89,13 +89,12 @@ Second \"item\" text"</string>
   <string name="apk_source_downloaded">ดาวน์โหลดแล้ว</string>
   <string name="legacy_import_failed">ไม่สามารถนำเข้าการตั้งค่าเก่าได้</string>
   <string name="auto_updates_dialog_title">กำหนดค่าการอัปเดต</string>
-  <string name="auto_updates_dialog_description">คุณต้องการให้ ReVanced Manager ตรวจสอบการอัปเดตเป็นระยะสำหรับส่วนประกอบต่อไปนี้หรือไม่</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">แพตช์ ReVanced</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: ตัวดาวน์โหลด</string>
+  <string name="auto_updates_dialog_description">คุณต้องการให้ Nexora Manager ตรวจสอบการอัปเดตเป็นระยะสำหรับส่วนประกอบต่อไปนี้หรือไม่</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+  <string name="auto_updates_dialog_downloaders">Nexora Manager: ตัวดาวน์โหลด</string>
   <string name="auto_updates_dialog_note">การตั้งค่าเหล่านี้สามารถเปลี่ยนแปลงได้ในภายหลัง
 
-    ReVanced Manager จะเชื่อมต่อกับ %s เพื่อดาวน์โหลดเวอร์ชันเริ่มต้น หากอุปกรณ์ของคุณเชื่อมต่ออินเทอร์เน็ต</string>
+    Nexora Manager จะเชื่อมต่อกับ %s เพื่อดาวน์โหลดเวอร์ชันเริ่มต้น หากอุปกรณ์ของคุณเชื่อมต่ออินเทอร์เน็ต</string>
   <string name="announcements_filter_tag">กรองตามแท็ก</string>
   <string name="announcements_show_archived">แสดงที่เก็บถาวร</string>
   <string name="general">ทั่วไป</string>
@@ -114,8 +113,7 @@ Second \"item\" text"</string>
   <string name="opensource_licenses">ใบอนุญาตโอเพนซอร์ส</string>
   <string name="opensource_licenses_description">ดูไลบรารีทั้งหมดที่ใช้ในการสร้างแอปพลิเคชันนี้</string>
   <string name="contributors">ผู้ร่วมให้ข้อมูล</string>
-  <string name="contributors_description">ดูผู้ร่วมให้ข้อมูลของ ReVanced</string>
-  <string name="dynamic_color">สีไดนามิก</string>
+<string name="dynamic_color">สีไดนามิก</string>
   <string name="dynamic_color_description">ปรับสีให้เข้ากับวอลเปเปอร์</string>
   <string name="pure_black_theme">ธีมสีดำสนิท</string>
   <string name="pure_black_theme_description">ใช้พื้นหลังสีดำสนิทสำหรับธีมมืด</string>
@@ -213,15 +211,14 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_description">คุณแน่ใจหรือไม่ว่าต้องการลบแอปที่เลือก</string>
   <string name="downloader_delete_single_description">คุณแน่ใจหรือไม่ว่าต้องการลบ \"%s\"</string>
   <string name="downloader_settings_no_apps">ไม่พบแอปที่ดาวน์โหลด</string>
-  <string name="downloader_settings_no_apps_description">แอปที่ดาวน์โหลดผ่าน ReVanced Manager จะปรากฏที่นี่</string>
+  <string name="downloader_settings_no_apps_description">แอปที่ดาวน์โหลดผ่าน Nexora Manager จะปรากฏที่นี่</string>
   <string name="downloader_url">URL ตัวดาวน์โหลด</string>
   <string name="downloader_add">เพิ่มตัวดาวน์โหลด</string>
   <string name="select_downloader_type_dialog_description">เพิ่มตัวดาวน์โหลดใหม่จาก URL หรือไฟล์ในเครื่อง</string>
   <string name="local_downloaders_description">เพิ่มตัวดาวน์โหลดจากไฟล์ในเครื่อง</string>
   <string name="remote_downloaders_description">เพิ่มตัวดาวน์โหลดจาก URL สามารถอัปเดตอัตโนมัติได้</string>
-  <string name="install_revanced_downloaders">ติดตั้งตัวดาวน์โหลดเพื่อรับแอปโดยตรงภายใน ReVanced Manager</string>
-  <string name="install_revanced_downloader">ติดตั้ง ReVanced Downloaders</string>
-  <string name="cancel_downloader_install_title">ยกเลิกการติดตั้งตัวดาวน์โหลดหรือไม่</string>
+  <string name="install_revanced_downloaders">ติดตั้งตัวดาวน์โหลดเพื่อรับแอปโดยตรงภายใน Nexora Manager</string>
+<string name="cancel_downloader_install_title">ยกเลิกการติดตั้งตัวดาวน์โหลดหรือไม่</string>
   <string name="cancel_downloader_install_description">กำลังติดตั้งตัวดาวน์โหลด หากคุณออกตอนนี้ การดาวน์โหลดจะถูกยกเลิก</string>
   <string name="downloader_sources_unavailable_title">ไม่พบตัวดาวน์โหลดเหล่านี้</string>
   <string name="downloader_sources_unavailable_description">กดอัปเดตเพื่อแก้ไขปัญหานี้</string>
@@ -272,8 +269,8 @@ Second \"item\" text"</string>
   <string name="api_url">URL ของ API</string>
   <string name="api_url_description">API ที่ใช้ในการดาวน์โหลดไฟล์ที่จำเป็น</string>
   <string name="api_url_dialog_title">เปลี่ยน URL ของ API</string>
-  <string name="api_url_dialog_description">เปลี่ยน URL ของ API ของ ReVanced Manager. ReVanced Manager ใช้ API เพื่อดาวน์โหลดแพตช์และการอัปเดต</string>
-  <string name="api_url_dialog_warning">ReVanced Manager เชื่อมต่อกับ API เพื่อดาวน์โหลดแพตช์และการอัปเดต โปรดตรวจสอบให้แน่ใจว่าคุณเชื่อถือมัน</string>
+  <string name="api_url_dialog_description">เปลี่ยน URL ของ API ของ Nexora Manager. Nexora Manager ใช้ API เพื่อดาวน์โหลดแพตช์และการอัปเดต</string>
+  <string name="api_url_dialog_warning">Nexora Manager เชื่อมต่อกับ API เพื่อดาวน์โหลดแพตช์และการอัปเดต โปรดตรวจสอบให้แน่ใจว่าคุณเชื่อถือมัน</string>
   <string name="api_url_dialog_save">ตั้งค่า</string>
   <string name="api_url_dialog_reset">รีเซ็ต URL ของ API</string>
   <string name="device">อุปกรณ์</string>
@@ -443,9 +440,8 @@ Second \"item\" text"</string>
   <string name="patches_delete_multiple_dialog_description">คุณแน่ใจหรือไม่ว่าต้องการลบแพตช์ที่เลือกไว้?</string>
   <string name="announcements">ประกาศ</string>
   <string name="archive">ที่เก็บถาวร</string>
-  <string name="about_revanced_manager">เกี่ยวกับ ReVanced Manager</string>
-  <string name="revanced_manager_description">ReVanced Manager เป็นแอปพลิเคชัน Android ที่ใช้ ReVanced Patcher เพื่อแพตช์แอป Android ซึ่งช่วยให้คุณสามารถดาวน์โหลดและแพตช์แอปด้วยแพตช์ที่กำหนดเอง และจัดการกระบวนการแพตช์ได้</string>
-  <string name="developer_options_taps">เหลือการแตะ %d ครั้ง</string>
+  <string name="about_revanced_manager">เกี่ยวกับ Nexora Manager</string>
+<string name="developer_options_taps">เหลือการแตะ %d ครั้ง</string>
   <string name="developer_options_enabled">เปิดใช้งานตัวเลือกสำหรับนักพัฒนาแล้ว</string>
   <string name="developer_options_already_enabled">ตัวเลือกสำหรับนักพัฒนาเปิดใช้งานอยู่แล้ว</string>
   <string name="update_available">มีการอัปเดตใหม่ให้ใช้งาน</string>
@@ -458,17 +454,15 @@ Second \"item\" text"</string>
   <string name="view_update">ดูการอัปเดต</string>
   <string name="manual_update_check_description">ตรวจสอบอัปเดตด้วยตนเอง</string>
   <string name="update_checking_manager">ตรวจสอบอัปเดตเมื่อเปิดใช้งาน</string>
-  <string name="update_checking_manager_description">ตรวจสอบ ReVanced Manager เวอร์ชันใหม่เมื่อแอปพลิเคชันเริ่มต้น</string>
-  <string name="update_checking_downloader">ตรวจสอบการอัปเดต ReVanced Downloaders เมื่อเปิดใช้งาน</string>
-  <string name="update_checking_downloader_description">ตรวจสอบการอัปเดต ReVanced Downloaders ที่ติดตั้งแล้วเมื่อแอปพลิเคชันเริ่มต้น</string>
-  <string name="manager_prereleases">ใช้เวอร์ชันก่อนเผยแพร่</string>
-  <string name="manager_prereleases_description">ใช้ ReVanced Manager เวอร์ชันก่อนเผยแพร่</string>
+  <string name="update_checking_manager_description">ตรวจสอบ Nexora Manager เวอร์ชันใหม่เมื่อแอปพลิเคชันเริ่มต้น</string>
+<string name="manager_prereleases">ใช้เวอร์ชันก่อนเผยแพร่</string>
+  <string name="manager_prereleases_description">ใช้ Nexora Manager เวอร์ชันก่อนเผยแพร่</string>
   <string name="prereleases_warning">เวอร์ชันก่อนเผยแพร่อาจไม่เสถียรและมีข้อบกพร่อง คุณอาจประสบปัญหาแอปขัดข้อง, ข้อมูลสูญหาย หรือปัญหาที่ไม่คาดคิดอื่น ๆ โปรดเปิดใช้งานเฉพาะเมื่อคุณยอมรับความเสี่ยงเหล่านี้ได้</string>
   <string name="changelog">ดูประวัติการเปลี่ยนแปลง</string>
   <string name="changelog_loading">กำลังโหลดบันทึกการเปลี่ยนแปลง</string>
   <string name="changelog_download_fail">ดาวน์โหลดบันทึกการเปลี่ยนแปลงไม่สำเร็จ: %s</string>
   <string name="changelog_description">ตรวจสอบการเปลี่ยนแปลงล่าสุดในการอัปเดตนี้</string>
-  <string name="battery_optimization_notification">การปรับปรุงแบตเตอรี่ต้องปิดอยู่เพื่อให้ ReVanced Manager ทำงานได้อย่างถูกต้องในเบื้องหลัง คลิกที่นี่เพื่อปิดการปรับปรุง</string>
+  <string name="battery_optimization_notification">การปรับปรุงแบตเตอรี่ต้องปิดอยู่เพื่อให้ Nexora Manager ทำงานได้อย่างถูกต้องในเบื้องหลัง คลิกที่นี่เพื่อปิดการปรับปรุง</string>
   <string name="installing_manager_update">กำลังติดตั้งอัปเดต…</string>
   <string name="downloading_manager_update">กำลังดาวน์โหลดอัปเดต…</string>
   <string name="download_manager_failed">ดาวน์โหลดอัปเดตไม่สำเร็จ: %s</string>
@@ -477,7 +471,7 @@ Second \"item\" text"</string>
   <string name="save_with_count">บันทึก (%1$s)</string>
   <string name="update">อัปเดต</string>
   <string name="empty">ว่างเปล่า</string>
-  <string name="installing_message">แตะที่ <b>อัปเดต</b> เมื่อมีข้อความแจ้ง\nReVanced Manager จะปิดตัวลงเมื่อมีการอัปเดต</string>
+  <string name="installing_message">แตะที่ <b>อัปเดต</b> เมื่อมีข้อความแจ้ง\nNexora Manager จะปิดตัวลงเมื่อมีการอัปเดต</string>
   <string name="no_changelogs_found">ไม่พบบันทึกการเปลี่ยนแปลง</string>
   <string name="just_now">เมื่อสักครู่นี้</string>
   <string name="minutes_ago">%s นาทีที่แล้ว</string>
@@ -493,7 +487,7 @@ Second \"item\" text"</string>
   <string name="no_announcements_found">ไม่พบประกาศ</string>
   <string name="update_check">กำลังตรวจสอบอัปเดต…</string>
   <string name="dismiss_temporary">ไม่ใช่ตอนนี้</string>
-  <string name="update_available_dialog_description">มี ReVanced Manager เวอร์ชันใหม่ (%s) ให้ใช้งาน</string>
+  <string name="update_available_dialog_description">มี Nexora Manager เวอร์ชันใหม่ (%s) ให้ใช้งาน</string>
   <string name="failed_to_download_update">ดาวน์โหลดอัปเดตไม่สำเร็จ: %s</string>
   <string name="download">ดาวน์โหลด</string>
   <string name="download_confirmation_metered">คุณกำลังใช้งานการเชื่อมต่อแบบจำกัดปริมาณข้อมูล และอาจมีค่าบริการข้อมูลจากผู้ให้บริการของคุณ\n\nคุณยังต้องการดำเนินการต่อหรือไม่?</string>

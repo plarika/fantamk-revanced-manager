@@ -26,8 +26,8 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: revanced-manager
+          name: nexora-manager
           path: |
-            app/build/outputs/apk/release/revanced-manager*.apk
-            app/build/outputs/apk/release/revanced-manager*.apk.asc
+            app/build/outputs/apk/release/nexora-manager*.apk
+            app/build/outputs/apk/release/nexora-manager*.apk.asc
           archive: false

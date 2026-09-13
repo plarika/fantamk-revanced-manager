@@ -31,7 +31,7 @@ annotation class DownloaderHostApi
  */
 interface Scope {
     /**
-     * The package name of ReVanced Manager.
+     * The package name of Nexora Manager.
      */
     val hostPackageName: String
 

@@ -19,16 +19,16 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_back">Hallo! Dit is die nuwe</string>
   <string name="onboarding_apps_subtitle">Jy kan nou \'n toepassing kies om te pleister of dit later doen</string>
   <string name="onboarding_apps_network_error">Kon nie pleisters laai nie omdat die netwerk onbeskikbaar of onstabiel is. Koppel aan \'n stabiele netwerk en probeer weer.</string>
-  <string name="onboarding_updates_subtitle">Stel outomatiese opdaterings in om ReVanced Manager en pleisters op datum te hou</string>
+  <string name="onboarding_updates_subtitle">Stel outomatiese opdaterings in om Nexora Manager en pleisters op datum te hou</string>
   <string name="banner_sources_not_downloaded_description">Pleisters en aflaaiers kon nie tydens opstelling afgelaai word nie. Tik werk by om dit af te laai.</string>
-  <string name="onboarding_updates_note">ReVanced Manager sal aan %s koppel om aanvanklike weergawes af te laai as jou toestel aan die internet gekoppel is.</string>
+  <string name="onboarding_updates_note">Nexora Manager sal aan %s koppel om aanvanklike weergawes af te laai as jou toestel aan die internet gekoppel is.</string>
   <string name="retry">Probeer weer</string>
   <string name="onboarding_skip">Slaan oor vir nou</string>
   <string name="onboarding_recommended_version">Aanbevole weergawe: %s</string>
   <string name="onboarding_permissions_skip_title">Slaan toestemmings oor?</string>
   <string name="onboarding_permissions_skip_description">Sonder die vereiste toestemmings mag sommige kenmerke dalk nie korrek werk nie. Jy kan dit later in toepassingsinstellings verleen.</string>
   <string name="onboarding_permissions_skip_anyway">Slaan in elk geval oor</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager benodig \'n paar toestemmings om behoorlik te werk</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager benodig \'n paar toestemmings om behoorlik te werk</string>
   <string name="permission_install_apps">Installeer onbekende toepassings</string>
   <string name="permission_install_apps_description">Vereis om gepatchte toepassings te installeer</string>
   <string name="permission_notifications">Kennisgewings</string>
@@ -36,8 +36,8 @@ Second \"item\" text"</string>
   <string name="permission_battery">Batteryoptimalisering</string>
   <string name="permission_battery_description">Voorkom dat patching in die agtergrond onderbreek word</string>
   <string name="permission_grant">Verleen</string>
-  <string name="downloader_host_permission_label">ReVanced Manager aflaaier gasheer</string>
-  <string name="downloader_host_permission_description">Word gebruik om toegang tot ReVanced Manager aflaaiers te beheer. Slegs ReVanced Manager het dit.</string>
+  <string name="downloader_host_permission_label">Nexora Manager aflaaier gasheer</string>
+  <string name="downloader_host_permission_description">Word gebruik om toegang tot Nexora Manager aflaaiers te beheer. Slegs Nexora Manager het dit.</string>
   <string name="fab_patch_app">Patch \'n toepassing</string>
   <string name="fab_add_patches">Voeg patches by</string>
   <string name="new_downloader_notification">Nuwe aflaaier(s) beskikbaar. Klik hier om dit te konfigureer.</string>
@@ -55,13 +55,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">Outomaties · Gebruik beskikbare aflaaiers</string>
   <string name="apk_source_auto_storage">Outomaties · Kies uit stoorplek</string>
   <string name="apk_source_downloaded">Reeds afgelaai</string>
-  <string name="auto_updates_dialog_description">Wil jy hê ReVanced Manager moet periodiek na opdaterings vir die volgende komponente kyk?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced Patches</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Aflaaiprogramme</string>
+  <string name="auto_updates_dialog_description">Wil jy hê Nexora Manager moet periodiek na opdaterings vir die volgende komponente kyk?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+  <string name="auto_updates_dialog_downloaders">Nexora Manager: Aflaaiprogramme</string>
   <string name="auto_updates_dialog_note">Hierdie instellings kan later verander word.
 
-    ReVanced Manager sal aan %s koppel om aanvanklike weergawes af te laai as jou toestel aan die internet gekoppel is.</string>
+    Nexora Manager sal aan %s koppel om aanvanklike weergawes af te laai as jou toestel aan die internet gekoppel is.</string>
   <string name="announcements_filter_tag">Filtreer volgens etiket</string>
   <string name="announcements_show_archived">Wys geargiveerdes</string>
   <string name="updates_description">Gaan na vir opdaterings en sien veranderingslog</string>
@@ -87,15 +86,14 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">Vee geselekteerde programme uit</string>
   <string name="downloader_delete_apps_description">Is jy seker jy wil die geselekteerde programme uitvee?</string>
   <string name="downloader_delete_single_description">Is jy seker jy wil \"%s\" verwyder?</string>
-  <string name="downloader_settings_no_apps_description">Toepassings wat deur ReVanced Manager afgelaai is, sal hier verskyn.</string>
+  <string name="downloader_settings_no_apps_description">Toepassings wat deur Nexora Manager afgelaai is, sal hier verskyn.</string>
   <string name="downloader_url">Aflaaier URL</string>
   <string name="downloader_add">Voeg Aflaaier by</string>
   <string name="select_downloader_type_dialog_description">Voeg nuwe aflaaiers by vanaf URL of plaaslike lêers</string>
   <string name="local_downloaders_description">Voeg aflaaiers by vanaf plaaslike stoorplek.</string>
   <string name="remote_downloaders_description">Voeg aflaaiers by vanaf URL. Kan outomaties bygewerk word.</string>
-  <string name="install_revanced_downloaders">Installeer aflaaiers om toepassings direk binne ReVanced Manager te kry.</string>
-  <string name="install_revanced_downloader">Installeer ReVanced Aflaaiers</string>
-  <string name="cancel_downloader_install_title">Kanselleer aflaaiersinstallasie?</string>
+  <string name="install_revanced_downloaders">Installeer aflaaiers om toepassings direk binne Nexora Manager te kry.</string>
+<string name="cancel_downloader_install_title">Kanselleer aflaaiersinstallasie?</string>
   <string name="cancel_downloader_install_description">\'n Aflaaiersinstallasie is aan die gang. As jy nou vertrek, sal die aflaai gekanselleer word.</string>
   <string name="downloader_sources_unavailable_title">Hierdie aflaaiers ontbreek</string>
   <string name="downloader_sources_unavailable_description">Klik op die bywerk-knoppie om dit reg te stel.</string>
@@ -141,9 +139,7 @@ Second \"item\" text"</string>
   <string name="announcements">Aankondigings</string>
   <string name="archive">Argief</string>
   <string name="view_update">Sien opdatering</string>
-  <string name="update_checking_downloader">Gaan na vir ReVanced Aflaaiers-opdaterings by lansering</string>
-  <string name="update_checking_downloader_description">Gaan na vir opdaterings van geïnstalleerde ReVanced Aflaaiers wanneer die toepassing begin</string>
-  <string name="prereleases_warning">Voorafvrystelling weergawes mag onstabiel wees en foute bevat. Jy mag ineenstortings, dataverlies, of ander onverwagte probleme ervaar. Aktiveer dit slegs as jy gemaklik is met hierdie risiko\'s.</string>
+<string name="prereleases_warning">Voorafvrystelling weergawes mag onstabiel wees en foute bevat. Jy mag ineenstortings, dataverlies, of ander onverwagte probleme ervaar. Aktiveer dit slegs as jy gemaklik is met hierdie risiko\'s.</string>
   <string name="changelog">Sien veranderingslog</string>
   <string name="no_announcements_found">Geen aankondigings gevind nie</string>
   <string name="new_announcement">Nuwe aankondiging:

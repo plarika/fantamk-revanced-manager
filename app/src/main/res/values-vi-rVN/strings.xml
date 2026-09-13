@@ -14,7 +14,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="app_name">ReVanced Manager</string>
+  <string name="app_name">Nexora Manager</string>
   <string name="patcher">Trình vá</string>
   <string name="patches">Các bản vá</string>
   <string name="cli">CLI</string>
@@ -22,23 +22,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">Chào mừng đến với</string>
   <string name="onboarding_welcome_back">Chào! Đây là phiên bản mới của</string>
   <string name="onboarding_apps_subtitle">Bạn có thể chọn một ứng dụng để vá ngay bây giờ hoặc làm điều đó sau</string>
-  <string name="onboarding_updates_subtitle">Cấu hình cập nhật tự động để giữ cho ReVanced Manager và các bản vá luôn được cập nhật</string>
-  <string name="onboarding_updates_note">ReVanced Manager sẽ kết nối với %s để tải xuống các phiên bản ban đầu nếu thiết bị của bạn được kết nối internet.</string>
+  <string name="onboarding_updates_subtitle">Cấu hình cập nhật tự động để giữ cho Nexora Manager và các bản vá luôn được cập nhật</string>
+  <string name="onboarding_updates_note">Nexora Manager sẽ kết nối với %s để tải xuống các phiên bản ban đầu nếu thiết bị của bạn được kết nối internet.</string>
   <string name="retry">Thử lại</string>
   <string name="onboarding_skip">Bỏ qua bây giờ</string>
   <string name="onboarding_recommended_version">Phiên bản được đề xuất: %s</string>
   <string name="onboarding_permissions_skip_title">Bỏ qua quyền?</string>
   <string name="onboarding_permissions_skip_description">Nếu không có các quyền cần thiết, một số tính năng có thể không hoạt động chính xác. Bạn có thể cấp chúng sau trong cài đặt ứng dụng.</string>
   <string name="onboarding_permissions_skip_anyway">Bỏ qua dù sao</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager cần một vài quyền để hoạt động đúng cách</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager cần một vài quyền để hoạt động đúng cách</string>
   <string name="permission_install_apps">Cài đặt ứng dụng không rõ nguồn gốc</string>
   <string name="permission_install_apps_description">Bắt buộc để cài đặt các ứng dụng đã vá</string>
   <string name="permission_notifications">Thông báo</string>
   <string name="permission_battery">Tối ưu hóa pin</string>
   <string name="permission_battery_description">Ngăn chặn quá trình vá bị gián đoạn ở chế độ nền</string>
   <string name="permission_grant">Cấp</string>
-  <string name="downloader_host_permission_label">Máy chủ tải xuống ReVanced Manager</string>
-  <string name="downloader_host_permission_description">Dùng để kiểm soát quyền truy cập vào các trình tải xuống ReVanced Manager. Chỉ ReVanced Manager mới có tính năng này.</string>
+  <string name="downloader_host_permission_label">Máy chủ tải xuống Nexora Manager</string>
+  <string name="downloader_host_permission_description">Dùng để kiểm soát quyền truy cập vào các trình tải xuống Nexora Manager. Chỉ Nexora Manager mới có tính năng này.</string>
   <string name="toast_copied_to_clipboard">Đã sao chép!</string>
   <string name="copy_to_clipboard">Sao chép vào bảng nhớ tạm</string>
   <string name="dashboard">Tổng quan</string>
@@ -89,13 +89,12 @@ Second \"item\" text"</string>
   <string name="apk_source_downloaded">Đã tải xuống</string>
   <string name="legacy_import_failed">Không thể nhập cài đặt cũ</string>
   <string name="auto_updates_dialog_title">Cấu hình cập nhật</string>
-  <string name="auto_updates_dialog_description">Bạn có muốn ReVanced Manager kiểm tra cập nhật định kỳ cho các thành phần sau không?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced Patches</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Trình tải xuống</string>
+  <string name="auto_updates_dialog_description">Bạn có muốn Nexora Manager kiểm tra cập nhật định kỳ cho các thành phần sau không?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+  <string name="auto_updates_dialog_downloaders">Nexora Manager: Trình tải xuống</string>
   <string name="auto_updates_dialog_note">Các cài đặt này có thể được thay đổi sau.
 
-    ReVanced Manager sẽ kết nối với %s để tải xuống các phiên bản ban đầu nếu thiết bị của bạn được kết nối internet.</string>
+    Nexora Manager sẽ kết nối với %s để tải xuống các phiên bản ban đầu nếu thiết bị của bạn được kết nối internet.</string>
   <string name="announcements_filter_tag">Lọc theo thẻ</string>
   <string name="announcements_show_archived">Hiển thị đã lưu trữ</string>
   <string name="general">Chung</string>
@@ -114,8 +113,7 @@ Second \"item\" text"</string>
   <string name="opensource_licenses">Giấy phép nguồn mở</string>
   <string name="opensource_licenses_description">Xem tất cả các thư viện được sử dụng để tạo ứng dụng này</string>
   <string name="contributors">Những người đóng góp</string>
-  <string name="contributors_description">Xem những người đóng góp của ReVanced</string>
-  <string name="dynamic_color">Màu động</string>
+<string name="dynamic_color">Màu động</string>
   <string name="dynamic_color_description">Điều chỉnh màu sắc theo hình nền</string>
   <string name="pure_black_theme">Chủ đề đen tuyền</string>
   <string name="pure_black_theme_description">Sử dụng nền đen tuyền cho chủ đề tối</string>
@@ -207,15 +205,14 @@ Vẫn tiếp tục kích hoạt?</string>
   <string name="downloader_delete_apps_description">Bạn có chắc chắn muốn xóa các ứng dụng đã chọn không?</string>
   <string name="downloader_delete_single_description">Bạn có chắc chắn muốn xóa \"%s\" không?</string>
   <string name="downloader_settings_no_apps">Không tìm thấy ứng dụng đã tải xuống.</string>
-  <string name="downloader_settings_no_apps_description">Các ứng dụng được tải xuống thông qua ReVanced Manager sẽ xuất hiện tại đây.</string>
+  <string name="downloader_settings_no_apps_description">Các ứng dụng được tải xuống thông qua Nexora Manager sẽ xuất hiện tại đây.</string>
   <string name="downloader_url">URL trình tải xuống</string>
   <string name="downloader_add">Thêm trình tải xuống</string>
   <string name="select_downloader_type_dialog_description">Thêm trình tải xuống mới từ URL hoặc tệp cục bộ</string>
   <string name="local_downloaders_description">Thêm trình tải xuống từ bộ nhớ cục bộ.</string>
   <string name="remote_downloaders_description">Thêm trình tải xuống từ URL. Có thể tự động cập nhật.</string>
-  <string name="install_revanced_downloaders">Cài đặt trình tải xuống để nhận ứng dụng trực tiếp trong ReVanced Manager.</string>
-  <string name="install_revanced_downloader">Cài đặt ReVanced Downloaders</string>
-  <string name="cancel_downloader_install_title">Hủy cài đặt trình tải xuống?</string>
+  <string name="install_revanced_downloaders">Cài đặt trình tải xuống để nhận ứng dụng trực tiếp trong Nexora Manager.</string>
+<string name="cancel_downloader_install_title">Hủy cài đặt trình tải xuống?</string>
   <string name="cancel_downloader_install_description">Quá trình cài đặt trình tải xuống đang diễn ra. Nếu bạn rời đi bây giờ, quá trình tải xuống sẽ bị hủy.</string>
   <string name="downloader_sources_unavailable_title">Những trình tải xuống này bị thiếu</string>
   <string name="downloader_sources_unavailable_description">Nhấp vào nút cập nhật để sửa lỗi.</string>
@@ -267,8 +264,8 @@ Vẫn tiếp tục kích hoạt?</string>
   <string name="api_url">Địa chỉ URL của API</string>
   <string name="api_url_description">API được sử dụng để tải xuống các tệp cần thiết</string>
   <string name="api_url_dialog_title">Thay đổi URL API</string>
-  <string name="api_url_dialog_description">Thay đổi URL API của ReVanced Manager. ReVanced Manager sử dụng API để tải xuống các bản vá và cập nhật.</string>
-  <string name="api_url_dialog_warning">ReVanced Manager kết nối với API để tải xuống các bản vá và cập nhật. Hãy đảm bảo rằng bạn tin tưởng nó.</string>
+  <string name="api_url_dialog_description">Thay đổi URL API của Nexora Manager. Nexora Manager sử dụng API để tải xuống các bản vá và cập nhật.</string>
+  <string name="api_url_dialog_warning">Nexora Manager kết nối với API để tải xuống các bản vá và cập nhật. Hãy đảm bảo rằng bạn tin tưởng nó.</string>
   <string name="api_url_dialog_save">Đặt</string>
   <string name="api_url_dialog_reset">Đặt lại URL API</string>
   <string name="device">Thiết bị</string>
@@ -447,9 +444,8 @@ Nó chỉ tương thích với các phiên bản sau: %2$s</string>
   <string name="patches_delete_multiple_dialog_description">Bạn có chắc chắn muốn xóa các bản vá đã chọn không?</string>
   <string name="announcements">Thông báo</string>
   <string name="archive">Lưu trữ</string>
-  <string name="about_revanced_manager">Giới thiệu về ReVanced Manager</string>
-  <string name="revanced_manager_description">ReVanced Manager là một ứng dụng Android sử dụng ReVanced Patcher để vá các ứng dụng Android. Nó cho phép bạn tải xuống và vá các ứng dụng bằng các bản vá tùy chỉnh, cũng như quản lý quá trình vá.</string>
-  <string name="developer_options_taps">Còn %d lần chạm</string>
+  <string name="about_revanced_manager">Giới thiệu về Nexora Manager</string>
+<string name="developer_options_taps">Còn %d lần chạm</string>
   <string name="developer_options_enabled">Đã bật tùy chọn nhà phát triển</string>
   <string name="developer_options_already_enabled">Tùy chọn nhà phát triển đã được bật</string>
   <string name="update_available">Có một bản cập nhật</string>
@@ -462,17 +458,15 @@ Nó chỉ tương thích với các phiên bản sau: %2$s</string>
   <string name="view_update">Xem cập nhật</string>
   <string name="manual_update_check_description">Kiểm tra bản cập nhật thủ công</string>
   <string name="update_checking_manager">Kiểm tra bản cập nhật khi khởi chạy</string>
-  <string name="update_checking_manager_description">Kiểm tra các phiên bản mới của ReVanced Manager khi ứng dụng khởi chạy</string>
-  <string name="update_checking_downloader">Kiểm tra cập nhật ReVanced Downloaders khi khởi chạy</string>
-  <string name="update_checking_downloader_description">Kiểm tra các bản cập nhật cho ReVanced Downloaders đã cài đặt khi ứng dụng khởi động</string>
-  <string name="manager_prereleases">Dùng bản phát hành trước</string>
-  <string name="manager_prereleases_description">Sử dụng các phiên bản phát hành trước của ReVanced Manager</string>
+  <string name="update_checking_manager_description">Kiểm tra các phiên bản mới của Nexora Manager khi ứng dụng khởi chạy</string>
+<string name="manager_prereleases">Dùng bản phát hành trước</string>
+  <string name="manager_prereleases_description">Sử dụng các phiên bản phát hành trước của Nexora Manager</string>
   <string name="prereleases_warning">Các phiên bản tiền phát hành có thể không ổn định và chứa lỗi. Bạn có thể gặp sự cố, mất dữ liệu hoặc các vấn đề không mong muốn khác. Chỉ bật tính năng này nếu bạn chấp nhận các rủi ro này.</string>
   <string name="changelog">Xem nhật ký thay đổi</string>
   <string name="changelog_loading">Đang tải nhật ký thay đổi</string>
   <string name="changelog_download_fail">Không thể tải xuống nhật ký thay đổi: %s</string>
   <string name="changelog_description">Kiểm tra các thay đổi mới nhất trong bản cập nhật này</string>
-  <string name="battery_optimization_notification">Phải tắt tối ưu hóa pin để ReVanced Manager hoạt động chính xác trong nền. Nhấn vào đây để tắt tối ưu hóa.</string>
+  <string name="battery_optimization_notification">Phải tắt tối ưu hóa pin để Nexora Manager hoạt động chính xác trong nền. Nhấn vào đây để tắt tối ưu hóa.</string>
   <string name="installing_manager_update">Đang cài đặt bản cập nhật…</string>
   <string name="downloading_manager_update">Đang tải xuống bản cập nhật…</string>
   <string name="download_manager_failed">Không thể tải xuống bản cập nhật: %s</string>
@@ -481,7 +475,7 @@ Nó chỉ tương thích với các phiên bản sau: %2$s</string>
   <string name="save_with_count">Lưu (%1$s)</string>
   <string name="update">Cập nhật</string>
   <string name="empty">Trống</string>
-  <string name="installing_message">Nhấn vào <b>Cập nhật</b> khi được nhắc.\nReVanced Manager sẽ đóng khi cập nhật.</string>
+  <string name="installing_message">Nhấn vào <b>Cập nhật</b> khi được nhắc.\nNexora Manager sẽ đóng khi cập nhật.</string>
   <string name="no_changelogs_found">Không tìm thấy nhật ký thay đổi</string>
   <string name="just_now">Vừa xong</string>
   <string name="minutes_ago">%s phút trước</string>
@@ -497,7 +491,7 @@ Nó chỉ tương thích với các phiên bản sau: %2$s</string>
   <string name="no_announcements_found">Không tìm thấy thông báo nào</string>
   <string name="update_check">Đang kiểm tra bản cập nhật…</string>
   <string name="dismiss_temporary">Không phải bây giờ</string>
-  <string name="update_available_dialog_description">Một phiên bản mới của ReVanced Manager (%s) hiện đã có sẵn.</string>
+  <string name="update_available_dialog_description">Một phiên bản mới của Nexora Manager (%s) hiện đã có sẵn.</string>
   <string name="failed_to_download_update">Không thể tải xuống bản cập nhật: %s</string>
   <string name="download">Tải xuống</string>
   <string name="download_confirmation_metered">Bạn đang sử dụng kết nối tính phí theo dung lượng, và có thể phát sinh phí dữ liệu từ nhà cung cấp dịch vụ của bạn.\n\nBạn vẫn muốn tiếp tục?</string>

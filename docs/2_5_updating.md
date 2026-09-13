@@ -1,18 +1,18 @@
-# 🔄 Updating ReVanced Manager
+# 🔄 Updating Nexora Manager
 
-Learn how to update ReVanced Manager.
+Learn how to update Nexora Manager.
 
-## ✅ Steps to update ReVanced Manager
+## ✅ Steps to update Nexora Manager
 
 1. Navigate to the settings by tapping on the settings icon in the top right corner
 2. Navigate to the `Updates` screen
 3. Configure the update settings accordingly[^1]
 
-[^1]: By default, ReVanced Manager will check for updates automatically on launch
+[^1]: By default, Nexora Manager will check for updates automatically on launch
 and let you know when an update is available by showing a badge above the icon.
 
 ## ⏭️ What's next
 
-The next page will explain how to configure ReVanced Manager.
+The next page will explain how to configure Nexora Manager.
 
-Continue: [⚙️ Configuring ReVanced Manager](2_6_settings.md)
+Continue: [⚙️ Configuring Nexora Manager](2_6_settings.md)

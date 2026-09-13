@@ -33,7 +33,7 @@
       {
         "assets": [
           {
-            "path": "build/outputs/apk/release/revanced-manager*.apk?(.asc)"
+            "path": "build/outputs/apk/release/nexora-manager*.apk?(.asc)"
           }
         ],
         "successComment": false

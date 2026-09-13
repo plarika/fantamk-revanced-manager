@@ -19,16 +19,16 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_back">გამარჯობა! ეს არის ახალი</string>
   <string name="onboarding_apps_subtitle">შეგიძლიათ აირჩიოთ აპლიკაცია დასაპატჩად ახლავე ან მოგვიანებით</string>
   <string name="onboarding_apps_network_error">ვერ ჩაიტვირთა პატჩები, რადგან ქსელი მიუწვდომელია ან არასტაბილურია. დაუკავშირდით სტაბილურ ქსელს და სცადეთ ხელახლა.</string>
-  <string name="onboarding_updates_subtitle">დააკონფიგურირეთ ავტომატური განახლებები, რათა ReVanced Manager და პატჩები იყოს განახლებული</string>
+  <string name="onboarding_updates_subtitle">დააკონფიგურირეთ ავტომატური განახლებები, რათა Nexora Manager და პატჩები იყოს განახლებული</string>
   <string name="banner_sources_not_downloaded_description">პატჩები და გადმომწერები ვერ ჩაიტვირთა ინსტალაციის დროს. შეეხეთ განახლებას მათ ჩამოსატვირთად.</string>
-  <string name="onboarding_updates_note">ReVanced Manager დაუკავშირდება %s-ს საწყისი ვერსიების ჩამოსატვირთად, თუ თქვენი მოწყობილობა დაკავშირებულია ინტერნეტთან.</string>
+  <string name="onboarding_updates_note">Nexora Manager დაუკავშირდება %s-ს საწყისი ვერსიების ჩამოსატვირთად, თუ თქვენი მოწყობილობა დაკავშირებულია ინტერნეტთან.</string>
   <string name="retry">ხელახლა ცდა</string>
   <string name="onboarding_skip">ამ ეტაპზე გამოტოვება</string>
   <string name="onboarding_recommended_version">რეკომენდებული ვერსია: %s</string>
   <string name="onboarding_permissions_skip_title">ნებართვების გამოტოვება?</string>
   <string name="onboarding_permissions_skip_description">საჭირო ნებართვების გარეშე, ზოგიერთმა ფუნქციამ შესაძლოა სწორად არ იმუშაოს. მათი მინიჭება შეგიძლიათ მოგვიანებით, აპის პარამეტრებში.</string>
   <string name="onboarding_permissions_skip_anyway">მაინც გამოტოვება</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager-ს სწორად მუშაობისთვის რამდენიმე ნებართვა სჭირდება</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager-ს სწორად მუშაობისთვის რამდენიმე ნებართვა სჭირდება</string>
   <string name="permission_install_apps">უცნობი აპების ინსტალაცია</string>
   <string name="permission_install_apps_description">საჭიროა დაპაჩული აპლიკაციების ინსტალაციისთვის</string>
   <string name="permission_notifications">შეტყობინებები</string>
@@ -36,8 +36,8 @@ Second \"item\" text"</string>
   <string name="permission_battery">ბატარეის ოპტიმიზაცია</string>
   <string name="permission_battery_description">ხელს უშლის დაპაჩვის შეწყვეტას ფონურ რეჟიმში</string>
   <string name="permission_grant">მინიჭება</string>
-  <string name="downloader_host_permission_label">ReVanced Manager ჩამომტვირთავის ჰოსტი</string>
-  <string name="downloader_host_permission_description">გამოიყენება ReVanced Manager-ის ჩამომტვირთავებზე წვდომის გასაკონტროლებლად. ეს მხოლოდ ReVanced Manager-ს აქვს.</string>
+  <string name="downloader_host_permission_label">Nexora Manager ჩამომტვირთავის ჰოსტი</string>
+  <string name="downloader_host_permission_description">გამოიყენება Nexora Manager-ის ჩამომტვირთავებზე წვდომის გასაკონტროლებლად. ეს მხოლოდ Nexora Manager-ს აქვს.</string>
   <string name="fab_patch_app">აპის დაპაჩვა</string>
   <string name="fab_add_patches">პაჩების დამატება</string>
   <string name="new_downloader_notification">ახალი გადმომწერი(ები) ხელმისაწვდომია. კონფიგურაციისთვის დააჭირეთ აქ.</string>
@@ -55,13 +55,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">ავტომატური · ხელმისაწვდომი ჩამომტვირთავების გამოყენებით</string>
   <string name="apk_source_auto_storage">ავტომატური · შენახვის ადგილიდან არჩევა</string>
   <string name="apk_source_downloaded">უკვე გადმოწერილია</string>
-  <string name="auto_updates_dialog_description">გსურთ, რომ ReVanced Manager-მა პერიოდულად შეამოწმოს განახლებები შემდეგი კომპონენტებისთვის?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced პაჩები</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: ჩამომტვირთავები</string>
+  <string name="auto_updates_dialog_description">გსურთ, რომ Nexora Manager-მა პერიოდულად შეამოწმოს განახლებები შემდეგი კომპონენტებისთვის?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+  <string name="auto_updates_dialog_downloaders">Nexora Manager: ჩამომტვირთავები</string>
   <string name="auto_updates_dialog_note">ამ პარამეტრების შეცვლა შესაძლებელია მოგვიანებით.
 
-    ReVanced Manager დაუკავშირდება %s-ს საწყისი ვერსიების ჩამოსატვირთად, თუ თქვენი მოწყობილობა დაკავშირებულია ინტერნეტთან.</string>
+    Nexora Manager დაუკავშირდება %s-ს საწყისი ვერსიების ჩამოსატვირთად, თუ თქვენი მოწყობილობა დაკავშირებულია ინტერნეტთან.</string>
   <string name="announcements_filter_tag">ფილტრი ტეგის მიხედვით</string>
   <string name="announcements_show_archived">დაარქივებულის ჩვენება</string>
   <string name="updates_description">განახლებების შემოწმება და ცვლილებების ჟურნალის ნახვა</string>
@@ -87,15 +86,14 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">არჩეული აპების წაშლა</string>
   <string name="downloader_delete_apps_description">ნამდვილად გსურთ არჩეული აპების წაშლა?</string>
   <string name="downloader_delete_single_description">დარწმუნებული ხართ, რომ გსურთ „%s“-ის წაშლა?</string>
-  <string name="downloader_settings_no_apps_description">ReVanced Manager-ის მეშვეობით გადმოწერილი აპები გამოჩნდება აქ.</string>
+  <string name="downloader_settings_no_apps_description">Nexora Manager-ის მეშვეობით გადმოწერილი აპები გამოჩნდება აქ.</string>
   <string name="downloader_url">დამტვირთველის URL</string>
   <string name="downloader_add">დამტვირთველის დამატება</string>
   <string name="select_downloader_type_dialog_description">ახალი დამტვირთველების დამატება URL-დან ან ლოკალური ფაილებიდან</string>
   <string name="local_downloaders_description">დამტვირთველების დამატება ლოკალური მეხსიერებიდან.</string>
   <string name="remote_downloaders_description">დამტვირთველების დამატება URL-დან. შესაძლებელია ავტომატურად განახლება.</string>
-  <string name="install_revanced_downloaders">დააინსტალირეთ გადმომწერები, რათა მიიღოთ აპები უშუალოდ ReVanced Manager-ის შიგნიდან.</string>
-  <string name="install_revanced_downloader">ReVanced გადმომწერების ინსტალაცია</string>
-  <string name="cancel_downloader_install_title">გადმომწერების ინსტალაციის გაუქმება?</string>
+  <string name="install_revanced_downloaders">დააინსტალირეთ გადმომწერები, რათა მიიღოთ აპები უშუალოდ Nexora Manager-ის შიგნიდან.</string>
+<string name="cancel_downloader_install_title">გადმომწერების ინსტალაციის გაუქმება?</string>
   <string name="cancel_downloader_install_description">გადმომწერების ინსტალაცია მიმდინარეობს. თუ ახლა დატოვებთ, ჩამოტვირთვა გაუქმდება.</string>
   <string name="downloader_sources_unavailable_title">ეს დამტვირთველები არ არის</string>
   <string name="downloader_sources_unavailable_description">მის გამოსასწორებლად დააჭირეთ განახლების ღილაკს.</string>
@@ -141,9 +139,7 @@ Second \"item\" text"</string>
   <string name="announcements">განცხადებები</string>
   <string name="archive">არქივი</string>
   <string name="view_update">განახლების ნახვა</string>
-  <string name="update_checking_downloader">გაშვებისას ReVanced გადმომწერების განახლებების შემოწმება</string>
-  <string name="update_checking_downloader_description">დაინსტალირებული ReVanced გადმომწერების განახლებების შემოწმება აპლიკაციის გაშვებისას</string>
-  <string name="prereleases_warning">წინასწარი გამოშვების ვერსიები შეიძლება იყოს არასტაბილური და შეიცავდეს შეცდომებს. შესაძლოა შეგხვდეთ ავარიები, მონაცემთა დაკარგვა ან სხვა მოულოდნელი პრობლემები. ჩართეთ ეს მხოლოდ იმ შემთხვევაში, თუ მზად ხართ ამ რისკებისთვის.</string>
+<string name="prereleases_warning">წინასწარი გამოშვების ვერსიები შეიძლება იყოს არასტაბილური და შეიცავდეს შეცდომებს. შესაძლოა შეგხვდეთ ავარიები, მონაცემთა დაკარგვა ან სხვა მოულოდნელი პრობლემები. ჩართეთ ეს მხოლოდ იმ შემთხვევაში, თუ მზად ხართ ამ რისკებისთვის.</string>
   <string name="changelog">ცვლილებების ჟურნალის ნახვა</string>
   <string name="no_announcements_found">განცხადებები არ მოიძებნა</string>
   <string name="new_announcement">ახალი განცხადება:

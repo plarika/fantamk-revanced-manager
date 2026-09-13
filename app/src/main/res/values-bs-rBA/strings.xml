@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">Dobrodošli u</string>
   <string name="onboarding_welcome_back">Zdravo! To je novi</string>
   <string name="onboarding_apps_subtitle">Možete odabrati aplikaciju za zakrpu sada ili to učiniti kasnije</string>
-  <string name="onboarding_updates_subtitle">Konfigurišite automatska ažuriranja kako bi ReVanced Manager i zakrpe bili ažurni</string>
-  <string name="onboarding_updates_note">ReVanced Manager će se povezati na %s kako bi preuzeo početne verzije ako je vaš uređaj povezan na internet.</string>
+  <string name="onboarding_updates_subtitle">Konfigurišite automatska ažuriranja kako bi Nexora Manager i zakrpe bili ažurni</string>
+  <string name="onboarding_updates_note">Nexora Manager će se povezati na %s kako bi preuzeo početne verzije ako je vaš uređaj povezan na internet.</string>
   <string name="retry">Pokušaj ponovo</string>
   <string name="onboarding_skip">Preskoči za sada</string>
   <string name="onboarding_recommended_version">Preporučena verzija: %s</string>
   <string name="onboarding_permissions_skip_title">Preskočiti dozvole?</string>
   <string name="onboarding_permissions_skip_description">Bez potrebnih dozvola, neke funkcije možda neće raditi ispravno. Možete ih dodijeliti kasnije u postavkama aplikacije.</string>
   <string name="onboarding_permissions_skip_anyway">Preskoči u svakom slučaju</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager treba nekoliko dozvola za ispravan rad</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager treba nekoliko dozvola za ispravan rad</string>
   <string name="permission_install_apps">Instaliraj nepoznate aplikacije</string>
   <string name="permission_install_apps_description">Potrebno za instalaciju patchovanih aplikacija</string>
   <string name="permission_notifications">Obavještenja</string>
   <string name="permission_battery">Optimizacija baterije</string>
   <string name="permission_battery_description">Sprečava prekid patchovanja u pozadini</string>
   <string name="permission_grant">Dodijeli</string>
-  <string name="downloader_host_permission_label">Host preuzimača ReVanced Managera</string>
-  <string name="downloader_host_permission_description">Koristi se za kontrolu pristupa preuzimačima ReVanced Managera. Samo ReVanced Manager ovo posjeduje.</string>
+  <string name="downloader_host_permission_label">Host preuzimača Nexora Managera</string>
+  <string name="downloader_host_permission_description">Koristi se za kontrolu pristupa preuzimačima Nexora Managera. Samo Nexora Manager ovo posjeduje.</string>
   <string name="fab_patch_app">Patchuj aplikaciju</string>
   <string name="fab_add_patches">Dodaj patcheve</string>
   <string name="new_downloader_notification">Dostupan(ni) novi downloader(i). Kliknite ovdje da ih konfigurišete.</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">Automatski · Korištenje dostupnih preuzimača</string>
   <string name="apk_source_auto_storage">Automatski · Odabir iz pohrane</string>
   <string name="apk_source_downloaded">Već preuzeto</string>
-  <string name="auto_updates_dialog_description">Želite li da ReVanced Manager povremeno provjerava ažuriranja za sljedeće komponente?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced Patchevi</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Preuzimači</string>
+  <string name="auto_updates_dialog_description">Želite li da Nexora Manager povremeno provjerava ažuriranja za sljedeće komponente?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: Preuzimači</string>
   <string name="auto_updates_dialog_note">Ove postavke se mogu promijeniti kasnije.
 
-    ReVanced Manager će se povezati na %s kako bi preuzeo početne verzije ako je vaš uređaj povezan na internet.</string>
+    Nexora Manager će se povezati na %s kako bi preuzeo početne verzije ako je vaš uređaj povezan na internet.</string>
   <string name="announcements_filter_tag">Filtriraj po oznaci</string>
   <string name="announcements_show_archived">Prikaži arhivirano</string>
   <string name="updates_description">Provjeri ažuriranja i pogledaj historiju izmjena</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">Izbriši odabrane aplikacije</string>
   <string name="downloader_delete_apps_description">Jeste li sigurni da želite izbrisati odabrane aplikacije?</string>
   <string name="downloader_delete_single_description">Jeste li sigurni da želite obrisati \"%s\"?</string>
-  <string name="downloader_settings_no_apps_description">Aplikacije preuzete putem ReVanced Managera će se pojaviti ovdje.</string>
+  <string name="downloader_settings_no_apps_description">Aplikacije preuzete putem Nexora Managera će se pojaviti ovdje.</string>
   <string name="downloader_url">URL preuzimača</string>
   <string name="downloader_add">Dodaj preuzimač</string>
   <string name="select_downloader_type_dialog_description">Dodajte nove preuzimače sa URL-a ili lokalnih datoteka</string>
   <string name="local_downloaders_description">Dodajte preuzimače iz lokalne pohrane.</string>
   <string name="remote_downloaders_description">Dodajte preuzimače sa URL-a. Mogu se automatski ažurirati.</string>
-  <string name="install_revanced_downloaders">Instalirajte downloadere da biste dobili aplikacije direktno unutar ReVanced Managera.</string>
-  <string name="install_revanced_downloader">Instaliraj ReVanced Downloadere</string>
+  <string name="install_revanced_downloaders">Instalirajte downloadere da biste dobili aplikacije direktno unutar Nexora Managera.</string>
   <string name="cancel_downloader_install_title">Otkaži instalaciju downloadera?</string>
   <string name="cancel_downloader_install_description">Instalacija downloadera je u toku. Ako sada odete, preuzimanje će biti otkazano.</string>
   <string name="downloader_sources_unavailable_title">Ovi preuzimači nedostaju</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">Obavještenja</string>
   <string name="archive">Arhiva</string>
   <string name="view_update">Pogledaj ažuriranje</string>
-  <string name="update_checking_downloader">Provjeri ažuriranja za ReVanced Downloadere pri pokretanju</string>
-  <string name="update_checking_downloader_description">Provjeri ažuriranja za instalirane ReVanced Downloadere kada se aplikacija pokrene</string>
   <string name="prereleases_warning">Pred-izdanja verzije mogu biti nestabilne i sadržavati greške. Možete iskusiti rušenja, gubitak podataka ili druge neočekivane probleme. Omogućite ovo samo ako ste svjesni ovih rizika.</string>
   <string name="changelog">Pogledaj historiju izmjena</string>
   <string name="no_announcements_found">Nema pronađenih obavještenja</string>

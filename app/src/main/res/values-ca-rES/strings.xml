@@ -19,16 +19,16 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_back">Hola! És el nou</string>
   <string name="onboarding_apps_subtitle">Pots seleccionar una aplicació per aplicar el pegat ara o fer-ho més tard</string>
   <string name="onboarding_apps_network_error">No s\'han pogut carregar els pegats perquè la xarxa no està disponible o és inestable. Connecta\'t a una xarxa estable i torna-ho a provar.</string>
-  <string name="onboarding_updates_subtitle">Configura les actualitzacions automàtiques per mantenir ReVanced Manager i els pegats actualitzats</string>
+  <string name="onboarding_updates_subtitle">Configura les actualitzacions automàtiques per mantenir Nexora Manager i els pegats actualitzats</string>
   <string name="banner_sources_not_downloaded_description">No s\'han pogut baixar els pegats i els descarregadors durant la configuració. Toca Actualitza per baixar-los.</string>
-  <string name="onboarding_updates_note">ReVanced Manager es connectarà a %s per descarregar les versions inicials si el teu dispositiu està connectat a internet.</string>
+  <string name="onboarding_updates_note">Nexora Manager es connectarà a %s per descarregar les versions inicials si el teu dispositiu està connectat a internet.</string>
   <string name="retry">Torna-ho a provar</string>
   <string name="onboarding_skip">Omet-ho per ara</string>
   <string name="onboarding_recommended_version">Versió recomanada: %s</string>
   <string name="onboarding_permissions_skip_title">Omet els permisos?</string>
   <string name="onboarding_permissions_skip_description">Sense els permisos necessaris, algunes funcions poden no funcionar correctament. Els pots concedir més tard a la configuració de l\'aplicació.</string>
   <string name="onboarding_permissions_skip_anyway">Omet-ho igualment</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager necessita uns quants permisos per funcionar correctament</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager necessita uns quants permisos per funcionar correctament</string>
   <string name="permission_install_apps">Instal·la aplicacions desconegudes</string>
   <string name="permission_install_apps_description">Necessari per instal·lar aplicacions amb pegats</string>
   <string name="permission_notifications">Notificacions</string>
@@ -36,8 +36,8 @@ Second \"item\" text"</string>
   <string name="permission_battery">Optimització de la bateria</string>
   <string name="permission_battery_description">Evita que l\'aplicació de pegats s\'interrompi en segon pla</string>
   <string name="permission_grant">Concedeix</string>
-  <string name="downloader_host_permission_label">Host del descarregador de ReVanced Manager</string>
-  <string name="downloader_host_permission_description">S\'utilitza per controlar l\'accés als descarregadors de ReVanced Manager. Només ReVanced Manager disposa d\'això.</string>
+  <string name="downloader_host_permission_label">Host del descarregador de Nexora Manager</string>
+  <string name="downloader_host_permission_description">S\'utilitza per controlar l\'accés als descarregadors de Nexora Manager. Només Nexora Manager disposa d\'això.</string>
   <string name="fab_patch_app">Aplica un pegat a una aplicació</string>
   <string name="fab_add_patches">Afegeix pegats</string>
   <string name="new_downloader_notification">Hi ha nous descarregadors disponibles. Fes clic aquí per configurar-los.</string>
@@ -55,13 +55,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">Automàtic · Utilitzant descarregadors disponibles</string>
   <string name="apk_source_auto_storage">Automàtic · Seleccionar de l\'emmagatzematge</string>
   <string name="apk_source_downloaded">Ja descarregat</string>
-  <string name="auto_updates_dialog_description">Vols que ReVanced Manager comprovi periòdicament si hi ha actualitzacions per als components següents?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">Pegats de ReVanced</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Descarregadors</string>
+  <string name="auto_updates_dialog_description">Vols que Nexora Manager comprovi periòdicament si hi ha actualitzacions per als components següents?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+  <string name="auto_updates_dialog_downloaders">Nexora Manager: Descarregadors</string>
   <string name="auto_updates_dialog_note">Aquests ajustos es poden canviar més tard.
 
-    ReVanced Manager es connectarà a %s per descarregar les versions inicials si el teu dispositiu està connectat a internet.</string>
+    Nexora Manager es connectarà a %s per descarregar les versions inicials si el teu dispositiu està connectat a internet.</string>
   <string name="announcements_filter_tag">Filtrar per etiqueta</string>
   <string name="announcements_show_archived">Mostrar arxivats</string>
   <string name="updates_description">Comprova si hi ha actualitzacions i consulta el registre de canvis</string>
@@ -87,15 +86,14 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">Elimina les aplicacions seleccionades</string>
   <string name="downloader_delete_apps_description">Estàs segur que vols eliminar les aplicacions seleccionades?</string>
   <string name="downloader_delete_single_description">Estàs segur que vols suprimir \"%s\"?</string>
-  <string name="downloader_settings_no_apps_description">Les aplicacions descarregades mitjançant ReVanced Manager apareixeran aquí.</string>
+  <string name="downloader_settings_no_apps_description">Les aplicacions descarregades mitjançant Nexora Manager apareixeran aquí.</string>
   <string name="downloader_url">URL del descarregador</string>
   <string name="downloader_add">Afegir descarregador</string>
   <string name="select_downloader_type_dialog_description">Afegeix nous descarregadors des d\'una URL o fitxers locals</string>
   <string name="local_downloaders_description">Afegeix descarregadors des de l\'emmagatzematge local.</string>
   <string name="remote_downloaders_description">Afegeix descarregadors des d\'una URL. Es poden actualitzar automàticament.</string>
-  <string name="install_revanced_downloaders">Instal·la descarregadors per obtenir aplicacions directament des de ReVanced Manager.</string>
-  <string name="install_revanced_downloader">Instal·la els descarregadors de ReVanced</string>
-  <string name="cancel_downloader_install_title">Vols cancel·lar la instal·lació dels descarregadors?</string>
+  <string name="install_revanced_downloaders">Instal·la descarregadors per obtenir aplicacions directament des de Nexora Manager.</string>
+<string name="cancel_downloader_install_title">Vols cancel·lar la instal·lació dels descarregadors?</string>
   <string name="cancel_downloader_install_description">Hi ha una instal·lació de descarregadors en curs. Si surts ara, la descàrrega es cancel·larà.</string>
   <string name="downloader_sources_unavailable_title">Aquests descarregadors falten</string>
   <string name="downloader_sources_unavailable_description">Fes clic al botó d\'actualització per solucionar-ho.</string>
@@ -141,9 +139,7 @@ Second \"item\" text"</string>
   <string name="announcements">Anuncis</string>
   <string name="archive">Arxiu</string>
   <string name="view_update">Mostra l\'actualització</string>
-  <string name="update_checking_downloader">Comprova si hi ha actualitzacions dels descarregadors de ReVanced en iniciar-se</string>
-  <string name="update_checking_downloader_description">Comprova si hi ha actualitzacions dels descarregadors de ReVanced instal·lats quan s\'inicia l\'aplicació</string>
-  <string name="prereleases_warning">Les versions preliminars poden ser inestables i contenir errors. Podries experimentar bloquejos, pèrdua de dades o altres problemes inesperats. Habilita-ho només si et sents còmode amb aquests riscos.</string>
+<string name="prereleases_warning">Les versions preliminars poden ser inestables i contenir errors. Podries experimentar bloquejos, pèrdua de dades o altres problemes inesperats. Habilita-ho només si et sents còmode amb aquests riscos.</string>
   <string name="changelog">Mostra el registre de canvis</string>
   <string name="no_announcements_found">No s\'han trobat anuncis</string>
   <string name="new_announcement">Nou anunci:

@@ -14,7 +14,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="app_name">ReVanced Manager</string>
+  <string name="app_name">Nexora Manager</string>
   <string name="patcher">Patchovač</string>
   <string name="patches">Záplaty</string>
   <string name="cli">CLI</string>
@@ -23,16 +23,16 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_back">Ahoj! Je to nový</string>
   <string name="onboarding_apps_subtitle">Aplikáciu na patchovanie si môžete vybrať teraz alebo neskôr</string>
   <string name="onboarding_apps_network_error">Nepodarilo sa načítať záplaty, pretože sieť je nedostupná alebo nestabilná. Pripojte sa k stabilnej sieti a skúste to znova.</string>
-  <string name="onboarding_updates_subtitle">Nakonfigurujte automatické aktualizácie, aby bol ReVanced Manager a patche aktuálne</string>
+  <string name="onboarding_updates_subtitle">Nakonfigurujte automatické aktualizácie, aby bol Nexora Manager a patche aktuálne</string>
   <string name="banner_sources_not_downloaded_description">Záplaty a sťahovače sa nepodarilo stiahnuť počas nastavenia. Klepnite na aktualizovať, aby ste ich stiahli.</string>
-  <string name="onboarding_updates_note">ReVanced Manager sa pripojí k %s, aby stiahol počiatočné verzie, ak je vaše zariadenie pripojené k internetu.</string>
+  <string name="onboarding_updates_note">Nexora Manager sa pripojí k %s, aby stiahol počiatočné verzie, ak je vaše zariadenie pripojené k internetu.</string>
   <string name="retry">Opakovať</string>
   <string name="onboarding_skip">Preskočiť zatiaľ</string>
   <string name="onboarding_recommended_version">Odporúčaná verzia: %s</string>
   <string name="onboarding_permissions_skip_title">Preskočiť povolenia?</string>
   <string name="onboarding_permissions_skip_description">Bez požadovaných povolení nemôžu niektoré funkcie fungovať správne. Môžete ich udeliť neskôr v nastaveniach aplikácie.</string>
   <string name="onboarding_permissions_skip_anyway">Preskočiť aj tak</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager potrebuje niekoľko povolení na správne fungovanie</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager potrebuje niekoľko povolení na správne fungovanie</string>
   <string name="permission_install_apps">Inštalácia neznámych aplikácií</string>
   <string name="permission_install_apps_description">Vyžaduje sa na inštaláciu záplatovaných aplikácií</string>
   <string name="permission_notifications">Upozornenia</string>
@@ -40,8 +40,8 @@ Second \"item\" text"</string>
   <string name="permission_battery">Optimalizácia batérie</string>
   <string name="permission_battery_description">Zabraňuje prerušeniu záplatovania na pozadí</string>
   <string name="permission_grant">Udeliť</string>
-  <string name="downloader_host_permission_label">Host sťahovania ReVanced Manager</string>
-  <string name="downloader_host_permission_description">Používa sa na kontrolu prístupu k sťahovaniu ReVanced Manager. Len ReVanced Manager to má.</string>
+  <string name="downloader_host_permission_label">Host sťahovania Nexora Manager</string>
+  <string name="downloader_host_permission_description">Používa sa na kontrolu prístupu k sťahovaniu Nexora Manager. Len Nexora Manager to má.</string>
   <string name="toast_copied_to_clipboard">Skopírované!</string>
   <string name="copy_to_clipboard">Kopírovať do schránky</string>
   <string name="dashboard">Prehľad</string>
@@ -92,13 +92,12 @@ Second \"item\" text"</string>
   <string name="apk_source_downloaded">Už stiahnuté</string>
   <string name="legacy_import_failed">Nepodarilo sa importovať staré nastavenia</string>
   <string name="auto_updates_dialog_title">Nakonfigurovať aktualizácie</string>
-  <string name="auto_updates_dialog_description">Chcete, aby ReVanced Manager pravidelne kontroloval aktualizácie nasledujúcich komponentov?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced záplaty</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Sťahovače</string>
+  <string name="auto_updates_dialog_description">Chcete, aby Nexora Manager pravidelne kontroloval aktualizácie nasledujúcich komponentov?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: Sťahovače</string>
   <string name="auto_updates_dialog_note">Tieto nastavenia je možné zmeniť neskôr.
 
-    ReVanced Manager sa pripojí k %s, aby stiahol počiatočné verzie, ak je vaše zariadenie pripojené k internetu.</string>
+    Nexora Manager sa pripojí k %s, aby stiahol počiatočné verzie, ak je vaše zariadenie pripojené k internetu.</string>
   <string name="announcements_filter_tag">Filtrovať podľa značky</string>
   <string name="announcements_show_archived">Zobraziť archivované</string>
   <string name="general">Všeobecné</string>
@@ -117,7 +116,6 @@ Second \"item\" text"</string>
   <string name="opensource_licenses">Licencie open source</string>
   <string name="opensource_licenses_description">Zobraziť všetky knižnice použité na vytvorenie tejto aplikácie</string>
   <string name="contributors">Prispievatelia</string>
-  <string name="contributors_description">Zobraziť prispievateľov ReVanced</string>
   <string name="dynamic_color">Dynamická farba</string>
   <string name="dynamic_color_description">Prispôsobiť farby tapete</string>
   <string name="pure_black_theme">Čistá čierna téma</string>
@@ -206,14 +204,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_description">Naozaj chcete odstrániť vybrané aplikácie?</string>
   <string name="downloader_delete_single_description">Naozaj chcete odstrániť „%s“?</string>
   <string name="downloader_settings_no_apps">Nenašli sa žiadne stiahnuté aplikácie.</string>
-  <string name="downloader_settings_no_apps_description">Aplikácie stiahnuté cez ReVanced Manager sa zobrazia tu.</string>
+  <string name="downloader_settings_no_apps_description">Aplikácie stiahnuté cez Nexora Manager sa zobrazia tu.</string>
   <string name="downloader_url">URL sťahovača</string>
   <string name="downloader_add">Pridať sťahovač</string>
   <string name="select_downloader_type_dialog_description">Pridať nové sťahovače z URL alebo lokálnych súborov</string>
   <string name="local_downloaders_description">Pridať sťahovače z lokálneho úložiska.</string>
   <string name="remote_downloaders_description">Pridať sťahovače z URL. Môžu byť automaticky aktualizované.</string>
-  <string name="install_revanced_downloaders">Nainštalujte sťahovače, aby ste získali aplikácie priamo v rámci ReVanced Manager.</string>
-  <string name="install_revanced_downloader">Nainštalovať sťahovače ReVanced</string>
+  <string name="install_revanced_downloaders">Nainštalujte sťahovače, aby ste získali aplikácie priamo v rámci Nexora Manager.</string>
   <string name="cancel_downloader_install_title">Zrušiť inštaláciu sťahovačov?</string>
   <string name="cancel_downloader_install_description">Prebieha inštalácia sťahovačov. Ak teraz odídete, sťahovanie bude zrušené.</string>
   <string name="downloader_sources_unavailable_title">Tieto sťahovače chýbajú</string>
@@ -265,8 +262,8 @@ Second \"item\" text"</string>
   <string name="api_url">Adresa URL API</string>
   <string name="api_url_description">API používané na sťahovanie potrebných súborov</string>
   <string name="api_url_dialog_title">Zmeniť adresu URL API</string>
-  <string name="api_url_dialog_description">Zmeňte adresu URL API ReVanced Manager. ReVanced Manager používa API na sťahovanie opráv a aktualizácií.</string>
-  <string name="api_url_dialog_warning">ReVanced Manager sa pripája k API na sťahovanie opráv a aktualizácií. Uistite sa, že mu dôverujete.</string>
+  <string name="api_url_dialog_description">Zmeňte adresu URL API Nexora Manager. Nexora Manager používa API na sťahovanie opráv a aktualizácií.</string>
+  <string name="api_url_dialog_warning">Nexora Manager sa pripája k API na sťahovanie opráv a aktualizácií. Uistite sa, že mu dôverujete.</string>
   <string name="api_url_dialog_save">Nastaviť</string>
   <string name="api_url_dialog_reset">Resetovať adresu URL API</string>
   <string name="device">Zariadenie</string>
@@ -436,8 +433,7 @@ Second \"item\" text"</string>
   <string name="patches_delete_multiple_dialog_description">Naozaj chcete odstrániť vybrané záplaty?</string>
   <string name="announcements">Oznámenia</string>
   <string name="archive">Archív</string>
-  <string name="about_revanced_manager">O ReVanced Manageri</string>
-  <string name="revanced_manager_description">ReVanced Manager je aplikácia pre Android, ktorá používa ReVanced Patcher na záplatovanie aplikácií pre Android. Umožňuje sťahovať a záplatovať aplikácie vlastnými záplatami a spravovať proces záplatovania.</string>
+  <string name="about_revanced_manager">O Nexora Manageri</string>
   <string name="developer_options_taps">Zostáva %d klepnutí</string>
   <string name="developer_options_enabled">Možnosti pre vývojárov povolené</string>
   <string name="developer_options_already_enabled">Možnosti pre vývojárov sú už povolené</string>
@@ -451,17 +447,15 @@ Second \"item\" text"</string>
   <string name="view_update">Zobraziť aktualizáciu</string>
   <string name="manual_update_check_description">Manuálne skontrolovať aktualizácie</string>
   <string name="update_checking_manager">Kontrolovať aktualizácie pri spustení</string>
-  <string name="update_checking_manager_description">Kontrolovať nové verzie ReVanced Manager po spustení aplikácie</string>
-  <string name="update_checking_downloader">Kontrolovať aktualizácie sťahovačov ReVanced pri spustení</string>
-  <string name="update_checking_downloader_description">Skontrolovať aktualizácie nainštalovaných sťahovačov ReVanced pri spustení aplikácie</string>
+  <string name="update_checking_manager_description">Kontrolovať nové verzie Nexora Manager po spustení aplikácie</string>
   <string name="manager_prereleases">Používať predbežné vydania</string>
-  <string name="manager_prereleases_description">Používať predbežné verzie ReVanced Manager</string>
+  <string name="manager_prereleases_description">Používať predbežné verzie Nexora Manager</string>
   <string name="prereleases_warning">Predbežné verzie môžu byť nestabilné a obsahovať chyby. Môžete zaznamenať pády, stratu údajov alebo iné neočakávané problémy. Povoľte to iba vtedy, ak ste si vedomí týchto rizík.</string>
   <string name="changelog">Zobraziť protokol zmien</string>
   <string name="changelog_loading">Načítava sa zoznam zmien</string>
   <string name="changelog_download_fail">Nepodarilo sa stiahnuť zoznam zmien: %s</string>
   <string name="changelog_description">Pozrite si najnovšie zmeny v tejto aktualizácii</string>
-  <string name="battery_optimization_notification">Optimalizácia batérie musí byť vypnutá, aby ReVanced Manager správne fungoval na pozadí. Kliknite sem pre vypnutie optimalizácií.</string>
+  <string name="battery_optimization_notification">Optimalizácia batérie musí byť vypnutá, aby Nexora Manager správne fungoval na pozadí. Kliknite sem pre vypnutie optimalizácií.</string>
   <string name="installing_manager_update">Inštaluje sa aktualizácia…</string>
   <string name="downloading_manager_update">Sťahuje sa aktualizácia…</string>
   <string name="download_manager_failed">Nepodarilo sa stiahnuť aktualizáciu: %s</string>
@@ -471,7 +465,7 @@ Second \"item\" text"</string>
   <string name="update">Aktualizovať</string>
   <string name="empty">Prázdne</string>
   <string name="installing_message">Klepnite na <b>Aktualizovať</b>, keď sa zobrazí výzva.
-ReVanced Manager sa počas aktualizácie zatvorí.</string>
+Nexora Manager sa počas aktualizácie zatvorí.</string>
   <string name="no_changelogs_found">Nenašli sa žiadne zmeny</string>
   <string name="just_now">Práve teraz</string>
   <string name="minutes_ago">Pred %s min</string>
@@ -487,7 +481,7 @@ ReVanced Manager sa počas aktualizácie zatvorí.</string>
   <string name="no_announcements_found">Nenašli sa žiadne oznámenia</string>
   <string name="update_check">Kontrolujú sa aktualizácie…</string>
   <string name="dismiss_temporary">Teraz nie</string>
-  <string name="update_available_dialog_description">K dispozícii je nová verzia ReVanced Manager (%s).</string>
+  <string name="update_available_dialog_description">K dispozícii je nová verzia Nexora Manager (%s).</string>
   <string name="failed_to_download_update">Nepodarilo sa stiahnuť aktualizáciu: %s</string>
   <string name="download">Stiahnuť</string>
   <string name="download_confirmation_metered">Momentálne ste na meranom pripojení a môžu sa účtovať poplatky za dáta od vášho poskytovateľa služieb.

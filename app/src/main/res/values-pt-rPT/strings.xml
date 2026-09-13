@@ -94,7 +94,7 @@ Second \"item\" text"</string>
   <string name="auto_updates_dialog_title">Configurar atualizações</string>
   <string name="auto_updates_dialog_description">Deseja que o Nexora Manager verifique periodicamente por atualizações para os seguintes componentes?</string>
   <string name="auto_updates_dialog_manager">Nexora Manager</string>
-  <string name="auto_updates_dialog_patches">Patches do ReVanced</string>
+  <string name="auto_updates_dialog_patches">Patches</string>
   <string name="auto_updates_dialog_downloaders">Nexora Manager: Baixadores</string>
   <string name="auto_updates_dialog_note">Estas configurações podem ser alteradas mais tarde.
 
@@ -117,7 +117,7 @@ Second \"item\" text"</string>
   <string name="opensource_licenses">Licenças de código aberto</string>
   <string name="opensource_licenses_description">Ver todas as bibliotecas usadas para fazer esta aplicação</string>
   <string name="contributors">Contribuidores</string>
-  <string name="contributors_description">Ver os contribuidores do ReVanced</string>
+  <string name="contributors_description">Ver contribuidores do projeto</string>
   <string name="dynamic_color">Cor dinâmica</string>
   <string name="dynamic_color_description">Adaptar cores ao papel de parede</string>
   <string name="pure_black_theme">Tema preto puro</string>
@@ -213,7 +213,7 @@ Second \"item\" text"</string>
   <string name="local_downloaders_description">Adicionar downloaders do armazenamento local.</string>
   <string name="remote_downloaders_description">Adicionar downloaders de URL. Podem ser atualizados automaticamente.</string>
   <string name="install_revanced_downloaders">Instale downloaders para obter aplicativos diretamente dentro do Nexora Manager.</string>
-  <string name="install_revanced_downloader">Instalar Downloaders do ReVanced</string>
+  <string name="install_revanced_downloader">Instalar downloaders</string>
   <string name="cancel_downloader_install_title">Cancelar instalação de downloaders?</string>
   <string name="cancel_downloader_install_description">Uma instalação de downloaders está em andamento. Se você sair agora, o download será cancelado.</string>
   <string name="downloader_sources_unavailable_title">Estes downloaders estão faltando</string>
@@ -437,7 +437,7 @@ Second \"item\" text"</string>
   <string name="announcements">Anúncios</string>
   <string name="archive">Arquivo</string>
   <string name="about_revanced_manager">Sobre o Nexora Manager</string>
-  <string name="revanced_manager_description">Nexora Manager é um aplicativo Android que usa o ReVanced Patcher para aplicar patches em aplicativos Android. Ele permite que você baixe e aplique patches em aplicativos com patches personalizados e gerencie o processo de aplicação de patches.</string>
+  <string name="revanced_manager_description">O Nexora Manager é um gestor de patches para Android que permite transferir e aplicar conjuntos de patches a aplicações compatíveis.</string>
   <string name="developer_options_taps">%d toques restantes</string>
   <string name="developer_options_enabled">Opções do desenvolvedor ativadas</string>
   <string name="developer_options_already_enabled">As opções do desenvolvedor já estão ativadas</string>
@@ -452,8 +452,8 @@ Second \"item\" text"</string>
   <string name="manual_update_check_description">Verificar atualizações manualmente</string>
   <string name="update_checking_manager">Verificar atualizações ao iniciar</string>
   <string name="update_checking_manager_description">Verificar novas versões do Nexora Manager quando o aplicativo iniciar</string>
-  <string name="update_checking_downloader">Verificar atualizações dos Downloaders do ReVanced ao iniciar</string>
-  <string name="update_checking_downloader_description">Verificar atualizações para os Downloaders do ReVanced instalados quando o aplicativo iniciar</string>
+  <string name="update_checking_downloader">Verificar atualizações dos downloaders ao iniciar</string>
+  <string name="update_checking_downloader_description">Verificar automaticamente atualizações dos downloaders instalados quando a aplicação inicia</string>
   <string name="manager_prereleases">Usar pré-lançamentos</string>
   <string name="manager_prereleases_description">Usar versões de pré-lançamento do Nexora Manager</string>
   <string name="prereleases_warning">As versões de pré-lançamento podem ser instáveis e conter bugs. Você pode experimentar travamentos, perda de dados ou outros problemas inesperados. Habilite isso apenas se você estiver confortável com esses riscos.</string>

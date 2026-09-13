@@ -18,23 +18,23 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_to">به خوش آمدید</string>
   <string name="onboarding_welcome_back">سلام! این نسخه جدید</string>
   <string name="onboarding_apps_subtitle">اکنون می‌توانید یک برنامه را برای پچ کردن انتخاب کنید یا این کار را بعداً انجام دهید</string>
-  <string name="onboarding_updates_subtitle">به‌روزرسانی‌های خودکار را پیکربندی کنید تا ReVanced Manager و پچ‌ها به‌روز بمانند</string>
-  <string name="onboarding_updates_note">ReVanced Manager برای دانلود نسخه‌های اولیه، در صورتی که دستگاه شما به اینترنت متصل باشد، به %s متصل خواهد شد.</string>
+  <string name="onboarding_updates_subtitle">به‌روزرسانی‌های خودکار را پیکربندی کنید تا Nexora Manager و پچ‌ها به‌روز بمانند</string>
+  <string name="onboarding_updates_note">Nexora Manager برای دانلود نسخه‌های اولیه، در صورتی که دستگاه شما به اینترنت متصل باشد، به %s متصل خواهد شد.</string>
   <string name="retry">تلاش مجدد</string>
   <string name="onboarding_skip">فعلاً رد کن</string>
   <string name="onboarding_recommended_version">نسخه پیشنهادی: %s</string>
   <string name="onboarding_permissions_skip_title">از مجوزها صرف‌نظر شود؟</string>
   <string name="onboarding_permissions_skip_description">بدون مجوزهای لازم، برخی از ویژگی‌ها ممکن است به درستی کار نکنند. می‌توانید بعداً در تنظیمات برنامه آن‌ها را اعطا کنید.</string>
   <string name="onboarding_permissions_skip_anyway">به هر حال رد کن</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager برای کارکرد صحیح به چند مجوز نیاز دارد</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager برای کارکرد صحیح به چند مجوز نیاز دارد</string>
   <string name="permission_install_apps">نصب برنامه‌های ناشناس</string>
   <string name="permission_install_apps_description">برای نصب برنامه‌های پچ شده لازم است</string>
   <string name="permission_notifications">اعلان‌ها</string>
   <string name="permission_battery">بهینه‌سازی باتری</string>
   <string name="permission_battery_description">از قطع شدن پچ‌کردن در پس‌زمینه جلوگیری می‌کند</string>
   <string name="permission_grant">اعطا</string>
-  <string name="downloader_host_permission_label">میزبان دانلودکننده ReVanced Manager</string>
-  <string name="downloader_host_permission_description">برای کنترل دسترسی به دانلودکننده‌های ReVanced Manager استفاده می‌شود. فقط ReVanced Manager این را دارد.</string>
+  <string name="downloader_host_permission_label">میزبان دانلودکننده Nexora Manager</string>
+  <string name="downloader_host_permission_description">برای کنترل دسترسی به دانلودکننده‌های Nexora Manager استفاده می‌شود. فقط Nexora Manager این را دارد.</string>
   <string name="fab_patch_app">یک برنامه را پچ کنید</string>
   <string name="fab_add_patches">افزودن پچ‌ها</string>
   <string name="new_downloader_notification">دانلودکننده(های) جدید موجود است. برای پیکربندی آن‌ها اینجا کلیک کنید.</string>
@@ -52,13 +52,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">خودکار · با استفاده از دانلودکننده‌های موجود</string>
   <string name="apk_source_auto_storage">خودکار · انتخاب از حافظه</string>
   <string name="apk_source_downloaded">قبلاً دانلود شده</string>
-  <string name="auto_updates_dialog_description">آیا می‌خواهید ReVanced Manager به صورت دوره‌ای به‌روزرسانی‌های اجزای زیر را بررسی کند؟</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">پچ‌های ReVanced</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: دانلودکننده‌ها</string>
+  <string name="auto_updates_dialog_description">آیا می‌خواهید Nexora Manager به صورت دوره‌ای به‌روزرسانی‌های اجزای زیر را بررسی کند؟</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+<string name="auto_updates_dialog_downloaders">Nexora Manager: دانلودکننده‌ها</string>
   <string name="auto_updates_dialog_note">این تنظیمات را می‌توان بعداً تغییر داد.
 
-    ReVanced Manager برای دانلود نسخه‌های اولیه، در صورتی که دستگاه شما به اینترنت متصل باشد، به %s متصل خواهد شد.</string>
+    Nexora Manager برای دانلود نسخه‌های اولیه، در صورتی که دستگاه شما به اینترنت متصل باشد، به %s متصل خواهد شد.</string>
   <string name="announcements_filter_tag">فیلتر بر اساس برچسب</string>
   <string name="announcements_show_archived">نمایش آرشیو شده</string>
   <string name="updates_description">بررسی به‌روزرسانی‌ها و مشاهده تغییرات</string>
@@ -84,14 +83,13 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">حذف برنامه‌های انتخاب‌شده</string>
   <string name="downloader_delete_apps_description">آیا مطمئن هستید که می‌خواهید برنامه‌های انتخاب‌شده را حذف کنید؟</string>
   <string name="downloader_delete_single_description">آیا مطمئن هستید که می‌خواهید \"%s\" را حذف کنید؟</string>
-  <string name="downloader_settings_no_apps_description">برنامه‌های دانلود شده از طریق ReVanced Manager در اینجا نمایش داده می‌شوند.</string>
+  <string name="downloader_settings_no_apps_description">برنامه‌های دانلود شده از طریق Nexora Manager در اینجا نمایش داده می‌شوند.</string>
   <string name="downloader_url">URL دانلودکننده</string>
   <string name="downloader_add">افزودن دانلودکننده</string>
   <string name="select_downloader_type_dialog_description">دانلودکننده‌های جدید را از URL یا فایل‌های محلی اضافه کنید</string>
   <string name="local_downloaders_description">دانلودکننده‌ها را از حافظه محلی اضافه کنید.</string>
   <string name="remote_downloaders_description">دانلودکننده‌ها را از URL اضافه کنید. قابلیت به‌روزرسانی خودکار دارد.</string>
-  <string name="install_revanced_downloaders">دانلودکننده‌ها را نصب کنید تا برنامه‌ها را مستقیماً در ReVanced Manager دریافت کنید.</string>
-  <string name="install_revanced_downloader">نصب دانلودکننده‌های ReVanced</string>
+  <string name="install_revanced_downloaders">دانلودکننده‌ها را نصب کنید تا برنامه‌ها را مستقیماً در Nexora Manager دریافت کنید.</string>
   <string name="cancel_downloader_install_title">لغو نصب دانلودکننده‌ها؟</string>
   <string name="cancel_downloader_install_description">نصب دانلودکننده‌ها در حال انجام است. اگر اکنون خارج شوید، دانلود لغو خواهد شد.</string>
   <string name="downloader_sources_unavailable_title">این دانلودکننده‌ها موجود نیستند</string>
@@ -138,8 +136,6 @@ Second \"item\" text"</string>
   <string name="announcements">اطلاعیه‌ها</string>
   <string name="archive">بایگانی</string>
   <string name="view_update">مشاهده به‌روزرسانی</string>
-  <string name="update_checking_downloader">بررسی به‌روزرسانی‌های دانلودکننده‌های ReVanced هنگام راه‌اندازی</string>
-  <string name="update_checking_downloader_description">بررسی به‌روزرسانی‌های دانلودکننده‌های ReVanced نصب شده هنگام شروع برنامه</string>
   <string name="prereleases_warning">نسخه‌های پیش‌انتشار ممکن است ناپایدار باشند و حاوی اشکالاتی باشند. ممکن است با از کار افتادن، از دست دادن داده‌ها یا سایر مشکلات غیرمنتظره مواجه شوید. فقط در صورتی این گزینه را فعال کنید که با این خطرات راحت هستید.</string>
   <string name="changelog">مشاهده تغییرات</string>
   <string name="no_announcements_found">هیچ اطلاعیه‌ای یافت نشد</string>

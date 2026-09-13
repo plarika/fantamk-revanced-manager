@@ -19,16 +19,16 @@ Second \"item\" text"</string>
   <string name="onboarding_welcome_back">Сайн уу! Энэ бол шинэ</string>
   <string name="onboarding_apps_subtitle">Та одоо засварлах апп сонгох эсвэл дараа хийх боломжтой</string>
   <string name="onboarding_apps_network_error">Сүлжээ боломжгүй эсвэл тогтворгүй байгаа тул нөхөөсүүдийг ачаалж чадсангүй. Тогтвортой сүлжээнд холбогдоод дахин оролдоно уу.</string>
-  <string name="onboarding_updates_subtitle">ReVanced Manager болон засваруудыг орчин үеийн байлгахын тулд автомат шинэчлэлтүүдийг тохируулах</string>
+  <string name="onboarding_updates_subtitle">Nexora Manager болон засваруудыг орчин үеийн байлгахын тулд автомат шинэчлэлтүүдийг тохируулах</string>
   <string name="banner_sources_not_downloaded_description">Тохируулах явцад нөхөөс болон татагчдыг татаж авч чадаагүй. Татаж авахын тулд шинэчлэх товчийг дарна уу.</string>
-  <string name="onboarding_updates_note">ReVanced Manager таны төхөөрөмж интернетэд холбогдсон бол анхны хувилбаруудыг татаж авахын тулд %s-т холбогдоно.</string>
+  <string name="onboarding_updates_note">Nexora Manager таны төхөөрөмж интернетэд холбогдсон бол анхны хувилбаруудыг татаж авахын тулд %s-т холбогдоно.</string>
   <string name="retry">Дахин оролдох</string>
   <string name="onboarding_skip">Одоохондоо алгасах</string>
   <string name="onboarding_recommended_version">Санал болгосон хувилбар: %s</string>
   <string name="onboarding_permissions_skip_title">Зөвшөөрлүүдийг алгасах уу?</string>
   <string name="onboarding_permissions_skip_description">Шаардлагатай зөвшөөрөлгүйгээр зарим функцууд зөв ажиллахгүй байж болно. Та дараа нь аппын тохиргооноос зөвшөөрөл олгож болно.</string>
   <string name="onboarding_permissions_skip_anyway">Ямар ч байсан алгасах</string>
-  <string name="onboarding_permissions_subtitle">ReVanced Manager зөв ажиллахын тулд хэд хэдэн зөвшөөрөл шаардлагатай.</string>
+  <string name="onboarding_permissions_subtitle">Nexora Manager зөв ажиллахын тулд хэд хэдэн зөвшөөрөл шаардлагатай.</string>
   <string name="permission_install_apps">Үл мэдэгдэх апп-уудыг суулгах</string>
   <string name="permission_install_apps_description">Нөхсөн аппликешнүүдийг суулгахад шаардлагатай</string>
   <string name="permission_notifications">Мэдэгдлүүд</string>
@@ -36,8 +36,8 @@ Second \"item\" text"</string>
   <string name="permission_battery">Зайны оновчлол</string>
   <string name="permission_battery_description">Нөхөлтийг цаана нь тасалдахаас сэргийлнэ</string>
   <string name="permission_grant">Олгох</string>
-  <string name="downloader_host_permission_label">ReVanced Manager татагчийн хост</string>
-  <string name="downloader_host_permission_description">ReVanced Manager татагчид нэвтрэх эрхийг хянах зорилгоор ашиглана. Зөвхөн ReVanced Manager-т энэ нь бий.</string>
+  <string name="downloader_host_permission_label">Nexora Manager татагчийн хост</string>
+  <string name="downloader_host_permission_description">Nexora Manager татагчид нэвтрэх эрхийг хянах зорилгоор ашиглана. Зөвхөн Nexora Manager-т энэ нь бий.</string>
   <string name="fab_patch_app">Апп нөхөх</string>
   <string name="fab_add_patches">Нөхөлтүүд нэмэх</string>
   <string name="new_downloader_notification">Шинэ татагч(ууд) бэлэн байна. Тохируулахын тулд энд дарна уу.</string>
@@ -55,13 +55,12 @@ Second \"item\" text"</string>
   <string name="apk_source_auto_downloader">Автомат · боломжтой татагчдыг ашиглан</string>
   <string name="apk_source_auto_storage">Автомат · санах ойн хэсгээс сонгох</string>
   <string name="apk_source_downloaded">Аль хэдийн татагдсан</string>
-  <string name="auto_updates_dialog_description">ReVanced Manager-ийг дараах бүрэлдэхүүн хэсгүүдийн шинэчлэлтийг үе үе шалгахыг хүсэж байна уу?</string>
-  <string name="auto_updates_dialog_manager">ReVanced Manager</string>
-  <string name="auto_updates_dialog_patches">ReVanced Нөхөлтүүд</string>
-  <string name="auto_updates_dialog_downloaders">ReVanced Manager: Татагчид</string>
+  <string name="auto_updates_dialog_description">Nexora Manager-ийг дараах бүрэлдэхүүн хэсгүүдийн шинэчлэлтийг үе үе шалгахыг хүсэж байна уу?</string>
+  <string name="auto_updates_dialog_manager">Nexora Manager</string>
+  <string name="auto_updates_dialog_downloaders">Nexora Manager: Татагчид</string>
   <string name="auto_updates_dialog_note">Эдгээр тохиргоог дараа нь өөрчилж болно.
 
-    ReVanced Manager таны төхөөрөмж интернетэд холбогдсон бол анхны хувилбаруудыг татаж авахын тулд %s-т холбогдоно.</string>
+    Nexora Manager таны төхөөрөмж интернетэд холбогдсон бол анхны хувилбаруудыг татаж авахын тулд %s-т холбогдоно.</string>
   <string name="announcements_filter_tag">Шошгоор шүүх</string>
   <string name="announcements_show_archived">Архивлагдсаныг харуулах</string>
   <string name="updates_description">Шинэчлэлтүүдийг шалгах ба өөрчлөлтийн бүртгэлийг харах</string>
@@ -87,15 +86,14 @@ Second \"item\" text"</string>
   <string name="downloader_delete_apps_title">Сонгосон аппуудыг устгах</string>
   <string name="downloader_delete_apps_description">Сонгосон аппуудыг устгахдаа итгэлтэй байна уу?</string>
   <string name="downloader_delete_single_description">\"%s\"-ийг устгахдаа итгэлтэй байна уу?</string>
-  <string name="downloader_settings_no_apps_description">ReVanced Manager-ээр татагдсан апп-ууд энд харагдах болно.</string>
+  <string name="downloader_settings_no_apps_description">Nexora Manager-ээр татагдсан апп-ууд энд харагдах болно.</string>
   <string name="downloader_url">Татаж авагчийн URL</string>
   <string name="downloader_add">Татаж авагч нэмэх</string>
   <string name="select_downloader_type_dialog_description">Шинэ татаж авагчдыг URL эсвэл дотоод файлуудаас нэмнэ үү</string>
   <string name="local_downloaders_description">Дотоод санах ойгоос татаж авагчдыг нэмнэ үү.</string>
   <string name="remote_downloaders_description">URL-ээс татаж авагчдыг нэмнэ үү. Автоматаар шинэчлэгдэх боломжтой.</string>
-  <string name="install_revanced_downloaders">ReVanced Manager дотор апп-уудыг шууд авахын тулд татагчуудыг суулгана уу.</string>
-  <string name="install_revanced_downloader">ReVanced Татагчуудыг суулгах</string>
-  <string name="cancel_downloader_install_title">Татагчуудын суулгалтыг цуцлах уу?</string>
+  <string name="install_revanced_downloaders">Nexora Manager дотор апп-уудыг шууд авахын тулд татагчуудыг суулгана уу.</string>
+<string name="cancel_downloader_install_title">Татагчуудын суулгалтыг цуцлах уу?</string>
   <string name="cancel_downloader_install_description">Татагчуудын суулгалт явагдаж байна. Хэрэв та одоо гарах юм бол таталт цуцлагдах болно.</string>
   <string name="downloader_sources_unavailable_title">Эдгээр татаж авагчид алдагдсан байна</string>
   <string name="downloader_sources_unavailable_description">Шийдэхийн тулд шинэчлэх товчийг дарна уу.</string>
@@ -141,9 +139,7 @@ Second \"item\" text"</string>
   <string name="announcements">Мэдэгдлүүд</string>
   <string name="archive">Архив</string>
   <string name="view_update">Шинэчлэлтийг харах</string>
-  <string name="update_checking_downloader">Эхлүүлэх үед ReVanced Татагчуудын шинэчлэлтийг шалгах</string>
-  <string name="update_checking_downloader_description">Аппликешн эхлэх үед суулгасан ReVanced Татагчуудын шинэчлэлтийг шалгах</string>
-  <string name="prereleases_warning">Урьдчилсан хувилбарууд тогтворгүй байж, алдаатай байж болно. Та апп унах, өгөгдөл алдагдах эсвэл бусад гэнэтийн асуудлуудтай тулгарч болно. Эдгээр эрсдлүүдийг хүлээн зөвшөөрч байвал л үүнийг идэвхжүүлнэ үү.</string>
+<string name="prereleases_warning">Урьдчилсан хувилбарууд тогтворгүй байж, алдаатай байж болно. Та апп унах, өгөгдөл алдагдах эсвэл бусад гэнэтийн асуудлуудтай тулгарч болно. Эдгээр эрсдлүүдийг хүлээн зөвшөөрч байвал л үүнийг идэвхжүүлнэ үү.</string>
   <string name="changelog">Өөрчлөлтийн бүртгэлийг харах</string>
   <string name="no_announcements_found">Зар олдоогүй байна</string>
   <string name="new_announcement">Шинэ зар:\n%s</string>
