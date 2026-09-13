@@ -19,6 +19,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import app.revanced.manager.R
 import app.revanced.manager.ui.component.LoadingIndicator
+import app.revanced.manager.ui.component.NexoraOfficialAmber
+import app.revanced.manager.ui.component.NexoraOfficialMuted
 import app.revanced.manager.ui.component.onboarding.OnboardingAppList
 import app.revanced.manager.util.AppInfo
 
@@ -51,12 +53,12 @@ fun AppsStepContent(
                     imageVector = Icons.Outlined.WifiOff,
                     contentDescription = null,
                     modifier = Modifier.size(48.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    tint = NexoraOfficialAmber
                 )
                 Text(
                     text = stringResource(R.string.sideeffect_no_network),
                     style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = NexoraOfficialMuted,
                     textAlign = TextAlign.Center
                 )
             }

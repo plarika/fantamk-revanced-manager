@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.layout.LazyLayoutCacheWindow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.ListItemDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -58,7 +57,7 @@ fun OnboardingAppList(
         state = rememberLazyListState(
             cacheWindow = LazyLayoutCacheWindow(ahead = 100.dp, behind = 250.dp),
         ),
-        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+        verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         items(
             items = apps,

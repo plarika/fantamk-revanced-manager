@@ -48,6 +48,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import app.revanced.manager.R
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
 import app.revanced.manager.util.blurBackground
 
 @Composable
@@ -85,7 +89,7 @@ fun OnboardingAppCard(
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(24.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            containerColor = NexoraOfficialPanelStrong,
         )
     ) {
         Box {
@@ -111,7 +115,7 @@ fun OnboardingAppCard(
                     Box(
                         Modifier
                             .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.75f))
+                            .background(NexoraOfficialPanelStrong.copy(alpha = 0.82f))
                     )
                 }
             }
@@ -131,7 +135,7 @@ fun OnboardingAppCard(
                         modifier = Modifier
                             .size(48.dp)
                             .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.surfaceVariant),
+                            .background(NexoraOfficialPanelStrong),
                         contentAlignment = Alignment.Center
                     ) {
                         if (appIcon != null) {
@@ -145,7 +149,7 @@ fun OnboardingAppCard(
                                 painter = rememberVectorPainter(Icons.Default.Android),
                                 contentDescription = null,
                                 modifier = Modifier.size(24.dp),
-                                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant)
+                                colorFilter = ColorFilter.tint(NexoraOfficialMuted)
                             )
                         }
                     }
@@ -168,9 +172,9 @@ fun OnboardingAppCard(
                             MaterialTheme.typography.titleSmall
                         },
                         color = if (isInstalled) {
-                            MaterialTheme.colorScheme.onSurface
+                            NexoraOfficialText
                         } else {
-                            MaterialTheme.colorScheme.onSurfaceVariant
+                            NexoraOfficialMuted
                         }
                     )
                     Text(
@@ -180,7 +184,7 @@ fun OnboardingAppCard(
                             }
                             ?: stringResource(R.string.not_installed),
                         style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = NexoraOfficialMuted,
                     )
                 }
 
@@ -188,9 +192,9 @@ fun OnboardingAppCard(
                     text = pluralStringResource(R.plurals.patch_count, patchCount, patchCount),
                     style = MaterialTheme.typography.labelMedium,
                     color = if (isInstalled) {
-                        MaterialTheme.colorScheme.onSurface
+                        NexoraOfficialCyan
                     } else {
-                        MaterialTheme.colorScheme.onSurfaceVariant
+                        NexoraOfficialMuted
                     }
                 )
             }

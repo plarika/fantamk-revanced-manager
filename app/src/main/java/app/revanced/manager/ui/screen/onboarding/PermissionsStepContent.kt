@@ -28,6 +28,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import app.revanced.manager.R
 import app.revanced.manager.ui.component.ListSection
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialGreen
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.settings.SettingsListItem
 
 @Composable
@@ -85,14 +90,14 @@ private fun PermissionItem(
             OnboardingLeadingIcon(
                 icon = icon,
                 containerColor = if (isGranted) {
-                    MaterialTheme.colorScheme.primaryContainer
+                    NexoraOfficialGreen.copy(alpha = 0.14f)
                 } else {
-                    MaterialTheme.colorScheme.surfaceContainerHighest
+                    NexoraOfficialPanelStrong
                 },
                 iconColor = if (isGranted) {
-                    MaterialTheme.colorScheme.onPrimaryContainer
+                    NexoraOfficialGreen
                 } else {
-                    MaterialTheme.colorScheme.onSurfaceVariant
+                    NexoraOfficialMuted
                 }
             )
         },
@@ -100,8 +105,8 @@ private fun PermissionItem(
             if (isGranted) {
                 OnboardingLeadingIcon(
                     icon = Icons.Default.Check,
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    iconColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    containerColor = NexoraOfficialGreen.copy(alpha = 0.14f),
+                    iconColor = NexoraOfficialGreen,
                     size = 32.dp,
                     iconSize = 16.dp
                 )
@@ -109,7 +114,11 @@ private fun PermissionItem(
                 FilledTonalButton(
                     onClick = onRequest,
                     contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
-                    shapes = ButtonDefaults.shapes()
+                    shapes = ButtonDefaults.shapes(),
+                    colors = ButtonDefaults.filledTonalButtonColors(
+                        containerColor = NexoraOfficialViolet.copy(alpha = 0.14f),
+                        contentColor = NexoraOfficialCyan,
+                    )
                 ) {
                     Text(
                         text = stringResource(R.string.permission_grant),
@@ -124,8 +133,8 @@ private fun PermissionItem(
 @Composable
 internal fun OnboardingLeadingIcon(
     icon: ImageVector,
-    containerColor: Color = MaterialTheme.colorScheme.primaryContainer,
-    iconColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
+    containerColor: Color = NexoraOfficialViolet.copy(alpha = 0.14f),
+    iconColor: Color = NexoraOfficialCyan,
     size: Dp = 40.dp,
     iconSize: Dp = 22.dp
 ) {

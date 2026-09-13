@@ -53,6 +53,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
@@ -61,6 +62,13 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.revanced.manager.R
 import app.revanced.manager.ui.component.BottomContentBar
+import app.revanced.manager.ui.component.NexoraOfficialAmber
+import app.revanced.manager.ui.component.NexoraOfficialBackdrop
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.ColumnWithScrollbarEdgeShadow
 import app.revanced.manager.ui.screen.onboarding.AppsStepContent
 import app.revanced.manager.ui.screen.onboarding.PermissionsStepContent
@@ -227,7 +235,8 @@ fun OnboardingScreen(
         }
     }
 
-    Scaffold { paddingValues ->
+    NexoraOfficialBackdrop(modifier = Modifier.fillMaxSize()) {
+        Scaffold(containerColor = Color.Transparent) { paddingValues ->
         BoxWithConstraints(
             modifier = Modifier
                 .fillMaxSize()
@@ -284,6 +293,9 @@ fun OnboardingScreen(
                 onDismissRequest = { showSkipPermissionsDialog = false },
                 title = { Text(stringResource(R.string.onboarding_permissions_skip_title)) },
                 text = { Text(stringResource(R.string.onboarding_permissions_skip_description)) },
+                containerColor = NexoraOfficialPanelStrong,
+                titleContentColor = NexoraOfficialText,
+                textContentColor = NexoraOfficialMuted,
                 confirmButton = {
                     TextButton(
                         onClick = {
@@ -313,13 +325,17 @@ fun OnboardingScreen(
                     Icon(
                         imageVector = Icons.Outlined.WarningAmber,
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.error
+                        tint = NexoraOfficialAmber
                     )
                 },
                 title = { Text(stringResource(R.string.onboarding_unsupported_device_title)) },
                 text = { Text(stringResource(R.string.onboarding_unsupported_device_description)) },
+                containerColor = NexoraOfficialPanelStrong,
+                titleContentColor = NexoraOfficialText,
+                textContentColor = NexoraOfficialMuted,
                 confirmButton = {}
             )
+        }
         }
     }
 }
@@ -330,13 +346,13 @@ private fun StepDetails(title: String, description: String) {
         Text(
             text = title,
             style = MaterialTheme.typography.headlineSmall,
-            color = MaterialTheme.colorScheme.onSurface,
+            color = NexoraOfficialText,
             modifier = Modifier.fillMaxWidth()
         )
         Text(
             text = description,
             style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            color = NexoraOfficialMuted,
             modifier = Modifier.fillMaxWidth()
         )
     }
@@ -347,7 +363,7 @@ private fun StepTitle(title: String) {
     Text(
         text = title,
         style = MaterialTheme.typography.bodyLarge,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        color = NexoraOfficialMuted,
         modifier = Modifier.fillMaxWidth()
     )
 }
@@ -357,7 +373,7 @@ private fun StepDescription(description: String) {
     Text(
         text = description,
         style = MaterialTheme.typography.bodySmall,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        color = NexoraOfficialMuted,
         modifier = Modifier.fillMaxWidth()
     )
 }
@@ -378,7 +394,7 @@ private fun OnboardingHeader() {
             Text(
                 text = stringResource(R.string.onboarding_welcome_to),
                 style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.onSurface
+                color = NexoraOfficialText
             )
             Row(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -393,7 +409,7 @@ private fun OnboardingHeader() {
                     text = stringResource(R.string.nexora_app_name),
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
+                    color = NexoraOfficialText
                 )
             }
         }
@@ -410,7 +426,8 @@ private fun OnboardingButtons(stepButtons: StepButtons) {
                     .fillMaxWidth()
                     .height(56.dp),
                 onClick = action,
-                shapes = ButtonDefaults.shapes()
+                shapes = ButtonDefaults.shapes(),
+                colors = ButtonDefaults.textButtonColors(contentColor = NexoraOfficialCyan)
             ) {
                 Text(text = stringResource(stepButtons.secondaryTextRes!!))
             }
@@ -422,7 +439,13 @@ private fun OnboardingButtons(stepButtons: StepButtons) {
                     .height(56.dp),
                 onClick = stepButtons.primaryAction,
                 enabled = stepButtons.primaryEnabled,
-                shapes = ButtonDefaults.shapes()
+                shapes = ButtonDefaults.shapes(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = NexoraOfficialViolet,
+                    contentColor = NexoraOfficialText,
+                    disabledContainerColor = NexoraOfficialPanelStrong,
+                    disabledContentColor = NexoraOfficialMuted,
+                )
             ) {
                 Text(text = stringResource(textRes))
                 Spacer(modifier = Modifier.width(8.dp))
