@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ReVancedAsset (
+data class RemoteAsset (
     @SerialName("download_url")
     val downloadUrl: String,
     @SerialName("created_at")
@@ -18,7 +18,7 @@ data class ReVancedAsset (
 )
 
 @Serializable
-data class ReVancedAssetHistory(
+data class RemoteAssetHistory(
     val version: String,
     @SerialName("created_at")
     val createdAt: LocalDateTime,

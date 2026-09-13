@@ -292,7 +292,7 @@ fun BundleInformationScreen(
                         onClick = {
                             val source = if (src.isDefault) {
                                 ChangelogSource.Patches(
-                                    url = viewModel.prefs.api.getBlocking(),
+                                    url = viewModel.prefs.legacyApiUrl.getBlocking(),
                                     prerelease = viewModel.prefs.usePatchesPrereleases.getBlocking()
                                 )
                             } else {

@@ -26,9 +26,9 @@ class DeveloperOptionsViewModel(
     }
 
     fun setApiUrl(value: String) = viewModelScope.launch(Dispatchers.Default) {
-        if (value == prefs.api.get()) return@launch
+        if (value == prefs.legacyApiUrl.get()) return@launch
 
-        prefs.api.update(value)
+        prefs.legacyApiUrl.update(value)
 
         arrayOf(patchBundleRepository, downloaderRepository).forEach {
             it.reloadApiSources()

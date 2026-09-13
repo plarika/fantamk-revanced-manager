@@ -1,8 +1,8 @@
 package app.revanced.manager.domain.sources
 
 import app.revanced.manager.data.redux.ActionContext
-import app.revanced.manager.network.api.ReVancedAPI
-import app.revanced.manager.network.dto.ReVancedAsset
+import app.revanced.manager.network.api.LegacyPatchApi
+import app.revanced.manager.network.dto.RemoteAsset
 import app.revanced.manager.network.service.HttpService
 import app.revanced.manager.network.utils.APIResponse
 import app.revanced.manager.network.utils.getOrThrow
@@ -39,7 +39,7 @@ sealed class RemoteSource<T>(
 
     protected val http: HttpService by inject()
 
-    protected abstract suspend fun getLatestInfo(): ReVancedAsset
+    protected abstract suspend fun getLatestInfo(): RemoteAsset
     abstract fun copy(
         error: Throwable? = this.error,
         name: String = this.name,
@@ -51,11 +51,11 @@ sealed class RemoteSource<T>(
     override fun copy(error: Throwable?, name: String): RemoteSource<T> =
         copy(error, name, this.autoUpdate, this.versionHash, this.releasedAt)
 
-    protected open fun HttpRequestBuilder.configureDownload(info: ReVancedAsset) {
+    protected open fun HttpRequestBuilder.configureDownload(info: RemoteAsset) {
         url(info.downloadUrl)
     }
 
-    private suspend fun download(info: ReVancedAsset) = withContext(Dispatchers.IO) {
+    private suspend fun download(info: RemoteAsset) = withContext(Dispatchers.IO) {
         val temporary = File(file.parentFile, "${file.name}.download")
         try {
             temporary.outputStream().use {
@@ -120,7 +120,7 @@ class JsonSource<T>(
     loader: Loader<T>
 ) : RemoteSource<T>(name, uid, versionHash, releasedAt, error, file, endpoint, autoUpdate, loader) {
     override suspend fun getLatestInfo() = withContext(Dispatchers.IO) {
-        http.request<ReVancedAsset> {
+        http.request<RemoteAsset> {
             url(endpoint)
         }.getOrThrow()
     }
@@ -169,9 +169,9 @@ class APISource<T>(
     endpoint: String,
     autoUpdate: Boolean,
     loader: Loader<T>,
-    private val getUpdate: suspend ReVancedAPI.() -> APIResponse<ReVancedAsset>
+    private val getUpdate: suspend LegacyPatchApi.() -> APIResponse<RemoteAsset>
 ) : RemoteSource<T>(name, uid, versionHash, releasedAt, error, file, endpoint, autoUpdate, loader) {
-    private val api: ReVancedAPI by inject()
+    private val api: LegacyPatchApi by inject()
 
     override suspend fun getLatestInfo() = api.getUpdate().getOrThrow()
     override fun copy(

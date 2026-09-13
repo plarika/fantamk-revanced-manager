@@ -149,7 +149,7 @@ class MainViewModel(
             prefs.usePatchesPrereleases.update(prereleases)
         }
         settings.apiUrl?.let { api ->
-            prefs.api.update(api.removeSuffix("/"))
+            prefs.legacyApiUrl.update(api.removeSuffix("/"))
         }
         settings.experimentalPatchesEnabled?.let { allowExperimental ->
             prefs.disablePatchVersionCompatCheck.update(allowExperimental)

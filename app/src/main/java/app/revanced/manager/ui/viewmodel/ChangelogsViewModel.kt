@@ -9,16 +9,16 @@ import androidx.paging.cachedIn
 import app.revanced.manager.domain.repository.ChangelogSource
 import app.revanced.manager.domain.repository.ChangelogsRepository
 import app.revanced.manager.domain.repository.ManagerUpdateRepository
-import app.revanced.manager.network.api.ReVancedAPI
-import app.revanced.manager.network.dto.ReVancedAssetHistory
+import app.revanced.manager.network.api.LegacyPatchApi
+import app.revanced.manager.network.dto.RemoteAssetHistory
 import kotlinx.coroutines.flow.Flow
 
 class ChangelogsViewModel(
-    private val api: ReVancedAPI,
+    private val api: LegacyPatchApi,
     private val managerUpdateRepository: ManagerUpdateRepository,
     private val source: ChangelogSource,
 ) : ViewModel() {
-    val changelogs: Flow<PagingData<ReVancedAssetHistory>> = Pager(
+    val changelogs: Flow<PagingData<RemoteAssetHistory>> = Pager(
         config = PagingConfig(
             pageSize = 10,
             enablePlaceholders = false

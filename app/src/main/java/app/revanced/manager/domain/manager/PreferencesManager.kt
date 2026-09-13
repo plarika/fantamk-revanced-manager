@@ -13,7 +13,7 @@ class PreferencesManager(
     val pureBlackTheme = booleanPreference("pure_black_theme", false)
     val theme = enumPreference("theme", Theme.SYSTEM)
 
-    val api = stringPreference("api_url", "https://api.revanced.app")
+    val legacyApiUrl = stringPreference("api_url", "https://api.revanced.app")
 
     val useProcessRuntime = booleanPreference("use_process_runtime", false)
     val patcherProcessMemoryLimit = intPreference("process_runtime_memory_limit", 700)

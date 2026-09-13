@@ -1,6 +1,6 @@
 package app.revanced.manager.domain.sources
 
-import app.revanced.manager.network.dto.ReVancedAsset
+import app.revanced.manager.network.dto.RemoteAsset
 import app.revanced.manager.network.utils.getOrThrow
 import app.revanced.manager.patcher.patch.PatchBundle
 import io.ktor.client.request.header
@@ -48,7 +48,7 @@ class FantaMKGitHubSource<T>(
             ?.takeIf { it.matches(SHA256_REGEX) }
             ?: error("Nexora GitHub release has no valid SHA-256 digest")
 
-        ReVancedAsset(
+        RemoteAsset(
             downloadUrl = asset.browserDownloadUrl,
             createdAt = LocalDateTime.parse(publishedAt.removeSuffix("Z")),
             description = release.body.orEmpty(),

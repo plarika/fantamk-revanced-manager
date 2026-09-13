@@ -37,7 +37,7 @@ class OnboardingViewModel(
     val apps = pm.appList.map { apps ->
         apps.filter { (it.patches ?: 0) > 0 }.ifEmpty { null }
     }
-    val apiUrl = prefs.api.default
+    val apiUrl = prefs.legacyApiUrl.default
 
     val hasNetworkError = combine(apps, patchBundleRepository.updateErrors) { apps, updateErrors ->
         apps == null && updateErrors.isNotEmpty()

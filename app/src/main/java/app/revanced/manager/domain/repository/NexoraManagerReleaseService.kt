@@ -2,8 +2,8 @@ package app.revanced.manager.domain.repository
 
 import app.revanced.manager.BuildConfig
 import app.revanced.manager.domain.manager.PreferencesManager
-import app.revanced.manager.network.dto.ReVancedAsset
-import app.revanced.manager.network.dto.ReVancedAssetHistory
+import app.revanced.manager.network.dto.RemoteAsset
+import app.revanced.manager.network.dto.RemoteAssetHistory
 import app.revanced.manager.network.service.HttpService
 import app.revanced.manager.network.utils.getOrThrow
 import io.ktor.client.request.header
@@ -19,7 +19,7 @@ class NexoraManagerReleaseService(
     private val http: HttpService,
     private val prefs: PreferencesManager,
 ) {
-    suspend fun getLatest(): ReVancedAsset = withContext(Dispatchers.IO) {
+    suspend fun getLatest(): RemoteAsset = withContext(Dispatchers.IO) {
         val includePrereleases =
             BuildConfig.VERSION_NAME.contains('-') || prefs.useManagerPrereleases.get()
         val release = fetchReleases().firstOrNull { candidate ->
@@ -29,7 +29,7 @@ class NexoraManagerReleaseService(
         release.toAsset()
     }
 
-    suspend fun getHistory(): List<ReVancedAssetHistory> = withContext(Dispatchers.IO) {
+    suspend fun getHistory(): List<RemoteAssetHistory> = withContext(Dispatchers.IO) {
         val includePrereleases =
             BuildConfig.VERSION_NAME.contains('-') || prefs.useManagerPrereleases.get()
 
@@ -38,7 +38,7 @@ class NexoraManagerReleaseService(
             .filter { !it.draft && (includePrereleases || !it.prerelease) }
             .mapNotNull { release ->
                 release.publishedAt?.let { publishedAt ->
-                    ReVancedAssetHistory(
+                    RemoteAssetHistory(
                         version = release.tagName,
                         createdAt = parseGitHubTimestamp(publishedAt),
                         description = release.body.orEmpty(),
@@ -56,7 +56,7 @@ class NexoraManagerReleaseService(
             header("X-GitHub-Api-Version", GITHUB_API_VERSION)
         }.getOrThrow()
 
-    private fun GitHubRelease.toAsset(): ReVancedAsset {
+    private fun GitHubRelease.toAsset(): RemoteAsset {
         val published = publishedAt
             ?: error("Nexora Manager release has no published_at timestamp")
         val apkAssets = assets.filter { asset ->
@@ -72,7 +72,7 @@ class NexoraManagerReleaseService(
             ?.takeIf { it.matches(SHA256_REGEX) }
             ?: error("Nexora Manager release has no valid SHA-256 digest")
 
-        return ReVancedAsset(
+        return RemoteAsset(
             downloadUrl = asset.browserDownloadUrl,
             createdAt = parseGitHubTimestamp(published),
             signatureDownloadUrl = null,

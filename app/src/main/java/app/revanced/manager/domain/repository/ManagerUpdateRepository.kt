@@ -1,8 +1,8 @@
 package app.revanced.manager.domain.repository
 
 import app.revanced.manager.BuildConfig
-import app.revanced.manager.network.dto.ReVancedAsset
-import app.revanced.manager.network.dto.ReVancedAssetHistory
+import app.revanced.manager.network.dto.RemoteAsset
+import app.revanced.manager.network.dto.RemoteAssetHistory
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.datetime.LocalDateTime
@@ -10,7 +10,7 @@ import kotlinx.datetime.LocalDateTime
 class ManagerUpdateRepository(
     private val releaseService: NexoraManagerReleaseService,
 ) {
-    private var asset: ReVancedAsset? = null
+    private var asset: RemoteAsset? = null
     private val _releasedAt = MutableStateFlow<LocalDateTime?>(null)
     private val _version = MutableStateFlow<String?>(null)
     private val _hasUpdate = MutableStateFlow(false)
@@ -19,7 +19,7 @@ class ManagerUpdateRepository(
     val hasUpdate = _hasUpdate.asStateFlow()
     val version = _version.asStateFlow()
 
-    suspend fun refresh(): ReVancedAsset {
+    suspend fun refresh(): RemoteAsset {
         val update = releaseService.getLatest()
         asset = update
 
@@ -30,12 +30,12 @@ class ManagerUpdateRepository(
         return update
     }
 
-    suspend fun getUpdateOrNull(refetch: Boolean = false): ReVancedAsset? {
+    suspend fun getUpdateOrNull(refetch: Boolean = false): RemoteAsset? {
         val current = if (refetch || asset == null) refresh() else asset!!
         return current.takeIf { _hasUpdate.value }
     }
 
-    suspend fun getHistory(): List<ReVancedAssetHistory> =
+    suspend fun getHistory(): List<RemoteAssetHistory> =
         releaseService.getHistory()
 
     fun clearState() {

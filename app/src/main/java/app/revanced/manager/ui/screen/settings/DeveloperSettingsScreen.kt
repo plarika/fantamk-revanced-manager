@@ -72,13 +72,13 @@ fun DeveloperSettingsScreen(
                 title = stringResource(R.string.manager),
                 leadingContent = { Icon(Icons.Outlined.WorkOutline, contentDescription = null, modifier = Modifier.size(18.dp)) }
             ) {
-                val apiUrl by vm.prefs.api.getAsState()
+                val apiUrl by vm.prefs.legacyApiUrl.getAsState()
                 var showApiUrlDialog by rememberSaveable { mutableStateOf(false) }
 
                 if (showApiUrlDialog) {
                     APIUrlDialog(
                         currentUrl = apiUrl,
-                        defaultUrl = vm.prefs.api.default,
+                        defaultUrl = vm.prefs.legacyApiUrl.default,
                         onSubmit = {
                             showApiUrlDialog = false
                             it?.let(vm::setApiUrl)

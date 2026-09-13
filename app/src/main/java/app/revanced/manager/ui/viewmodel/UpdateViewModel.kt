@@ -22,9 +22,9 @@ import app.revanced.manager.data.platform.NetworkInfo
 import app.revanced.manager.domain.repository.ChangelogSource
 import app.revanced.manager.domain.repository.ChangelogsRepository
 import app.revanced.manager.domain.repository.ManagerUpdateRepository
-import app.revanced.manager.network.api.ReVancedAPI
-import app.revanced.manager.network.dto.ReVancedAsset
-import app.revanced.manager.network.dto.ReVancedAssetHistory
+import app.revanced.manager.network.api.LegacyPatchApi
+import app.revanced.manager.network.dto.RemoteAsset
+import app.revanced.manager.network.dto.RemoteAssetHistory
 import app.revanced.manager.network.service.HttpService
 import app.revanced.manager.util.saveableVar
 import app.revanced.manager.util.toast
@@ -48,7 +48,7 @@ import ru.solrudev.ackpine.session.await
 import ru.solrudev.ackpine.session.parameters.Confirmation
 
 class UpdateViewModel(
-    private val api: ReVancedAPI,
+    private val api: LegacyPatchApi,
     private val source: ChangelogSource,
     private val downloadOnScreenEntry: Boolean,
     private val app: Application,
@@ -79,10 +79,10 @@ class UpdateViewModel(
     var installError by mutableStateOf("")
         private set
 
-    var releaseInfo: ReVancedAsset? by mutableStateOf(null)
+    var releaseInfo: RemoteAsset? by mutableStateOf(null)
         private set
 
-    val changelogs: Flow<PagingData<ReVancedAssetHistory>> = Pager(
+    val changelogs: Flow<PagingData<RemoteAssetHistory>> = Pager(
         config = PagingConfig(
             pageSize = 10,
             enablePlaceholders = false
@@ -153,7 +153,7 @@ class UpdateViewModel(
         }
     }
 
-    private fun hasVerifiedDownloadedUpdate(release: ReVancedAsset): Boolean {
+    private fun hasVerifiedDownloadedUpdate(release: RemoteAsset): Boolean {
         val expectedSha256 = release.sha256
             ?.takeIf { SHA256_REGEX.matches(it) }
         if (expectedSha256 == null || !location.exists()) {
@@ -166,7 +166,7 @@ class UpdateViewModel(
         return matches
     }
 
-    private suspend fun downloadVerifiedUpdate(release: ReVancedAsset) = withContext(Dispatchers.IO) {
+    private suspend fun downloadVerifiedUpdate(release: RemoteAsset) = withContext(Dispatchers.IO) {
         val expectedSha256 = release.sha256
             ?.takeIf { SHA256_REGEX.matches(it) }
             ?: error("Nexora Manager update has no valid SHA-256 digest")

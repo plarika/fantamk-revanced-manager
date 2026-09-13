@@ -427,7 +427,7 @@ class PatcherViewModel(
         val usePatchesPrereleases = prefs.usePatchesPrereleases.get()
         val useProcessRuntime = prefs.useProcessRuntime.get()
         val patcherProcessMemoryLimit = prefs.patcherProcessMemoryLimit.get()
-        val apiUrl = prefs.api.get()
+        val apiUrl = prefs.legacyApiUrl.get()
         val useManagerPrereleases = prefs.useManagerPrereleases.get()
         val managerAutoUpdates = prefs.managerAutoUpdates.get()
         val patchSelectionChanges = formatPatchSelectionChanges(
@@ -475,7 +475,7 @@ class PatcherViewModel(
 
         val managerConfiguration = buildList {
             add("Manager version: ${BuildConfig.VERSION_NAME}")
-            addPreferenceChange("API URL", apiUrl, prefs.api.default)
+            addPreferenceChange("API URL", apiUrl, prefs.legacyApiUrl.default)
             addPreferenceChange(
                 "Use manager pre-releases",
                 useManagerPrereleases,

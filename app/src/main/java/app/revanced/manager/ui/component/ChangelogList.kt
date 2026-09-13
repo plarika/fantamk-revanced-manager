@@ -28,12 +28,12 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import app.revanced.manager.R
-import app.revanced.manager.network.dto.ReVancedAssetHistory
+import app.revanced.manager.network.dto.RemoteAssetHistory
 import app.revanced.manager.util.relativeTime
 
 @Composable
 fun ChangelogList(
-    changelogs: LazyPagingItems<ReVancedAssetHistory>,
+    changelogs: LazyPagingItems<RemoteAssetHistory>,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
@@ -99,7 +99,7 @@ fun ChangelogList(
 
 @Composable
 private fun ChangelogItem(
-    changelog: ReVancedAssetHistory,
+    changelog: RemoteAssetHistory,
     showDivider: Boolean
 ) {
     Column(modifier = Modifier.padding(16.dp)) {

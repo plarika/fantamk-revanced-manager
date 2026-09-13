@@ -4,8 +4,8 @@ import android.os.Parcelable
 import androidx.core.net.toUri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import app.revanced.manager.network.api.ReVancedAPI
-import app.revanced.manager.network.dto.ReVancedAssetHistory
+import app.revanced.manager.network.api.LegacyPatchApi
+import app.revanced.manager.network.dto.RemoteAssetHistory
 import app.revanced.manager.network.utils.getOrThrow
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
@@ -20,12 +20,12 @@ sealed interface ChangelogSource : Parcelable {
 }
 
 class ChangelogsRepository(
-    private val api: ReVancedAPI,
+    private val api: LegacyPatchApi,
     private val managerUpdateRepository: ManagerUpdateRepository,
     private val source: ChangelogSource,
-) : PagingSource<Int, ReVancedAssetHistory>() {
+) : PagingSource<Int, RemoteAssetHistory>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ReVancedAssetHistory> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, RemoteAssetHistory> {
         return try {
             val items = when (source) {
                 is ChangelogSource.Manager -> managerUpdateRepository.getHistory()
@@ -44,5 +44,5 @@ class ChangelogsRepository(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, ReVancedAssetHistory>): Int? = null
+    override fun getRefreshKey(state: PagingState<Int, RemoteAssetHistory>): Int? = null
 }
