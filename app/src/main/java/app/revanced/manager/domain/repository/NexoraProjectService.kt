@@ -26,9 +26,9 @@ class NexoraProjectService(
     }
 
     suspend fun getAnnouncements(): List<ProjectAnnouncement> = withContext(Dispatchers.IO) {
-        request<List<GitHubRelease>>(RELEASES_ENDPOINT)
+        request<List<ProjectGitHubRelease>>(RELEASES_ENDPOINT)
             .asSequence()
-            .filterNot(GitHubRelease::draft)
+            .filterNot(ProjectGitHubRelease::draft)
             .mapNotNull { release ->
                 val publishedAt = release.publishedAt ?: return@mapNotNull null
                 ProjectAnnouncement(
@@ -86,7 +86,7 @@ private data class GitHubContributor(
 )
 
 @Serializable
-private data class GitHubRelease(
+private data class ProjectGitHubRelease(
     val id: Long,
     @SerialName("tag_name") val tagName: String,
     val name: String? = null,
