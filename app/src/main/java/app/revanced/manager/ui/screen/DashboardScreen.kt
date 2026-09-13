@@ -77,7 +77,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.revanced.manager.R
-import app.revanced.manager.network.dto.ReVancedAnnouncement
+import app.revanced.manager.network.dto.ProjectAnnouncement
 import app.revanced.manager.ui.component.AlertDialogExtended
 import app.revanced.manager.ui.component.AvailableUpdateDialog
 import app.revanced.manager.ui.component.ConfirmDialog
@@ -121,7 +121,7 @@ fun DashboardScreen(
     onSettingsClick: () -> Unit,
     onUpdateClick: () -> Unit,
     onAnnouncementsClick: () -> Unit,
-    onAnnouncementClick: (ReVancedAnnouncement) -> Unit,
+    onAnnouncementClick: (ProjectAnnouncement) -> Unit,
     onAppClick: (String) -> Unit,
     onPatchableAppClick: (String) -> Unit,
     onStorageSelect: (SelectedApp.Local) -> Unit,

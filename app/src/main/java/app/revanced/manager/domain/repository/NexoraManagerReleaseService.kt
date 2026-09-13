@@ -87,7 +87,7 @@ class NexoraManagerReleaseService(
 
     private companion object {
         const val RELEASES_ENDPOINT =
-            "https://api.github.com/repos/plarika/fantamk-revanced-manager/releases?per_page=30"
+            "https://api.github.com/repos/plarika/nexora-manager/releases?per_page=30"
         const val USER_AGENT = "Nexora-Manager"
         const val GITHUB_API_VERSION = "2022-11-28"
         const val GITHUB_JSON_ACCEPT = "application/vnd.github+json"

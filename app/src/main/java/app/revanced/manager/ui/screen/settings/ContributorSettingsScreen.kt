@@ -44,7 +44,7 @@ import androidx.compose.ui.unit.coerceAtMost
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
 import app.revanced.manager.R
-import app.revanced.manager.network.dto.ReVancedContributor
+import app.revanced.manager.network.dto.ProjectContributor
 import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.LoadingIndicator
@@ -118,7 +118,7 @@ fun ContributorSettingsScreen(
 @Composable
 fun ContributorsCard(
     title: String,
-    contributors: List<ReVancedContributor>,
+    contributors: List<ProjectContributor>,
     itemsPerPage: Int = 12,
     numberOfRows: Int = 2,
     uriHandler: UriHandler

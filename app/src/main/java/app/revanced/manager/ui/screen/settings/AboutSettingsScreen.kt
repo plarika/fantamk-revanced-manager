@@ -49,7 +49,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import app.revanced.manager.BuildConfig
 import app.revanced.manager.R
-import app.revanced.manager.network.dto.ReVancedSocial
+import app.revanced.manager.network.dto.ProjectSocial
 import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.ListSection
@@ -87,7 +87,7 @@ fun AboutSettingsScreen(
     })
 
     val (preferredSocials, socials) = remember(viewModel.socials) {
-        viewModel.socials.partition(ReVancedSocial::preferred)
+        viewModel.socials.partition(ProjectSocial::preferred)
     }
 
     val preferredSocialButtons = remember(resources, preferredSocials, viewModel.donate, viewModel.contact) {
@@ -138,7 +138,7 @@ fun AboutSettingsScreen(
             stringResource(R.string.submit_feedback),
             stringResource(R.string.submit_feedback_description),
             third = {
-                context.openUrl("https://github.com/ReVanced/revanced-manager/issues/new/choose")
+                context.openUrl("https://github.com/plarika/nexora-manager/issues/new/choose")
             }),
         Triple(
             stringResource(R.string.contributors),

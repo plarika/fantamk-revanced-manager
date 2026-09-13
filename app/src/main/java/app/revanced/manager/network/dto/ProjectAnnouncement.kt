@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 
 @Parcelize
 @Serializable
-data class ReVancedAnnouncement(
+data class ProjectAnnouncement(
     val id: Long,
     val author: String,
     val title: String,

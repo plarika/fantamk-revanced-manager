@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.view.children
 import app.revanced.manager.R
-import app.revanced.manager.network.dto.ReVancedAnnouncement
+import app.revanced.manager.network.dto.ProjectAnnouncement
 import app.revanced.manager.ui.component.NexoraOfficialCyan
 import app.revanced.manager.ui.component.NexoraOfficialMuted
 import app.revanced.manager.ui.component.NexoraOfficialText
@@ -45,7 +45,7 @@ import org.intellij.lang.annotations.Language
 @Composable
 fun AnnouncementScreen(
     onBackClick: () -> Unit,
-    announcement: ReVancedAnnouncement
+    announcement: ProjectAnnouncement
 ) {
     val scrollState = rememberScrollState()
     val createDate = announcement.createdAt.toLocalDateTime(TimeZone.UTC).relativeTime(LocalContext.current)

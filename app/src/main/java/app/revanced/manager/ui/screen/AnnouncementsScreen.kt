@@ -46,7 +46,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.view.HapticFeedbackConstantsCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.revanced.manager.R
-import app.revanced.manager.network.dto.ReVancedAnnouncement
+import app.revanced.manager.network.dto.ProjectAnnouncement
 import app.revanced.manager.ui.component.AppTopBar
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.ListSection
@@ -70,7 +70,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun AnnouncementsScreen(
     onBackClick: () -> Unit,
-    onAnnouncementClick: (ReVancedAnnouncement) -> Unit,
+    onAnnouncementClick: (ProjectAnnouncement) -> Unit,
     vm: AnnouncementsViewModel = koinViewModel(),
 ) {
     var showFilterSheet by rememberSaveable { mutableStateOf(false) }

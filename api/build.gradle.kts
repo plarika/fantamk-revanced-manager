@@ -77,7 +77,7 @@ publishing {
     repositories {
         maven {
             name = "githubPackages"
-            url = uri("https://maven.pkg.github.com/plarika/fantamk-revanced-manager")
+            url = uri("https://maven.pkg.github.com/plarika/nexora-manager")
             credentials(PasswordCredentials::class)
         }
     }
@@ -95,7 +95,7 @@ publishing {
             pom {
                 name = "Nexora Manager API"
                 description = "API for Nexora Manager."
-                url = "https://github.com/plarika/fantamk-revanced-manager"
+                url = "https://github.com/plarika/nexora-manager"
 
                 licenses {
                     license {
@@ -110,9 +110,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = "scm:git:git://github.com/plarika/fantamk-revanced-manager.git"
-                    developerConnection = "scm:git:git@github.com:plarika/fantamk-revanced-manager.git"
-                    url = "https://github.com/plarika/fantamk-revanced-manager"
+                    connection = "scm:git:git://github.com/plarika/nexora-manager.git"
+                    developerConnection = "scm:git:git@github.com:plarika/nexora-manager.git"
+                    url = "https://github.com/plarika/nexora-manager"
                 }
             }
         }

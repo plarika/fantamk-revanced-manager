@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.revanced.manager.domain.manager.PreferencesManager
 import app.revanced.manager.domain.repository.AnnouncementRepository
-import app.revanced.manager.network.dto.ReVancedAnnouncement
+import app.revanced.manager.network.dto.ProjectAnnouncement
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -14,8 +14,8 @@ import kotlinx.coroutines.withContext
 import kotlin.time.Clock
 
 data class AnnouncementSections(
-    val activeAnnouncements: List<ReVancedAnnouncement>,
-    val archivedAnnouncements: List<ReVancedAnnouncement>
+    val activeAnnouncements: List<ProjectAnnouncement>,
+    val archivedAnnouncements: List<ProjectAnnouncement>
 ) {
     val isEmpty: Boolean
         get() = activeAnnouncements.isEmpty() && archivedAnnouncements.isEmpty()
@@ -25,7 +25,7 @@ class AnnouncementsViewModel(
     private val announcementRepository: AnnouncementRepository,
     private val preferences: PreferencesManager
 ) : ViewModel() {
-    private val allAnnouncements = MutableStateFlow<List<ReVancedAnnouncement>?>(null)
+    private val allAnnouncements = MutableStateFlow<List<ProjectAnnouncement>?>(null)
 
     val tags = allAnnouncements.map { it?.tags }
     val selectedTags = preferences.selectedAnnouncementTags
@@ -97,7 +97,7 @@ class AnnouncementsViewModel(
     }
 
     private companion object {
-        val List<ReVancedAnnouncement>.tags: Set<String>
+        val List<ProjectAnnouncement>.tags: Set<String>
             get() = flatMapTo(
                 mutableSetOf()
             ) { it.tags }
