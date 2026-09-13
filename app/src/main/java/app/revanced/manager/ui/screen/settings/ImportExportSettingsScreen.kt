@@ -76,6 +76,7 @@ import app.revanced.manager.R
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.ConfirmDialog
 import app.revanced.manager.ui.component.ListSection
+import app.revanced.manager.ui.component.NexoraSettingsScaffold
 import app.revanced.manager.ui.component.PasswordField
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.bundle.BundleSelector
@@ -99,11 +100,6 @@ fun ImportExportSettingsScreen(
     val resources = LocalResources.current
     val prefs = vm.prefs
     val contentScrollState = rememberScrollState()
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
-        canScroll = {
-            contentScrollState.canScrollBackward || contentScrollState.canScrollForward
-        }
-    )
     val clipboard = remember { context.getSystemService<ClipboardManager>()!! }
     var showResetSheet by rememberSaveable { mutableStateOf(false) }
     var showKeystorePassword by rememberSaveable { mutableStateOf(false) }
@@ -174,25 +170,10 @@ fun ImportExportSettingsScreen(
         )
     }
 
-    Scaffold(
-        topBar = {
-            MediumFlexibleTopAppBar(
-                title = { Text(stringResource(R.string.import_export)) },
-                navigationIcon = {
-                    TooltipIconButton(
-                        onClick = onBackClick,
-                        tooltip = stringResource(R.string.back)
-                    ) {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(R.string.back)
-                        )
-                    }
-                },
-                scrollBehavior = scrollBehavior
-            )
-        },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    NexoraSettingsScaffold(
+        title = stringResource(R.string.import_export),
+        subtitle = stringResource(R.string.import_export_description),
+        onBackClick = onBackClick,
     ) { paddingValues ->
         ColumnWithScrollbar(
             modifier = Modifier

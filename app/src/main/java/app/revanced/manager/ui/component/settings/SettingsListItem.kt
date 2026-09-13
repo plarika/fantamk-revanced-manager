@@ -14,9 +14,11 @@ import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItemDefaults
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SegmentedListItem
 import androidx.compose.material3.Text
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,6 +31,11 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
 import androidx.core.view.HapticFeedbackConstantsCompat
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialMuted
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.util.withHapticFeedback
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -47,7 +54,7 @@ fun SettingsListItem(
 ) {
     val shapes = ListItemDefaults.segmentedShapes(index = 0, count = 1)
     val colors = ListItemDefaults.colors(
-        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        containerColor = NexoraOfficialPanelStrong
     )
 
     SegmentedListItem(
@@ -57,12 +64,26 @@ fun SettingsListItem(
         shapes = shapes,
         colors = colors,
         modifier = modifier,
-        overlineContent = overlineContent,
-        leadingContent = leadingContent,
-        trailingContent = trailingContent?.let {
+        overlineContent = overlineContent?.let { content ->
+            {
+                CompositionLocalProvider(LocalContentColor provides NexoraOfficialViolet) {
+                    content()
+                }
+            }
+        },
+        leadingContent = leadingContent?.let { content ->
+            {
+                CompositionLocalProvider(LocalContentColor provides NexoraOfficialCyan) {
+                    content()
+                }
+            }
+        },
+        trailingContent = trailingContent?.let { content ->
             {
                 Box(modifier = Modifier.padding(start = 4.dp)) {
-                    trailingContent()
+                    CompositionLocalProvider(LocalContentColor provides NexoraOfficialViolet) {
+                        content()
+                    }
                 }
             }
         },
@@ -70,13 +91,13 @@ fun SettingsListItem(
             {
                 Text(
                     text = it,
-                    color = supportingContentColor
+                    color = if (supportingContentColor == Color.Unspecified) NexoraOfficialMuted else supportingContentColor
                 )
             }
         },
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(headlineContent)
+        Text(headlineContent, color = NexoraOfficialText)
     }
 }
 
@@ -96,7 +117,7 @@ fun SettingsListItem(
 ) {
     val shapes = ListItemDefaults.segmentedShapes(index = 0, count = 1)
     val colors = ListItemDefaults.colors(
-        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        containerColor = NexoraOfficialPanelStrong
     )
 
     SegmentedListItem(
@@ -106,18 +127,40 @@ fun SettingsListItem(
         shapes = shapes,
         colors = colors,
         modifier = modifier,
-        overlineContent = overlineContent,
-        leadingContent = leadingContent,
-        trailingContent = trailingContent,
+        overlineContent = overlineContent?.let { content ->
+            {
+                CompositionLocalProvider(LocalContentColor provides NexoraOfficialViolet) {
+                    content()
+                }
+            }
+        },
+        leadingContent = leadingContent?.let { content ->
+            {
+                CompositionLocalProvider(LocalContentColor provides NexoraOfficialCyan) {
+                    content()
+                }
+            }
+        },
+        trailingContent = trailingContent?.let { content ->
+            {
+                CompositionLocalProvider(LocalContentColor provides NexoraOfficialViolet) {
+                    content()
+                }
+            }
+        },
         supportingContent = supportingContent?.let {
             {
                 Text(
                     text = it,
-                    color = supportingContentColor
+                    color = if (supportingContentColor == Color.Unspecified) NexoraOfficialMuted else supportingContentColor
                 )
             }
         },
-        content = headlineContent
+        content = {
+            CompositionLocalProvider(LocalContentColor provides NexoraOfficialText) {
+                headlineContent()
+            }
+        }
     )
 }
 

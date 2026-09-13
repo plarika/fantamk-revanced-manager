@@ -14,7 +14,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.rememberTopAppBarState
-import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -61,9 +60,9 @@ fun AppTopBar(
     applyContainerColor: Boolean = false
 ) {
     val containerColor = if (applyContainerColor) {
-        MaterialTheme.colorScheme.surfaceColorAtElevation(3.0.dp)
+        NexoraOfficialPanelStrong
     } else {
-        Color.Unspecified
+        NexoraOfficialBackground.copy(alpha = 0.94f)
     }
 
     TopAppBar(
@@ -81,7 +80,11 @@ fun AppTopBar(
         },
         actions = actions,
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = containerColor
+            containerColor = containerColor,
+            scrolledContainerColor = NexoraOfficialPanelStrong,
+            titleContentColor = NexoraOfficialText,
+            navigationIconContentColor = NexoraOfficialViolet,
+            actionIconContentColor = NexoraOfficialCyan,
         )
     )
 }
@@ -103,9 +106,9 @@ fun AppTopBar(
     applyContainerColor: Boolean = false
 ) {
     val containerColor = if (applyContainerColor) {
-        MaterialTheme.colorScheme.surfaceColorAtElevation(3.0.dp)
+        NexoraOfficialPanelStrong
     } else {
-        Color.Unspecified
+        NexoraOfficialBackground.copy(alpha = 0.94f)
     }
 
     TopAppBar(
@@ -123,7 +126,11 @@ fun AppTopBar(
         },
         actions = actions,
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = containerColor
+            containerColor = containerColor,
+            scrolledContainerColor = NexoraOfficialPanelStrong,
+            titleContentColor = NexoraOfficialText,
+            navigationIconContentColor = NexoraOfficialViolet,
+            actionIconContentColor = NexoraOfficialCyan,
         )
     )
 }

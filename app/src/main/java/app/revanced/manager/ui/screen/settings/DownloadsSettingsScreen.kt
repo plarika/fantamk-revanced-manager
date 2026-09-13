@@ -60,6 +60,7 @@ import app.revanced.manager.ui.component.BottomContentBar
 import app.revanced.manager.ui.component.ConfirmDialog
 import app.revanced.manager.ui.component.EmptyState
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
+import app.revanced.manager.ui.component.NexoraSettingsScaffold
 import app.revanced.manager.ui.component.PillTab
 import app.revanced.manager.ui.component.PillTabBar
 import app.revanced.manager.ui.component.TooltipIconButton
@@ -97,19 +98,7 @@ fun DownloadsSettingsScreen(
     val scope = rememberCoroutineScope()
     val downloaderListState = rememberLazyListState()
     val appsListState = rememberLazyListState()
-    val selectedListState = rememberSelectedListState(
-        selectedPage = pagerState.currentPage,
-        downloaderListState = downloaderListState,
-        appsListState = appsListState
-    )
-    val canScroll by remember(selectedListState) {
-        derivedStateOf {
-            selectedListState.canScrollBackward || selectedListState.canScrollForward
-        }
-    }
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
-        canScroll = { canScroll }
-    )
+
     val currentTab = DownloadsTab.entries[pagerState.currentPage]
     var showImportDialog by rememberSaveable { mutableStateOf(false) }
     var showDeleteConfirmationDialog by rememberSaveable { mutableStateOf(false) }
@@ -139,55 +128,40 @@ fun DownloadsSettingsScreen(
         )
     }
 
-    Scaffold(
-        topBar = {
-            MediumFlexibleTopAppBar(
-                title = { Text(stringResource(R.string.downloads)) },
-                navigationIcon = {
-                    TooltipIconButton(
-                        onClick = onBackClick,
-                        tooltip = stringResource(R.string.back),
-                    ) { contentDescription ->
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = contentDescription
-                        )
-                    }
-                },
-                scrollBehavior = scrollBehavior,
-                actions = {
-                    if (currentTab == DownloadsTab.Apps && viewModel.appSelection.isNotEmpty()) {
-                        TooltipIconButton(
-                            onClick = { showDeleteConfirmationDialog = true },
-                            tooltip = stringResource(R.string.delete),
-                        ) { contentDescription ->
-                            Icon(Icons.Default.Delete, contentDescription)
-                        }
-                    }
-                }
-            )
-        },
-        bottomBar = {
-            if (pagerState.currentPage != DownloadsTab.Downloaders.ordinal) return@Scaffold
-
-            BottomContentBar(modifier = Modifier.navigationBarsPadding()) {
-                FilledTonalButton(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp),
-                    onClick = { showImportDialog = true },
-                    shapes = ButtonDefaults.shapes()
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = stringResource(R.string.add)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(text = stringResource(R.string.downloader_add))
+    NexoraSettingsScaffold(
+        title = stringResource(R.string.downloads),
+        subtitle = stringResource(R.string.downloads_description),
+        onBackClick = onBackClick,
+        actions = {
+            if (currentTab == DownloadsTab.Apps && viewModel.appSelection.isNotEmpty()) {
+                TooltipIconButton(
+                    onClick = { showDeleteConfirmationDialog = true },
+                    tooltip = stringResource(R.string.delete),
+                ) { contentDescription ->
+                    Icon(Icons.Default.Delete, contentDescription)
                 }
             }
         },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        bottomBar = {
+            if (pagerState.currentPage == DownloadsTab.Downloaders.ordinal) {
+                BottomContentBar(modifier = Modifier.navigationBarsPadding()) {
+                    FilledTonalButton(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(56.dp),
+                        onClick = { showImportDialog = true },
+                        shapes = ButtonDefaults.shapes()
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Add,
+                            contentDescription = stringResource(R.string.add)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(text = stringResource(R.string.downloader_add))
+                    }
+                }
+            }
+        },
     ) { paddingValues ->
         Column(
             modifier = Modifier

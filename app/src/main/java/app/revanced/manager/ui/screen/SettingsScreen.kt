@@ -211,8 +211,8 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
             ) {
                 Surface(
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF111827),
-                    border = BorderStroke(1.dp, Color(0xFF1F2937)),
+                    color = NexoraOfficialPanelStrong,
+                    border = BorderStroke(1.dp, NexoraOfficialBorder),
                 ) {
                     Row(
                         modifier = Modifier
@@ -314,8 +314,8 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                         .fillMaxWidth()
                         .clickable { navigate(Settings.About) },
                     shape = RoundedCornerShape(12.dp),
-                    color = Color(0xFF111827),
-                    border = BorderStroke(1.dp, Color(0xFF1F2937)),
+                    color = NexoraOfficialPanelStrong,
+                    border = BorderStroke(1.dp, NexoraOfficialBorder),
                 ) {
                     Row(
                         modifier = Modifier.padding(12.dp),
@@ -336,7 +336,7 @@ fun SettingsScreen(onBackClick: () -> Unit, navigate: (Settings.Destination) -> 
                             Text(
                                 text = BuildConfig.VERSION_NAME,
                                 style = MaterialTheme.typography.bodySmall,
-                                color = Color(0xFF9CA3AF),
+                                color = NexoraOfficialMuted,
                             )
                         }
                         Text(

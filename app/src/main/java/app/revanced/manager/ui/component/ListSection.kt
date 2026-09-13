@@ -39,13 +39,13 @@ fun ListSection(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 if (leadingContent != null) {
-                    CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.primary) {
+                    CompositionLocalProvider(LocalContentColor provides NexoraOfficialViolet) {
                         leadingContent()
                     }
                 }
                 Text(
                     text = title,
-                    color = MaterialTheme.colorScheme.primary,
+                    color = NexoraOfficialViolet,
                     style = MaterialTheme.typography.labelLarge
                 )
             }

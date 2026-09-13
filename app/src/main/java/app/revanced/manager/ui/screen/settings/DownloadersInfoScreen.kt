@@ -45,6 +45,7 @@ import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.ConfirmDialog
 import app.revanced.manager.ui.component.EmptyState
 import app.revanced.manager.ui.component.ListSection
+import app.revanced.manager.ui.component.NexoraSettingsScaffold
 import app.revanced.manager.ui.component.TextInputDialog
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.haptics.HapticSwitch
@@ -81,12 +82,18 @@ fun DownloaderInfoScreen(
 
     var showDeleteConfirmationDialog by rememberSaveable { mutableStateOf(false) }
     val scrollState = androidx.compose.foundation.rememberScrollState()
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
-        canScroll = {
-            scrollState.canScrollBackward || scrollState.canScrollForward
-        }
-    )
     val coroutineScope = rememberCoroutineScope()
+    val headerSubtitle = if (version.isNotEmpty()) {
+        buildString {
+            append("v$version")
+            remote?.releasedAt?.let { releasedAt ->
+                val releaseDate = releasedAt.relativeTime(LocalContext.current).lowercase(getDefault())
+                append("\u2002($releaseDate)")
+            }
+        }
+    } else {
+        stringResource(R.string.downloaders)
+    }
 
     if (showDeleteConfirmationDialog) {
         ConfirmDialog(
@@ -103,62 +110,30 @@ fun DownloaderInfoScreen(
         )
     }
 
-    Scaffold(
-        topBar = {
-            MediumFlexibleTopAppBar(
-                title = { Text(appName) },
-                subtitle = version.takeIf { it.isNotEmpty() }?.let {
-                    {
-                        Text(
-                            text = buildAnnotatedString {
-                                append("v$it")
-                                if (remote?.releasedAt != null) {
-                                    val releaseDate = remote.releasedAt.relativeTime(
-                                        LocalContext.current
-                                    ).lowercase(getDefault())
-
-                                    append("\u2002($releaseDate)")
-                                }
-                            }
-                        )
-                    }
-                },
-                navigationIcon = {
-                    TooltipIconButton(
-                        onClick = onBackClick,
-                        tooltip = stringResource(R.string.back)
-                    ) {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(R.string.back)
-                        )
-                    }
-                },
-                actions = {
-                    if (!source.isDefault) TooltipIconButton(
-                        onClick = { showDeleteConfirmationDialog = true },
-                        enabled = !isDeleting,
-                        tooltip = stringResource(R.string.delete)
-                    ) {
-                        Icon(Icons.Filled.Delete, stringResource(R.string.delete))
-                    }
-
-                    remote?.let {
-                        TooltipIconButton(
-                            onClick = { viewModel.updateDownloader(it) },
-                            enabled = !isDeleting,
-                            tooltip = stringResource(R.string.update)
-                        ) {
-                            Icon(Icons.Filled.Refresh, stringResource(R.string.update))
-                        }
-                    }
-                },
-                scrollBehavior = scrollBehavior
-            )
+    NexoraSettingsScaffold(
+        title = appName,
+        subtitle = headerSubtitle,
+        onBackClick = onBackClick,
+        actions = {
+            if (!source.isDefault) {
+                TooltipIconButton(
+                    onClick = { showDeleteConfirmationDialog = true },
+                    enabled = !isDeleting,
+                    tooltip = stringResource(R.string.delete)
+                ) {
+                    Icon(Icons.Filled.Delete, stringResource(R.string.delete))
+                }
+            }
+            remote?.let {
+                TooltipIconButton(
+                    onClick = { viewModel.updateDownloader(it) },
+                    enabled = !isDeleting,
+                    tooltip = stringResource(R.string.update)
+                ) {
+                    Icon(Icons.Filled.Refresh, stringResource(R.string.update))
+                }
+            }
         },
-        modifier = Modifier.then(
-            scrollBehavior.let { Modifier.nestedScroll(it.nestedScrollConnection) }
-        )
     ) { paddingValues ->
         ColumnWithScrollbar(
             modifier = Modifier

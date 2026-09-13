@@ -42,6 +42,7 @@ import app.revanced.manager.R
 import app.revanced.manager.domain.manager.PreferencesManager
 import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.ListSection
+import app.revanced.manager.ui.component.NexoraSettingsScaffold
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.settings.BooleanItem
 import app.revanced.manager.ui.component.settings.SettingsListItem
@@ -56,34 +57,12 @@ fun DeveloperSettingsScreen(
     vm: DeveloperOptionsViewModel = koinViewModel()
 ) {
     val scrollState = rememberScrollState()
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
-        canScroll = {
-            scrollState.canScrollBackward || scrollState.canScrollForward
-        }
-    )
     val prefs: PreferencesManager = koinInject()
 
-    Scaffold(
-        topBar = {
-            MediumFlexibleTopAppBar(
-                title = { Text(stringResource(R.string.developer_options)) },
-                navigationIcon = {
-                    TooltipIconButton(
-                        onClick = onBackClick,
-                        tooltip = stringResource(R.string.back)
-                    ) {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(R.string.back)
-                        )
-                    }
-                },
-                scrollBehavior = scrollBehavior
-            )
-        },
-        modifier = Modifier.then(
-            scrollBehavior.let { Modifier.nestedScroll(it.nestedScrollConnection) }
-        ),
+    NexoraSettingsScaffold(
+        title = stringResource(R.string.developer_options),
+        subtitle = stringResource(R.string.developer_options_description),
+        onBackClick = onBackClick,
     ) { paddingValues ->
         ColumnWithScrollbar(
             modifier = Modifier.padding(paddingValues),

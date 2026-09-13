@@ -50,6 +50,7 @@ import app.revanced.manager.ui.component.ColumnWithScrollbar
 import app.revanced.manager.ui.component.FullscreenDialog
 import app.revanced.manager.ui.component.LazyColumnWithScrollbar
 import app.revanced.manager.ui.component.ListSection
+import app.revanced.manager.ui.component.NexoraSettingsScaffold
 import app.revanced.manager.ui.component.TooltipIconButton
 import app.revanced.manager.ui.component.haptics.HapticRadioButton
 import app.revanced.manager.ui.component.settings.BooleanItem
@@ -72,11 +73,7 @@ fun GeneralSettingsScreen(
     val coroutineScope = viewModel.viewModelScope
     var showLanguagePicker by rememberSaveable { mutableStateOf(false) }
     val scrollState = androidx.compose.foundation.rememberScrollState()
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
-        canScroll = {
-            scrollState.canScrollBackward || scrollState.canScrollForward
-        }
-    )
+
 
     if (showLanguagePicker) {
         LanguagePicker(
@@ -87,36 +84,11 @@ fun GeneralSettingsScreen(
         )
     }
 
-    val animatedSurfaceColor = animateColorAsState(
-        targetValue = MaterialTheme.colorScheme.surface,
-        animationSpec = MaterialTheme.motionScheme.defaultEffectsSpec(),
-        label = "surface"
-    ).value
 
-    Scaffold(
-        topBar = {
-            MediumFlexibleTopAppBar(
-                title = { Text(stringResource(R.string.general)) },
-                navigationIcon = {
-                    TooltipIconButton(
-                        onClick = onBackClick,
-                        tooltip = stringResource(R.string.back)
-                    ) {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(R.string.back)
-                        )
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = animatedSurfaceColor,
-                    scrolledContainerColor = animatedSurfaceColor
-                ),
-                scrollBehavior = scrollBehavior
-            )
-        },
-        containerColor = animatedSurfaceColor,
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    NexoraSettingsScaffold(
+        title = stringResource(R.string.general),
+        subtitle = stringResource(R.string.general_description),
+        onBackClick = onBackClick,
     ) { paddingValues ->
         ColumnWithScrollbar(
             modifier = Modifier
