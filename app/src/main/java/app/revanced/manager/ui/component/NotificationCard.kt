@@ -124,6 +124,11 @@ private fun NotificationCardInstance(
     onClick: (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
+    val accentColor = when (type) {
+        NotificationCardType.ERROR -> MaterialTheme.colorScheme.error
+        NotificationCardType.WARNING -> NexoraOfficialAmber
+        NotificationCardType.NORMAL -> NexoraOfficialViolet
+    }
     val containerColor = when (type) {
         NotificationCardType.ERROR -> accentColor.copy(alpha = 0.12f)
         NotificationCardType.WARNING -> accentColor.copy(alpha = 0.10f)
