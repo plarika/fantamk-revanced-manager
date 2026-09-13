@@ -1,5 +1,6 @@
 package app.revanced.manager.ui.component
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -38,11 +40,11 @@ fun AlertDialogExtended(
     icon: @Composable (() -> Unit)? = null,
     title: @Composable (() -> Unit)? = null,
     text: @Composable (() -> Unit)? = null,
-    shape: Shape = AlertDialogDefaults.shape,
-    containerColor: Color = AlertDialogDefaults.containerColor,
-    iconContentColor: Color = AlertDialogDefaults.iconContentColor,
-    titleContentColor: Color = AlertDialogDefaults.titleContentColor,
-    textContentColor: Color = AlertDialogDefaults.textContentColor,
+    shape: Shape = RoundedCornerShape(24.dp),
+    containerColor: Color = NexoraOfficialPanelStrong,
+    iconContentColor: Color = NexoraOfficialCyan,
+    titleContentColor: Color = NexoraOfficialText,
+    textContentColor: Color = NexoraOfficialMuted,
     tonalElevation: Dp = AlertDialogDefaults.TonalElevation,
     textHorizontalPadding: PaddingValues = TextHorizontalPadding
 ) {
@@ -52,6 +54,7 @@ fun AlertDialogExtended(
             shape = shape,
             color = containerColor,
             tonalElevation = tonalElevation,
+            border = BorderStroke(1.dp, NexoraOfficialViolet.copy(alpha = 0.40f)),
         ) {
             Column(modifier = Modifier.padding(vertical = 24.dp)) {
                 Column(
@@ -111,7 +114,7 @@ fun AlertDialogExtended(
                         .padding(horizontal = 24.dp)
                 ) {
                     ContentStyle(
-                        color = MaterialTheme.colorScheme.primary,
+                        color = NexoraOfficialCyan,
                         textStyle = MaterialTheme.typography.labelLarge
                     ) {
                         FlowRow(

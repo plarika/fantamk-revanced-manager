@@ -1,5 +1,6 @@
 package app.revanced.manager.ui.component
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -45,15 +46,14 @@ fun NotificationCard(
     onDismiss: (() -> Unit)? = null,
     onClick: (() -> Unit)? = null
 ) {
-    val color =
-        when (type) {
-            NotificationCardType.ERROR -> MaterialTheme.colorScheme.onError
-            NotificationCardType.WARNING -> MaterialTheme.colorScheme.onPrimaryContainer
-            else -> MaterialTheme.colorScheme.onTertiaryContainer
-        }
+    val contentColor = when (type) {
+        NotificationCardType.ERROR -> MaterialTheme.colorScheme.error
+        NotificationCardType.WARNING -> NexoraOfficialAmber
+        NotificationCardType.NORMAL -> NexoraOfficialText
+    }
 
     NotificationCardInstance(modifier = modifier, type = type, onClick = onClick) {
-        CompositionLocalProvider(LocalContentColor provides color) {
+        CompositionLocalProvider(LocalContentColor provides contentColor) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -124,14 +124,21 @@ private fun NotificationCardInstance(
     onClick: (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
-    val colors =
-        CardDefaults.cardColors(
-            containerColor = when (type) {
-                NotificationCardType.ERROR -> MaterialTheme.colorScheme.error
-                NotificationCardType.WARNING -> MaterialTheme.colorScheme.primaryContainer
-                else -> MaterialTheme.colorScheme.tertiaryContainer
-            }
-        )
+    val containerColor = when (type) {
+        NotificationCardType.ERROR -> accentColor.copy(alpha = 0.12f)
+        NotificationCardType.WARNING -> accentColor.copy(alpha = 0.10f)
+        NotificationCardType.NORMAL -> NexoraOfficialPanelStrong
+    }
+    val contentColor = when (type) {
+        NotificationCardType.ERROR -> MaterialTheme.colorScheme.error
+        NotificationCardType.WARNING -> NexoraOfficialAmber
+        NotificationCardType.NORMAL -> NexoraOfficialText
+    }
+    val colors = CardDefaults.cardColors(
+        containerColor = containerColor,
+        contentColor = contentColor,
+    )
+    val border = BorderStroke(1.dp, accentColor.copy(alpha = 0.48f))
     val defaultModifier = Modifier
         .fillMaxWidth()
         .clip(RoundedCornerShape(24.dp))
@@ -140,12 +147,14 @@ private fun NotificationCardInstance(
         Card(
             onClick = onClick,
             colors = colors,
+            border = border,
             modifier = modifier.then(defaultModifier),
             content = { content() }
         )
     } else {
         Card(
             colors = colors,
+            border = border,
             modifier = modifier.then(defaultModifier),
             content = { content() }
         )

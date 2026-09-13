@@ -29,11 +29,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
@@ -60,6 +58,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import app.revanced.manager.R
+import app.revanced.manager.ui.component.NexoraOfficialBackground
+import app.revanced.manager.ui.component.NexoraOfficialCyan
+import app.revanced.manager.ui.component.NexoraOfficialPanelStrong
+import app.revanced.manager.ui.component.NexoraOfficialText
+import app.revanced.manager.ui.component.NexoraOfficialViolet
 import app.revanced.manager.ui.component.TooltipIconButton
 import kotlin.math.roundToInt
 
@@ -194,12 +197,12 @@ object BannerScaffoldDefaults {
 
     @Composable
     fun colors(
-        sheetBackgroundColor: Color = MaterialTheme.colorScheme.surfaceContainerLow,
-        bannerContentColor: Color = MaterialTheme.colorScheme.onSurface,
+        sheetBackgroundColor: Color = NexoraOfficialPanelStrong,
+        bannerContentColor: Color = NexoraOfficialText,
     ) = BannerScaffoldColors(
         sheetBackgroundColor = sheetBackgroundColor,
         bannerContentColor = bannerContentColor,
-        sheetContentColor = contentColorFor(sheetBackgroundColor),
+        sheetContentColor = NexoraOfficialText,
     )
 }
 
@@ -224,7 +227,7 @@ fun BannerScaffold(
     bannerContent: @Composable BannerScope.() -> Unit,
     sheetContent: @Composable (PaddingValues) -> Unit,
 ) {
-    BoxWithConstraints(modifier.fillMaxSize()) {
+    BoxWithConstraints(modifier.fillMaxSize().background(NexoraOfficialBackground)) {
         val density = LocalDensity.current
         val isLandscape = maxWidth > maxHeight
         val axisFraction = if (isLandscape) 0.5f else 0.35f
@@ -379,9 +382,9 @@ fun BannerScaffold(
                 actions = actions,
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
-                    titleContentColor = colors.bannerContentColor,
-                    navigationIconContentColor = colors.bannerContentColor,
-                    actionIconContentColor = colors.bannerContentColor,
+                    titleContentColor = NexoraOfficialText,
+                    navigationIconContentColor = NexoraOfficialViolet,
+                    actionIconContentColor = NexoraOfficialCyan,
                 ),
                 windowInsets = WindowInsets.systemBars.only(
                     if (isLandscape) {
